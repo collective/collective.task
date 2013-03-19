@@ -1,0 +1,5 @@
+- Gauthier Bastien, IMIO                                                       
+- Stéphan Geulette, IMIO                                                       
+- Vincent Fretin, Ecreall                                                      
+- Cédric Messiant, Ecreall                                                     
+- Frédéric Peters, Entr'ouvert
