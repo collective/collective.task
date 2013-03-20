@@ -6,6 +6,7 @@ from plone.supermodel import model
 
 from collective.task import _
 
+
 class ITask(model.Schema):
     title = schema.TextLine(title=_(u'Title'))
     deadline = schema.Date(title=_(u'Date'), required=False)

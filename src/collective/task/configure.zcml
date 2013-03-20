@@ -12,6 +12,7 @@
 
     <include package="five.grok" />
     <include package="plone.api" />
+    <include package="plone.app.dexterity" />
 
     <include package=".browser" />
     <include package=".content" />
