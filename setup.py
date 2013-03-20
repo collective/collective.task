@@ -42,6 +42,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'collective.dms.basecontent',
+        'collective.wfcomment',
         'five.grok',
         'plone.api',
         'plone.app.dexterity',
