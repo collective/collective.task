@@ -17,10 +17,10 @@ class ITask(model.Schema):
     responsible = LocalRolesToPrincipals(
         title=_(u"Responsible"),
         roles_to_assign=('Editor',),
-        required=False,
         value_type=schema.Choice(
             vocabulary="plone.principalsource.Principals"
         ),
+        required=True,
     )
 
 
