@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="task_workflow"
+             title="Task Workflow"
+             description="Task workflow"
+             state_variable="review_state"
+             initial_state="todo"
+             manager_bypass="False">
+ <permission>Access contents information</permission>
+ <permission>Change portal events</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="abandoned" title="">
+ </state>
+ <state state_id="attributed" title="Attributed">
+  <exit-transition transition_id="subtask-abandoned"/>
+  <exit-transition transition_id="subtask-done"/>
+ </state>
+ <state state_id="done" title="">
+ </state>
+ <state state_id="in-progress" title="In progress">
+  <exit-transition transition_id="mark-as-done"/>
+ </state>
+ <state state_id="refusal-requested" title="Refusal requested">
+  <exit-transition transition_id="accept-refusal"/>
+  <exit-transition transition_id="refuse-refusal"/>
+ </state>
+ <state state_id="todo" title="To do">
+  <exit-transition transition_id="ask-for-refusal"/>
+  <exit-transition transition_id="attribute"/>
+  <exit-transition transition_id="take-responsibility"/>
+ </state>
+ <transition transition_id="accept-refusal" title="Accept refusal" new_state="abandoned" trigger="USER" before_script="" after_script="">
+
+  <guard>
+   <guard-role>Reviewer</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="ask-for-refusal" title="Ask for refusal" new_state="refusal-requested" trigger="USER" before_script="" after_script="">
+
+  <guard>
+   <guard-role>Editor</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="attribute" title="Attribute" new_state="attributed" trigger="USER" before_script="" after_script="">
+
+  <guard>
+   <guard-role>Editor</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="mark-as-done" title="Mark as done" new_state="done" trigger="USER" before_script="" after_script="">
+
+  <guard>
+   <guard-role>Editor</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="refuse-refusal" title="Refuse refusal" new_state="todo" trigger="USER" before_script="" after_script="">
+
+  <guard>
+   <guard-role>Reviewer</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="subtask-abandoned" title="Subtask abandoned" new_state="todo" trigger="AUTOMATIC" before_script="" after_script="">
+
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="subtask-done" title="Subtask done" new_state="done" trigger="AUTOMATIC" before_script="" after_script="">
+
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="take-responsibility" title="Take responsibility" new_state="in-progress" trigger="USER" before_script="" after_script="">
+
+  <guard>
+   <guard-role>Editor</guard-role>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
