@@ -41,9 +41,11 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'collective.dms.basecontent',
         'five.grok',
         'plone.api',
         'plone.app.dexterity',
+        'plone.principalsource',
         'setuptools',
     ],
     extras_require={

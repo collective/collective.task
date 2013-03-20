@@ -3,4 +3,6 @@
     xmlns:grok="http://namespaces.zope.org/grok"
     i18n_domain="collective.task">
 
+    <include package="plone.principalsource" />
+
 </configure>
