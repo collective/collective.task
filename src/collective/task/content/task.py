@@ -8,7 +8,7 @@ from collective.task import _
 
 class ITask(model.Schema):
     title = schema.TextLine(title=_(u'Title'))
-    deadline = schema.Date(title=_(u'Date'))
+    deadline = schema.Date(title=_(u'Date'), required=False)
 
 
 class Task(Container):
