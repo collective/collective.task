@@ -10,4 +10,13 @@
       directory="static"
       />
 
+    <plone:portlet
+        name="collective.task.browser.TasksPortlet"
+        interface=".portlet.ITasksPortlet"
+        assignment=".portlet.TasksAssignment"
+        renderer=".portlet.TasksRenderer"
+        addview=".portlet.TasksAddForm"
+        editview=".portlet.TasksEditForm"
+        />
+
 </configure>
