@@ -2,6 +2,6 @@
 <metadata>
   <version>1</version>
   <dependencies>
-    <dependency>collective.wfcomment</dependency>
+    <dependency>profile-collective.wfcomment:default</dependency>
   </dependencies>
 </metadata>

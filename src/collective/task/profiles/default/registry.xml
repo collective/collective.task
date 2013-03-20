@@ -1,12 +1,18 @@
 <?xml version="1.0"?>
 <registry>
-  <record field="comment_required" interface="collective.wfcomment.interfaces.IWorkflowCommentSettings" name="collective.wfcomment.interfaces.IWorkflowCommentSettings.comment_required">
+  <record field="comment_required"
+          interface="collective.wfcomment.interfaces.IWorkflowCommentSettings"
+          name="collective.wfcomment.interfaces.IWorkflowCommentSettings.comment_required">
     <value>False</value>
   </record>
-  <record field="enable_for_all_transitions" interface="collective.wfcomment.interfaces.IWorkflowCommentSettings" name="collective.wfcomment.interfaces.               IWorkflowCommentSettings.enable_for_all_transitions">
+  <record field="enable_for_all_transitions"
+          interface="collective.wfcomment.interfaces.IWorkflowCommentSettings"
+          name="collective.wfcomment.interfaces.IWorkflowCommentSettings.enable_for_all_transitions">
     <value>False</value>
   </record>
-  <record field="transitions" interface="collective.wfcomment.interfaces.IWorkflowCommentSettings" name="collective.wfcomment.interfaces.IWorkflowCommentSettings.     transitions">
+  <record field="transitions"
+          interface="collective.wfcomment.interfaces.IWorkflowCommentSettings"
+          name="collective.wfcomment.interfaces.IWorkflowCommentSettings.transitions">
     <value>
       <element>ask-for-refusal</element>
       <element>accept-refusal</element>
