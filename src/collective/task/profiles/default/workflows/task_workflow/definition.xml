@@ -5,29 +5,77 @@
              state_variable="review_state"
              initial_state="todo"
              manager_bypass="False">
- <permission>Access contents information</permission>
- <permission>Change portal events</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="abandoned" title="">
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
  </state>
  <state state_id="attributed" title="Attributed">
   <exit-transition transition_id="subtask-abandoned"/>
   <exit-transition transition_id="subtask-done"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
  </state>
  <state state_id="done" title="">
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
  </state>
  <state state_id="in-progress" title="In progress">
   <exit-transition transition_id="mark-as-done"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
  </state>
  <state state_id="refusal-requested" title="Refusal requested">
   <exit-transition transition_id="accept-refusal"/>
   <exit-transition transition_id="refuse-refusal"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
  </state>
  <state state_id="todo" title="To do">
   <exit-transition transition_id="ask-for-refusal"/>
   <exit-transition transition_id="attribute"/>
   <exit-transition transition_id="take-responsibility"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
  </state>
  <transition transition_id="accept-refusal" title="Accept refusal" new_state="abandoned" trigger="USER" before_script="" after_script="">
 
