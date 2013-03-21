@@ -43,6 +43,7 @@ setup(
     install_requires=[
         'collective.dms.basecontent',
         'collective.wfcomment',
+        'collective.z3cform.rolefield',
         'five.grok',
         'plone.api',
         'plone.app.dexterity',
