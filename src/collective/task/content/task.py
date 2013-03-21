@@ -10,6 +10,7 @@ from collective.task import _
 
 
 class ITask(model.Schema):
+    """Schema for task"""
     title = schema.TextLine(title=_(u'Title'))
     deadline = schema.Date(title=_(u'Date'),
                            required=False)
@@ -25,4 +26,8 @@ class ITask(model.Schema):
 
 
 class Task(Container):
+    """Task content type"""
     implements(ITask)
+
+    # disable local roles inheritance
+    __ac_local_roles_block__ = True
