@@ -16,7 +16,7 @@
         name="attribute_task"
         for="*"
         class=".attribute_task.AttributeTask"
-        permission="cmf.AddPortalContent"
+        permission="zope2.View"
         />
 
     <plone:portlet
