@@ -29,5 +29,6 @@ class Task(Container):
     """Task content type"""
     implements(ITask)
 
+    meta_type = 'task'
     # disable local roles inheritance
     __ac_local_roles_block__ = True
