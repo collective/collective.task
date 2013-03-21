@@ -4,7 +4,7 @@ from zope import schema
 from plone.dexterity.content import Container
 from plone.supermodel import model
 
-from collective.dms.basecontent._field import LocalRolesToPrincipals
+from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
 from collective.task import _
 
