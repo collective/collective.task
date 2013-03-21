@@ -92,7 +92,7 @@
   </guard>
  </transition>
  <transition transition_id="attribute" title="Attribute" new_state="attributed" trigger="USER" before_script="" after_script="">
- <action url="%(content_url)s/@@attribute_task?workflow_action=attribute" category="workflow" i18n:translate="">Attribute action to</action>
+ <action url="%(content_url)s/@@attribute_task?workflow_action=attribute" category="workflow" i18n:translate="">Attribute task to</action>
   <guard>
    <guard-role>Editor</guard-role>
   </guard>
