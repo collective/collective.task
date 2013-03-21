@@ -14,7 +14,7 @@
 
     <browser:page
         name="attribute_task"
-        for="*"
+        for="collective.task.content.task.ITask"
         class=".attribute_task.AttributeTask"
         permission="zope2.View"
         />
