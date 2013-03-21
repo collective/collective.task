@@ -12,6 +12,13 @@
       directory="static"
       />
 
+    <browser:page
+        name="attribute_task"
+        for="*"
+        class=".attribute_task.AttributeTask"
+        permission="cmf.AddPortalContent"
+        />
+
     <plone:portlet
         name="collective.task.browser.TasksPortlet"
         interface=".portlet.ITasksPortlet"
