@@ -41,7 +41,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'collective.dms.basecontent',
         'collective.wfcomment',
         'collective.z3cform.rolefield',
         'five.grok',
