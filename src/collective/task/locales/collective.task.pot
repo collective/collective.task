@@ -1,0 +1,67 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-03-21 15:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.task\n"
+
+#: ../browser/attribute_task.py:44
+msgid "Add"
+msgstr ""
+
+#: ../browser/portlet.py:60
+msgid "Add Tasks Portlet"
+msgstr ""
+
+#: ../browser/tasks-portlet.pt:21
+#: ../browser/templates/related-tasks.pt:9
+#: ../content/task.py:15
+msgid "Deadline"
+msgstr ""
+
+#: ../browser/portlet.py:69
+msgid "Edit Tasks Portlet"
+msgstr ""
+
+#: ../content/task.py:19
+msgid "Responsible"
+msgstr ""
+
+#: ../profiles/default/types/task.xml
+msgid "Task"
+msgstr ""
+
+#: ../browser/portlet.py:25
+#: ../browser/templates/related-tasks.pt:3
+msgid "Tasks"
+msgstr ""
+
+#: ../browser/portlet.py:18
+msgid "The title of the box."
+msgstr ""
+
+#: ../browser/portlet.py:61
+msgid "This portlet displays the list of related tasks."
+msgstr ""
+
+#: ../browser/portlet.py:17
+#: ../content/task.py:14
+msgid "Title"
+msgstr ""
+
+#: ../browser/attribute_task.py:22
+msgid "Workflow action"
+msgstr ""
+

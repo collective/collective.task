@@ -6,7 +6,7 @@
       <li>
         <a tal:content="task/title" tal:attributes="href task/absolute_url">title</a>,
         <span tal:condition="task/deadline">
-          <span i18n:translate="">Deadline:</span> <span tal:replace="task/deadline"/>,
+          <span i18n:translate="">Deadline</span> <span tal:replace="task/deadline"/>,
         </span>
         <span tal:condition="task/responsible">
           <span tal:repeat="responsible task/responsible">

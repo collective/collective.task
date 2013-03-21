@@ -18,7 +18,7 @@
             <dd>
              <ul>
               <li tal:condition="task/deadline">
-                <span i18n:translate="">Deadline:</span>
+                <span i18n:translate="">Deadline</span>
                 <span tal:replace="task/deadline"/></li>
              </ul>
             </dd>

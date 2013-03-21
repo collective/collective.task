@@ -12,7 +12,7 @@ from collective.task import _
 class ITask(model.Schema):
     """Schema for task"""
     title = schema.TextLine(title=_(u'Title'))
-    deadline = schema.Date(title=_(u'Date'),
+    deadline = schema.Date(title=_(u'Deadline'),
                            required=False)
 
     responsible = LocalRolesToPrincipals(

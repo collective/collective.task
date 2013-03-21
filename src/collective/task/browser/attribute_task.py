@@ -7,6 +7,7 @@ from Acquisition import aq_inner
 
 from plone import api
 from plone.dexterity.browser.add import DefaultAddForm
+from plone.dexterity.i18n import MessageFactory as DMF
 from plone.supermodel import model
 
 from Products.statusmessages.interfaces import IStatusMessage
@@ -57,7 +58,7 @@ class AttributeTask(DefaultAddForm):
         if obj is not None:
             # mark only as finished if we get the new object
             self._finishedAdd = True
-            IStatusMessage(self.request).addStatusMessage(_(u"Item created"), "info")
+            IStatusMessage(self.request).addStatusMessage(DMF(u"Item created"), "info")
             # set Reviewer role on new object to the current user
             parent_task_editor = api.user.get_current()
             api.user.grant_roles(user=parent_task_editor, obj=obj, roles=['Reviewer',])
