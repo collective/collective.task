@@ -4,7 +4,9 @@
              description="Task workflow"
              state_variable="review_state"
              initial_state="todo"
-             manager_bypass="False">
+             manager_bypass="True"
+             xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="plone">
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="abandoned" title="">
@@ -78,47 +80,49 @@
   </permission-map>
  </state>
  <transition transition_id="accept-refusal" title="Accept refusal" new_state="abandoned" trigger="USER" before_script="" after_script="">
-
+  <action url="" category="workflow" icon="" i18n:translate="">Accept refusal</action>
   <guard>
    <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
  <transition transition_id="ask-for-refusal" title="Ask for refusal" new_state="refusal-requested" trigger="USER" before_script="" after_script="">
-
+  <action url="" category="workflow" icon="" i18n:translate="">Ask for refusal</action>
   <guard>
    <guard-role>Editor</guard-role>
   </guard>
  </transition>
  <transition transition_id="attribute" title="Attribute" new_state="attributed" trigger="USER" before_script="" after_script="">
-
+ <action url="%(content_url)s/@@attribute_task?workflow_action=attribute" category="workflow" i18n:translate="">Attribute action to</action>
   <guard>
    <guard-role>Editor</guard-role>
   </guard>
  </transition>
  <transition transition_id="mark-as-done" title="Mark as done" new_state="done" trigger="USER" before_script="" after_script="">
-
+  <action url="" category="workflow" icon="" i18n:translate="">Mark as done</action>
   <guard>
    <guard-role>Editor</guard-role>
   </guard>
  </transition>
  <transition transition_id="refuse-refusal" title="Refuse refusal" new_state="todo" trigger="USER" before_script="" after_script="">
-
+  <action url="" category="workflow" icon="" i18n:translate="">Refuse refusal</action>
   <guard>
    <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
- <transition transition_id="subtask-abandoned" title="Subtask abandoned" new_state="todo" trigger="AUTOMATIC" before_script="" after_script="">
-
+ <transition transition_id="subtask-abandoned" title="Subtask abandoned" new_state="todo" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="" i18n:translate="">Subtask abandoned</action>
   <guard>
+   <guard-expression>here/@@subtasks_abandoned</guard-expression>
   </guard>
  </transition>
- <transition transition_id="subtask-done" title="Subtask done" new_state="done" trigger="AUTOMATIC" before_script="" after_script="">
-
+ <transition transition_id="subtask-done" title="Subtask done" new_state="done" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="" i18n:translate="">Subtask done</action>
   <guard>
+   <guard-expression>here/@@subtask_done</guard-expression>
   </guard>
  </transition>
  <transition transition_id="take-responsibility" title="Take responsibility" new_state="in-progress" trigger="USER" before_script="" after_script="">
-
+  <action url="" category="workflow" icon="" i18n:translate="">Take responsibility</action>
   <guard>
    <guard-role>Editor</guard-role>
   </guard>
