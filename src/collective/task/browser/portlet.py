@@ -2,6 +2,7 @@ from zope import schema
 from zope.interface import implements
 from zope.formlib import form
 
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -42,7 +43,14 @@ class TasksRenderer(base.Renderer):
         return self._template()
 
     def tasks(self):
-        return [x for x in self.context.contentValues() if x.portal_type == 'task']
+        portal_catalog = getToolByName(self, 'portal_catalog')
+        folder_path = '/'.join(self.context.getPhysicalPath())
+
+        query = {}
+        query['path'] = {'query' : folder_path}
+        query['portal_type'] = 'task'
+
+        return [x.getObject() for x in portal_catalog.searchResults(query)]
 
     _template = ViewPageTemplateFile('tasks-portlet.pt')
 

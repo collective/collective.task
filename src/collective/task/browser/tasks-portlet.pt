@@ -14,7 +14,7 @@
         <div>
           <dl>
            <tal:block tal:repeat="task view/tasks">
-            <dt tal:content="task/title">title</dt>
+            <dt><a tal:content="task/title" tal:attributes="href task/absolute_url">title</a></dt>
             <dd>
              <ul>
               <li tal:condition="task/deadline">
