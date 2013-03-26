@@ -1,9 +1,9 @@
 from five import grok
 
+from plone import api
 from Products.DCWorkflow.interfaces import IAfterTransitionEvent
 
 from collective.task.content.task import ITask
-from plone import api
 
 
 @grok.subscribe(ITask, IAfterTransitionEvent)
