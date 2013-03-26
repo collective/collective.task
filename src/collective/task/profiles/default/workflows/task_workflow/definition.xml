@@ -9,7 +9,7 @@
              i18n:domain="plone">
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="abandoned" title="">
+ <state state_id="abandoned" title="Abandoned" i18n:attributes="title">
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Reviewer</permission-role>
@@ -19,7 +19,7 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <state state_id="attributed" title="Attributed">
+ <state state_id="attributed" title="Attributed" i18n:attributes="title">
   <exit-transition transition_id="subtask-abandoned"/>
   <exit-transition transition_id="subtask-done"/>
   <permission-map name="View" acquired="False">
@@ -31,7 +31,7 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <state state_id="done" title="">
+ <state state_id="done" title="Done" i18n:attributes="title">
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Reviewer</permission-role>
@@ -41,7 +41,7 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <state state_id="in-progress" title="In progress">
+ <state state_id="in-progress" title="In progress" i18n:attributes="title">
   <exit-transition transition_id="mark-as-done"/>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
@@ -52,7 +52,7 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <state state_id="refusal-requested" title="Refusal requested">
+ <state state_id="refusal-requested" title="Refusal requested" i18n:attributes="title">
   <exit-transition transition_id="accept-refusal"/>
   <exit-transition transition_id="refuse-refusal"/>
   <permission-map name="View" acquired="False">
@@ -65,7 +65,7 @@
    <permission-role>Reviewer</permission-role>
   </permission-map>
  </state>
- <state state_id="todo" title="To do">
+ <state state_id="todo" title="To do" i18n:attributes="title">
   <exit-transition transition_id="ask-for-refusal"/>
   <exit-transition transition_id="attribute"/>
   <exit-transition transition_id="take-responsibility"/>

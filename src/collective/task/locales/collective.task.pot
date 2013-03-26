@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-21 15:29+0000\n"
+"POT-Creation-Date: 2013-03-26 14:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.task\n"
 
-#: ../browser/attribute_task.py:44
+#: ../browser/attribute_task.py:52
 msgid "Add"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ../browser/attribute_task.py:22
+#: ../browser/attribute_task.py:24
 msgid "Workflow action"
 msgstr ""
 

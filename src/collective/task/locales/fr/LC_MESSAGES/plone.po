@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-03-21 15:29+0000\n"
-"PO-Revision-Date: 2013-03-21 16:22+0100\n"
+"POT-Creation-Date: 2013-03-26 14:14+0000\n"
+"PO-Revision-Date: 2013-03-26 15:16+0100\n"
 "Last-Translator: Cédric Messiant <cedricmessiant@ecreall.com>\n"
 "Language-Team: Ecréall\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,14 @@ msgid "A portlet to display the list of related tasks"
 msgstr "Une portlet qui affiche la liste des tâches liées"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Abandon"
+msgstr "Abandonner"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Abandoned"
+msgstr "Abandonnée"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Accept refusal"
 msgstr "Accepter le refus"
 
@@ -31,8 +39,24 @@ msgid "Attribute task to"
 msgstr "Attribuer la tâche à"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Attributed"
+msgstr "Attribuée"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Done"
+msgstr "Faite"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "In progress"
+msgstr "En cours"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Mark as done"
-msgstr "Marquer comme fait"
+msgstr "Marquer comme faite"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Refusal requested"
+msgstr "Refus demandé"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Refuse refusal"
@@ -53,4 +77,8 @@ msgstr "Prendre en charge"
 #: ../profiles/default/portlets.xml
 msgid "Tasks Portlet"
 msgstr "Portlet des tâches"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "To do"
+msgstr "À faire"
 

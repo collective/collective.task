@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-03-21 15:29+0000\n"
+"POT-Creation-Date: 2013-03-26 14:14+0000\n"
 "PO-Revision-Date: 2013-03-21 16:30+0100\n"
 "Last-Translator: Cédric Messiant <cedricmessiant@ecreall.com>\n"
 "Language-Team: Ecréall\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../browser/attribute_task.py:44
+#: ../browser/attribute_task.py:52
 msgid "Add"
 msgstr "Ajouter"
 
@@ -58,7 +58,7 @@ msgstr "Cette portlet affiche la liste des tâches liées"
 msgid "Title"
 msgstr "Titre"
 
-#: ../browser/attribute_task.py:22
+#: ../browser/attribute_task.py:24
 msgid "Workflow action"
 msgstr "Action de workflow"
 
