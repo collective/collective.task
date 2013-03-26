@@ -1,3 +1,5 @@
+from five import grok
+
 from z3c.form import button
 from z3c.form.field import Fields
 from z3c.form.interfaces import HIDDEN_MODE
@@ -40,6 +42,11 @@ class AttributeTask(DefaultAddForm):
         if 'workflow_action' in self.request:
             self.widgets['workflow_action'].value = (
                 self.request['workflow_action'])
+        self.widgets['title'].value = self.context.title
+        deadline = (str(self.context.deadline.year),
+                    str(self.context.deadline.month),
+                    str(self.context.deadline.day))
+        self.widgets['deadline'].value = deadline
 
     @button.buttonAndHandler(_('Add'), name='save')
     def handleAdd(self, action):
