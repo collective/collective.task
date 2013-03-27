@@ -14,8 +14,16 @@ from plone.testing import z2
 
 import unittest2 as unittest
 
+from ecreall.helpers.testing import member as memberhelpers
+
 import collective.task
 
+
+USERDEFS = [{'user': 'manager', 'roles': ('Member', 'Manager' ), 'groups': ()},
+            {'user': 'bigboss', 'roles': ('Member', ), 'groups': ()},
+            {'user': 'miniboss', 'roles': ('Member', ), 'groups': ()},
+            {'user': 'grunt', 'roles': ('Member', ), 'groups': ()},
+            ]
 
 class CollectiveTaskLayer(PloneSandboxLayer):
 
@@ -32,6 +40,9 @@ class CollectiveTaskLayer(PloneSandboxLayer):
         """Set up Plone."""
         # Install into Plone site using portal_setup
         applyProfile(portal, 'collective.task:default')
+
+        # create users
+        memberhelpers.createMembers(portal, USERDEFS)
 
         # Login and create some test content
         setRoles(portal, TEST_USER_ID, ['Manager'])
