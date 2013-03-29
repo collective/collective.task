@@ -18,7 +18,7 @@ class BaseSubtaskGuard(grok.View):
 
 
 class SubtaskDoneGuard(BaseSubtaskGuard):
-    """Returns True is the subtask is done"""
+    """Returns True if the subtask is done"""
     grok.name("subtask_done")
 
     def render(self):
