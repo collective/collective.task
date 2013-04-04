@@ -1,7 +1,9 @@
 from zope.interface import implements
 from zope import schema
 
+from plone.autoform import directives as form
 from plone.dexterity.content import Container
+from plone.formwidget.datetime.z3cform.widget import DateFieldWidget
 from plone.supermodel import model
 
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
@@ -14,6 +16,7 @@ class ITask(model.Schema):
     title = schema.TextLine(title=_(u'Title'))
     deadline = schema.Date(title=_(u'Deadline'),
                            required=False)
+    form.widget(deadline=DateFieldWidget)
 
     responsible = LocalRolesToPrincipals(
         title=_(u"Responsible"),

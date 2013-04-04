@@ -46,6 +46,7 @@ setup(
         'five.grok',
         'plone.api',
         'plone.app.dexterity',
+        'plone.formwidget.datetime',
         'plone.principalsource',
         'setuptools',
     ],

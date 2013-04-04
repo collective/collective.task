@@ -13,6 +13,7 @@
     <include package="five.grok" />
     <include package="plone.api" />
     <include package="plone.app.dexterity" />
+    <include package="plone.formwidget.datetime" />
     <include package="collective.wfcomment" />
 
     <include package=".browser" />
