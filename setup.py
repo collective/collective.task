@@ -48,6 +48,7 @@ setup(
         'plone.app.dexterity',
         'plone.formwidget.datetime',
         'plone.principalsource',
+        'zope.app.component',
         'setuptools',
     ],
     extras_require={
