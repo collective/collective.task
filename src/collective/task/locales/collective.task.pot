@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-26 14:14+0000\n"
+"POT-Creation-Date: 2013-04-06 16:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.task\n"
 
-#: ../browser/attribute_task.py:52
+#: ../browser/attribute_task.py:63
 msgid "Add"
 msgstr ""
 
@@ -27,7 +27,7 @@ msgstr ""
 
 #: ../browser/tasks-portlet.pt:21
 #: ../browser/templates/related-tasks.pt:9
-#: ../content/task.py:15
+#: ../content/task.py:17
 msgid "Deadline"
 msgstr ""
 
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Edit Tasks Portlet"
 msgstr ""
 
-#: ../content/task.py:19
+#: ../content/task.py:22
 msgid "Responsible"
 msgstr ""
 
@@ -57,11 +57,11 @@ msgid "This portlet displays the list of related tasks."
 msgstr ""
 
 #: ../browser/portlet.py:17
-#: ../content/task.py:14
+#: ../content/task.py:16
 msgid "Title"
 msgstr ""
 
-#: ../browser/attribute_task.py:24
+#: ../browser/attribute_task.py:35
 msgid "Workflow action"
 msgstr ""
 
