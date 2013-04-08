@@ -82,9 +82,9 @@ class AttributeTask(DefaultAddForm):
             IStatusMessage(self.request).addStatusMessage(DMF(u"Item created"), "info")
             # set Reviewer role on new object to the current user
             obj.manage_addLocalRoles(supervisor, ['Reviewer',])
-            obj.reindexObject()
+            obj.reindexObjectSecurity()
             # set Editor role to task responsible on the first non Task object in acquisition
             nontask = find_nontask(parent_task)
             nontask.manage_addLocalRoles(obj.responsible[0], ['Editor',])
-            nontask.reindexObject()
+            nontask.reindexObjectSecurity()
             self.immediate_view = "%s/content_status_modify?workflow_action=%s" % (container_url, workflow_action)
