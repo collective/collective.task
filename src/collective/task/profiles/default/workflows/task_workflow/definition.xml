@@ -129,7 +129,7 @@
   </guard>
  </transition>
  <transition transition_id="take-responsibility" title="Take responsibility" new_state="in-progress" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="" i18n:translate="">Take responsibility</action>
+  <action url="%(content_url)s/content_status_modify?workflow_action=take-responsibility" category="workflow" icon="" i18n:translate="">Take responsibility</action>
   <guard>
    <guard-role>Editor</guard-role>
   </guard>
