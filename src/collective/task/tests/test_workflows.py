@@ -26,6 +26,7 @@ WORKFLOW_TRACK2 = [('', 'todo'),
 
 # scénario 3 : attribution à user2, ask for refusal, refus accepté, tâche 1 à todo
 # scénario 4 : attribution à user2, fait, tâche 1 à fait
+# scénario 5 : ask for refusal à partir de in-progress ???
 
 
 class TestSecurity(IntegrationTestCase, BaseWorkflowTest):
