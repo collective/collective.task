@@ -24,9 +24,10 @@ setup(
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-    	"Environment :: Web Environment",
+        "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.2",
+        "Framework :: Plone :: 4.3",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
     ],
