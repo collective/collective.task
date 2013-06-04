@@ -66,3 +66,5 @@ class TestSecurity(IntegrationTestCase, BaseWorkflowTest):
 #                self.assertHasState(myissue, state)
 #                self.assertCheckPermissions(myissue, ISSUE_PERMISSIONS[state],
 #                                            USERDEFS, stateid=state)
+    def test_nothing(self):
+        self.assertTrue(True)
