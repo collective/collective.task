@@ -17,7 +17,7 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         params = {'type': 'task',
                   'title': u'My task',
                   'responsible': ['bigboss'],
-                  'deadline': datetime.date(2013, 11, 2),
+                  'deadline': datetime.datetime(2013, 11, 2, 17, 0),
                   }
         folder.invokeFactory('task', "my-task", **params)
         self.mytask = folder['my-task']
@@ -30,5 +30,5 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
     def test_task_fields(self):
         mytask = self.mytask
         self.assertEqual(u'My task', mytask.Title())
-        self.assertEqual(datetime.date(2013, 11, 2), mytask.deadline)
+        self.assertEqual(datetime.datetime(2013, 11, 2, 17, 0), mytask.deadline)
         self.assertEqual(['bigboss'], mytask.responsible)
