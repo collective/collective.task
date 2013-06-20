@@ -23,6 +23,7 @@
  <property name="schema">collective.task.content.ITask</property>
  <property name="klass">collective.task.content.Task</property>
  <property name="behaviors">
+  <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
   <element value="plone.app.content.interfaces.INameFromTitle"/>
  </property>
 
