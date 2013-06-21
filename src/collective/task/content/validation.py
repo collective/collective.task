@@ -11,11 +11,12 @@ from plone.supermodel import model
 
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
+from collective.task.interfaces import IBaseTask
 from collective.task import _
 
 
 
-class IValidation(model.Schema):
+class IValidation(IBaseTask):
     """Schema for validation"""
     title = schema.TextLine(title=_(u'Title'))
     note = schema.Text(title=_(u'Note'))

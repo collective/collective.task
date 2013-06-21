@@ -9,11 +9,12 @@ from plone.supermodel import model
 
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
+from collective.task.interfaces import IBaseTask
 from collective.task import _
 
 
 
-class IInformation(model.Schema):
+class IInformation(IBaseTask):
     """Schema for information"""
     title = schema.TextLine(title=_(u'Title'))
     note = schema.Text(title=_(u'Note'))
