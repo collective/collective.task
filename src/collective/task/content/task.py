@@ -1,7 +1,6 @@
 from zope.interface import implements
 from zope import schema
 
-from plone.app.dexterity.behaviors.metadata import IBasic
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
@@ -12,12 +11,9 @@ from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 from collective.task import _
 
 
-
 class ITask(model.Schema):
     """Schema for task"""
-    schema.getFields(IBasic)['description'].title = _(u"Note")
-    schema.getFields(IBasic)['description'].description = u""
-
+    title = schema.TextLine(title=_(u'Title'))
     deadline = schema.Datetime(title=_(u'Deadline'),
                                required=False)
     form.widget(deadline=DatetimeFieldWidget)
