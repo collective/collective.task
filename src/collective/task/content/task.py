@@ -14,6 +14,7 @@ from collective.task import _
 class ITask(model.Schema):
     """Schema for task"""
     title = schema.TextLine(title=_(u'Title'))
+    note = schema.Text(title=_(u'Note'))
     deadline = schema.Datetime(title=_(u'Deadline'),
                                required=False)
     form.widget(deadline=DatetimeFieldWidget)
