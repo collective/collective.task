@@ -36,3 +36,26 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         self.assertEqual(u'This is a huge task', mytask.note)
         self.assertEqual(datetime.datetime(2013, 11, 2, 17, 0), mytask.deadline)
         self.assertEqual(['bigboss'], mytask.responsible)
+
+    def test_add_information(self):
+        portal = api.portal.get()
+        folder = portal['folder']
+        info = api.content.create(folder, type="information",
+                                  id="my-info", title="My information",
+                                  addressee=['bigboss'])
+        self.assertIn('my-info', folder)
+
+    def test_add_opinion(self):
+        folder = self.folder
+        info = api.content.create(folder, type="opinion",
+                                  id="my-opinion", title="My opinion",
+                                  addressee=['bigboss'])
+        self.assertIn('my-opinion', folder)
+
+    def test_add_validation(self):
+        folder = self.folder
+        info = api.content.create(folder, type="validation",
+                                  id="my-validation", title="My validation",
+                                  addressee=['bigboss'])
+        self.assertIn('my-validation', folder)
+
