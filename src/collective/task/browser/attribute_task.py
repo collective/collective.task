@@ -57,7 +57,9 @@ class AttributeTask(DefaultAddForm):
         if self.context.deadline is not None:
             deadline = (str(self.context.deadline.year),
                         str(self.context.deadline.month),
-                        str(self.context.deadline.day))
+                        str(self.context.deadline.day),
+                        str(self.context.deadline.hour),
+                        str(self.context.deadline.minute))
             self.widgets['deadline'].value = deadline
 
     @button.buttonAndHandler(_('Add'), name='save')
