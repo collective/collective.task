@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
+from z3c.form.browser.select import SelectFieldWidget
+from zope import schema
 
+from plone.autoform import directives as form
+from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
+
+from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
+
+from collective.z3cform.rolefield.field import LocalRolesToPrincipals
+
+from collective.task import _
 
 
 class ICollectiveTaskLayer(IDefaultPloneLayer):
@@ -9,5 +19,34 @@ class ICollectiveTaskLayer(IDefaultPloneLayer):
 
 
 class IBaseTask(model.Schema):
-    """Marker interface for all "tasks" content types"""
-    pass
+    """Interface for all "tasks" content types"""
+    title = schema.TextLine(title=_(u'Title'))
+    note = schema.Text(title=_(u'Note'),
+                       required=False)
+    deadline = schema.Datetime(title=_(u'Deadline'),
+                               required=False)
+    form.widget(deadline=DatetimeFieldWidget)
+
+    enquirer = LocalRolesToPrincipals(
+        title=_(u"Enquirer"),
+        roles_to_assign=('Reviewer',),
+        value_type=schema.Choice(
+            vocabulary="plone.principalsource.Principals"
+        ),
+        min_length=1,
+        max_length=1,
+        required=False,
+    )
+    form.widget(enquirer=SelectFieldWidget)
+    form.mode(enquirer='hidden')
+
+    responsible = LocalRolesToPrincipals(
+        title=_(u"Addressee"),
+        roles_to_assign=('Editor',),
+        value_type=schema.Choice(
+            vocabulary="plone.principalsource.Principals"
+        ),
+        min_length=1,
+        max_length=1,
+        required=True,
+    )
