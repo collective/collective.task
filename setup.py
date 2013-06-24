@@ -48,6 +48,7 @@ setup(
         'plone.api',
         'plone.app.dexterity',
         'plone.app.relationfield',
+        'plone.directives.form',
         'plone.formwidget.datetime',
         'plone.principalsource',
         'zope.app.component',
