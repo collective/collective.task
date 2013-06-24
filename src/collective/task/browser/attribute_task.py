@@ -78,13 +78,9 @@ class AttributeTask(DefaultAddForm):
             return
         obj = self.createAndAdd(data)
         if obj is not None:
-            supervisor = parent_task.responsible[0]
             # mark only as finished if we get the new object
             self._finishedAdd = True
             IStatusMessage(self.request).addStatusMessage(DMF(u"Item created"), "info")
-            # set Reviewer role on new object to the current user
-            obj.manage_addLocalRoles(supervisor, ['Reviewer',])
-            obj.reindexObjectSecurity()
             # set Editor role to task responsible on the first non Task object in acquisition
             nontask = find_nontask(parent_task)
             nontask.manage_addLocalRoles(obj.responsible[0], ['Editor',])
