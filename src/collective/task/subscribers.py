@@ -45,15 +45,15 @@ def set_enquirer(context, event):
     """Set Enquirer field after task creation"""
     enquirer = api.user.get_current().id
     enquirer_dm = LocalRolesToPrincipalsDataManager(context, IBaseTask['enquirer'])
-    enquirer_dm.set([enquirer])
+    enquirer_dm.set((enquirer,))
 
 
 @grok.subscribe(IBaseTask, IObjectAddedEvent)
 def set_role_on_document(context, event):
-    if not context.implements(ITask):
-        document = context.getParent()  # do we need to use aq_inner here ?
+    if not ITask.providedBy(context):
+        document = context.getParentNode()  # do we need to use aq_inner here ?
         cansee_dm = LocalRolesToPrincipalsDataManager(document, IDmsDocument['recipient_groups'])
-        cansee_dm.set([context.responsible])
+        cansee_dm.set(tuple(context.responsible))
     # do we have to set Editor role on document for ITask ? (if so, remove something for IDmsMail ?)
 
 
