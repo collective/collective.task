@@ -3,11 +3,12 @@
 from z3c.form.browser.select import SelectFieldWidget
 from zope import schema
 
+from plone import api
 from plone.autoform import directives as form
+from plone.directives.form import default_value
+from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
-
-from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
@@ -33,7 +34,7 @@ class IBaseTask(model.Schema):
         value_type=schema.Choice(
             vocabulary="plone.principalsource.Principals"
         ),
-        min_length=1,
+        min_length=0,
         max_length=1,
         required=False,
     )
