@@ -6,7 +6,7 @@
  <object name="task_workflow" meta_type="Workflow"/>
  <bindings>
   <type type_id="information">
-   <bound-workflow workflow_id="one_state_workflow"/>
+   <bound-workflow workflow_id="basic_task_workflow"/>
   </type>
   <type type_id="opinion">
    <bound-workflow workflow_id="basic_task_workflow"/>
