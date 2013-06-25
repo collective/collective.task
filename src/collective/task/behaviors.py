@@ -1,20 +1,21 @@
-from zope.interface import alsoProvides
 from z3c.relationfield.schema import RelationChoice
+from zope.interface import alsoProvides
 
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
-from plone.formwidget.contenttree.source import UUIDSourceBinder
+from plone.formwidget.contenttree.source import ObjPathSourceBinder
+from plone.formwidget.contenttree.widget import ContentTreeFieldWidget
 from plone.supermodel import model
 
 from collective.task import _
 
 
-class IRelatedVersion(model.Schema):
-    """RelatedVersion behavior"""
-    version = RelationChoice(title=_(u"Version"),
-                             source=UUIDSourceBinder(portal_type='dmsmainfile'),
-                             required=False)
-    form.mode(version="hidden")
+class ITarget(model.Schema):
+    """Target behavior"""
+    target = RelationChoice(title=_(u"Target"),
+                            source=ObjPathSourceBinder(),
+                            required=False)
+    #form.mode(target="hidden")
 
 
-alsoProvides(IRelatedVersion, IFormFieldProvider)
+alsoProvides(ITarget, IFormFieldProvider)

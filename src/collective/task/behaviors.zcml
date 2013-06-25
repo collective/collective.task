@@ -10,9 +10,9 @@
     <grok:grok package=".behaviors" />
 
     <plone:behavior
-        title="RelatedVersion"
-        description="RelatedVersion behavior"
-        provides=".behaviors.IRelatedVersion"
+        title="Target"
+        description="Target behavior"
+        provides=".behaviors.ITarget"
         />
 
 </configure>
