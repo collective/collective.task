@@ -8,11 +8,11 @@ from Products.DCWorkflow.interfaces import IAfterTransitionEvent
 
 from collective.z3cform.rolefield.field import LocalRolesToPrincipalsDataManager
 
+from collective.task.behaviors import ITarget
 from collective.task.content.task import ITask
-from collective.task.interfaces import IBaseTask
 from collective.task.content.opinion import IOpinion
 from collective.task.content.validation import IValidation
-from collective.dms.basecontent.dmsdocument import IDmsDocument
+from collective.task.interfaces import IBaseTask
 
 
 @grok.subscribe(ITask, IAfterTransitionEvent)
@@ -48,28 +48,9 @@ def set_enquirer(context, event):
     enquirer_dm.set((enquirer,))
 
 
-@grok.subscribe(IBaseTask, IObjectAddedEvent)
-def set_role_on_document(context, event):
-    if not ITask.providedBy(context):
-        document = context.getParentNode()  # do we need to use aq_inner here ?
-        cansee_dm = LocalRolesToPrincipalsDataManager(document, IDmsDocument['recipient_groups'])
-        cansee_dm.set(tuple(context.responsible))
-    # do we have to set Editor role on document for ITask ? (if so, remove something for IDmsMail ?)
-
-
-@grok.subscribe(IOpinion, IObjectAddedEvent)
-def set_editor_on_version(context, event):
-    """Set Editor role on version to responsible after opinion creation"""
-    version = context.version
-    import pdb;pdb.set_trace()
-    responsible = context.responsible
-    api.user.grant_roles(user=responsible, roles=['Editor'], obj=version)
-
-
-@grok.subscribe(IValidation, IObjectAddedEvent)
-def set_reader_on_version(context, event):
-    """Set Reader role on version to responsible after validation creation"""
-    version = context.version
-    responsible = context.responsible
-    api.user.grant_roles(user=responsible, roles=['Reader'], obj=version)
-
+@grok.subscribe(ITarget, IObjectAddedEvent)
+def set_reader_on_target(context, event):
+    """Set Reader role on target to responsible after opinion or validation creation"""
+    target = context.target.to_object
+    responsible = context.responsible[0]
+    api.user.grant_roles(username=responsible, roles=['Reader'], obj=target)
