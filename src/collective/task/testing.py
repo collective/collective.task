@@ -48,6 +48,7 @@ class CollectiveTaskLayer(PloneSandboxLayer):
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
         portal.invokeFactory('Folder', 'folder')
+        portal.invokeFactory('Document', 'document')
 
         # Commit so that the test browser sees these objects
         portal.portal_catalog.clearFindAndRebuild()

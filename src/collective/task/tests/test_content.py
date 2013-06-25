@@ -1,5 +1,9 @@
 import datetime
 
+from z3c.relationfield.relation import RelationValue
+from zope.component import getUtility
+from zope.intid.interfaces import IIntIds
+
 from plone import api
 
 from ecreall.helpers.testing.base import BaseTest
@@ -14,6 +18,9 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         super(TestContentTypes, self).setUp()
         portal = api.portal.get()
         self.folder = portal['folder']
+        self.document = portal['document']
+        intids = getUtility(IIntIds)
+        self.doc_intid = intids.getId(self.document)
 
     def test_add_task(self):
         folder = self.folder
@@ -42,20 +49,21 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         folder = portal['folder']
         info = api.content.create(folder, type="information",
                                   id="my-info", title="My information",
-                                  addressee=['bigboss'])
+                                  responsible=['bigboss'])
         self.assertIn('my-info', folder)
 
     def test_add_opinion(self):
         folder = self.folder
         info = api.content.create(folder, type="opinion",
                                   id="my-opinion", title="My opinion",
-                                  addressee=['bigboss'])
+                                  responsible=['bigboss'],
+                                  target=RelationValue(self.doc_intid))
         self.assertIn('my-opinion', folder)
 
     def test_add_validation(self):
         folder = self.folder
         info = api.content.create(folder, type="validation",
                                   id="my-validation", title="My validation",
-                                  addressee=['bigboss'])
+                                  responsible=['bigboss'],
+                                  target=RelationValue(self.doc_intid))
         self.assertIn('my-validation', folder)
-
