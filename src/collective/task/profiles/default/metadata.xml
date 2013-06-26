@@ -3,6 +3,7 @@
   <version>1</version>
   <dependencies>
     <dependency>profile-collective.wfcomment:default</dependency>
+    <dependency>profile-collective.z3cform.chosen:default</dependency>
     <dependency>profile-plone.app.relationfield:default</dependency>
     <dependency>profile-plone.formwidget.datetime:default</dependency>
   </dependencies>

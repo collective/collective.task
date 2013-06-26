@@ -10,6 +10,7 @@ from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
 
+from collective.z3cform.chosen.widget import ChosenMultiFieldWidget
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
 from collective.task import _
@@ -51,3 +52,5 @@ class IBaseTask(model.Schema):
         max_length=1,
         required=True,
     )
+    form.widget(responsible=ChosenMultiFieldWidget)
+

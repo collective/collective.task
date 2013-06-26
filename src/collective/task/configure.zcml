@@ -16,6 +16,7 @@
     <include package="plone.app.relationfield" />
     <include package="plone.formwidget.datetime" />
     <include package="collective.wfcomment" />
+    <include package="collective.z3cform.chosen" />
 
     <include package=".browser" />
     <include package=".content" />
