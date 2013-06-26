@@ -4,7 +4,6 @@ from zope.interface import alsoProvides
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.formwidget.contenttree.source import ObjPathSourceBinder
-from plone.formwidget.contenttree.widget import ContentTreeFieldWidget
 from plone.supermodel import model
 
 from collective.task import _
