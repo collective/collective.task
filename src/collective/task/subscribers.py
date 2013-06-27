@@ -54,3 +54,10 @@ def set_reader_on_target(context, event):
     target = context.target.to_object
     responsible = context.responsible[0]
     api.user.grant_roles(username=responsible, roles=['Reader'], obj=target)
+
+@grok.subscribe(IValidation, IObjectAddedEvent)
+def set_reviewer_on_target(context, event):
+    """Set Reviewer role on target to responsible after validation creation"""
+    target = context.target.to_object
+    responsible = context.responsible[0]
+    api.user.grant_roles(username=responsible, roles=['Reviewer'], obj=target)
