@@ -15,7 +15,7 @@
     <bound-workflow workflow_id="task_workflow"/>
   </type>
   <type type_id="validation">
-   <bound-workflow workflow_id="basic_task_workflow"/>
+   <bound-workflow workflow_id="validation_workflow"/>
   </type>
  </bindings>
 </object>
