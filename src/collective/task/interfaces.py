@@ -54,5 +54,4 @@ class IBaseTask(model.Schema):
     )
     form.widget(responsible=ChosenMultiFieldWidget)
 
-    form.omitted('enquirer')
     form.order_after(note='responsible')
