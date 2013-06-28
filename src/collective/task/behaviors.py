@@ -14,7 +14,7 @@ class ITarget(model.Schema):
     target = RelationChoice(title=_(u"Target"),
                             source=ObjPathSourceBinder(),
                             required=False)
-    #form.mode(target="hidden")
+    form.mode(target="hidden")
 
 
 alsoProvides(ITarget, IFormFieldProvider)
