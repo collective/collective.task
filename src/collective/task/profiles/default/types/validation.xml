@@ -10,7 +10,7 @@
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>
- <property name="allow_discussion">False</property>
+ <property name="allow_discussion">True</property>
  <property name="default_view">view</property>
  <property name="view_methods">
   <element value="view"/>
@@ -22,7 +22,6 @@
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
   <element value="collective.task.behaviors.ITarget"/>
-  <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion"/>
  </property>
 
  <alias from="(Default)" to="(dynamic view)"/>
