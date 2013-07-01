@@ -15,6 +15,13 @@ from collective.task.content.validation import IValidation
 from collective.task.interfaces import IBaseTask
 
 
+
+def grant_local_role_to_responsible(context, role, target):
+    """Grant local role to responsible on target"""
+    responsible = context.responsible[0]
+    api.user.grant_roles(username=responsible, roles=[role], obj=target)
+
+
 @grok.subscribe(ITask, IAfterTransitionEvent)
 def task_changed_state(context, event):
     """When a task is abandoned or done, check if it is a subtask
@@ -52,12 +59,20 @@ def set_enquirer(context, event):
 def set_reader_on_target(context, event):
     """Set Reader role on target to responsible after opinion or validation creation"""
     target = context.target.to_object
-    responsible = context.responsible[0]
-    api.user.grant_roles(username=responsible, roles=['Reader'], obj=target)
+    grant_local_role_to_responsible(context, 'Reader', target)
+
 
 @grok.subscribe(IValidation, IObjectAddedEvent)
 def set_reviewer_on_target(context, event):
     """Set Reviewer role on target to responsible after validation creation"""
     target = context.target.to_object
-    responsible = context.responsible[0]
-    api.user.grant_roles(username=responsible, roles=['Reviewer'], obj=target)
+    grant_local_role_to_responsible(context, 'Reviewer', target)
+
+
+@grok.subscribe(IOpinion, IObjectAddedEvent)
+def set_contributor_on_document(context, event):
+    """Set Contributor role on document to responsible after opinion creation
+    (Contributor can create a new version)
+    """
+    document = context.getParentNode()
+    grant_local_role_to_responsible(context, 'Contributor', document)
