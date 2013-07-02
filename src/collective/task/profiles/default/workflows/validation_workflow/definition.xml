@@ -31,7 +31,7 @@
    <permission-role>Manager</permission-role>
   </permission-map>
  </state>
- <state state_id="todo" title="Todo" i18n:attributes="title">
+ <state state_id="todo" title="To do" i18n:attributes="title">
   <exit-transition transition_id="validate"/>
   <exit-transition transition_id="refuse"/>
   <permission-map name="View" acquired="False" i18n:attributes="title">
@@ -50,12 +50,14 @@
   <action url="" category="workflow" icon="" i18n:translate="">Validate</action>
   <guard>
     <guard-role>Editor</guard-role>
+    <guard-role>Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="refuse" title="Refuse" new_state="refused" trigger="USER" before_script="" after_script="">
   <action url="" category="workflow" icon="" i18n:translate="">Refuse</action>
   <guard>
     <guard-role>Editor</guard-role>
+    <guard-role>Manager</guard-role>
   </guard>
  </transition>
 </dc-workflow>
