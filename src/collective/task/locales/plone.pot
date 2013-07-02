@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-06 16:31+0000\n"
+"POT-Creation-Date: 2013-07-02 14:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,7 @@ msgstr ""
 msgid "Attributed"
 msgstr ""
 
+#: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Done"
 msgstr ""
@@ -53,6 +54,7 @@ msgstr ""
 msgid "In progress"
 msgstr ""
 
+#: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Mark as done"
 msgstr ""
@@ -61,8 +63,16 @@ msgstr ""
 msgid "Refusal requested"
 msgstr ""
 
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Refuse"
+msgstr ""
+
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Refuse refusal"
+msgstr ""
+
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Refused"
 msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
@@ -81,7 +91,17 @@ msgstr ""
 msgid "Tasks Portlet"
 msgstr ""
 
+#: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
+#: ../profiles/default/workflows/validation_workflow/definition.xml
 msgid "To do"
+msgstr ""
+
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Validate"
+msgstr ""
+
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Validated"
 msgstr ""
 

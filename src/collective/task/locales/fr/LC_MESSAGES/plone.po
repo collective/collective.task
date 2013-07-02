@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-04-06 16:31+0000\n"
+"POT-Creation-Date: 2013-07-02 14:16+0000\n"
 "PO-Revision-Date: 2013-03-26 15:16+0100\n"
 "Last-Translator: Cédric Messiant <cedricmessiant@ecreall.com>\n"
 "Language-Team: Ecréall\n"
@@ -42,6 +42,7 @@ msgstr "Attribuer la tâche à"
 msgid "Attributed"
 msgstr "Attribuée"
 
+#: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Done"
 msgstr "Faite"
@@ -50,6 +51,7 @@ msgstr "Faite"
 msgid "In progress"
 msgstr "En cours"
 
+#: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Mark as done"
 msgstr "Marquer comme faite"
@@ -58,9 +60,17 @@ msgstr "Marquer comme faite"
 msgid "Refusal requested"
 msgstr "Refus demandé"
 
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Refuse"
+msgstr "Refuser"
+
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Refuse refusal"
 msgstr "Refuser le refus"
+
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Refused"
+msgstr "Refusé"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Subtask abandoned"
@@ -78,7 +88,17 @@ msgstr "Prendre en charge"
 msgid "Tasks Portlet"
 msgstr "Portlet des tâches"
 
+#: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
+#: ../profiles/default/workflows/validation_workflow/definition.xml
 msgid "To do"
 msgstr "À faire"
+
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Validate"
+msgstr "Valider"
+
+#: ../profiles/default/workflows/validation_workflow/definition.xml
+msgid "Validated"
+msgstr "Validé"
 

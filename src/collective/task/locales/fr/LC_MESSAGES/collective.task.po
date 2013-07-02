@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-04-06 16:31+0000\n"
+"POT-Creation-Date: 2013-07-02 14:16+0000\n"
 "PO-Revision-Date: 2013-03-21 16:30+0100\n"
 "Last-Translator: Cédric Messiant <cedricmessiant@ecreall.com>\n"
 "Language-Team: Ecréall\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../browser/attribute_task.py:63
+#: ../browser/attribute_task.py:65
 msgid "Add"
 msgstr "Ajouter"
 
@@ -22,26 +22,44 @@ msgstr "Ajouter"
 msgid "Add Tasks Portlet"
 msgstr "Ajouter une portlet des tâches"
 
+#: ../interfaces.py:46
+msgid "Addressee"
+msgstr "Destinataire"
+
 #: ../browser/tasks-portlet.pt:21
-#: ../browser/templates/related-tasks.pt:9
-#: ../content/task.py:17
+#: ../interfaces.py:28
 msgid "Deadline"
-msgstr "Date de fin souhaitée"
+msgstr "Échéance"
 
 #: ../browser/portlet.py:69
 msgid "Edit Tasks Portlet"
 msgstr "Modifier la portlet des tâches"
 
-#: ../content/task.py:22
-msgid "Responsible"
-msgstr "Responsable"
+#: ../interfaces.py:33
+msgid "Enquirer"
+msgstr "Demandeur"
+
+#: ../profiles/default/types/information.xml
+msgid "Information"
+msgstr "Information"
+
+#: ../interfaces.py:26
+msgid "Note"
+msgstr "Note"
+
+#: ../profiles/default/types/opinion.xml
+msgid "Opinion"
+msgstr "Demande d'avis"
+
+#: ../behaviors.py:14
+msgid "Target"
+msgstr "Cible"
 
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr "Tâche"
 
 #: ../browser/portlet.py:25
-#: ../browser/templates/related-tasks.pt:3
 msgid "Tasks"
 msgstr "Tâches"
 
@@ -54,9 +72,13 @@ msgid "This portlet displays the list of related tasks."
 msgstr "Cette portlet affiche la liste des tâches liées"
 
 #: ../browser/portlet.py:17
-#: ../content/task.py:16
+#: ../interfaces.py:25
 msgid "Title"
 msgstr "Titre"
+
+#: ../profiles/default/types/validation.xml
+msgid "Validation"
+msgstr "Demande de validation"
 
 #: ../browser/attribute_task.py:35
 msgid "Workflow action"
