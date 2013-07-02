@@ -19,6 +19,14 @@
         permission="zope2.View"
         />
 
+    <browser:page
+        for="..interfaces.IBaseTask"
+        name="view"
+        class="plone.dexterity.browser.view.DefaultView"
+        template="templates/basetask_view.pt"
+        permission="zope2.View"
+        />
+
     <plone:portlet
         name="collective.task.browser.TasksPortlet"
         interface=".portlet.ITasksPortlet"
