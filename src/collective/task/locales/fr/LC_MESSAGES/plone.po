@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-07-02 14:16+0000\n"
-"PO-Revision-Date: 2013-03-26 15:16+0100\n"
+"POT-Creation-Date: 2013-07-05 15:30+0000\n"
+"PO-Revision-Date: 2013-07-05 17:31+0100\n"
 "Last-Translator: Cédric Messiant <cedricmessiant@ecreall.com>\n"
 "Language-Team: Ecréall\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Abandonner"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Abandoned"
-msgstr "Abandonnée"
+msgstr "Abandonné"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Accept refusal"
@@ -40,12 +40,12 @@ msgstr "Attribuer la tâche à"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Attributed"
-msgstr "Attribuée"
+msgstr "Attribué"
 
 #: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Done"
-msgstr "Faite"
+msgstr "Fait"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "In progress"
@@ -54,7 +54,7 @@ msgstr "En cours"
 #: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Mark as done"
-msgstr "Marquer comme faite"
+msgstr "Marquer comme fait"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Refusal requested"

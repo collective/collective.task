@@ -15,7 +15,6 @@ from collective.task.content.validation import IValidation
 from collective.task.interfaces import IBaseTask
 
 
-
 def grant_local_role_to_responsible(context, role, target):
     """Grant local role to responsible on target"""
     responsible = context.responsible[0]
