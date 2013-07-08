@@ -39,4 +39,14 @@
         handler=".setuphandlers.post_install">
     </genericsetup:importStep>
 
+    <adapter
+        name="enquirer"
+        factory=".indexers.enquirer"
+        />
+
+    <adapter
+        name="responsible"
+        factory=".indexers.responsible"
+        />
+
 </configure>
