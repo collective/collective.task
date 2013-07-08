@@ -3,7 +3,7 @@
           i18n:domain="plone">
 
     <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="collective.task.field.enquirer">
+             prefix="plone.app.querystring.field.enquirer">
         <value key="title" i18n:translate="">Enquirer</value>
         <value key="description" i18n:translate="">The person that asked for the item</value>
         <value key="enabled">True</value>
@@ -16,7 +16,7 @@
     </records>
   
     <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="collective.task.field.responsible">
+             prefix="plone.app.querystring.field.responsible">
         <value key="title" i18n:translate="">Responsible</value>
         <value key="description" i18n:translate="">The person that is responsible for the item</value>
         <value key="enabled">True</value>
@@ -29,7 +29,7 @@
     </records>
 
     <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="collective.task.field.deadline">
+             prefix="plone.app.querystring.field.deadline">
         <value key="title" i18n:translate="">Deadline</value>
         <value key="description" i18n:translate=""></value>
         <value key="enabled">True</value>
