@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-05 15:30+0000\n"
+"POT-Creation-Date: 2013-07-08 14:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,9 +45,17 @@ msgstr ""
 msgid "Attributed"
 msgstr ""
 
+#: ../profiles/default/registry.xml
+msgid "Deadline"
+msgstr ""
+
 #: ../profiles/default/workflows/basic_task_workflow/definition.xml
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Done"
+msgstr ""
+
+#: ../profiles/default/registry.xml
+msgid "Enquirer"
 msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
@@ -75,6 +83,10 @@ msgstr ""
 msgid "Refused"
 msgstr ""
 
+#: ../profiles/default/registry.xml
+msgid "Responsible"
+msgstr ""
+
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Subtask abandoned"
 msgstr ""
@@ -89,6 +101,14 @@ msgstr ""
 
 #: ../profiles/default/portlets.xml
 msgid "Tasks Portlet"
+msgstr ""
+
+#: ../profiles/default/registry.xml
+msgid "The person that asked for the item"
+msgstr ""
+
+#: ../profiles/default/registry.xml
+msgid "The person that is responsible for the item"
 msgstr ""
 
 #: ../profiles/default/workflows/basic_task_workflow/definition.xml
