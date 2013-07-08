@@ -3,7 +3,6 @@ from zope.interface import implements
 from plone.dexterity.content import Container
 
 from collective.task.interfaces import IBaseTask
-from collective.task import _
 
 
 class ITask(IBaseTask):
