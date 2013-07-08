@@ -3,9 +3,7 @@
 from z3c.form.browser.select import SelectFieldWidget
 from zope import schema
 
-from plone import api
 from plone.autoform import directives as form
-from plone.directives.form import default_value
 from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
