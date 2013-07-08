@@ -6,4 +6,7 @@
  <index name="responsible" meta_type="UsersAndGroupsIndex">
   <indexed_attr value="responsible"/>
  </index>
+ <index name="deadline" meta_type="DateIndex">
+  <indexed_attr value="deadline"/>
+ </index>
 </object>
