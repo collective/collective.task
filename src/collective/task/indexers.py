@@ -5,9 +5,9 @@ from collective.task.interfaces import IBaseTask
 
 @indexer(IBaseTask)
 def enquirer(obj, **kw):
-    return obj.enquirer[0]
+    return obj.enquirer and tuple(obj.enquirer) or ()
 
 
 @indexer(IBaseTask)
 def responsible(obj, **kw):
-    return obj.responsible[0]
+    return obj.responsible and tuple(obj.responsible) or ()

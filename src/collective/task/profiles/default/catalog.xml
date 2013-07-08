@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
- <index name="enquirer" meta_type="FieldIndex">
+ <index name="enquirer" meta_type="UsersAndGroupsIndex">
   <indexed_attr value="enquirer"/>
  </index>
- <index name="responsible" meta_type="FieldIndex">
+ <index name="responsible" meta_type="UsersAndGroupsIndex">
   <indexed_attr value="responsible"/>
  </index>
 </object>
