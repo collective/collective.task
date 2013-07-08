@@ -2,6 +2,7 @@ from zope.interface import implements
 
 from plone.dexterity.content import Container
 
+from collective.task.interfaces import BaseTask
 from collective.task.interfaces import IBaseTask
 from collective.task import _
 
@@ -11,7 +12,7 @@ class ITask(IBaseTask):
     pass
 
 
-class Task(Container):
+class Task(BaseTask, Container):
     """Task content type"""
     implements(ITask)
 
