@@ -9,4 +9,7 @@
  <index name="deadline" meta_type="DateIndex">
   <indexed_attr value="deadline"/>
  </index>
+ <column value="deadline" />
+ <column value="enquirer" />
+ <column value="responsible" />
 </object>

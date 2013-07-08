@@ -24,13 +24,14 @@ class UsersAndGroupsIndex(KeywordIndex):
 
     def _apply_index(self, request, *args, **kwargs):
         request = copy(request)
-        key = request.keys()[0]
-        value = request[key]
+        value = request[self.id]
+        if isinstance(value, dict):
+            value = value.get('query')
         if isinstance(value, basestring):
             value = [value]
 
         site = getSite()
-        request[key] = all_principals_for_users(site, value)
+        request[self.id] = all_principals_for_users(site, value)
         return super(UsersAndGroupsIndex, self)._apply_index(request, *args, **kwargs)
 
 

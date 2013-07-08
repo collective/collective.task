@@ -11,3 +11,8 @@ def enquirer(obj, **kw):
 @indexer(IBaseTask)
 def responsible(obj, **kw):
     return obj.responsible and tuple(obj.responsible) or ()
+
+
+@indexer(IBaseTask)
+def deadline(obj, **kw):
+    return obj.deadline or obj.modified()

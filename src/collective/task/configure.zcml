@@ -48,5 +48,10 @@
         name="responsible"
         factory=".indexers.responsible"
         />
+    
+    <adapter
+        name="deadline"
+        factory=".indexers.deadline"
+        />
 
 </configure>
