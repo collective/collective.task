@@ -37,6 +37,8 @@
  <transition transition_id="mark-as-done" title="Mark as done" new_state="done" trigger="USER" before_script="" after_script="">
   <action url="" category="workflow" icon="" i18n:translate="">Mark as done</action>
   <guard>
+    <guard-role>Editor</guard-role>
+    <guard-role>Manager</guard-role>
   </guard>
  </transition>
 </dc-workflow>
