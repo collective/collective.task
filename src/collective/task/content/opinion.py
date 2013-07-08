@@ -2,7 +2,6 @@ from zope.interface import implements
 
 from plone.dexterity.content import Item
 
-from collective.task.interfaces import BaseTask
 from collective.task.interfaces import IBaseTask
 
 
@@ -11,7 +10,7 @@ class IOpinion(IBaseTask):
     pass
 
 
-class Opinion(BaseTask, Item):
+class Opinion(Item):
     """Opinion content type"""
     implements(IOpinion)
 

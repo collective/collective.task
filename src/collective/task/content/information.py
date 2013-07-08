@@ -2,7 +2,6 @@ from zope.interface import implements
 
 from plone.dexterity.content import Item
 
-from collective.task.interfaces import BaseTask
 from collective.task.interfaces import IBaseTask
 
 
@@ -11,7 +10,7 @@ class IInformation(IBaseTask):
     pass
 
 
-class Information(BaseTask, Item):
+class Information(Item):
     """Information content type"""
     implements(IInformation)
 

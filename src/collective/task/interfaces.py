@@ -55,13 +55,3 @@ class IBaseTask(model.Schema):
     form.widget(responsible=ChosenMultiFieldWidget)
 
     form.order_after(note='responsible')
-
-
-class BaseTask(object):
-    """Base class for all "tasks" types"""
-
-    def getEnquirer(self):
-        return self.enquirer[0]
-
-    def getResponsible(self):
-        return self.responsible[0]
