@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
+import datetime
+
 from z3c.form.browser.select import SelectFieldWidget
 from zope import schema
 
 from plone.autoform import directives as form
+from plone.directives.form import default_value
 from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
@@ -12,6 +15,7 @@ from collective.z3cform.chosen.widget import ChosenMultiFieldWidget
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
 from collective.task import _
+
 
 
 class ICollectiveTaskLayer(IDefaultPloneLayer):
@@ -53,3 +57,11 @@ class IBaseTask(model.Schema):
     form.widget(responsible=ChosenMultiFieldWidget)
 
     form.order_after(note='responsible')
+
+
+@default_value(field=IBaseTask['deadline'])
+def deadlineDefaultValue(data):
+    """Default value for deadline field today+3 days at 18:00"""
+    date = datetime.datetime.today() + datetime.timedelta(days=3)
+    hour = datetime.time(18, 0)
+    return datetime.datetime.combine(date, hour)
