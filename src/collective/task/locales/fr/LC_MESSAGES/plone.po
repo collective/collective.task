@@ -82,7 +82,7 @@ msgstr "Refusé"
 
 #: ../profiles/default/registry.xml
 msgid "Responsible"
-msgstr "Responsable"
+msgstr "Destinataire"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Subtask abandoned"
