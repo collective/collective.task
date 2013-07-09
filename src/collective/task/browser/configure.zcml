@@ -27,6 +27,13 @@
         permission="zope2.View"
         />
 
+    <browser:page
+      name="add_information"
+      for="*"
+      class=".add_information.AddInformation"
+      permission="cmf.AddPortalContent"
+      />
+
     <plone:portlet
         name="collective.task.browser.TasksPortlet"
         interface=".portlet.ITasksPortlet"

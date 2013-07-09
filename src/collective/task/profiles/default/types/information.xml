@@ -5,7 +5,7 @@
  <property name="description" i18n:translate=""></property>
  <property name="icon_expr">string:${portal_url}/++resource++collective.task/task_icon.png</property>
  <property name="factory">information</property>
- <property name="add_view_expr">string:${folder_url}/++add++information</property>
+ <property name="add_view_expr">string:${folder_url}/@@add_information</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>

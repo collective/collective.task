@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-07-08 14:07+0000\n"
+"POT-Creation-Date: 2013-07-09 14:17+0000\n"
 "PO-Revision-Date: 2013-03-21 16:30+0100\n"
 "Last-Translator: Cédric Messiant <cedricmessiant@ecreall.com>\n"
 "Language-Team: Ecréall\n"
@@ -14,6 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ../browser/add_information.py:17
 #: ../browser/attribute_task.py:65
 msgid "Add"
 msgstr "Ajouter"
@@ -22,12 +23,12 @@ msgstr "Ajouter"
 msgid "Add Tasks Portlet"
 msgstr "Ajouter une portlet des tâches"
 
-#: ../interfaces.py:46
+#: ../interfaces.py:44
 msgid "Addressee"
 msgstr "Destinataire"
 
 #: ../browser/tasks-portlet.pt:21
-#: ../interfaces.py:28
+#: ../interfaces.py:26
 msgid "Deadline"
 msgstr "Échéance"
 
@@ -35,7 +36,7 @@ msgstr "Échéance"
 msgid "Edit Tasks Portlet"
 msgstr "Modifier la portlet des tâches"
 
-#: ../interfaces.py:33
+#: ../interfaces.py:31
 msgid "Enquirer"
 msgstr "Demandeur"
 
@@ -43,7 +44,7 @@ msgstr "Demandeur"
 msgid "Information"
 msgstr "Information"
 
-#: ../interfaces.py:26
+#: ../interfaces.py:24
 msgid "Note"
 msgstr "Note"
 
@@ -72,7 +73,7 @@ msgid "This portlet displays the list of related tasks."
 msgstr "Cette portlet affiche la liste des tâches liées"
 
 #: ../browser/portlet.py:17
-#: ../interfaces.py:25
+#: ../interfaces.py:23
 msgid "Title"
 msgstr "Titre"
 
