@@ -12,4 +12,6 @@
  <column value="deadline" />
  <column value="enquirer" />
  <column value="responsible" />
+ <column value="document_path" />
+ <column value="document_title" />
 </object>

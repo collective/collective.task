@@ -48,10 +48,20 @@
         name="responsible"
         factory=".indexers.responsible"
         />
-    
+
     <adapter
         name="deadline"
         factory=".indexers.deadline"
+        />
+
+    <adapter
+        name="document_path"
+        factory=".indexers.document_path"
+        />
+
+    <adapter
+        name="document_title"
+        factory=".indexers.document_title"
         />
 
 </configure>
