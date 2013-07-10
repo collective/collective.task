@@ -53,6 +53,7 @@ def set_enquirer(context, event):
     enquirer = api.user.get_current().id
     enquirer_dm = LocalRolesToPrincipalsDataManager(context, IBaseTask['enquirer'])
     enquirer_dm.set((enquirer,))
+    context.reindexObjectSecurity()
 
 
 @grok.subscribe(ITarget, IObjectAddedEvent)
