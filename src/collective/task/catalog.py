@@ -7,6 +7,9 @@ from Products.PluginIndexes.KeywordIndex.KeywordIndex import KeywordIndex
 from Products.CMFCore.utils import getToolByName
 
 
+SECURITY_INDEXES = ('allowedRolesAndUsers', 'enquirer', 'responsible')
+
+
 def all_principals_for_users(site, users):
     groups_and_users = set([])
     mtool = getToolByName(site, 'portal_membership')
