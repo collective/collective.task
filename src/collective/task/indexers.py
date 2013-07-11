@@ -20,12 +20,12 @@ def get_document(obj):
 
 @indexer(IBaseTask)
 def enquirer(obj, **kw):
-    return obj.enquirer and tuple(obj.enquirer) or ()
+    return obj.enquirer and obj.enquirer[0] or ''
 
 
 @indexer(IBaseTask)
 def responsible(obj, **kw):
-    return obj.responsible and tuple(obj.responsible) or ()
+    return obj.responsible and obj.responsible[0] or ''
 
 
 @indexer(IBaseTask)
