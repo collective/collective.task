@@ -19,7 +19,7 @@ def grant_local_role_to_responsible(context, role, target):
     """Grant local role to responsible on target"""
     responsible = context.responsible[0]
     target.manage_addLocalRoles(responsible, [role])
-    target.reindexObjectSecurity()
+    target.reindexObject()
 
 
 @grok.subscribe(ITask, IAfterTransitionEvent)
@@ -53,7 +53,7 @@ def set_enquirer(context, event):
     enquirer = api.user.get_current().id
     enquirer_dm = LocalRolesToPrincipalsDataManager(context, IBaseTask['enquirer'])
     enquirer_dm.set((enquirer,))
-    context.reindexObjectSecurity()
+    context.reindexObject()
 
 
 @grok.subscribe(ITarget, IObjectAddedEvent)
