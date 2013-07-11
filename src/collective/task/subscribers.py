@@ -1,7 +1,8 @@
 from five import grok
 
 from zope.lifecycleevent.interfaces import IObjectRemovedEvent,\
-    IObjectAddedEvent
+    IObjectAddedEvent, IObjectModifiedEvent
+from zope.container.contained import ContainerModifiedEvent
 
 from plone import api
 from Products.DCWorkflow.interfaces import IAfterTransitionEvent
@@ -13,6 +14,7 @@ from collective.task.content.task import ITask
 from collective.task.content.opinion import IOpinion
 from collective.task.content.validation import IValidation
 from collective.task.interfaces import IBaseTask
+from collective.dms.basecontent.dmsdocument import IDmsDocument
 
 
 def grant_local_role_to_responsible(context, role, target):
@@ -77,3 +79,17 @@ def set_contributor_on_document(context, event):
     """
     document = context.getParentNode()
     grant_local_role_to_responsible(context, 'Contributor', document)
+
+
+@grok.subscribe(IDmsDocument, IObjectModifiedEvent)
+def reindex_brain_metadata_on_basetask(doc, event):
+    if isinstance(event, ContainerModifiedEvent):
+        return
+
+    catalog = api.portal.get_tool('portal_catalog')
+    tasks = catalog.unrestrictedSearchResults({
+        'object_provides': IBaseTask.__identifier__,
+        'path': '/'.join(doc.getPhysicalPath())})
+    for b in tasks:
+        # reindex id index just to trigger the update of metadata on brain
+        b._unrestrictedGetObject().reindexObject(idxs=['id'])

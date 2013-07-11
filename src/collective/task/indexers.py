@@ -1,10 +1,9 @@
 from Acquisition import aq_parent
 from five import grok
+
+from plone import api
 from plone.indexer.decorator import indexer
 from Products.CMFCore.utils import getToolByName
-
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-from zope.container.contained import ContainerModifiedEvent
 
 from collective.dms.basecontent.dmsdocument import IDmsDocument
 from collective.task.interfaces import IBaseTask
@@ -17,6 +16,7 @@ def get_document(obj):
         if parent is None:
             return obj
     return parent
+
 
 @indexer(IBaseTask)
 def enquirer(obj, **kw):
@@ -43,17 +43,3 @@ def document_path(obj, **kw):
 def document_title(obj, **kw):
     doc = get_document(obj)
     return doc.Title()
-
-
-@grok.subscribe(IDmsDocument, IObjectModifiedEvent)
-def reindex_brain_metadata_on_basetask(doc, event):
-    if isinstance(event, ContainerModifiedEvent):
-        return
-
-    catalog = getToolByName(doc, 'portal_catalog')
-    tasks = catalog.unrestrictedSearchResults({
-        'object_provides': IBaseTask.__identifier__,
-        'path': '/'.join(doc.getPhysicalPath())})
-    for b in tasks:
-        # reindex id index just to trigger the update of metadata on brain
-        b.getObject().reindexObject(idxs=['id'])
