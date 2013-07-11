@@ -43,6 +43,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'collective.wfcomment',
+        'collective.dms.basecontent',
         'collective.z3cform.chosen',
         'collective.z3cform.rolefield',
         'five.grok',
