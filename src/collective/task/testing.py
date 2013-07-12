@@ -39,7 +39,7 @@ class CollectiveTaskLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
-        applyProfile(portal, 'collective.task:default')
+        applyProfile(portal, 'collective.task:testing')
 
         # create users
         memberhelpers.createMembers(portal, USERDEFS)
