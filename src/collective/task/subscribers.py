@@ -83,6 +83,7 @@ def set_contributor_on_document(context, event):
 
 @grok.subscribe(IDmsDocument, IObjectModifiedEvent)
 def reindex_brain_metadata_on_basetask(doc, event):
+    """Reindex brain metadatas when document is modified"""
     if isinstance(event, ContainerModifiedEvent):
         return
 
@@ -97,6 +98,8 @@ def reindex_brain_metadata_on_basetask(doc, event):
 
 @grok.subscribe(IOpinion, IAfterTransitionEvent)
 def set_reader_on_versions(context, event):
+    """Set Reader role on Opinion enquirer on all versions created by
+    the responsible when the Opinion is returned"""
     if event.new_state.id == 'done':
         responsible = context.responsible[0]
         enquirer = context.enquirer[0]
