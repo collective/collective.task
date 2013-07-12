@@ -93,3 +93,20 @@ def reindex_brain_metadata_on_basetask(doc, event):
     for b in tasks:
         # reindex id index just to trigger the update of metadata on brain
         b._unrestrictedGetObject().reindexObject(idxs=['id'])
+
+
+@grok.subscribe(IOpinion, IAfterTransitionEvent)
+def set_reader_on_versions(context, event):
+    if event.new_state.id == 'done':
+        responsible = context.responsible[0]
+        enquirer = context.enquirer[0]
+        container_path = '/'.join(context.getParentNode().getPhysicalPath())
+        query = {'path': {'query' : container_path},
+                 'portal_type': 'dmsmainfile',
+                 'Creator': responsible}
+        catalog = api.portal.get_tool('portal_catalog')
+        versions = catalog.searchResults(query)
+        for brain in versions:
+            version = brain.getObject()
+            version.manage_addLocalRoles(enquirer, ['Reader'])
+            version.reindexObject()
