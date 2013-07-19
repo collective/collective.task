@@ -1,5 +1,3 @@
-from five import grok
-
 from z3c.form import button
 from z3c.form.field import Fields
 from z3c.form.interfaces import HIDDEN_MODE
@@ -7,7 +5,6 @@ from zope import schema
 
 from Acquisition import aq_inner, aq_chain
 
-from plone import api
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.i18n import MessageFactory as DMF
 from plone.supermodel import model
@@ -35,6 +32,7 @@ class IWorkflowAction(model.Schema):
     workflow_action = schema.TextLine(title=_(u'Workflow action'),
                                       required=False
                                       )
+
 
 class AttributeTask(DefaultAddForm):
     """When an "Attribute" transition is triggered,
