@@ -5,6 +5,7 @@ from zope import schema
 
 from Acquisition import aq_inner, aq_chain
 
+from zope.i18nmessageid import MessageFactory
 from plone.dexterity.browser.add import DefaultAddForm
 from plone.dexterity.i18n import MessageFactory as DMF
 from plone.supermodel import model
@@ -12,9 +13,9 @@ from plone.supermodel import model
 from Products.CMFPlone.utils import base_hasattr
 from Products.statusmessages.interfaces import IStatusMessage
 
-from collective.task.content.task import ITask
-
 from collective.task import _
+
+PMF = MessageFactory('plone')
 
 
 def find_nontask(obj):
@@ -38,12 +39,14 @@ class AttributeTask(DefaultAddForm):
     """When an "Attribute" transition is triggered,
     create a new subtask
     """
+    label = PMF(u"Attribute task to")
     description = u""
-    schema = ITask
     portal_type = 'task'
-    fields = Fields(ITask)
-    fields += Fields(IWorkflowAction)
-    fields['workflow_action'].mode = HIDDEN_MODE
+
+    def updateFields(self):
+        super(AttributeTask, self).updateFields()
+        self.fields += Fields(IWorkflowAction)
+        self.fields['workflow_action'].mode = HIDDEN_MODE
 
     def updateWidgets(self):
         """Update widgets then add workflow_action value to workflow_action field"""
@@ -52,13 +55,6 @@ class AttributeTask(DefaultAddForm):
             self.widgets['workflow_action'].value = (
                 self.request['workflow_action'])
         self.widgets['title'].value = self.context.title
-        if self.context.deadline is not None:
-            deadline = (str(self.context.deadline.year),
-                        str(self.context.deadline.month),
-                        str(self.context.deadline.day),
-                        str(self.context.deadline.hour),
-                        str(self.context.deadline.minute))
-            self.widgets['deadline'].value = deadline
 
     @button.buttonAndHandler(_('Add'), name='save')
     def handleAdd(self, action):
