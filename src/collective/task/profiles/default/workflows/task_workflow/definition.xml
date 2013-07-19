@@ -4,7 +4,7 @@
              description="Task workflow"
              state_variable="review_state"
              initial_state="todo"
-             manager_bypass="True"
+             manager_bypass="False"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
              i18n:domain="plone">
  <permission>Modify portal content</permission>

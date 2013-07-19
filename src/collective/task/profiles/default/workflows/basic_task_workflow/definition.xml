@@ -38,7 +38,6 @@
   <action url="" category="workflow" icon="" i18n:translate="">Mark as done</action>
   <guard>
     <guard-role>Editor</guard-role>
-    <guard-role>Manager</guard-role>
   </guard>
  </transition>
 </dc-workflow>

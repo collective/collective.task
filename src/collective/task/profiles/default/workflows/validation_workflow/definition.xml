@@ -50,14 +50,12 @@
   <action url="" category="workflow" icon="" i18n:translate="">Validate</action>
   <guard>
     <guard-role>Editor</guard-role>
-    <guard-role>Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="refuse" title="Refuse" new_state="refused" trigger="USER" before_script="" after_script="">
   <action url="" category="workflow" icon="" i18n:translate="">Refuse</action>
   <guard>
     <guard-role>Editor</guard-role>
-    <guard-role>Manager</guard-role>
   </guard>
  </transition>
 </dc-workflow>
