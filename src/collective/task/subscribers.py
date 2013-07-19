@@ -34,8 +34,10 @@ def task_changed_state(context, event):
         with api.env.adopt_roles(['Reviewer']):
             if event.new_state.id == 'done':
                 api.content.transition(obj=parent, transition='subtask-done')
+                parent.reindexObject(idxs=['review_state'])
             elif event.new_state.id == 'abandoned':
                 api.content.transition(obj=parent, transition='subtask-abandoned')
+                parent.reindexObject(idxs=['review_state'])
 
 
 @grok.subscribe(ITask, IObjectRemovedEvent)
@@ -47,6 +49,7 @@ def reopen_parent_task(context, event):
     if parent.portal_type == 'task' and parent_state == 'attributed':
         with api.env.adopt_roles(['Reviewer']):
             api.content.transition(obj=parent, transition='subtask-abandoned')
+            parent.reindexObject(idxs=['review_state'])
 
 
 @grok.subscribe(IBaseTask, IObjectAddedEvent)
