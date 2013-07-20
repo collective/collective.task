@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.task\n"
-"POT-Creation-Date: 2013-07-09 14:17+0000\n"
+"POT-Creation-Date: 2013-07-20 21:09+0000\n"
 "PO-Revision-Date: 2013-07-08 16:09+0100\n"
 "Last-Translator: Vincent Fretin <vincent.fretin@gmail.com>\n"
 "Language-Team: Ecréall\n"
@@ -95,6 +95,10 @@ msgstr "Sous-tâche faite"
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Take responsibility"
 msgstr "Prendre en charge"
+
+#: ../profiles/default/types/task.xml
+msgid "Task"
+msgstr "Tâche"
 
 #: ../profiles/default/portlets.xml
 msgid "Tasks Portlet"
