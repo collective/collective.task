@@ -75,10 +75,11 @@ def set_reviewer_on_target(context, event):
     grant_local_role_to_responsible(context, 'Reviewer', target)
 
 
+@grok.subscribe(IValidation, IObjectAddedEvent)
 @grok.subscribe(IOpinion, IObjectAddedEvent)
 def set_contributor_on_document(context, event):
-    """Set Contributor role on document to responsible after opinion creation
-    (Contributor can create a new version)
+    """Set Contributor role on document to responsible after opinion and
+    validation creation. (Contributor can create a new version)
     """
     document = context.getParentNode()
     grant_local_role_to_responsible(context, 'Contributor', document)
