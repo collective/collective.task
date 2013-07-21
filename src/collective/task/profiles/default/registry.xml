@@ -12,7 +12,7 @@
             <element>plone.app.querystring.operation.string.is</element>
             <element>plone.app.querystring.operation.string.currentUser</element>
         </value>
-       <value key="group">Metadata</value>
+       <value key="group" i18n:translate="">Metadata</value>
     </records>
   
     <records interface="plone.app.querystring.interfaces.IQueryField"
@@ -25,7 +25,7 @@
             <element>plone.app.querystring.operation.string.is</element>
             <element>plone.app.querystring.operation.string.currentUser</element>
         </value>
-       <value key="group">Metadata</value>
+       <value key="group" i18n:translate="">Metadata</value>
     </records>
 
     <records interface="plone.app.querystring.interfaces.IQueryField"
@@ -44,7 +44,7 @@
             <element>plone.app.querystring.operation.date.beforeToday</element>
             <element>plone.app.querystring.operation.date.afterToday</element>
         </value>
-       <value key="group">Dates</value>
+       <value key="group" i18n:translate="">Dates</value>
     </records>
 
 </registry>
