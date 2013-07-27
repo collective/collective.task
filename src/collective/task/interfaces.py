@@ -11,7 +11,7 @@ from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
 
-from collective.z3cform.chosen.widget import ChosenMultiFieldWidget
+from collective.dms.basecontent.widget import AjaxChosenMultiFieldWidget
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
 
 from collective.task import _
@@ -35,7 +35,7 @@ class IBaseTask(model.Schema):
         title=_(u"Enquirer"),
         roles_to_assign=('Reviewer',),
         value_type=schema.Choice(
-            vocabulary="plone.principalsource.Principals"
+            vocabulary="dms.principals"
         ),
         min_length=0,
         max_length=1,
@@ -48,13 +48,13 @@ class IBaseTask(model.Schema):
         title=_(u"Addressee"),
         roles_to_assign=('Editor',),
         value_type=schema.Choice(
-            vocabulary="plone.principalsource.Principals"
+            vocabulary="dms.principals"
         ),
         min_length=1,
         max_length=1,
         required=True,
     )
-    form.widget(responsible=ChosenMultiFieldWidget)
+    form.widget(responsible=AjaxChosenMultiFieldWidget)
 
     form.order_after(note='responsible')
 
