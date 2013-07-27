@@ -63,5 +63,5 @@ class IBaseTask(model.Schema):
 def deadlineDefaultValue(data):
     """Default value for deadline field today+3 days at 18:00"""
     date = datetime.datetime.today() + datetime.timedelta(days=3)
-    hour = datetime.time(18, 0)
+    hour = datetime.time(12, 0)
     return datetime.datetime.combine(date, hour)
