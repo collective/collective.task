@@ -2,10 +2,10 @@ from zope.interface import implements
 
 from plone.dexterity.content import Container
 
-from collective.task.interfaces import IBaseTask
+from collective.task.interfaces import IBaseTask, IDeadline
 
 
-class ITask(IBaseTask):
+class ITask(IBaseTask, IDeadline):
     """Schema for task"""
     pass
 

@@ -40,10 +40,6 @@ class IBaseTask(model.Schema):
     title = schema.TextLine(title=_(u'Title'))
     note = schema.Text(title=_(u'Note'),
                        required=False)
-    deadline = schema.Datetime(title=_(u'Deadline'),
-                               defaultFactory=deadlineDefaultValue,
-                               required=False)
-    form.widget(deadline=DatetimeFieldWidget)
 
     enquirer = LocalRolesToPrincipals(
         title=_(u"Enquirer"),
@@ -71,3 +67,18 @@ class IBaseTask(model.Schema):
     form.widget(responsible=AjaxChosenMultiFieldWidget)
 
     form.order_after(note='responsible')
+
+
+class IDeadline(model.Schema):
+    deadline = schema.Datetime(title=_(u'Deadline'),
+                               defaultFactory=deadlineDefaultValue,
+                               required=False)
+    form.widget(deadline=DatetimeFieldWidget)
+
+
+@default_value(field=IDeadline['deadline'])
+def deadlineDefaultValue(data):
+    """Default value for deadline field today+3 days at 18:00"""
+    date = datetime.datetime.today() + datetime.timedelta(days=3)
+    hour = datetime.time(18, 0)
+    return datetime.datetime.combine(date, hour)

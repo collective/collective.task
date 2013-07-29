@@ -2,10 +2,10 @@ from zope.interface import implements
 
 from plone.dexterity.content import Item
 
-from collective.task.interfaces import IBaseTask
+from collective.task.interfaces import IBaseTask, IDeadline
 
 
-class IValidation(IBaseTask):
+class IValidation(IBaseTask, IDeadline):
     """Schema for validation"""
     pass
 
