@@ -7,17 +7,17 @@ from zope import schema
 from zope.interface import provider
 
 from Products.CMFPlone.utils import base_hasattr
+
 from plone.autoform import directives as form
 from plone.directives.form.value import default_value
-from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 from plone.supermodel import model
 from plone.theme.interfaces import IDefaultPloneLayer
+from plone.formwidget.datetime.z3cform.widget import DatetimeFieldWidget
 
-from collective.dms.basecontent.widget import AjaxChosenMultiFieldWidget
 from collective.z3cform.rolefield.field import LocalRolesToPrincipals
+from collective.dms.basecontent.widget import AjaxChosenMultiFieldWidget
 
 from collective.task import _
-
 
 
 class ICollectiveTaskLayer(IDefaultPloneLayer):
