@@ -108,7 +108,7 @@ def set_reader_on_versions(context, event):
         responsible = context.responsible[0]
         enquirer = context.enquirer[0]
         container_path = '/'.join(context.getParentNode().getPhysicalPath())
-        query = {'path': {'query' : container_path},
+        query = {'path': {'query': container_path},
                  'portal_type': 'dmsmainfile',
                  'Creator': responsible}
         catalog = api.portal.get_tool('portal_catalog')

@@ -6,6 +6,7 @@
   <include file="configure.zcml" />
 
   <include package="ecreall.helpers.testing" />
+  <include package="plone.app.async" file="single_db_worker.zcml" />
 
   <genericsetup:registerProfile
       name="testing"
