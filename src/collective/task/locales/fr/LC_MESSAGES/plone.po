@@ -28,11 +28,11 @@ msgstr "Abandonné"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Accept refusal"
-msgstr "Accepter le refus"
+msgstr "Accepter la désattribution"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Ask for refusal"
-msgstr "Demander le refus"
+msgstr "Demander la désattribution"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Attribute task to"
@@ -66,7 +66,7 @@ msgstr "Marquer comme fait"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Refusal requested"
-msgstr "Refus demandé"
+msgstr "Désattribution demandée"
 
 #: ../profiles/default/workflows/validation_workflow/definition.xml
 msgid "Refuse"
@@ -74,7 +74,7 @@ msgstr "Refuser"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Refuse refusal"
-msgstr "Refuser le refus"
+msgstr "Refuser la désattribution"
 
 #: ../profiles/default/workflows/validation_workflow/definition.xml
 msgid "Refused"
