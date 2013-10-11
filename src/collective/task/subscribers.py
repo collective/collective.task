@@ -1,7 +1,7 @@
 from five import grok
 
-from zope.lifecycleevent.interfaces import IObjectRemovedEvent,\
-    IObjectAddedEvent, IObjectModifiedEvent
+from OFS.interfaces import IObjectWillBeRemovedEvent
+from zope.lifecycleevent.interfaces import IObjectAddedEvent, IObjectModifiedEvent
 from zope.container.contained import ContainerModifiedEvent
 
 from plone import api
@@ -40,16 +40,29 @@ def task_changed_state(context, event):
                 parent.reindexObject(idxs=['review_state'])
 
 
-@grok.subscribe(ITask, IObjectRemovedEvent)
+@grok.subscribe(ITask, IObjectWillBeRemovedEvent)
 def reopen_parent_task(context, event):
     """When a task is deleted, reopen its parent task
     """
     parent = context.getParentNode()
     parent_state = api.content.get_state(parent)
     if parent.portal_type == 'task' and parent_state == 'attributed':
-        with api.env.adopt_roles(['Reviewer']):
-            api.content.transition(obj=parent, transition='subtask-abandoned')
-            parent.reindexObject(idxs=['review_state'])
+        state = api.content.get_state(context)
+        if state == 'todo':
+            with api.env.adopt_roles(['Reviewer']):
+                api.content.transition(obj=context, transition='abandon')
+                context.reindexObject(idxs=['review_state'])
+        elif state == 'refusal-requested':
+            with api.env.adopt_roles(['Reviewer']):
+                api.content.transition(obj=context, transition='accept-refusal')
+                context.reindexObject(idxs=['review_state'])
+        elif state == 'in-progress':
+            with api.env.adopt_roles(['Editor']):
+                api.content.transition(obj=context, transition='ask-for-refusal')
+                context.reindexObject(idxs=['review_state'])
+            with api.env.adopt_roles(['Reviewer']):
+                api.content.transition(obj=context, transition='accept-refusal')
+                context.reindexObject(idxs=['review_state'])
 
 
 @grok.subscribe(IBaseTask, IObjectAddedEvent)
