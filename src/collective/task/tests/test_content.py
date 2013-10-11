@@ -51,7 +51,7 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
                                   id="my-info", title="My information",
                                   responsible=['bigboss'])
         self.assertIn('my-info', folder)
-        self.assertNotIn('deadline', info)
+        self.assertNotIn('deadline', info.__dict__)
 
     def test_add_opinion(self):
         folder = self.folder
