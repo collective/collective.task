@@ -1,5 +1,6 @@
 from zope.interface import implements
 
+from zope.schema.fieldproperty import FieldProperty
 from plone.autoform import directives as form
 from plone.dexterity.content import Item
 from plone.directives.form import default_value
@@ -15,6 +16,10 @@ class IInformation(IBaseTask):
 class Information(Item):
     """Information content type"""
     implements(IInformation)
+
+    enquirer = FieldProperty(IInformation['enquirer'])
+
+    responsible = FieldProperty(IInformation['responsible'])
 
     meta_type = 'information'
     # disable local roles inheritance
