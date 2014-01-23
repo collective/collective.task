@@ -19,7 +19,7 @@
     <include package='plone.formwidget.datetime' />
     <include package="plone.directives.form" file="meta.zcml" />
     <include package="plone.directives.form" />
-
+    <include package="collective.dms.basecontent"/>
     <include package=".browser" />
     <include package=".content" />
     <include file="behaviors.zcml" />

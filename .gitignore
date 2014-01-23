@@ -13,3 +13,7 @@ parts/
 src/*
 !src/collective
 var/
+eggs/
+include/
+lib/
+local/
