@@ -34,7 +34,7 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         folder = self.folder
         params = {'title': u'My task',
                   'note': u"This is a huge task",
-                  'responsible': ['bigboss'],
+                  'responsible': [u'bigboss'],
                   'deadline': datetime.datetime(2013, 11, 2, 17, 0),
                   }
         folder.invokeFactory('task', "my-task", **params)
@@ -49,7 +49,7 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         folder = portal['folder']
         info = api.content.create(folder, type="information",
                                   id="my-info", title="My information",
-                                  responsible=['bigboss'])
+                                  responsible=[u'bigboss'])
         self.assertIn('my-info', folder)
         self.assertNotIn('deadline', info.__dict__)
 
@@ -57,7 +57,7 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         folder = self.folder
         info = api.content.create(folder, type="opinion",
                                   id="my-opinion", title="My opinion",
-                                  responsible=['bigboss'],
+                                  responsible=[u'bigboss'],
                                   target=RelationValue(self.doc_intid))
         self.assertIn('my-opinion', folder)
 
@@ -65,6 +65,6 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
         folder = self.folder
         info = api.content.create(folder, type="validation",
                                   id="my-validation", title="My validation",
-                                  responsible=['bigboss'],
+                                  responsible=[u'bigboss'],
                                   target=RelationValue(self.doc_intid))
         self.assertIn('my-validation', folder)
