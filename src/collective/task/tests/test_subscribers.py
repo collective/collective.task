@@ -36,10 +36,10 @@ class TestSubscribers(IntegrationTestCase, BaseTest):
 
     def test_set_reader_on_target(self):
         folder = self.folder
-        opinion = api.content.create(folder, type="opinion",
-                                     id="my-opinion", title="My opinion",
-                                     responsible=['miniboss'],
-                                     target=RelationValue(self.doc_intid))
+        api.content.create(folder, type="opinion",
+                           id="my-opinion", title="My opinion",
+                           responsible=['miniboss'],
+                           target=RelationValue(self.doc_intid))
         responsible_roles = api.user.get_roles(username='miniboss',
                                                obj=self.document)
         self.assertIn('Reader', responsible_roles)
