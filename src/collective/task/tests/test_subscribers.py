@@ -3,7 +3,7 @@ from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
 
 from plone import api
-from plone.app.testing.interfaces import TEST_USER_ID
+from plone.app.testing.interfaces import TEST_USER_NAME
 
 from ecreall.helpers.testing.base import BaseTest
 
@@ -27,12 +27,12 @@ class TestSubscribers(IntegrationTestCase, BaseTest):
                                      id="my-opinion", title="My opinion",
                                      responsible=['bigboss'],
                                      target=RelationValue(self.doc_intid))
-        self.assertIn(TEST_USER_ID, opinion.enquirer)
+        self.assertIn(TEST_USER_NAME, opinion.enquirer)
         validation = api.content.create(folder, type="validation",
                                         id="my-validation", title="My validation",
                                         responsible=['bigboss'],
                                         target=RelationValue(self.doc_intid))
-        self.assertIn(TEST_USER_ID, validation.enquirer)
+        self.assertIn(TEST_USER_NAME, validation.enquirer)
 
     def test_set_reader_on_target(self):
         folder = self.folder
