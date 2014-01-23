@@ -7,8 +7,6 @@ from zope.container.contained import ContainerModifiedEvent
 from plone import api
 from Products.DCWorkflow.interfaces import IAfterTransitionEvent
 
-from collective.z3cform.rolefield.field import LocalRolesToPrincipalsDataManager
-
 from collective.task.behaviors import ITarget
 from collective.task.content.task import ITask
 from collective.task.content.opinion import IOpinion
@@ -68,9 +66,8 @@ def reopen_parent_task(context, event):
 @grok.subscribe(IBaseTask, IObjectAddedEvent)
 def set_enquirer(context, event):
     """Set Enquirer field after task creation"""
-    enquirer = api.user.get_current().id
-    enquirer_dm = LocalRolesToPrincipalsDataManager(context, IBaseTask['enquirer'])
-    enquirer_dm.set((enquirer,))
+    enquirer = api.user.get_current().getUser()._login
+    context.enquirer = [unicode(enquirer)]
     context.reindexObject()
 
 
