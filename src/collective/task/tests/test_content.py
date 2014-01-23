@@ -55,16 +55,16 @@ class TestContentTypes(IntegrationTestCase, BaseTest):
 
     def test_add_opinion(self):
         folder = self.folder
-        info = api.content.create(folder, type="opinion",
-                                  id="my-opinion", title="My opinion",
-                                  responsible=[u'bigboss'],
-                                  target=RelationValue(self.doc_intid))
+        api.content.create(folder, type="opinion",
+                           id="my-opinion", title="My opinion",
+                           responsible=[u'bigboss'],
+                           target=RelationValue(self.doc_intid))
         self.assertIn('my-opinion', folder)
 
     def test_add_validation(self):
         folder = self.folder
-        info = api.content.create(folder, type="validation",
-                                  id="my-validation", title="My validation",
-                                  responsible=[u'bigboss'],
-                                  target=RelationValue(self.doc_intid))
+        api.content.create(folder, type="validation",
+                           id="my-validation", title="My validation",
+                           responsible=[u'bigboss'],
+                           target=RelationValue(self.doc_intid))
         self.assertIn('my-validation', folder)
