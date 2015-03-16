@@ -19,19 +19,18 @@ long_description = (
 
 setup(
     name='collective.task',
-    version='2.0.dev0',
-    description="Task management for plone",
+    version='2.0',
+    description="Tasks management for Plone.",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 4.2",
-        "Framework :: Plone :: 4.3",
+        "Framework :: Plone :: 4.3.4",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
     ],
-    keywords='tasks,task,plone',
+    keywords='Plone Python',
     author='Cédric Messiant',
     author_email='cedricmessiant@ecreall.com',
     url='http://pypi.python.org/pypi/collective.task',
@@ -42,13 +41,14 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'dexterity.localrolesfield',
         'plone.api',
+        'plone.principalsource',
         'setuptools',
         'z3c.jbot',
     ],
     extras_require={
         'test': [
-            'ecreall.helpers.testing',
             'plone.app.testing',
             'plone.app.contenttypes',
             'plone.app.robotframework[debug]',

@@ -13,7 +13,8 @@ parts/
 src/*
 !src/collective
 var/
-eggs/
-include/
-lib/
-local/
+htmlcov/
+.coverage
+*.log
+output.xml
+*.swp

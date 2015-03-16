@@ -1,7 +1,6 @@
 Changelog
 =========
 
-
 2.0 (unreleased)
 ----------------
 
@@ -13,4 +12,3 @@ Changelog
 
 - Initial release.
   [cedricmessiant]
-

@@ -17,4 +17,15 @@
         directory="static"
         />
 
+    <!-- Viewlets -->
+    <browser:viewlet
+      name="collective.task.list_tasks"
+      class=".viewlets.TasksList"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      template="templates/list_tasks.pt"
+      layer="collective.task.interfaces.ICollectiveTaskLayer"
+      permission="zope2.View"
+      />
+
 </configure>

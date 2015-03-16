@@ -4,9 +4,14 @@ python:
 install:
   - mkdir -p buildout-cache/{eggs,downloads}
   - python bootstrap.py -c travis.cfg
-  - bin/buildout -c travis.cfg -N -q -t 3
+  - bin/buildout -Nc travis.cfg
 script:
   - bin/test
+  - bin/createcoverage
+after_success:
+  - pip install coveralls
+  - coveralls
+
 notifications:
   email:
-    - prive-ged@listes.entrouvert.com
+    - travis-ci@ecreall.com

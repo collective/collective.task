@@ -1,4 +1,4 @@
+- Cédric Messiant, cedricmessiant@ecreall.com
 - Gauthier Bastien, IMIO
 - Stéphan Geulette, IMIO
 - Vincent Fretin, Ecreall
-- Cédric Messiant, Ecreall
