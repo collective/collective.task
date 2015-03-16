@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
-
-from collective.task.testing import IntegrationTestCase
+from collective.task.testing import COLLECTIVE_TASK_INTEGRATION_TESTING  # noqa
 from plone import api
 
+import unittest2 as unittest
 
-class TestInstall(IntegrationTestCase):
+
+class TestInstall(unittest.TestCase):
     """Test installation of collective.task into Plone."""
+
+    layer = COLLECTIVE_TASK_INTEGRATION_TESTING
 
     def setUp(self):
         """Custom shared utility setup for tests."""
@@ -27,4 +30,4 @@ class TestInstall(IntegrationTestCase):
         """Test that ICollectiveTaskLayer is registered."""
         from collective.task.interfaces import ICollectiveTaskLayer
         from plone.browserlayer import utils
-        self.failUnless(ICollectiveTaskLayer in utils.registered_layers())
+        self.assertIn(ICollectiveTaskLayer, utils.registered_layers())

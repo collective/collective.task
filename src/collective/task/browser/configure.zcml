@@ -4,43 +4,17 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.task">
 
-    <include package="plone.app.portlets"/>
+    <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+    <include package="z3c.jbot" file="meta.zcml" />
+    <browser:jbot
+        directory="overrides"
+        layer="collective.task.interfaces.ICollectiveTaskLayer"
+        />
 
     <!-- Publish static files -->
     <browser:resourceDirectory
-      name="collective.task"
-      directory="static"
-      />
-
-    <browser:page
-        name="attribute_task"
-        for="collective.task.content.task.ITask"
-        class=".attribute_task.AttributeTask"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="..interfaces.IBaseTask"
-        name="view"
-        class="plone.dexterity.browser.view.DefaultView"
-        template="templates/basetask_view.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-      name="add_information"
-      for="*"
-      class=".add_information.AddInformation"
-      permission="cmf.AddPortalContent"
-      />
-
-    <plone:portlet
-        name="collective.task.browser.TasksPortlet"
-        interface=".portlet.ITasksPortlet"
-        assignment=".portlet.TasksAssignment"
-        renderer=".portlet.TasksRenderer"
-        addview=".portlet.TasksAddForm"
-        editview=".portlet.TasksEditForm"
+        name="collective.task"
+        directory="static"
         />
 
 </configure>

@@ -42,22 +42,16 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'collective.dms.basecontent',
-        'collective.z3cform.chosen',
-        'collective.z3cform.rolefield',
-        'five.grok',
         'plone.api',
-        'plone.app.dexterity',
-        'plone.app.relationfield',
-        'plone.directives.form',
-        'plone.formwidget.datetime',
-        'plone.principalsource',
         'setuptools',
+        'z3c.jbot',
     ],
     extras_require={
         'test': [
             'ecreall.helpers.testing',
             'plone.app.testing',
+            'plone.app.contenttypes',
+            'plone.app.robotframework[debug]',
         ],
     },
     entry_points="""
