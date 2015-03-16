@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="task_wf" title="task_wf" description="Workflow for basic tasks" state_variable="review_state" initial_state="created" manager_bypass="False">
+ <permission>Access contents information</permission>
+ <permission>Delete objects</permission>
+ <permission>Modify portal content</permission>
+ <permission>Review portal content</permission>
+ <permission>View</permission>
+ <state state_id="closed" title="Clôturé">
+  <exit-transition transition_id="back_in_realized"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="created" title="En création">
+  <exit-transition transition_id="to_do"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="True">
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="in_progress" title="En cours">
+  <exit-transition transition_id="back_in_to_do"/>
+  <exit-transition transition_id="do_realized"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="realized" title="Réalisé">
+  <exit-transition transition_id="back_in_progress"/>
+  <exit-transition transition_id="do_closed"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="to_do" title="A faire">
+  <exit-transition transition_id="do_in_progress"/>
+  <exit-transition transition_id="back_in_created"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="back_in_created" title="back_in_created" new_state="created" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_created" category="workflow" icon="">back_in_created</action>
+  <guard>
+   <guard-role>Reviewer</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="back_in_progress" title="back_in_progress" new_state="in_progress" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_progress" category="workflow" icon="">back_in_progress</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_in_realized" title="back_in_realized" new_state="realized" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_realized" category="workflow" icon="">back_in_realized</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_in_to_do" title="back_in_to_do" new_state="to_do" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_to_do" category="workflow" icon="">back_in_to_do</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="do_closed" title="do_closed" new_state="closed" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_closed" category="workflow" icon="">do_closed</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="do_in_progress" title="do_in_progress" new_state="in_progress" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_in_progress" category="workflow" icon="">do_in_progress</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="do_realized" title="do_realized" new_state="realized" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_realized" category="workflow" icon="">do_realized</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="to_do" title="to_do" new_state="to_do" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=to_do" category="workflow" icon="">to_do</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+</dc-workflow>
