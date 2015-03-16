@@ -19,7 +19,7 @@ long_description = (
 
 setup(
     name='collective.task',
-    version='1.0',
+    version='2.0.dev0',
     description="Task management for plone",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
