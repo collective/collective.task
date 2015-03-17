@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="task_wf" title="task_wf" description="Workflow for basic tasks" state_variable="review_state" initial_state="created" manager_bypass="False">
+<dc-workflow workflow_id="task_workflow"
+  title="task_workflow"
+  description="Workflow for basic tasks"
+  state_variable="review_state"
+  initial_state="created"
+  manager_bypass="False"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="plone">
  <permission>Access contents information</permission>
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>

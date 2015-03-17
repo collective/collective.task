@@ -3,4 +3,9 @@
  <property
     name="title">Contains workflow definitions for your portal</property>
  <object name="task_workflow" meta_type="Workflow"/>
+ <bindings>
+  <type type_id="task">
+     <bound-workflow workflow_id="task_workflow" />
+  </type>
+ </bindings>
 </object>
