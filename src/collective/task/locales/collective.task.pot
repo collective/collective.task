@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-03-17 09:29+0000\n"
+"POT-Creation-Date: 2015-03-17 15:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,24 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.task\n"
 
-#: ../behaviors.py:20
+#: ../behaviors.py:19
 msgid "Assigned group"
 msgstr ""
 
-#: ../behaviors.py:29
+#: ../behaviors.py:26
 msgid "Assigned user"
 msgstr ""
 
-#: ../behaviors.py:43
+#: ../behaviors.py:38
 msgid "Due date"
 msgstr ""
 
-#: ../behaviors.py:38
+#: ../behaviors.py:33
 msgid "Enquirer"
+msgstr ""
+
+#: ../profiles/default/types/task.xml
+msgid "Something to do by someone."
 msgstr ""
 
 #: ../profiles/default/types/task.xml
