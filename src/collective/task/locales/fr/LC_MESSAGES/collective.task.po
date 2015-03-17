@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-03-17 15:23+0000\n"
+"POT-Creation-Date: 2015-03-17 15:36+0000\n"
 "PO-Revision-Date: 2015-03-17 10:28+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,10 @@ msgstr "Groupe assigné"
 #: ../behaviors.py:26
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
+
+#: ../configure.zcml
+msgid "Content behaves like a task."
+msgstr "Devenir une tâche."
 
 #: ../behaviors.py:38
 msgid "Due date"
