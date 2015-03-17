@@ -12,7 +12,7 @@
  <permission>Modify portal content</permission>
  <permission>Review portal content</permission>
  <permission>View</permission>
- <state state_id="closed" title="Clôturé">
+ <state state_id="closed" title="Closed" i18n:attributes="title">
   <exit-transition transition_id="back_in_realized"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
@@ -45,7 +45,7 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <state state_id="created" title="En création">
+ <state state_id="created" title="Created" i18n:attributes="title">
   <exit-transition transition_id="to_do"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
@@ -84,7 +84,7 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <state state_id="in_progress" title="En cours">
+ <state state_id="in_progress" title="In progress" i18n:attributes="title">
   <exit-transition transition_id="back_in_to_do"/>
   <exit-transition transition_id="do_realized"/>
   <permission-map name="Access contents information" acquired="False">
@@ -118,7 +118,7 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <state state_id="realized" title="Réalisé">
+ <state state_id="realized" title="Realized" i18n:attributes="title">
   <exit-transition transition_id="back_in_progress"/>
   <exit-transition transition_id="do_closed"/>
   <permission-map name="Access contents information" acquired="False">
@@ -152,7 +152,7 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <state state_id="to_do" title="A faire">
+ <state state_id="to_do" title="To do" i18n:attributes="title">
   <exit-transition transition_id="do_in_progress"/>
   <exit-transition transition_id="back_in_created"/>
   <permission-map name="Access contents information" acquired="False">
@@ -189,50 +189,50 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <transition transition_id="back_in_created" title="back_in_created" new_state="created" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_created" category="workflow" icon="">back_in_created</action>
+ <transition transition_id="back_in_created" title="Back in created" new_state="created" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_created" category="workflow" icon="">Back in created</action>
   <guard>
    <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
- <transition transition_id="back_in_progress" title="back_in_progress" new_state="in_progress" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_progress" category="workflow" icon="">back_in_progress</action>
+ <transition transition_id="back_in_progress" title="Back in progress" new_state="in_progress" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_progress" category="workflow" icon="" i18n:translate="">Back in progress</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_in_realized" title="back_in_realized" new_state="realized" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_realized" category="workflow" icon="">back_in_realized</action>
+ <transition transition_id="back_in_realized" title="Back in realized" new_state="realized" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_realized" category="workflow" icon="" i18n:translate="">Back in realized</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_in_to_do" title="back_in_to_do" new_state="to_do" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_to_do" category="workflow" icon="">back_in_to_do</action>
+ <transition transition_id="back_in_to_do" title="Back in to do" new_state="to_do" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=back_in_to_do" category="workflow" icon="" i18n:translate="">Back in to do</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="do_closed" title="do_closed" new_state="closed" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=do_closed" category="workflow" icon="">do_closed</action>
+ <transition transition_id="do_closed" title="Do closed" new_state="closed" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_closed" category="workflow" icon="" i18n:translate="">Do closed</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="do_in_progress" title="do_in_progress" new_state="in_progress" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=do_in_progress" category="workflow" icon="">do_in_progress</action>
+ <transition transition_id="do_in_progress" title="Do in progress" new_state="in_progress" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_in_progress" category="workflow" icon="" i18n:translate="">Do in progress</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="do_realized" title="do_realized" new_state="realized" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=do_realized" category="workflow" icon="">do_realized</action>
+ <transition transition_id="do_realized" title="Do realized" new_state="realized" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_realized" category="workflow" icon="" i18n:translate="">Do realized</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="to_do" title="to_do" new_state="to_do" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=to_do" category="workflow" icon="">to_do</action>
+ <transition transition_id="to_do" title="To do" new_state="to_do" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=to_do" category="workflow" icon="" i18n:translate="">To do</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>

@@ -6,6 +6,8 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.task">
 
+    <i18n:registerTranslations directory="locales" />
+
     <includeDependencies package="." />
 
     <include package="dexterity.localrolesfield"/>
