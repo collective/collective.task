@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
-from zope.interface import alsoProvides
+from zope.interface import alsoProvides, Interface
 from zope import schema
 
 from plone.autoform.interfaces import IFormFieldProvider
@@ -9,6 +9,11 @@ from plone.supermodel import model
 from dexterity.localrolesfield.field import LocalRolesField
 
 from collective.task import _
+
+
+class ITaskContainer(Interface):
+
+    """Marker interface for task containers."""
 
 
 class ITask(model.Schema):

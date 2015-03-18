@@ -24,6 +24,7 @@
   <element value="plone.app.content.interfaces.INameFromTitle"/>
   <element value="plone.app.dexterity.behaviors.metadata.IBasic" />
   <element value="collective.task.behaviors.ITask" />
+  <element value="collective.task.behaviors.ITaskContainer" />
 </property>
  <property name="klass">plone.dexterity.content.Container</property>
  <property name="schema" />
