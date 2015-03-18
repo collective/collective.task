@@ -13,6 +13,12 @@
         />
 
     <plone:behavior
+        title="Task with fieldset"
+        description="Content behaves like a task (fields are in a fieldset)."
+        provides=".behaviors.ITaskWithFieldset"
+        />
+
+    <plone:behavior
         title="Task container"
         description="Content that contains tasks."
         provides=".behaviors.ITaskContainer"

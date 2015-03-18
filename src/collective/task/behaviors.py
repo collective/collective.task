@@ -45,4 +45,15 @@ class ITask(model.Schema):
         )
 
 
+class ITaskWithFieldset(ITask):
+
+    """ITask behavior with fieldset."""
+
+    fieldset(
+        'task',
+        label=_(u'Task'),
+        fields=('assigned_group', 'assigned_user', 'enquirer', 'due_date',)
+        )
+
+
 alsoProvides(ITask, IFormFieldProvider)
