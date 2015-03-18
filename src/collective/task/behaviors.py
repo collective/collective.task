@@ -18,7 +18,6 @@ from collective.task import _
 
 def get_users_vocabulary(group):
     """Get users vocabulary when an assigned group is selected."""
-    # return GroupMembersSourceBinder(groupname=group)
     terms = []
     try:
         members = api.user.get_users(groupname=group)
