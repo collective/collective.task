@@ -64,9 +64,10 @@ class ITask(model.Schema):
         vocabulary="plone.principalsource.Users"
         )
 
-    enquirer = schema.TextLine(
+    enquirer = schema.Choice(
         title=_(u"Enquirer"),
         required=False,
+        vocabulary="plone.principalsource.Users"
         )
 
     due_date = schema.Date(
@@ -84,6 +85,16 @@ class ITaskWithFieldset(ITask):
         label=_(u'Task'),
         fields=('assigned_group', 'assigned_user', 'enquirer', 'due_date',)
         )
+
+
+@default_value(field=ITask['enquirer'])
+def get_current_user_id(data):
+    """Current user by default."""
+    current_user = api.user.get_current()
+    if current_user:
+        return current_user.getId()
+
+    return ""
 
 
 alsoProvides(ITask, IFormFieldProvider)
