@@ -12,6 +12,7 @@
 
     <include package="dexterity.localrolesfield"/>
     <include package="plone.principalsource" />
+    <include package="plone.formwidget.masterselect" />
 
     <include package=".browser" />
 

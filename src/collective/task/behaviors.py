@@ -2,13 +2,37 @@
 """Behaviors."""
 from zope.interface import alsoProvides, Interface
 from zope import schema
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
+from plone import api
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.directives.form.value import default_value
 from plone.supermodel import model
+from plone.supermodel.directives import fieldset
 
-from dexterity.localrolesfield.field import LocalRolesField
+from dexterity.localrolesfield.field import LocalRoleField
 
+from collective.task.field import LocalRoleMasterSelectField
 from collective.task import _
+
+
+def get_users_vocabulary(group):
+    """Get users vocabulary when an assigned group is selected."""
+    # return GroupMembersSourceBinder(groupname=group)
+    terms = []
+    try:
+        members = api.user.get_users(groupname=group)
+        for member in members:
+            member_id = member.getId()
+            title = member.getUser().getProperty('fullname') or member_id
+            terms.append(SimpleTerm(
+                value=member.getUserName(),  # login
+                token=member_id,  # id
+                title=title))  # title
+    except api.exc.GroupNotFoundError:
+        pass
+
+    return SimpleVocabulary(terms)
 
 
 class ITaskContainer(Interface):
@@ -20,18 +44,24 @@ class ITask(model.Schema):
 
     """ITask behavior."""
 
-    assigned_group = LocalRolesField(
+    assigned_group = LocalRoleMasterSelectField(
         title=_(u"Assigned group"),
         required=False,
-        value_type=schema.Choice(
-            vocabulary="plone.principalsource.Groups")
+        vocabulary="plone.principalsource.Groups",
+        slave_fields=(
+            {'name': 'ITask.assigned_user',
+             'slaveID': '#form-widgets-ITask-assigned_user',
+             'action': 'vocabulary',
+             'vocab_method': get_users_vocabulary,
+             'control_param': 'group',
+            },
+            )
         )
 
-    assigned_user = LocalRolesField(
+    assigned_user = LocalRoleField(
         title=_(u"Assigned user"),
         required=False,
-        value_type=schema.Choice(
-            vocabulary="plone.principalsource.Users")
+        vocabulary="plone.principalsource.Users"
         )
 
     enquirer = schema.TextLine(
