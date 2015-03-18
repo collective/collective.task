@@ -48,6 +48,7 @@ setup(
         'plone.principalsource',
         'setuptools',
         'z3c.jbot',
+        'z3c.table',
     ],
     extras_require={
         'test': [

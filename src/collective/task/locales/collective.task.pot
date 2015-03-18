@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-03-17 15:36+0000\n"
+"POT-Creation-Date: 2015-03-18 15:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,21 +15,30 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.task\n"
+"Domain: DOMAIN\n"
 
-#: ../behaviors.py:19
+#: ../behaviors.py:47
+#: ../browser/table.py:103
 msgid "Assigned group"
 msgstr ""
 
-#: ../behaviors.py:26
+#: ../behaviors.py:61
+#: ../browser/table.py:118
 msgid "Assigned user"
 msgstr ""
 
-#: ../behaviors.py:38
+#. Default: "Devenir une tâche."
+#: ../configure.zcml
+msgid "Content behaves like a task."
+msgstr ""
+
+#: ../behaviors.py:73
+#: ../browser/table.py:127
 msgid "Due date"
 msgstr ""
 
-#: ../behaviors.py:33
+#: ../behaviors.py:67
+#: ../browser/table.py:94
 msgid "Enquirer"
 msgstr ""
 
@@ -37,10 +46,16 @@ msgstr ""
 msgid "Something to do by someone."
 msgstr ""
 
+#: ../behaviors.py:84
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr ""
 
-#: ../configure.zcml
-msgid "Content behaves like a task."
+#: ../browser/viewlets.py:15
+msgid "Tasks list"
 msgstr ""
+
+#: ../browser/viewlets.py:16
+msgid "There is no task for this content."
+msgstr ""
+

@@ -1,0 +1,61 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.task">
+
+  <adapter
+    name="TitleColumn"
+    for="zope.interface.Interface
+         zope.interface.Interface
+         .table.TasksTable"
+    provides="z3c.table.interfaces.IColumn"
+    factory=".table.TitleColumn"
+    />
+
+  <adapter
+    name="DueDateColumn"
+    for="zope.interface.Interface
+         zope.interface.Interface
+         .table.TasksTable"
+    provides="z3c.table.interfaces.IColumn"
+    factory=".table.DueDateColumn"
+    />
+
+  <adapter
+    name="EnquirerColumn"
+    for="zope.interface.Interface
+         zope.interface.Interface
+         .table.TasksTable"
+    provides="z3c.table.interfaces.IColumn"
+    factory=".table.EnquirerColumn"
+    />
+
+  <adapter
+    name="AssignedGroupColumn"
+    for="zope.interface.Interface
+         zope.interface.Interface
+         .table.TasksTable"
+    provides="z3c.table.interfaces.IColumn"
+    factory=".table.AssignedGroupColumn"
+    />
+
+  <adapter
+    name="AssignedUserColumn"
+    for="zope.interface.Interface
+         zope.interface.Interface
+         .table.TasksTable"
+    provides="z3c.table.interfaces.IColumn"
+    factory=".table.AssignedUserColumn"
+    />
+
+  <adapter
+    name="ReviewStateColumn"
+    for="zope.interface.Interface
+         zope.interface.Interface
+         .table.TasksTable"
+    provides="z3c.table.interfaces.IColumn"
+    factory=".table.ReviewStateColumn"
+    />
+
+</configure>

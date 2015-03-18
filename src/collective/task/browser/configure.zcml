@@ -4,6 +4,8 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.task">
 
+    <include file="table.zcml" />
+
     <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
     <!--include package="z3c.jbot" file="meta.zcml" />
     <browser:jbot
@@ -20,12 +22,13 @@
     <!-- Viewlets -->
     <browser:viewlet
       name="collective.task.list_tasks"
-      class=".viewlets.TasksList"
-      for="*"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      class=".viewlets.TasksListViewlet"
       template="templates/list_tasks.pt"
+      for="collective.task.behaviors.ITaskContainer"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
       layer="collective.task.interfaces.ICollectiveTaskLayer"
       permission="zope2.View"
+      view="plone.app.layout.globals.interfaces.IViewView"
       />
 
 </configure>
