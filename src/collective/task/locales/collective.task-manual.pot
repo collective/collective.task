@@ -1,0 +1,3 @@
+#: ../configure.zcml
+msgid "Content behaves like a task."
+msgstr "Devenir une tâche."
