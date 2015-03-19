@@ -85,6 +85,20 @@ class ITaskWithFieldset(ITask):
         fields=('assigned_group', 'assigned_user', 'enquirer', 'due_date',)
         )
 
+    assigned_group = LocalRoleMasterSelectField(
+        title=_(u"Assigned group"),
+        required=False,
+        vocabulary="plone.principalsource.Groups",
+        slave_fields=(
+            {'name': 'ITaskWithFieldset.assigned_user',
+             'slaveID': '#form-widgets-ITaskWithFieldset-assigned_user',
+             'action': 'vocabulary',
+             'vocab_method': get_users_vocabulary,
+             'control_param': 'group',
+            },
+            )
+        )
+
 
 @default_value(field=ITask['enquirer'])
 def get_current_user_id(data):
