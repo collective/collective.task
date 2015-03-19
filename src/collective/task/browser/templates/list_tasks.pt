@@ -1,4 +1,4 @@
-<fieldset
+<fieldset class="visualClear"
     tal:define="results view/table/values"
     tal:condition="results">
   <legend i18n:translate="" tal:content="view/label">label</legend>
