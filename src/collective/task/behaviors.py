@@ -97,3 +97,4 @@ def get_current_user_id(data):
 
 
 alsoProvides(ITask, IFormFieldProvider)
+alsoProvides(ITaskWithFieldset, IFormFieldProvider)
