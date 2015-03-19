@@ -46,7 +46,7 @@
   </permission-map>
  </state>
  <state state_id="created" title="Created" i18n:attributes="title">
-  <exit-transition transition_id="to_do"/>
+  <exit-transition transition_id="do_to_assign"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Editor</permission-role>
@@ -189,6 +189,44 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
+ <state state_id="to_assign" title="To assign" i18n:attributes="title">
+  <exit-transition transition_id="auto_do_to_do"/>
+  <exit-transition transition_id="do_to_do"/>
+  <exit-transition transition_id="back_in_created"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
  <transition transition_id="back_in_created" title="Back in created" new_state="created" trigger="USER" before_script="" after_script="" i18n:attributes="title">
   <action url="%(content_url)s/content_status_modify?workflow_action=back_in_created" category="workflow" icon="">Back in created</action>
   <guard>
@@ -231,10 +269,21 @@
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="to_do" title="To do" new_state="to_do" trigger="USER" before_script="" after_script="" i18n:attributes="title">
-  <action url="%(content_url)s/content_status_modify?workflow_action=to_do" category="workflow" icon="" i18n:translate="">To do</action>
+ <transition transition_id="auto_do_to_do" title="Automatic do to do" new_state="to_do" trigger="AUTOMATIC" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=auto_do_to_do" category="hidden" icon="" i18n:translate="">Automatic do to do</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+    <guard-expression>here/auto_to_do_flag</guard-expression>
+  </guard>
+ </transition>
+ <transition transition_id="do_to_assign" title="Do to assign" new_state="to_assign" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_to_assign" category="workflow" icon="" i18n:translate="">Do to assign</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="do_to_do" title="Do to do" new_state="to_do" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="%(content_url)s/content_status_modify?workflow_action=do_to_do" category="workflow" icon="" i18n:translate="">Do to do</action>
+  <guard>
+    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
 </dc-workflow>

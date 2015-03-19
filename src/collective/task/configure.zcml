@@ -21,6 +21,7 @@
     <include package=".browser" />
 
     <include file="behaviors.zcml" />
+    <include file="subscribers.zcml" />
 
     <genericsetup:registerProfile
         name="default"
