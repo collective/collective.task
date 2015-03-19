@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-03-18 15:06+0000\n"
-"PO-Revision-Date: 2015-03-17 10:27+0100\n"
+"POT-Creation-Date: 2015-03-19 10:57+0000\n"
+"PO-Revision-Date: 2015-03-19 12:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,11 @@ msgstr ""
 "Domain: collective.task\n"
 "Language: fr\n"
 "X-is-fallback-for: fr-fr fr-be fr-ca\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Automatic do to do"
+msgstr "Mettre à faire (automatique)"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Back in created"
@@ -53,6 +58,14 @@ msgid "Do realized"
 msgstr "Terminer"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Do to assign"
+msgstr "Mettre à faire"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Do to do"
+msgstr "Mettre à faire"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "In progress"
 msgstr "En cours"
 
@@ -61,6 +74,9 @@ msgid "Realized"
 msgstr "Réalisé"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "To assign"
+msgstr "À assigner"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "To do"
 msgstr "À faire"
-

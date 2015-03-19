@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-03-18 15:06+0000\n"
+"POT-Creation-Date: 2015-03-19 10:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Automatic do to do"
+msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Back in created"
@@ -54,11 +58,23 @@ msgid "Do realized"
 msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Do to assign"
+msgstr ""
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Do to do"
+msgstr ""
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "In progress"
 msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Realized"
+msgstr ""
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "To assign"
 msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
