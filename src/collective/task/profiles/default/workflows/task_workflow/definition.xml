@@ -284,6 +284,7 @@
   <action url="%(content_url)s/content_status_modify?workflow_action=do_to_do" category="workflow" icon="" i18n:translate="">Do to do</action>
   <guard>
     <guard-permission>Review portal content</guard-permission>
+    <guard-expression>here/assigned_user</guard-expression>
   </guard>
  </transition>
 </dc-workflow>
