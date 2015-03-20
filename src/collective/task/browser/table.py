@@ -71,7 +71,7 @@ class UserColumn(Column):
         username = getattr(value, self.field, '')
         if username:
             member = api.user.get(username)
-            return member.getUser().getProperty('fullname')
+            return member.getUser().getProperty('fullname').decode('utf-8')
 
         return ""
 
@@ -84,7 +84,7 @@ class TitleColumn(Column):
     weight = 10
 
     def renderCell(self, value):
-        return value.Title()
+        return value.Title().decode('utf-8')
 
 
 class EnquirerColumn(UserColumn):
@@ -106,7 +106,7 @@ class AssignedGroupColumn(Column):
     def renderCell(self, value):
         if value.assigned_group:
             group = api.group.get(value.assigned_group).getGroup()
-            return group.getProperty('title')
+            return group.getProperty('title').decode('utf-8')
 
         return ""
 
