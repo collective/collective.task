@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
+from zope.component import getUtility
 from zope.interface import alsoProvides, Interface
 from zope import schema
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from plone import api
@@ -14,6 +16,16 @@ from dexterity.localrolesfield.field import LocalRoleField
 
 from collective.task.field import LocalRoleMasterSelectField
 from collective.task import _
+
+
+class AssignedGroupsVocabulary(object):
+    """ Define own factory and named utility that can be easily overrided in componentregistry.xml """
+
+    def __call__(self, context):
+        voc = getUtility(IVocabularyFactory, name="plone.principalsource.Groups", context=context)
+        return voc(context)
+
+AssignedGroupsVocabularyFactory = AssignedGroupsVocabulary()
 
 
 def get_users_vocabulary(group):
@@ -46,7 +58,7 @@ class ITask(model.Schema):
     assigned_group = LocalRoleMasterSelectField(
         title=_(u"Assigned group"),
         required=False,
-        vocabulary="plone.principalsource.Groups",
+        vocabulary="collective.task.AssignedGroups",
         slave_fields=(
             {'name': 'ITask.assigned_user',
              'slaveID': '#form-widgets-ITask-assigned_user',

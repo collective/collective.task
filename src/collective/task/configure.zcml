@@ -23,6 +23,12 @@
     <include file="behaviors.zcml" />
     <include file="subscribers.zcml" />
 
+    <utility
+        name="collective.task.AssignedGroups"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component="collective.task.behaviors.AssignedGroupsVocabularyFactory"
+    />
+
     <genericsetup:registerProfile
         name="default"
         title="collective.task"
