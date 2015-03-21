@@ -53,26 +53,26 @@ class ITask(model.Schema):
              'action': 'vocabulary',
              'vocab_method': get_users_vocabulary,
              'control_param': 'group',
-            },
-            )
+             },
         )
+    )
 
     assigned_user = LocalRoleField(
         title=_(u"Assigned user"),
         required=False,
         vocabulary="plone.principalsource.Users"
-        )
+    )
 
     enquirer = schema.Choice(
         title=_(u"Enquirer"),
         required=False,
         vocabulary="plone.principalsource.Users"
-        )
+    )
 
     due_date = schema.Date(
         title=_(u"Due date"),
         required=False,
-        )
+    )
 
 
 class ITaskWithFieldset(ITask):
@@ -83,7 +83,7 @@ class ITaskWithFieldset(ITask):
         'task',
         label=_(u'Task'),
         fields=('assigned_group', 'assigned_user', 'enquirer', 'due_date',)
-        )
+    )
 
     assigned_group = LocalRoleMasterSelectField(
         title=_(u"Assigned group"),
@@ -95,9 +95,9 @@ class ITaskWithFieldset(ITask):
              'action': 'vocabulary',
              'vocab_method': get_users_vocabulary,
              'control_param': 'group',
-            },
-            )
+             },
         )
+    )
 
 
 @default_value(field=ITask['enquirer'])
