@@ -19,7 +19,7 @@ class TasksTable(Table):
 
     cssClassEven = u'even'
     cssClassOdd = u'odd'
-    cssClasses = {'table': 'listing'}
+    cssClasses = {'table': 'listing taskContainerListing'}
 
     batchSize = 20
     startBatchingAt = 30
