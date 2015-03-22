@@ -7,7 +7,7 @@ from zope.i18n import translate
 
 from plone import api
 
-from z3c.table.column import Column
+from z3c.table.column import Column, LinkColumn
 from z3c.table.table import Table
 
 from collective.task import _, PMF
@@ -76,15 +76,19 @@ class UserColumn(Column):
         return ""
 
 
-class TitleColumn(Column):
+class TitleColumn(LinkColumn):
 
     """Column that displays title."""
 
     header = PMF("Title")
     weight = 10
 
-    def renderCell(self, value):
-        return value.Title().decode('utf-8')
+    def getLinkCSS(self, item):
+        return 'class=state-%s contenttype-%s' % (api.content.get_state(obj=item),
+                                                  item.portal_type)
+
+    def getLinkContent(self, item):
+        return item.title
 
 
 class EnquirerColumn(UserColumn):
