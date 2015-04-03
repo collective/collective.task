@@ -9,3 +9,9 @@ def set_auto_to_do_flag(obj, event):
             obj.auto_to_do_flag = True
         else:
             obj.auto_to_do_flag = False
+
+
+def remove_auto_to_do_flag(obj, event):
+    """Remove auto_to_do_flag on task if assigned_user is set."""
+    if event.transition and event.transition.id == 'back_in_to_assign':
+        obj.auto_to_do_flag = False
