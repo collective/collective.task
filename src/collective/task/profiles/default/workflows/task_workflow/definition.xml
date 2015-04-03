@@ -280,7 +280,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Back in created</action>
   <guard>
-   <guard-role>Reviewer</guard-role>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_progress"
