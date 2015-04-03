@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-03-19 10:57+0000\n"
+"POT-Creation-Date: 2015-04-03 15:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,10 @@ msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Back in realized"
+msgstr ""
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Back in to assign"
 msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml

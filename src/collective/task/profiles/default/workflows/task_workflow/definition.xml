@@ -185,7 +185,8 @@
         title="To do"
         i18n:attributes="title">
   <exit-transition transition_id="do_in_progress"/>
-  <exit-transition transition_id="back_in_created"/>
+  <!--exit-transition transition_id="back_in_created"/-->
+  <exit-transition transition_id="back_in_to_assign"/>
   <permission-map name="Access contents information"
                   acquired="False">
    <permission-role>Contributor</permission-role>
@@ -302,6 +303,18 @@
              after_script=""
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Back in realized</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_in_to_assign"
+             title="Back in to assign"
+             new_state="to_assign"
+             trigger="USER"
+             before_script=""
+             after_script=""
+             i18n:attributes="title">
+  <action url="" category="workflow" i18n:translate="">Back in to assign</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>

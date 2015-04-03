@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-03-19 10:57+0000\n"
+"POT-Creation-Date: 2015-04-03 15:43+0000\n"
 "PO-Revision-Date: 2015-03-19 12:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,6 +32,10 @@ msgstr "Retour à en cours"
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Back in realized"
 msgstr "Retour en réalisé"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "Back in to assign"
+msgstr "Retour en à assigner"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "Back in to do"
@@ -80,3 +84,4 @@ msgstr "À assigner"
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "To do"
 msgstr "À faire"
+
