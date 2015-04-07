@@ -1,13 +1,7 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <subscriber
-     handler=".subscribers.set_auto_to_do_flag"
-     for="collective.task.behaviors.ITask
-          Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-      />
-
-  <subscriber
-     handler=".subscribers.remove_auto_to_do_flag"
+     handler=".subscribers.afterTransitionITaskSubscriber"
      for="collective.task.behaviors.ITask
           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
       />
