@@ -25,7 +25,8 @@
   <element value="plone.app.dexterity.behaviors.metadata.IBasic" />
   <element value="collective.task.behaviors.ITask" />
   <element value="collective.task.behaviors.ITaskContainer" />
-</property>
+  <element value="plone.app.lockingbehavior.behaviors.ILocking" />
+ </property>
  <property name="klass">plone.dexterity.content.Container</property>
  <property name="schema" />
  <!-- DO NOT use a model_source or it removes manually added fields while reapplying the profile -->

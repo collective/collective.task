@@ -43,6 +43,7 @@ setup(
     install_requires=[
         'dexterity.localrolesfield',
         'plone.api',
+        'plone.app.lockingbehavior',
         'plone.directives.form',
         'plone.formwidget.masterselect',
         'plone.principalsource',
