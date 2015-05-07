@@ -1,10 +1,7 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-03-19 10:57+0000\n"
+"POT-Creation-Date: 2015-05-07 08:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +14,28 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../behaviors.py:47
-#: ../browser/table.py:103
+#: ../behaviors.py:59
+#: ../browser/table.py:107
 msgid "Assigned group"
 msgstr ""
 
-#: ../behaviors.py:61
-#: ../browser/table.py:118
+#: ../behaviors.py:73
+#: ../browser/table.py:122
+#: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr ""
 
-#. Default: "Devenir une tâche."
 #: ../configure.zcml
 msgid "Content behaves like a task."
 msgstr ""
 
-#: ../behaviors.py:73
-#: ../browser/table.py:127
+#: ../behaviors.py:85
+#: ../browser/table.py:131
 msgid "Due date"
 msgstr ""
 
-#: ../behaviors.py:67
-#: ../browser/table.py:94
+#: ../behaviors.py:79
+#: ../browser/table.py:98
 msgid "Enquirer"
 msgstr ""
 
@@ -46,13 +43,17 @@ msgstr ""
 msgid "Something to do by someone."
 msgstr ""
 
-#: ../behaviors.py:84
+#: ../behaviors.py:96
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr ""
 
 #: ../browser/viewlets.py:15
 msgid "Tasks list"
+msgstr ""
+
+#: ../profiles/default/registry.xml
+msgid "The person to whom a task is assigned"
 msgstr ""
 
 #: ../browser/viewlets.py:16

@@ -1,0 +1,17 @@
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.task">
+
+    <records interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.assigned_user">
+        <value key="title" i18n:translate="">Assigned user</value>
+        <value key="description" i18n:translate="">The person to whom a task is assigned</value>
+        <value key="enabled">True</value>
+        <value key="sortable">True</value>
+        <value key="operations">
+            <element>plone.app.querystring.operation.string.is</element>
+            <element>plone.app.querystring.operation.string.currentUser</element>
+        </value>
+       <value key="group" i18n:domain="plone" i18n:translate="">Metadata</value>
+    </records>
+
+</registry>
