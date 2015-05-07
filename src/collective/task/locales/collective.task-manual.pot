@@ -4,7 +4,3 @@ msgstr ""
 #: ../configure.zcml
 msgid "Content behaves like a task."
 msgstr ""
-
-#: ../profiles/default/registry.xml
-msgid "The person to whom a task is assigned"
-msgstr ""
