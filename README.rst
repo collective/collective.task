@@ -19,7 +19,7 @@ A task has the following fields:
 * a due date
 
 Assigned group and assigned user are local role fields (dexterity.localrolesfield).
-This last product permits to configure (on a dexterity type) the local roles to give on each workflow state by rolefield to the selected principal on the object.
+This last product permits to configure (on a dexterity type) the local roles to give on each workflow state, to the selected principal of each role field on the object.
 
 The default workflow for a task contains the following states:
 
