@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 (unreleased)
+2.0 (2015-06-03)
 ----------------
 
 - Complete refactoring to propose a more generic task content and behaviors.
