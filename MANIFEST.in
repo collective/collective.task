@@ -1,3 +1,7 @@
 graft src/collective
-graft docs/
-include *.cfg *.rst *.in
+graft docs
+include *.rst
+global-exclude *.pyc *.sh *.pot
+recursive-exclude src .gitkeep
+exclude .coveragerc .editorconfig bootstrap.py *.cfg
+prune buildout.d
