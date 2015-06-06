@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+ <index name="enquirer" meta_type="UsersAndGroupsIndex" remove="True">
+  <indexed_attr value="enquirer"/>
+ </index>
+ <index name="responsible" meta_type="UsersAndGroupsIndex" remove="True">
+  <indexed_attr value="responsible"/>
+ </index>
+ <index name="deadline" meta_type="DateIndex" remove="True">
+  <indexed_attr value="deadline"/>
+ </index>
+ <column value="deadline" remove="True"/>
+ <column value="enquirer" remove="True"/>
+ <column value="responsible" remove="True"/>
+ <column value="document_path" remove="True"/>
+ <column value="document_title" remove="True"/>
+</object>

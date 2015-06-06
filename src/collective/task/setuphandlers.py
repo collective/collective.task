@@ -76,3 +76,22 @@ def post_install(context):
 
     # Do something during the installation of this package
     configure_rolefields(context)
+
+
+def uninstall_1(context):
+    """Uninstall script for 1.0 version."""
+    if context.readDataFile('collectivetask_uninstall_1_marker.txt') is None:
+        return
+
+    site = context.getSite()
+    pt = site.portal_types
+    for typ in ('information', 'opinion', 'task', 'validation'):
+        if typ in pt:
+            pt.manage_delObjects(ids=[typ])
+            logger.info("Removed %s from portal_types" % typ)
+
+    pw = site.portal_workflow
+    for wf in ('basic_task_workflow', 'task_workflow', 'validation_workflow'):
+        if wf in pw:
+            pw.manage_delObjects(ids=[wf])
+            logger.info("Removed %s from portal_workflow" % wf)

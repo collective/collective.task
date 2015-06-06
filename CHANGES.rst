@@ -4,7 +4,8 @@ Changelog
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added uninstall 1.0 profile.
+  [sgeulette]
 
 
 2.0 (2015-06-03)
