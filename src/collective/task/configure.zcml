@@ -34,6 +34,15 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="collective.task uninstall"
+        directory="profiles/uninstall"
+        description="Steps to uninstall collective.task"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        />
+
     <genericsetup:importStep
         name="collectivetask-postInstall"
         title="collective.task post_install import step"

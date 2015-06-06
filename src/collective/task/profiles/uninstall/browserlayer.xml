@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    name="collective.task"
+    interface="collective.task.interfaces.ICollectiveTaskLayer"
+    remove="True"
+  />
+</layers>
