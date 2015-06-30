@@ -6,6 +6,8 @@ Changelog
 
 - Added uninstall 1.0 profile.
   [sgeulette]
+- Corrected bad classifier
+  [sgeulette]
 
 
 2.0 (2015-06-03)
