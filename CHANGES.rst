@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1 (unreleased)
+2.1 (2015-06-30)
 ----------------
 
 - Added uninstall 1.0 profile.
