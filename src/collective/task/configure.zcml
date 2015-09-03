@@ -18,6 +18,7 @@
 
     <include package=".browser" />
 
+    <include file="profiles.zcml" />
     <include file="behaviors.zcml" />
     <include file="subscribers.zcml" />
 
@@ -27,28 +28,7 @@
         component="collective.task.behaviors.AssignedGroupsVocabularyFactory"
     />
 
-    <genericsetup:registerProfile
-        name="default"
-        title="collective.task"
-        directory="profiles/default"
-        description="Installs the collective.task add-on."
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    <genericsetup:registerProfile
-        name="uninstall_1.0"
-        title="collective.task 1.0 version uninstall"
-        directory="profiles/uninstall_1.0"
-        description="Steps to uninstall collective.task 1.0 version"
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        for="Products.CMFCore.interfaces.ISiteRoot"
-        />
-
-    <genericsetup:importStep
-        name="collective.task-postInstall"
-        title="collective.task post_install import step"
-        description="Post install import step from collective.task"
-        handler=".setuphandlers.post_install">
-    </genericsetup:importStep>
+    <adapter name="assigned_user" factory=".adapters.assigned_user_index" />
+    <adapter name="due_date" factory=".adapters.due_date_index" />
 
 </configure>

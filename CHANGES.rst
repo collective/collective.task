@@ -4,7 +4,8 @@ Changelog
 2.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added due_date index. Added indexer methods avoiding acquisition for children.
+  [sgeulette]
 
 
 2.1 (2015-06-30)

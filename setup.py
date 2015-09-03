@@ -47,6 +47,7 @@ setup(
         'plone.directives.form',
         'plone.formwidget.masterselect',
         'plone.principalsource',
+        'imio.helpers',
         'setuptools',
         'z3c.jbot',
         'z3c.table',

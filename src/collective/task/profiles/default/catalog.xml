@@ -4,4 +4,9 @@
         <indexed_attr value="assigned_user"/>
     </index>
     <column value="assigned_user"/>
+
+    <index name="due_date" meta_type="DateIndex">
+        <property name="index_naive_time_as_local">True</property>
+    </index>
+    <column value="due_date"/>
 </object>

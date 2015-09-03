@@ -1,0 +1,37 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="imio.dms.mail">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.task"
+        directory="profiles/default"
+        description="Installs the collective.task add-on."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:registerProfile
+        name="uninstall_1.0"
+        title="collective.task 1.0 version uninstall"
+        directory="profiles/uninstall_1.0"
+        description="Steps to uninstall collective.task 1.0 version"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        />
+
+    <genericsetup:importStep
+        name="collective.task-postInstall"
+        title="collective.task post_install import step"
+        description="Post install import step from collective.task"
+        handler=".setuphandlers.post_install">
+    </genericsetup:importStep>
+
+    <genericsetup:upgradeStep
+        title="Go to collective.task 2.2"
+        description=""
+        source="1"
+        destination="2.2"
+        handler="collective.task.migrations.migrate_to_2_2.migrate"
+        profile="collective.task:default" />
+</configure>
