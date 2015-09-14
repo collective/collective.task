@@ -48,6 +48,7 @@ setup(
         'plone.formwidget.masterselect',
         'plone.principalsource',
         'imio.helpers',
+        'imio.migrator',
         'setuptools',
         'z3c.jbot',
         'z3c.table',
