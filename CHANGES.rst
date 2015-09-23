@@ -8,6 +8,8 @@ Changelog
   [sgeulette]
 - Changed workflow to use 'Request review' guard permission to differentiate Reviewer and editor transitions (like in plone workflows)
   [sgeulette]
+- Added transition between to_do and realized
+  [sgeulette]
 
 
 2.1 (2015-06-30)

@@ -164,6 +164,7 @@
         title="Realized"
         i18n:attributes="title">
   <exit-transition transition_id="back_in_progress"/>
+  <exit-transition transition_id="back_in_to_do"/>
   <exit-transition transition_id="do_closed"/>
   <permission-map name="Access contents information"
                   acquired="False">
@@ -211,6 +212,7 @@
         title="To do"
         i18n:attributes="title">
   <exit-transition transition_id="do_in_progress"/>
+  <exit-transition transition_id="do_realized"/>
   <!--exit-transition transition_id="back_in_created"/-->
   <exit-transition transition_id="back_in_to_assign"/>
   <permission-map name="Access contents information"
