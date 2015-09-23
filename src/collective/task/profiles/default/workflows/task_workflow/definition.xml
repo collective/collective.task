@@ -10,6 +10,7 @@
  <permission>Access contents information</permission>
  <permission>Delete objects</permission>
  <permission>Modify portal content</permission>
+ <permission>Request review</permission>
  <permission>Review portal content</permission>
  <permission>View</permission>
  <state state_id="closed"
@@ -31,6 +32,12 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Request review"
                   acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
@@ -82,6 +89,13 @@
    <permission-role>Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
+  <permission-map name="Request review"
+                  acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
   <permission-map name="Review portal content"
                   acquired="False">
    <permission-role>Contributor</permission-role>
@@ -119,6 +133,12 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Request review"
                   acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
@@ -165,6 +185,12 @@
    <permission-role>Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
+  <permission-map name="Request review"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
   <permission-map name="Review portal content"
                   acquired="False">
    <permission-role>Manager</permission-role>
@@ -204,6 +230,12 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Request review"
                   acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
@@ -254,6 +286,12 @@
    <permission-role>Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
+  <permission-map name="Request review"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
   <permission-map name="Review portal content"
                   acquired="False">
    <permission-role>Manager</permission-role>
@@ -292,7 +330,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Back in progress</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_realized"
@@ -304,7 +342,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Back in realized</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_to_assign"
@@ -316,7 +354,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Back in to assign</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_to_do"
@@ -328,7 +366,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Back in to do</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_closed"
@@ -352,7 +390,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Do in progress</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_realized"
@@ -364,7 +402,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Do realized</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="auto_do_to_do"
@@ -388,6 +426,7 @@
              i18n:attributes="title">
   <action url="" category="workflow" i18n:translate="">Do to assign</action>
   <guard>
+    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_to_do"
