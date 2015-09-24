@@ -8,6 +8,14 @@ from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 
 
 @indexer(IContentish)
+def assigned_group_index(obj):
+    """ Index method escaping acquisition """
+    if base_hasattr(obj, 'assigned_group'):
+        return obj.assigned_group
+    return common_marker
+
+
+@indexer(IContentish)
 def assigned_user_index(obj):
     """ Index method escaping acquisition """
     if base_hasattr(obj, 'assigned_user'):

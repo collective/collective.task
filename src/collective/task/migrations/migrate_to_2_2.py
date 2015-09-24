@@ -16,8 +16,8 @@ class Migrate_To_2_2(Migrator):
         logger.info('Migrating to collective.task 2.2')
         self.cleanRegistries()
 
-        addOrUpdateIndexes(self.portal, indexInfos={'due_date': ('DateIndex', {})})
-        addOrUpdateColumns(self.portal, columns=('due_date', ))
+        addOrUpdateIndexes(self.portal, indexInfos={'assigned_group': ('FieldIndex', {}), 'due_date': ('DateIndex', {})})
+        addOrUpdateColumns(self.portal, columns=('assigned_group', 'due_date'))
 
         self.runProfileSteps('collective.task', steps=['workflow'])
         self.finish()

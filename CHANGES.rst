@@ -4,7 +4,7 @@ Changelog
 2.2 (unreleased)
 ----------------
 
-- Added due_date index. Added indexer methods avoiding acquisition for children.
+- Added assigned_group and due_date indexes. Added indexer methods avoiding acquisition for children.
   [sgeulette]
 - Changed workflow to use 'Request review' guard permission to differentiate Reviewer and editor transitions (like in plone workflows)
   [sgeulette]

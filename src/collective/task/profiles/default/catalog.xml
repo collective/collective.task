@@ -5,6 +5,11 @@
     </index>
     <column value="assigned_user"/>
 
+    <index name="assigned_group" meta_type="FieldIndex">
+        <indexed_attr value="assigned_group"/>
+    </index>
+    <column value="assigned_group"/>
+
     <index name="due_date" meta_type="DateIndex">
         <property name="index_naive_time_as_local">True</property>
     </index>

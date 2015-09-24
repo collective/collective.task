@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-07 09:23+0000\n"
+"POT-Creation-Date: 2015-09-24 06:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
+
+#: ../profiles/default/portal_atct.xml
+msgid "Assigned group"
+msgstr ""
 
 #: ../profiles/default/portal_atct.xml
 msgid "Assigned user"
