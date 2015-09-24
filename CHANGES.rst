@@ -10,7 +10,8 @@ Changelog
   [sgeulette]
 - Added transition between to_do and realized
   [sgeulette]
-
+- Replaced workflow title ids. Added english translations
+  [sgeulette]
 
 2.1 (2015-06-30)
 ----------------

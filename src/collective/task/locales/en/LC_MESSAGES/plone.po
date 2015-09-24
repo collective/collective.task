@@ -1,6 +1,3 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -15,7 +12,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: plone\n"
+"Domain: DOMAIN\n"
 
 #: ../profiles/default/portal_atct.xml
 msgid "Assigned group"
@@ -31,69 +28,69 @@ msgstr ""
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "auto_do_to_do"
-msgstr ""
+msgstr "Put in to do (automatic)"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "back_in_created"
-msgstr ""
+msgstr "Back in created"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "back_in_progress"
-msgstr ""
+msgstr "Back in progress"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "back_in_realized"
-msgstr ""
+msgstr "Back in realized"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "back_in_to_assign"
-msgstr ""
+msgstr "Back in to assign"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "back_in_to_do"
-msgstr ""
+msgstr "Back in to do"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "closed"
-msgstr ""
+msgstr "Closed"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "created"
-msgstr ""
+msgstr "Created"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "do_closed"
-msgstr ""
+msgstr "Close"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "do_in_progress"
-msgstr ""
+msgstr "Begin"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "do_realized"
-msgstr ""
+msgstr "Finish"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "do_to_assign"
-msgstr ""
+msgstr "Put in to do"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "do_to_do"
-msgstr ""
+msgstr "Put in to do"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "in_progress"
-msgstr ""
+msgstr "In progress"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "realized"
-msgstr ""
+msgstr "Realized"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "to_assign"
-msgstr ""
+msgstr "To assign"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
 msgid "to_do"
-msgstr ""
+msgstr "To do"
 

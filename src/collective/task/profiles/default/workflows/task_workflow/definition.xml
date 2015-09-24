@@ -14,7 +14,7 @@
  <permission>Review portal content</permission>
  <permission>View</permission>
  <state state_id="closed"
-        title="Closed"
+        title="closed"
         i18n:attributes="title">
   <exit-transition transition_id="back_in_realized"/>
   <permission-map name="Access contents information"
@@ -60,7 +60,7 @@
   </permission-map>
  </state>
  <state state_id="created"
-        title="Created"
+        title="created"
         i18n:attributes="title">
   <exit-transition transition_id="do_to_assign"/>
   <permission-map name="Access contents information"
@@ -114,7 +114,7 @@
   </permission-map>
  </state>
  <state state_id="in_progress"
-        title="In progress"
+        title="in_progress"
         i18n:attributes="title">
   <exit-transition transition_id="back_in_to_do"/>
   <exit-transition transition_id="do_realized"/>
@@ -161,7 +161,7 @@
   </permission-map>
  </state>
  <state state_id="realized"
-        title="Realized"
+        title="realized"
         i18n:attributes="title">
   <exit-transition transition_id="back_in_progress"/>
   <exit-transition transition_id="back_in_to_do"/>
@@ -209,7 +209,7 @@
   </permission-map>
  </state>
  <state state_id="to_do"
-        title="To do"
+        title="to_do"
         i18n:attributes="title">
   <exit-transition transition_id="do_in_progress"/>
   <exit-transition transition_id="do_realized"/>
@@ -261,7 +261,7 @@
   </permission-map>
  </state>
  <state state_id="to_assign"
-        title="To assign"
+        title="to_assign"
         i18n:attributes="title">
   <exit-transition transition_id="auto_do_to_do"/>
   <exit-transition transition_id="do_to_do"/>
@@ -312,133 +312,133 @@
   </permission-map>
  </state>
  <transition transition_id="back_in_created"
-             title="Back in created"
+             title="back_in_created"
              new_state="created"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Back in created</action>
+  <action url="" category="workflow" i18n:translate="">back_in_created</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_progress"
-             title="Back in progress"
+             title="back_in_progress"
              new_state="in_progress"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Back in progress</action>
+  <action url="" category="workflow" i18n:translate="">back_in_progress</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_realized"
-             title="Back in realized"
+             title="back_in_realized"
              new_state="realized"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Back in realized</action>
+  <action url="" category="workflow" i18n:translate="">back_in_realized</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_to_assign"
-             title="Back in to assign"
+             title="back_in_to_assign"
              new_state="to_assign"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Back in to assign</action>
+  <action url="" category="workflow" i18n:translate="">back_in_to_assign</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_in_to_do"
-             title="Back in to do"
+             title="back_in_to_do"
              new_state="to_do"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Back in to do</action>
+  <action url="" category="workflow" i18n:translate="">back_in_to_do</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_closed"
-             title="Do closed"
+             title="do_closed"
              new_state="closed"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Do closed</action>
+  <action url="" category="workflow" i18n:translate="">do_closed</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_in_progress"
-             title="Do in progress"
+             title="do_in_progress"
              new_state="in_progress"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Do in progress</action>
+  <action url="" category="workflow" i18n:translate="">do_in_progress</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_realized"
-             title="Do realized"
+             title="do_realized"
              new_state="realized"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Do realized</action>
+  <action url="" category="workflow" i18n:translate="">do_realized</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="auto_do_to_do"
-             title="Automatic do to do"
+             title="auto_do_to_do"
              new_state="to_do"
              trigger="AUTOMATIC"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="hidden" i18n:translate="">Automatic do to do</action>
+  <action url="" category="hidden" i18n:translate="">auto_do_to_do</action>
   <guard>
     <guard-expression>here/auto_to_do_flag</guard-expression>
   </guard>
  </transition>
  <transition transition_id="do_to_assign"
-             title="Do to assign"
+             title="do_to_assign"
              new_state="to_assign"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Do to assign</action>
+  <action url="" category="workflow" i18n:translate="">do_to_assign</action>
   <guard>
     <guard-permission>Request review</guard-permission>
   </guard>
  </transition>
  <transition transition_id="do_to_do"
-             title="Do to do"
+             title="do_to_do"
              new_state="to_do"
              trigger="USER"
              before_script=""
              after_script=""
              i18n:attributes="title">
-  <action url="" category="workflow" i18n:translate="">Do to do</action>
+  <action url="" category="workflow" i18n:translate="">do_to_do</action>
   <guard>
     <guard-permission>Review portal content</guard-permission>
     <guard-expression>here/assigned_user</guard-expression>

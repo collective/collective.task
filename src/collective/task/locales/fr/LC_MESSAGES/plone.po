@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-09-24 06:51+0000\n"
+"POT-Creation-Date: 2015-09-24 11:19+0000\n"
 "PO-Revision-Date: 2015-03-19 12:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,75 +25,75 @@ msgstr "Groupe assigné"
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
 
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Automatic do to do"
-msgstr "Mettre à faire (automatique)"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Back in created"
-msgstr "Retour en création"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Back in progress"
-msgstr "Retour à en cours"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Back in realized"
-msgstr "Retour en réalisé"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Back in to assign"
-msgstr "Retour en à assigner"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Back in to do"
-msgstr "Retour en à faire"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Closed"
-msgstr "Clôturé"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Created"
-msgstr "En création"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Do closed"
-msgstr "Clôturer"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Do in progress"
-msgstr "Commencer"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Do realized"
-msgstr "Terminer"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Do to assign"
-msgstr "Mettre à faire"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Do to do"
-msgstr "Mettre à faire"
-
-#: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "In progress"
-msgstr "En cours"
-
 #: ../profiles/default/registry.xml
 msgid "Metadata"
 msgstr "Métadonnées"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "Realized"
+msgid "auto_do_to_do"
+msgstr "Mettre à faire (automatique)"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "back_in_created"
+msgstr "Retour en création"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "back_in_progress"
+msgstr "Retour à en cours"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "back_in_realized"
+msgstr "Retour en réalisé"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "back_in_to_assign"
+msgstr "Retour en à assigner"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "back_in_to_do"
+msgstr "Retour en à faire"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "closed"
+msgstr "Clôturé"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "created"
+msgstr "En création"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "do_closed"
+msgstr "Clôturer"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "do_in_progress"
+msgstr "Commencer"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "do_realized"
+msgstr "Terminer"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "do_to_assign"
+msgstr "Mettre à faire"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "do_to_do"
+msgstr "Mettre à faire"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "in_progress"
+msgstr "En cours"
+
+#: ../profiles/default/workflows/task_workflow/definition.xml
+msgid "realized"
 msgstr "Réalisé"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "To assign"
+msgid "to_assign"
 msgstr "À assigner"
 
 #: ../profiles/default/workflows/task_workflow/definition.xml
-msgid "To do"
+msgid "to_do"
 msgstr "À faire"
 
