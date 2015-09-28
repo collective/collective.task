@@ -14,9 +14,10 @@
   <element value="task"/>
  </property>
  <property name="allow_discussion">False</property>
- <property name="default_view">view</property>
+ <property name="default_view">item_view</property>
  <property name="view_methods">
   <element value="view"/>
+  <element value="item_view"/>
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>

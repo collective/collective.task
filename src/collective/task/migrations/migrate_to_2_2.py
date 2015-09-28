@@ -19,7 +19,7 @@ class Migrate_To_2_2(Migrator):
         addOrUpdateIndexes(self.portal, indexInfos={'assigned_group': ('FieldIndex', {}), 'due_date': ('DateIndex', {})})
         addOrUpdateColumns(self.portal, columns=('assigned_group', 'due_date'))
 
-        self.runProfileSteps('collective.task', steps=['workflow'])
+        self.runProfileSteps('collective.task', steps=['typeinfo', 'workflow'])
         self.finish()
 
 

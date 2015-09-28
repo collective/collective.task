@@ -31,4 +31,11 @@
       view="plone.app.layout.globals.interfaces.IViewView"
       />
 
+    <browser:page
+        for="collective.task.interfaces.ITaskContent"
+        name="item_view"
+        class=".views.TaskItemView"
+        permission="zope2.View"
+        />
+
 </configure>
