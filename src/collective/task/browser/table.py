@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """Define tables and columns."""
-import datetime
 
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
@@ -36,25 +35,6 @@ class TasksTable(Table):
     @CachedProperty
     def portal_url(self):
         return api.portal.get().absolute_url()
-
-    def format_date(self, date, long_format=None, time_only=None):
-        if date is None:
-            return u""
-
-        # If date is a datetime object, isinstance(date, datetime.date)
-        # returns True, so we use type here.
-        if type(date) == datetime.date:
-            date = date.strftime('%Y/%m/%d')
-        elif type(date) == datetime.datetime:
-            date = date.strftime('%Y/%m/%d %H:%M')
-
-        return self.translation_service.ulocalized_time(
-            date,
-            long_format=long_format,
-            time_only=time_only,
-            context=self.context,
-            domain='plonelocales',
-            request=self.request) or ''
 
     @CachedProperty
     def values(self):
@@ -130,10 +110,13 @@ class DueDateColumn(Column):
 
     header = _("Due date")
     weight = 50
+    long_format = False
+    time_only = False
 
     def renderCell(self, value):
         if value.due_date:
-            return self.table.format_date(value.due_date)
+            return api.portal.get_localized_time(datetime=value.due_date, long_format=self.long_format,
+                                                 time_only=self.time_only)
 
         return ""
 
