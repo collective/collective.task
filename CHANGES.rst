@@ -10,6 +10,8 @@ Changelog
   [sgeulette]
 - Changed workflow to use 'Request review' guard permission to differentiate Reviewer and editor transitions (like in plone workflows)
   [sgeulette]
+- Added item_view as default: use simple item view on task content
+  [sgeulette]
 - Added transition between to_do and realized
   [sgeulette]
 - Replaced workflow title ids. Added english translations
