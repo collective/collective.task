@@ -2,6 +2,15 @@
 <atcttool xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <topic_metadata i18n:domain="plone">
   <metadata
+    name="assigned_group"
+        description=""
+        enabled="True"
+        friendlyName="Assigned group"
+        i18n:attributes="friendlyName"/>
+ </topic_metadata>
+
+ <topic_metadata i18n:domain="plone">
+  <metadata
     name="assigned_user"
         description=""
         enabled="True"

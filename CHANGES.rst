@@ -4,9 +4,16 @@ Changelog
 2.2 (unreleased)
 ----------------
 
-- Added due_date index. Added indexer methods avoiding acquisition for children.
+- Added task content interface to differentiate from behavior
   [sgeulette]
-
+- Added assigned_group and due_date indexes. Added indexer methods avoiding acquisition for children.
+  [sgeulette]
+- Changed workflow to use 'Request review' guard permission to differentiate Reviewer and editor transitions (like in plone workflows)
+  [sgeulette]
+- Added transition between to_do and realized
+  [sgeulette]
+- Replaced workflow title ids. Added english translations
+  [sgeulette]
 
 2.1 (2015-06-30)
 ----------------

@@ -28,6 +28,7 @@
         component="collective.task.behaviors.AssignedGroupsVocabularyFactory"
     />
 
+    <adapter name="assigned_group" factory=".adapters.assigned_group_index" />
     <adapter name="assigned_user" factory=".adapters.assigned_user_index" />
     <adapter name="due_date" factory=".adapters.due_date_index" />
 
