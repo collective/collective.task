@@ -10,7 +10,7 @@ from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 @indexer(IContentish)
 def assigned_group_index(obj):
     """ Index method escaping acquisition """
-    if base_hasattr(obj, 'assigned_group'):
+    if base_hasattr(obj, 'assigned_group') and obj.assigned_group:
         return obj.assigned_group
     return common_marker
 
@@ -18,7 +18,7 @@ def assigned_group_index(obj):
 @indexer(IContentish)
 def assigned_user_index(obj):
     """ Index method escaping acquisition """
-    if base_hasattr(obj, 'assigned_user'):
+    if base_hasattr(obj, 'assigned_user') and obj.assigned_user:
         return obj.assigned_user
     return common_marker
 
@@ -26,6 +26,6 @@ def assigned_user_index(obj):
 @indexer(IContentish)
 def due_date_index(obj):
     """ Index method escaping acquisition """
-    if base_hasattr(obj, 'due_date'):
+    if base_hasattr(obj, 'due_date') and obj.due_date:
         return obj.due_date
     return date_marker
