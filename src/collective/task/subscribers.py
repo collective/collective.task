@@ -12,5 +12,5 @@ def afterTransitionITaskSubscriber(obj, event):
             obj.auto_to_do_flag = False
 
     if event.transition and event.transition.id == 'back_in_to_assign':
-        # Remove auto_to_do_flag on task if assigned_user is set.
+        # Remove auto_to_do_flag on task.
         obj.auto_to_do_flag = False

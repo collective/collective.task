@@ -12,6 +12,8 @@ Changelog
   [sgeulette]
 - Added item_view as default: use simple item view on task content
   [sgeulette]
+- Added colorized warning when no assigned user
+  [sgeulette]
 - Added transition between to_do and realized
   [sgeulette]
 - Replaced workflow title ids. Added english translations

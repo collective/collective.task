@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-07 08:48+0000\n"
+"POT-Creation-Date: 2015-10-02 11:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Domain: DOMAIN\n"
 
 #: ../behaviors.py:59
-#: ../browser/table.py:107
+#: ../browser/table.py:87
 msgid "Assigned group"
 msgstr ""
 
 #: ../behaviors.py:73
-#: ../browser/table.py:122
+#: ../browser/table.py:102
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr ""
@@ -30,12 +30,12 @@ msgid "Content behaves like a task."
 msgstr ""
 
 #: ../behaviors.py:85
-#: ../browser/table.py:131
+#: ../browser/table.py:111
 msgid "Due date"
 msgstr ""
 
 #: ../behaviors.py:79
-#: ../browser/table.py:98
+#: ../browser/table.py:78
 msgid "Enquirer"
 msgstr ""
 
@@ -58,5 +58,9 @@ msgstr ""
 
 #: ../browser/viewlets.py:16
 msgid "There is no task for this content."
+msgstr ""
+
+#: ../browser/views.py:20
+msgid "You must select an assigned user before continuing !"
 msgstr ""
 

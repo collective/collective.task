@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-05-07 08:48+0000\n"
+"POT-Creation-Date: 2015-10-02 11:58+0000\n"
 "PO-Revision-Date: 2015-03-18 16:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "X-Generator: Poedit 1.6.10\n"
 
 #: ../behaviors.py:59
-#: ../browser/table.py:107
+#: ../browser/table.py:87
 msgid "Assigned group"
 msgstr "Groupe assigné"
 
 #: ../behaviors.py:73
-#: ../browser/table.py:122
+#: ../browser/table.py:102
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
@@ -34,12 +34,12 @@ msgid "Content behaves like a task."
 msgstr "Devenir une tâche."
 
 #: ../behaviors.py:85
-#: ../browser/table.py:131
+#: ../browser/table.py:111
 msgid "Due date"
 msgstr "Échéance"
 
 #: ../behaviors.py:79
-#: ../browser/table.py:98
+#: ../browser/table.py:78
 msgid "Enquirer"
 msgstr "Initiateur"
 
@@ -63,4 +63,8 @@ msgstr "La personne à qui une tâche est assignée"
 #: ../browser/viewlets.py:16
 msgid "There is no task for this content."
 msgstr "Il n'y a pas de tâches pour ce contenu."
+
+#: ../browser/views.py:20
+msgid "You must select an assigned user before continuing !"
+msgstr "Vous devez sélectionner un utilisateur assigné avant de pouvoir poursuivre !"
 
