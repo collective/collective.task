@@ -4,6 +4,7 @@
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
 
+from Products.CMFPlone.utils import safe_unicode
 from plone import api
 
 from z3c.table.column import Column, LinkColumn
@@ -68,7 +69,7 @@ class TitleColumn(LinkColumn):
                                                   item.portal_type)
 
     def getLinkContent(self, item):
-        return item.title
+        return safe_unicode(item.title)
 
 
 class EnquirerColumn(UserColumn):

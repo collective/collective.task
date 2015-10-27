@@ -18,6 +18,8 @@ Changelog
   [sgeulette]
 - Replaced workflow title ids. Added english translations
   [sgeulette]
+- Return unicode in table column
+  [sgeulette]
 
 2.1 (2015-06-30)
 ----------------
