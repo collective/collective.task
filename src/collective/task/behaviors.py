@@ -7,6 +7,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from plone import api
+from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.directives.form.value import default_value
 from plone.supermodel import model
@@ -54,6 +55,12 @@ class ITaskContainer(Interface):
 class ITask(model.Schema):
 
     """ITask behavior."""
+
+    task_description = RichText(
+        title=_(u"Task description"),
+        required=False,
+        description=_(u"What is to do and/or what is done"),
+    )
 
     assigned_group = LocalRoleMasterSelectField(
         title=_(u"Assigned group"),

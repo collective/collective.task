@@ -23,7 +23,6 @@
  <property name="add_permission">cmf.AddPortalContent</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
-  <element value="plone.app.dexterity.behaviors.metadata.IBasic" />
   <element value="collective.task.behaviors.ITask" />
   <element value="collective.task.behaviors.ITaskContainer" />
   <element value="plone.app.lockingbehavior.behaviors.ILocking" />

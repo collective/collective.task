@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-10-02 11:58+0000\n"
+"POT-Creation-Date: 2015-10-27 14:35+0000\n"
 "PO-Revision-Date: 2015-03-18 16:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Language: fr\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: ../behaviors.py:59
-#: ../browser/table.py:87
+#: ../behaviors.py:66
+#: ../browser/table.py:88
 msgid "Assigned group"
 msgstr "Groupe assigné"
 
-#: ../behaviors.py:73
-#: ../browser/table.py:102
+#: ../behaviors.py:80
+#: ../browser/table.py:103
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
@@ -33,13 +33,13 @@ msgstr "Utilisateur assigné"
 msgid "Content behaves like a task."
 msgstr "Devenir une tâche."
 
-#: ../behaviors.py:85
-#: ../browser/table.py:111
+#: ../behaviors.py:92
+#: ../browser/table.py:112
 msgid "Due date"
 msgstr "Échéance"
 
-#: ../behaviors.py:79
-#: ../browser/table.py:78
+#: ../behaviors.py:86
+#: ../browser/table.py:79
 msgid "Enquirer"
 msgstr "Initiateur"
 
@@ -47,10 +47,14 @@ msgstr "Initiateur"
 msgid "Something to do by someone."
 msgstr "Quelque chose à faire par quelqu'un."
 
-#: ../behaviors.py:96
+#: ../behaviors.py:103
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr "Tâche"
+
+#: ../behaviors.py:60
+msgid "Task description"
+msgstr "Description de la tâche"
 
 #: ../browser/viewlets.py:15
 msgid "Tasks list"
@@ -63,6 +67,10 @@ msgstr "La personne à qui une tâche est assignée"
 #: ../browser/viewlets.py:16
 msgid "There is no task for this content."
 msgstr "Il n'y a pas de tâches pour ce contenu."
+
+#: ../behaviors.py:62
+msgid "What is to do and/or what is done"
+msgstr "Ce qui est à faire et/ou ce qui a été fait"
 
 #: ../browser/views.py:20
 msgid "You must select an assigned user before continuing !"
