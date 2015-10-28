@@ -13,6 +13,7 @@ This package provides:
 
 A task has the following fields:
 
+* a task description: richtext field.
 * an assigned group: vocabulary of plone groups (can be redefined). Master field for assigned user
 * an assigned user: vocabulary of plone users. Slave field of selected assigned group.
 * an enquirer: user proposing the task (authenticated user by default)
