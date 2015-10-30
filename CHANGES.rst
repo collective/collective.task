@@ -10,6 +10,9 @@ Changelog
   [sgeulette]
 - Added assigned_group and due_date indexes. Added indexer methods avoiding acquisition for children. Do not store None in catalog
   [sgeulette]
+- Added assigned_group default value. default_value decorator didn't worked.
+  Schema defaultFactory is used but is called also in view mode when field is None and can't be less easily overrided !
+  [sgeulette]
 - Changed workflow to use 'Request review' guard permission to differentiate Reviewer and editor transitions (like in plone workflows)
   [sgeulette]
 - Added item_view as default: use simple item view on task content

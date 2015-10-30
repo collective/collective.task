@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
 from zope.component import getUtility
-from zope.interface import alsoProvides, Interface
+from zope.interface import alsoProvides, Interface, provider
 from zope import schema
+from zope.schema.interfaces import IContextAwareDefaultFactory
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
+from Products.CMFPlone.utils import base_hasattr
 from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
-from plone.directives.form.value import default_value
+from plone.directives.form import default_value
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
 
@@ -47,6 +49,17 @@ def get_users_vocabulary(group):
     return SimpleVocabulary(terms)
 
 
+@provider(IContextAwareDefaultFactory)
+def get_parent_assigned_group(context):
+    """ If parent has assigned_group, set it as default value """
+    # Are we in add form ?
+    if not context.REQUEST.get('PATH_INFO', '/').split('/')[-1].startswith('++add++'):
+        return None
+    if base_hasattr(context, 'assigned_group') and context.assigned_group:
+        return context.assigned_group
+    return None
+
+
 class ITaskContainer(Interface):
 
     """Marker interface for task containers."""
@@ -73,7 +86,8 @@ class ITask(model.Schema):
              'vocab_method': get_users_vocabulary,
              'control_param': 'group',
              },
-        )
+        ),
+        defaultFactory=get_parent_assigned_group
     )
 
     assigned_user = LocalRoleField(
@@ -125,8 +139,7 @@ def get_current_user_id(data):
     current_user = api.user.get_current()
     if current_user:
         return current_user.getId()
-
-    return ""
+    return None
 
 
 alsoProvides(ITask, IFormFieldProvider)
