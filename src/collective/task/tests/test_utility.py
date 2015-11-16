@@ -30,5 +30,6 @@ class TestRelatedSearchUtility(unittest.TestCase):
         task2 = api.content.create(container=task1, type='task', id='task2', title='Task2')
         self.assertEqual(utility.get_objects(task2), [task1])
         alsoProvides(self.portal, ITaskContainer)
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.assertListEqual(utility.get_objects(task2), [task1, self.portal])
+        setRoles(self.portal, TEST_USER_ID, [])
         self.assertListEqual(utility.get_objects(task2), [task1, self.portal])
