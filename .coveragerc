@@ -3,4 +3,4 @@ include =
     src/collective/*
 omit =
     */test*
-    */upgrades/*
+    */migrations/*

@@ -15,5 +15,7 @@ after_success:
 notifications:
   email:
     recipients:
-    - travis-ci@ecreall.com
-    - devs@imio.be
+      - devs@imio.be
+      - travis-ci@ecreall.com
+    on_success: change
+    on_failure: change
