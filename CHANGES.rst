@@ -4,6 +4,8 @@ Changelog
 2.2 (unreleased)
 ----------------
 
+- Added TaskContainer related search utility
+  [sgeulette]
 - Added task content interface to differentiate from behavior
   [sgeulette]
 - Added task_description field
