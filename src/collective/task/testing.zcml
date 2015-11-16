@@ -5,7 +5,7 @@
 
   <include file="configure.zcml" />
 
-  <include package="ecreall.helpers.testing" />
+  <includeDependencies package="." />
 
   <genericsetup:registerProfile
       name="testing"

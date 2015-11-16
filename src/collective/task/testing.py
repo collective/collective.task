@@ -19,7 +19,7 @@ class CollectiveTaskLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         xmlconfig.file(
-            'configure.zcml',
+            'testing.zcml',
             collective.task,
             context=configurationContext
         )
