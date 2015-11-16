@@ -14,5 +14,6 @@ after_success:
 
 notifications:
   email:
+    recipients:
     - travis-ci@ecreall.com
     - devs@imio.be
