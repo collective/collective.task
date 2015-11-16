@@ -18,42 +18,42 @@ def configure_rolefields(context):
         'localroleconfig': {},
         'assigned_group': {
             'created': {
-                '': ['Contributor', 'Editor', 'Reviewer']
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']}
             },
             'to_assign': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'to_do': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'in_progress': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'realized': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'closed': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
         },
         'assigned_user': {
             'created': {
-                '': []
+                '': {'roles': []}
             },
             'to_assign': {
-                '': [],
+                '': {'roles': []},
             },
             'to_do': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'in_progress': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'realized': {
-                '': ['Contributor', 'Editor', 'Reviewer'],
+                '': {'roles': ['Contributor', 'Editor', 'Reviewer']},
             },
             'closed': {
-                '': [],
+                '': {'roles': []},
             },
         },
     }
