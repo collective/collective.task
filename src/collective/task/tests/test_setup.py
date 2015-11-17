@@ -25,6 +25,10 @@ class TestInstall(unittest.TestCase):
         self.installer.uninstallProducts(['collective.task'])
         self.assertFalse(self.installer.isProductInstalled('collective.task'))
 
+    def test_uninstall_1(self):
+        """Test if collective.task is cleanly uninstalled."""
+        self.portal.portal_setup.runAllImportStepsFromProfile('profile-collective.task:uninstall_1.0')
+
     # browserlayer.xml
     def test_browserlayer(self):
         """Test that ICollectiveTaskLayer is registered."""
