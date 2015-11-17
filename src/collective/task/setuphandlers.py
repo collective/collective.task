@@ -15,7 +15,7 @@ def isNotCurrentProfile(context):
 def configure_rolefields(context):
     """Configure the rolefields on types."""
     roles_config = {
-        'localroleconfig': {},
+        'static_config': {},
         'assigned_group': {
             'created': {
                 '': {'roles': ['Contributor', 'Editor', 'Reviewer']}
