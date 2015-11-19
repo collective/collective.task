@@ -65,7 +65,7 @@ class TitleColumn(LinkColumn):
     weight = 10
 
     def getLinkCSS(self, item):
-        return 'class=state-%s contenttype-%s' % (api.content.get_state(obj=item),
+        return ' class=state-%s contenttype-%s' % (api.content.get_state(obj=item),
                                                   item.portal_type)
 
     def getLinkContent(self, item):

@@ -3,7 +3,7 @@ import unittest2 as unittest
 from plone import api
 from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
 
-from ..browser.table import TasksTable, UserColumn
+from ..browser.table import (TasksTable, UserColumn, TitleColumn, AssignedGroupColumn)
 from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 
 
@@ -35,3 +35,15 @@ class TestTable(unittest.TestCase):
         self.assertEqual(col.renderCell(self.task1), '')
         self.task1.assigned_user = TEST_USER_ID
         self.assertEqual(col.renderCell(self.task1), '')
+
+    def test_TitleColumn(self):
+        col = TitleColumn(self.portal, self.portal.REQUEST, None)
+        self.assertEqual(col.renderCell(self.task1),
+                         u'<a href="http://nohost/plone/task1" class=state-created contenttype-task>Task1</a>')
+
+    def test_AssignedGroupColumn(self):
+        col = AssignedGroupColumn(self.portal, self.portal.REQUEST, None)
+        self.task1.assigned_group = None
+        self.assertEqual(col.renderCell(self.task1), '')
+        self.task1.assigned_group = 'Administrators'
+        self.assertEqual(col.renderCell(self.task1), 'Administrators')
