@@ -50,7 +50,6 @@ setup(
         'imio.helpers',
         'imio.migrator',
         'setuptools',
-        'z3c.jbot',
         'z3c.table',
     ],
     extras_require={
