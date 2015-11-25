@@ -1,7 +1,13 @@
 Changelog
 =========
 
-2.2 (unreleased)
+2.3 (unreleased)
+----------------
+
+- Nothing changed yet.
+
+
+2.2 (2015-11-24)
 ----------------
 
 - Added TaskContainer related search utility
