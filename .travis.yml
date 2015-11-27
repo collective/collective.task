@@ -17,5 +17,3 @@ notifications:
     recipients:
       - devs@imio.be
       - travis-ci@ecreall.com
-    on_success: change
-    on_failure: change
