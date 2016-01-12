@@ -4,8 +4,8 @@ Changelog
 2.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Modify a copy of the field.
+  [sgeulette]
 
 2.2 (2015-11-24)
 ----------------

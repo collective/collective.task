@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import copy
 from plone import api
 from plone.app import dexterity
 from plone.dexterity.browser.view import DefaultView
@@ -16,7 +17,6 @@ class TaskItemView(DefaultView):
         super(TaskItemView, self).updateWidgets()
         if not self.context.assigned_user \
                 and api.content.get_state(obj=self.context) == 'to_assign':
+            self.widgets['ITask.assigned_user'].field = copy.copy(self.widgets['ITask.assigned_user'].field)
             self.widgets['ITask.assigned_user'].field.description = \
                 _(u'You must select an assigned user before continuing !')
-        else:
-            self.widgets['ITask.assigned_user'].field.description = u''
