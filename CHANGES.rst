@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.3 (unreleased)
-----------------
+2.2.1 (2016-01-13)
+------------------
 
 - Modify a copy of the field.
   [sgeulette]
