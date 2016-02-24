@@ -38,4 +38,6 @@
     <adapter name="assigned_user" factory=".adapters.assigned_user_index" />
     <adapter name="due_date" factory=".adapters.due_date_index" />
 
+    <adapter factory=".adapters.TaskAdapter" />
+
 </configure>

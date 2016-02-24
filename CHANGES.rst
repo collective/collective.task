@@ -1,11 +1,11 @@
 Changelog
 =========
 
-2.3 (unreleased)
+2.2.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Adapted ITask to add method getting the highest parent.
+  [sgeulette]
 
 2.2.1 (2016-01-13)
 ------------------
