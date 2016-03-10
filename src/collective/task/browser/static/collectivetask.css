@@ -1,3 +1,77 @@
 #formfield-form-widgets-ITask-assigned_user .formHelp {
     color: red;
 }
+
+/* colorization for incoming_mail_workflow */
+
+.state-created {
+ color: red !important;
+}
+
+#plone-contentmenu-workflow .state-created {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: red;
+    padding: 0 0.5em;
+    color: white !important;
+    border: 2px solid red;
+}
+
+.state-to_assign {
+ color: blueviolet !important;
+}
+
+#plone-contentmenu-workflow .state-to_assign {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: blueviolet;
+    padding: 0 0.5em;
+    color: white !important;
+    border: 2px solid blueviolet;
+}
+
+.state-to_do {
+ color: blue !important;
+}
+
+#plone-contentmenu-workflow .state-to_do {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: blue;
+    padding: 0 0.5em;
+    color: white !important;
+    border: 2px solid blue;
+}
+
+.state-in_progress {
+ color: green !important;
+}
+
+#plone-contentmenu-workflow .state-in_progress {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: green;
+    padding: 0 0.5em;
+    color: white !important;
+    border: 2px solid green;
+}
+
+.state-realized {
+ color: darkgrey !important;
+}
+
+#plone-contentmenu-workflow .state-realized {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: darkgrey;
+    padding: 0 0.5em;
+    color: white !important;
+    border: 2px solid darkgrey;
+}
+
+.state-closed {
+ color: dimgrey !important;
+}
+
+#plone-contentmenu-workflow .state-closed {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: dimgrey;
+    padding: 0 0.5em;
+    color: white !important;
+    border: 2px solid dimgrey;
+}

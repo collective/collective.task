@@ -6,6 +6,10 @@ Changelog
 
 - Adapted ITask to add method getting the highest parent.
   [sgeulette]
+- Colorize states
+  [sgeulette]
+- Add icons for transitions
+  [sgeulette]
 
 2.2.1 (2016-01-13)
 ------------------
