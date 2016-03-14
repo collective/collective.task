@@ -2,6 +2,15 @@
     color: red;
 }
 
+/* task-parent-viewlet */
+#task-parent-viewlet {
+    margin-bottom: 20px;
+}
+
+#task-parent-viewlet span {
+    font-weight: bold;
+}
+
 /* colorization for incoming_mail_workflow */
 
 .state-created {

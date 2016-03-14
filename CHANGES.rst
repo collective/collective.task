@@ -10,6 +10,8 @@ Changelog
   [sgeulette]
 - Add icons for transitions
   [sgeulette]
+- Add viewlet displaying task parents
+  [sgeulette]
 
 2.2.1 (2016-01-13)
 ------------------

@@ -31,6 +31,17 @@
       view="plone.app.layout.globals.interfaces.IViewView"
       />
 
+    <browser:viewlet
+      name="collective.task.task_parent"
+      class=".viewlets.TaskParentViewlet"
+      template="templates/task_parent.pt"
+      for="collective.task.interfaces.ITaskContent"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+      layer="collective.task.interfaces.ICollectiveTaskLayer"
+      permission="zope2.View"
+      />
+
+    <!-- content views -->
     <browser:page
         for="collective.task.interfaces.ITaskContent"
         name="item_view"

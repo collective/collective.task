@@ -1,0 +1,17 @@
+<div id="task-parent-viewlet"
+    tal:define="parents view/get_highest_parent;
+                ht python: parents['highest'];
+                ab python: parents['above'];
+                display python: ht or ab;"
+    tal:condition="nocall: display"
+    i18n:domain="collective.task">
+    <tal:highest condition="nocall: ht">
+        <span i18n:translate="">Highest task</span>:&nbsp;
+        <a tal:content="ht/Title" tal:attributes="href ht/absolute_url"></a>&nbsp;
+        <span>, </span>
+    </tal:highest>
+    <tal:highest condition="nocall: ab">
+        <span i18n:translate="">Above tasks</span>:&nbsp;
+        <a tal:content="ab/Title" tal:attributes="href ab/absolute_url"></a>
+    </tal:highest>
+</div>

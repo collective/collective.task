@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-10-27 14:35+0000\n"
+"POT-Creation-Date: 2016-03-14 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,12 +14,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../behaviors.py:66
+#: ../browser/templates/task_parent.pt:14
+msgid "Above tasks"
+msgstr ""
+
+#: ../behaviors.py:79
 #: ../browser/table.py:88
 msgid "Assigned group"
 msgstr ""
 
-#: ../behaviors.py:80
+#: ../behaviors.py:94
 #: ../browser/table.py:103
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
@@ -29,30 +33,34 @@ msgstr ""
 msgid "Content behaves like a task."
 msgstr ""
 
-#: ../behaviors.py:92
+#: ../behaviors.py:106
 #: ../browser/table.py:112
 msgid "Due date"
 msgstr ""
 
-#: ../behaviors.py:86
+#: ../behaviors.py:100
 #: ../browser/table.py:79
 msgid "Enquirer"
+msgstr ""
+
+#: ../browser/templates/task_parent.pt:9
+msgid "Highest task"
 msgstr ""
 
 #: ../profiles/default/types/task.xml
 msgid "Something to do by someone."
 msgstr ""
 
-#: ../behaviors.py:103
+#: ../behaviors.py:117
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr ""
 
-#: ../behaviors.py:60
+#: ../behaviors.py:73
 msgid "Task description"
 msgstr ""
 
-#: ../browser/viewlets.py:15
+#: ../browser/viewlets.py:16
 msgid "Tasks list"
 msgstr ""
 
@@ -60,15 +68,15 @@ msgstr ""
 msgid "The person to whom a task is assigned"
 msgstr ""
 
-#: ../browser/viewlets.py:16
+#: ../browser/viewlets.py:17
 msgid "There is no task for this content."
 msgstr ""
 
-#: ../behaviors.py:62
+#: ../behaviors.py:75
 msgid "What is to do and/or what is done"
 msgstr ""
 
-#: ../browser/views.py:20
+#: ../browser/views.py:22
 msgid "You must select an assigned user before continuing !"
 msgstr ""
 
