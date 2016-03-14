@@ -8,7 +8,7 @@
     <tal:highest condition="nocall: ht">
         <span i18n:translate="">Highest task</span>:&nbsp;
         <a tal:content="ht/Title" tal:attributes="href ht/absolute_url"></a>&nbsp;
-        <span>, </span>
+        <span tal:condition="nocall: ab">, </span>
     </tal:highest>
     <tal:highest condition="nocall: ab">
         <span i18n:translate="">Above tasks</span>:&nbsp;
