@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.2 (unreleased)
+2.3 (2016-04-15)
 ----------------
 
 - Adapted ITask to add method getting the highest parent.
