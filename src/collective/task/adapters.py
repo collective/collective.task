@@ -61,3 +61,15 @@ class TaskAdapter(object):
                     return parent
             obj = parent
         return obj
+
+    def get_full_tree_title(self):
+        """Returns the full title of the task tree
+           It is constituted by the list of the names of the tasks and parent task separated by slashes
+           e.g. for Bar task in Foo task : u" Foo/Bare
+        """
+        obj = self.context
+        full_tree_title = obj.Title()
+        while ITask.providedBy(obj.aq_parent):
+            full_tree_title = obj.aq_parent.Title() + '/' + full_tree_title
+            obj = obj.aq_parent
+        return full_tree_title
