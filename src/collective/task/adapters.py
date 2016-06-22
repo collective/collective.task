@@ -70,6 +70,6 @@ class TaskAdapter(object):
         obj = self.context
         full_tree_title = obj.Title()
         while ITask.providedBy(obj.aq_parent):
-            full_tree_title = obj.aq_parent.Title() + '/' + full_tree_title
+            full_tree_title = obj.aq_parent.Title() + ' / ' + full_tree_title
             obj = obj.aq_parent
         return full_tree_title
