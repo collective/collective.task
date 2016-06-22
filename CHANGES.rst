@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.4 (unreleased)
+2.4 (2016-06-22)
 ----------------
 
 - Add a get_full_tree_title method returning the path title of a task until its parent container.
