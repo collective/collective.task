@@ -4,7 +4,8 @@ Changelog
 2.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add a get_full_tree_title method returning the path title of a task until its parent container.
+  [fngaha]
 
 
 2.3 (2016-04-15)
