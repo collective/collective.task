@@ -11,7 +11,7 @@
     font-weight: bold;
 }
 
-/* colorization for incoming_mail_workflow */
+/* colorization for workflow */
 
 .state-created {
  color: red !important;
