@@ -4,8 +4,8 @@ Changelog
 2.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Set initial_trigger to true.
+  [sgeulette]
 
 2.4 (2016-06-22)
 ----------------

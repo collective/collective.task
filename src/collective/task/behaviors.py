@@ -85,6 +85,7 @@ class ITask(model.Schema):
              'action': 'vocabulary',
              'vocab_method': get_users_vocabulary,
              'control_param': 'group',
+             'initial_trigger': True
              },
         ),
         defaultFactory=get_parent_assigned_group
@@ -128,6 +129,7 @@ class ITaskWithFieldset(ITask):
              'action': 'vocabulary',
              'vocab_method': get_users_vocabulary,
              'control_param': 'group',
+             'initial_trigger': True
              },
         )
     )
