@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.5 (unreleased)
+2.5 (2016-12-07)
 ----------------
 
 - Set initial_trigger to true.
