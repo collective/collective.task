@@ -4,8 +4,8 @@ Changelog
 2.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Added special index value for empty field.
+  [sgeulette]
 
 2.5 (2016-12-07)
 ----------------

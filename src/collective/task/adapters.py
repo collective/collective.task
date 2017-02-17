@@ -12,6 +12,8 @@ from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 from .behaviors import ITask
 from.interfaces import ITaskMethods
 
+EMPTY_INDEX = '__empty_value__'
+
 
 @indexer(IContentish)
 def assigned_group_index(obj):
@@ -24,8 +26,11 @@ def assigned_group_index(obj):
 @indexer(IContentish)
 def assigned_user_index(obj):
     """ Index method escaping acquisition """
-    if base_hasattr(obj, 'assigned_user') and obj.assigned_user:
-        return obj.assigned_user
+    if base_hasattr(obj, 'assigned_user'):
+        if obj.assigned_user:
+            return obj.assigned_user
+        else:
+            return EMPTY_INDEX
     return common_marker
 
 
