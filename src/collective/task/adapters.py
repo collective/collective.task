@@ -12,7 +12,7 @@ from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 from .behaviors import ITask
 from.interfaces import ITaskMethods
 
-EMPTY_INDEX = '__empty_value__'
+EMPTY_STRING = '__empty_string__'
 
 
 @indexer(IContentish)
@@ -30,7 +30,7 @@ def assigned_user_index(obj):
         if obj.assigned_user:
             return obj.assigned_user
         else:
-            return EMPTY_INDEX
+            return EMPTY_STRING
     return common_marker
 
 
