@@ -28,4 +28,3 @@ class ITaskMethods(Interface):
             Get the object containing the highest ITask object
             or the highest ITask object if task is True
         """
-

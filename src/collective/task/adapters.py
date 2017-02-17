@@ -56,8 +56,8 @@ class TaskAdapter(object):
         """
         obj = self.context
         while obj is not None:
-#            if not hasattr(obj, "aq_parent"):
-#                raise RuntimeError("Parent traversing interrupted by object: " + str(obj))
+            # if not hasattr(obj, "aq_parent"):
+            #     raise RuntimeError("Parent traversing interrupted by object: " + str(obj))
             parent = obj.aq_parent
             if not ITask.providedBy(parent):
                 if task:  # we want the highest task, we return the current task obj
