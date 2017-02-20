@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from datetime import date
 from zope.component import adapts
 from zope.interface import implements
 
@@ -13,6 +14,7 @@ from .behaviors import ITask
 from.interfaces import ITaskMethods
 
 EMPTY_STRING = '__empty_string__'
+EMPTY_DATE = date(1950, 1, 1)
 
 
 @indexer(IContentish)
@@ -30,6 +32,7 @@ def assigned_user_index(obj):
         if obj.assigned_user:
             return obj.assigned_user
         else:
+            # set value in index for null content to find in catalog null content
             return EMPTY_STRING
     return common_marker
 
@@ -37,8 +40,12 @@ def assigned_user_index(obj):
 @indexer(IContentish)
 def due_date_index(obj):
     """ Index method escaping acquisition """
-    if base_hasattr(obj, 'due_date') and obj.due_date:
-        return obj.due_date
+    if base_hasattr(obj, 'due_date'):
+        if obj.due_date:
+            return obj.due_date
+        else:
+            # set value in index for null content to find in catalog null content
+            return EMPTY_DATE
     return date_marker
 
 
