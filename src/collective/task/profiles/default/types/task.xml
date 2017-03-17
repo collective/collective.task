@@ -27,7 +27,7 @@
   <element value="collective.task.behaviors.ITaskContainer" />
   <element value="plone.app.lockingbehavior.behaviors.ILocking" />
  </property>
- <property name="klass">plone.dexterity.content.Container</property>
+ <property name="klass">collective.task.content.task.Task</property>
  <property name="schema">collective.task.interfaces.ITaskContent</property>
  <!-- DO NOT use a model_source or it removes manually added fields while reapplying the profile -->
  <!--property name="model_source" /-->

@@ -1,10 +1,12 @@
 Changelog
 =========
 
-2.6 (unreleased)
+3.0 (unreleased)
 ----------------
 
 - Added special index value for empty field.
+  [sgeulette]
+- Block local roles on task content
   [sgeulette]
 
 2.5 (2016-12-07)

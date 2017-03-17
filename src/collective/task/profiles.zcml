@@ -43,4 +43,11 @@
         handler="collective.task.migrations.migrate_to_2_2_2.migrate"
         profile="collective.task:default" />
 
+    <genericsetup:upgradeStep
+        title="Go to collective.task 100"
+        description=""
+        source="2.2.2"
+        destination="100"
+        handler="collective.task.migrations.migrate_to_100.migrate"
+        profile="collective.task:default" />
 </configure>
