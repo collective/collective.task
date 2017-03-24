@@ -4,9 +4,11 @@ Changelog
 3.0 (unreleased)
 ----------------
 
-- Added special index value for empty field.
+- Modified enquirer field to be LocalRoleField. Use overridable vocabulary.
   [sgeulette]
 - Block local roles on task content
+  [sgeulette]
+- Added special index value for empty field.
   [sgeulette]
 
 2.5 (2016-12-07)

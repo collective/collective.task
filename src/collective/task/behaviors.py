@@ -31,6 +31,16 @@ class AssignedGroupsVocabulary(object):
 AssignedGroupsVocabularyFactory = AssignedGroupsVocabulary()
 
 
+class EnquirerVocabulary(object):
+    """ Define own factory and named utility that can be easily overrided in componentregistry.xml """
+
+    def __call__(self, context):
+        voc = getUtility(IVocabularyFactory, name="plone.principalsource.Users", context=context)
+        return voc(context)
+
+EnquirerVocabularyFactory = EnquirerVocabulary()
+
+
 def get_users_vocabulary(group):
     """Get users vocabulary when an assigned group is selected."""
     terms = []
@@ -97,15 +107,15 @@ class ITask(model.Schema):
         vocabulary="plone.principalsource.Users"
     )
 
-    enquirer = schema.Choice(
-        title=_(u"Enquirer"),
-        required=False,
-        vocabulary="plone.principalsource.Users"
-    )
-
     due_date = schema.Date(
         title=_(u"Due date"),
         required=False,
+    )
+
+    enquirer = LocalRoleField(
+        title=_(u"Enquirer"),
+        required=False,
+        vocabulary="collective.task.Enquirer"
     )
 
 

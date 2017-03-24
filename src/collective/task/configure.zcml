@@ -29,6 +29,12 @@
     />
 
     <utility
+        name="collective.task.Enquirer"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component="collective.task.behaviors.EnquirerVocabularyFactory"
+    />
+
+    <utility
         name="collective.task.related_taskcontainer"
         provides="dexterity.localroles.interfaces.ILocalRolesRelatedSearchUtility"
         factory=".utility.TaskContainerRelatedSearch"
