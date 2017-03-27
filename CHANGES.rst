@@ -6,6 +6,8 @@ Changelog
 
 - Modified enquirer field to be LocalRoleField. Use overridable vocabulary.
   [sgeulette]
+- Added parents_assigned_groups and parents_enquirers field to manage parents rights
+  [sgeulette]
 - Block local roles on task content
   [sgeulette]
 - Added special index value for empty field.

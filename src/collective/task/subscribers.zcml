@@ -1,9 +1,21 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <subscriber
-     handler=".subscribers.afterTransitionITaskSubscriber"
      for="collective.task.behaviors.ITask
           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+     handler=".subscribers.afterTransitionITaskSubscriber"
       />
+
+  <subscriber
+     for="collective.task.interfaces.ITaskContent
+          zope.lifecycleevent.interfaces.IObjectMovedEvent"
+     handler=".subscribers.taskContent_created"
+      />
+
+  <!--subscriber
+      for="collective.task.interfaces.ITaskContent
+           zope.lifecycleevent.interfaces.IObjectModified"
+      handler=".subscribers.taskContent_modified"
+      /-->
 
 </configure>

@@ -3,6 +3,7 @@
 from datetime import date
 from zope.component import adapts
 from zope.interface import implements
+from zope.lifecycleevent import modified
 
 from plone.indexer import indexer
 from Products.CMFCore.interfaces import IContentish
@@ -11,7 +12,7 @@ from Products.PluginIndexes.common.UnIndex import _marker as common_marker
 from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 
 from .behaviors import ITask
-from.interfaces import ITaskMethods
+from .interfaces import ITaskMethods, ITaskContent, ITaskContentMethods
 
 EMPTY_STRING = '__empty_string__'
 EMPTY_DATE = date(1950, 1, 1)
@@ -85,3 +86,47 @@ class TaskAdapter(object):
             full_tree_title = obj.aq_parent.Title() + ' / ' + full_tree_title
             obj = obj.aq_parent
         return full_tree_title
+
+
+class TaskContentAdapter(object):
+    implements(ITaskContentMethods)
+    adapts(ITaskContent)
+
+    def __init__(self, context):
+        self.context = context
+
+    def get_parents_assigned_groups(self):
+        obj = self.context
+        parent = obj.aq_parent
+        new_value = []
+        if ITaskContent.providedBy(parent):
+            if parent.parents_assigned_groups:
+                # slicing to create a copy and not a reference
+                new_value = parent.parents_assigned_groups[:]
+            if parent.assigned_group and parent.assigned_group not in new_value:
+                new_value.append(parent.assigned_group)
+        return new_value
+
+    def set_parents_value(self, attr, value, modified=True):
+        if value:
+            setattr(self.context, attr, value)
+            if modified:
+                modified(self.context)
+            return value
+        return None
+
+    def set_all_parents_value(self, attr, getter):
+        # we refresh all tree from parent to children
+        parents = []
+        parent = self.context.aq_parent
+        while parent is not None:
+            if ITaskContent.providedBy(parent):
+                parents.append(parent)
+                parent = parent.aq_parent
+            else:
+                parent = None
+        parents = reversed(parents)
+        for obj in parents:
+            adapted = TaskContentAdapter(obj)
+            method = getattr(adapted, getter)
+            adapted.set_parents_value(attr, method(), modified=False)

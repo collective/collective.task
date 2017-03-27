@@ -45,5 +45,6 @@
     <adapter name="due_date" factory=".adapters.due_date_index" />
 
     <adapter factory=".adapters.TaskAdapter" />
+    <adapter factory=".adapters.TaskContentAdapter" />
 
 </configure>
