@@ -102,9 +102,10 @@ class TaskContentAdapter(object):
         new_value = []
         if ITaskContent.providedBy(parent):
             if parent.parents_assigned_groups:
-                # slicing to create a copy and not a reference
+                # slicing to create a copy, not a reference
                 new_value = parent.parents_assigned_groups[:]
-            if parent.assigned_group and parent.assigned_group not in new_value:
+            if (base_hasattr(parent, 'assigned_group') and parent.assigned_group and
+                    parent.assigned_group not in new_value):
                 new_value.append(parent.assigned_group)
         return new_value
 

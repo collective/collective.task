@@ -31,7 +31,7 @@ def taskContent_created(task, event):
     elif event.oldName != event.newName:
         status = 'rename'
         return
-    print "MOVED %s on %s" % (status, task.absolute_url_path())
+    #print "MOVED %s on %s" % (status, task.absolute_url_path())
     adapted = TaskContentAdapter(task)
     if status == 'move':
         adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
