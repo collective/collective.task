@@ -22,10 +22,14 @@ def afterTransitionITaskSubscriber(obj, event):
 def taskContent_created(task, event):
     """
         Update parents localrole fields.
-        Moving a tree will trigger events from children to parents !
+        Moving or copying a tree will trigger events from children to parents !
     """
+    #print "op:%s, on:%s, np:%s, nn:%s" % (event.oldParent, event.oldName, event.newParent, event.newName)
     if event.oldParent is None or event.oldName is None:
-        status = 'creation'
+        status = 'create'
+    elif event.newParent is None or event.newName is None:
+        status = 'delete'
+        return
     elif event.oldParent != event.newParent:
         status = 'move'
     elif event.oldName != event.newName:
@@ -33,7 +37,7 @@ def taskContent_created(task, event):
         return
     #print "MOVED %s on %s" % (status, task.absolute_url_path())
     adapted = TaskContentAdapter(task)
-    if status == 'move':
-        adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
-
+    # update all higher tree: needed when moving or copying
+    adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
+    # update current
     adapted.set_parents_value('parents_assigned_groups', adapted.calculate_pag(), modified=False)
