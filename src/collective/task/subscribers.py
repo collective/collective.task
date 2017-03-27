@@ -34,6 +34,6 @@ def taskContent_created(task, event):
     print "MOVED %s on %s" % (status, task.absolute_url_path())
     adapted = TaskContentAdapter(task)
     if status == 'move':
-        adapted.set_all_parents_value('parents_assigned_groups', 'get_parents_assigned_groups')
+        adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
 
-    adapted.set_parents_value('parents_assigned_groups', adapted.get_parents_assigned_groups(), modified=False)
+    adapted.set_parents_value('parents_assigned_groups', adapted.calculate_pag(), modified=False)

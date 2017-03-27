@@ -95,7 +95,8 @@ class TaskContentAdapter(object):
     def __init__(self, context):
         self.context = context
 
-    def get_parents_assigned_groups(self):
+    def calculate_pag(self):
+        """ Calculate parents_assigned_groups on direct parent """
         obj = self.context
         parent = obj.aq_parent
         new_value = []
@@ -115,8 +116,8 @@ class TaskContentAdapter(object):
             return value
         return None
 
-    def set_all_parents_value(self, attr, getter):
-        # we refresh all tree from parent to children
+    def set_higher_parents_value(self, attr, getter):
+        # we refresh all tree upper
         parents = []
         parent = self.context.aq_parent
         while parent is not None:
