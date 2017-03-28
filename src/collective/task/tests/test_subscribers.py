@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest2 as unittest
+from zope.interface import Interface
+from zope.lifecycleevent import modified, Attributes
 from plone import api
 from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
 
@@ -68,3 +70,14 @@ class TestSubscribers(unittest.TestCase):
         self.assertListEqual(self.task4.parents_assigned_groups,
                              ['Site Administrators', 'Administrators', 'Reviewers'])
 
+    def test_taskContent_modified(self):
+        # initial state
+        self.assertEqual(self.task1.parents_assigned_groups, None)
+        self.assertEqual(self.task2.parents_assigned_groups, None)
+        self.assertEqual(self.task3.parents_assigned_groups, ['Administrators'])
+        self.assertListEqual(self.task4.parents_assigned_groups, ['Administrators', 'Reviewers'])
+        self.task2.assigned_group = 'Site Administrators'
+        modified(self.task2, Attributes(Interface, "ITask.assigned_group"))
+        self.assertEqual(self.task2.parents_assigned_groups, None)
+        self.assertEqual(self.task3.parents_assigned_groups, ['Site Administrators'])
+        self.assertListEqual(self.task4.parents_assigned_groups, ['Site Administrators', 'Reviewers'])

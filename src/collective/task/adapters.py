@@ -5,6 +5,7 @@ from zope.component import adapts
 from zope.interface import implements
 from zope.lifecycleevent import modified
 
+from plone import api
 from plone.indexer import indexer
 from Products.CMFCore.interfaces import IContentish
 from Products.CMFPlone.utils import base_hasattr
@@ -117,8 +118,7 @@ class TaskContentAdapter(object):
             return value
         return None
 
-    def set_higher_parents_value(self, attr, getter):
-        # we refresh all tree upper
+    def get_taskcontent_parents(self):
         parents = []
         parent = self.context.aq_parent
         while parent is not None:
@@ -127,8 +127,26 @@ class TaskContentAdapter(object):
                 parent = parent.aq_parent
             else:
                 parent = None
-        parents = reversed(parents)
+        parents.reverse()
+        return parents
+
+    def set_higher_parents_value(self, attr, getter):
+        # we refresh all tree upper
+        parents = self.get_taskcontent_parents()
         for obj in parents:
+            adapted = TaskContentAdapter(obj)
+            method = getattr(adapted, getter)
+            adapted.set_parents_value(attr, method(), modified=False)
+
+    def get_taskcontent_children(self):
+        brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
+                                             sort_on='path')
+        return [b.getObject() for b in brains][1:]
+
+    def set_lower_parents_value(self, attr, getter):
+        # we refresh all tree lower
+        children = self.get_taskcontent_children()
+        for obj in children:
             adapted = TaskContentAdapter(obj)
             method = getattr(adapted, getter)
             adapted.set_parents_value(attr, method(), modified=False)

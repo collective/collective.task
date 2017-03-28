@@ -12,10 +12,10 @@
      handler=".subscribers.taskContent_created"
       />
 
-  <!--subscriber
+  <subscriber
       for="collective.task.interfaces.ITaskContent
-           zope.lifecycleevent.interfaces.IObjectModified"
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".subscribers.taskContent_modified"
-      /-->
+      />
 
 </configure>

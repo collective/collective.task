@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from collective.task.adapters import TaskContentAdapter
-from collective.task.interfaces import ITaskContent
 
 
 def afterTransitionITaskSubscriber(obj, event):
@@ -41,3 +40,21 @@ def taskContent_created(task, event):
     adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
     # update current
     adapted.set_parents_value('parents_assigned_groups', adapted.calculate_pag(), modified=False)
+
+
+def taskContent_modified(task, event):
+    """
+        Update parents localrole fields.
+    """
+    #print "MODIF %s with %s" % (task.absolute_url_path(), ';'.join([str(e.interface) for e in event.descriptions]))
+    adapted = TaskContentAdapter(task)
+    # at object creation
+    if not event.descriptions:
+        return
+    update = False
+    for at in event.descriptions:
+        if 'ITask.assigned_group' in at.attributes:
+            update = True
+            break
+    if update:
+        adapted.set_lower_parents_value('parents_assigned_groups', 'calculate_pag')
