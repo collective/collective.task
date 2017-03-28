@@ -36,11 +36,13 @@ def taskContent_created(task, event):
         return
     #print "MOVED %s on %s" % (status, task.absolute_url_path())
     adapted = TaskContentAdapter(task)
-    # update all higher tree: needed when moving or copying
-    adapted.set_higher_parents_value('parents_assigned_groups', 'assigned_group')
-    # update current
-    adapted.set_parents_value('parents_assigned_groups',
-                              adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'))
+    fields = adapted.get_parents_fields()
+    for field in fields:
+        # update all higher tree: needed when moving or copying
+        adapted.set_higher_parents_value(field, fields[field]['at'])
+        # update current
+        adapted.set_parents_value(field,
+                                  adapted.calculate_parents_value(field, fields[field]['at']))
 
 
 def taskContent_modified(task, event):
@@ -48,14 +50,18 @@ def taskContent_modified(task, event):
         Update parents localrole fields.
     """
     #print "MODIF %s with %s" % (task.absolute_url_path(), ';'.join([str(e.interface) for e in event.descriptions]))
-    adapted = TaskContentAdapter(task)
     # at object creation
     if not event.descriptions:
         return
-    update = False
+    adapted = TaskContentAdapter(task)
+    fields = adapted.get_parents_fields()
     for at in event.descriptions:
-        if 'ITask.assigned_group' in at.attributes:
-            update = True
-            break
-    if update:
-        adapted.set_lower_parents_value('parents_assigned_groups', 'assigned_group')
+        for field in fields:
+            fieldname = (fields[field]['if'] and '%s.%s' % (fields[field]['if'].getName(), fields[field]['at'])
+                         or fields[field]['at'])
+            if fieldname in at.attributes:
+                fields[field]['up'] = True
+                break
+    for field in fields:
+        if 'up' in fields[field]:
+            adapted.set_lower_parents_value(field, fields[field]['at'])

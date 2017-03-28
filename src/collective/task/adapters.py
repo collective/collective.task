@@ -94,6 +94,10 @@ class TaskContentAdapter(object):
     def __init__(self, context):
         self.context = context
 
+    def get_parents_fields(self):
+        return {'parents_assigned_groups': {'at': 'assigned_group', 'if': ITask},
+                'parents_enquirers': {'at': 'enquirer', 'if': ITask}}
+
     def calculate_parents_value(self, field, parent_field):
         """ Calculate parents_... field on direct parent """
         obj = self.context
