@@ -37,9 +37,10 @@ def taskContent_created(task, event):
     #print "MOVED %s on %s" % (status, task.absolute_url_path())
     adapted = TaskContentAdapter(task)
     # update all higher tree: needed when moving or copying
-    adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
+    adapted.set_higher_parents_value('parents_assigned_groups', 'assigned_group')
     # update current
-    adapted.set_parents_value('parents_assigned_groups', adapted.calculate_pag(), modified=False)
+    adapted.set_parents_value('parents_assigned_groups',
+                              adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'))
 
 
 def taskContent_modified(task, event):
@@ -57,4 +58,4 @@ def taskContent_modified(task, event):
             update = True
             break
     if update:
-        adapted.set_lower_parents_value('parents_assigned_groups', 'calculate_pag')
+        adapted.set_lower_parents_value('parents_assigned_groups', 'assigned_group')

@@ -37,27 +37,30 @@ class TestAdapters(unittest.TestCase):
         self.assertEqual(ITaskMethods(self.task3).get_highest_task_parent(), self.folder)
         self.assertEqual(ITaskMethods(self.task3).get_highest_task_parent(task=True), self.task2)
 
-    def test_calculate_pag(self):
+    def test_calculate_parents_value(self):
         adapted = TaskContentAdapter(self.task5)
         # infos are None
         self.task4.parents_assigned_groups = None
         self.task4.assigned_group = None
-        self.assertListEqual(adapted.calculate_pag(), [])
+        self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'), [])
         # one of infos is None
         self.task4.parents_assigned_groups = ['Administrators', 'Reviewers']
         self.task4.assigned_group = None
-        self.assertListEqual(adapted.calculate_pag(), ['Administrators', 'Reviewers'])
+        self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'),
+                             ['Administrators', 'Reviewers'])
         self.task4.parents_assigned_groups = None
         self.task4.assigned_group = 'Site Administrators'
-        self.assertListEqual(adapted.calculate_pag(), ['Site Administrators'])
+        self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'),
+                             ['Site Administrators'])
         # an item is the same
         self.task4.parents_assigned_groups = ['Administrators', 'Reviewers']
         self.task4.assigned_group = 'Administrators'
-        self.assertListEqual(adapted.calculate_pag(), ['Administrators', 'Reviewers'])
+        self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'),
+                             ['Administrators', 'Reviewers'])
         # full infos
         self.task4.parents_assigned_groups = ['Administrators', 'Reviewers']
         self.task4.assigned_group = 'Site Administrators'
-        self.assertListEqual(adapted.calculate_pag(),
+        self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'),
                              ['Administrators', 'Reviewers', 'Site Administrators'])
 
     def test_get_taskcontent_parents(self):
@@ -74,11 +77,12 @@ class TestAdapters(unittest.TestCase):
         self.assertListEqual(self.task5.parents_assigned_groups, ['Administrators', 'Reviewers', 'Site Administrators'])
         self.task2.assigned_group = self.g1
         adapted = TaskContentAdapter(self.task5)
-        adapted.set_higher_parents_value('parents_assigned_groups', 'calculate_pag')
+        adapted.set_higher_parents_value('parents_assigned_groups', 'assigned_group')
         self.assertEqual(self.task3.parents_assigned_groups, [self.g1])
         self.assertListEqual(self.task4.parents_assigned_groups, [self.g1, 'Reviewers'])
         self.assertListEqual(self.task5.parents_assigned_groups, ['Administrators', 'Reviewers', 'Site Administrators'])
-        adapted.set_parents_value('parents_assigned_groups', adapted.calculate_pag(), modified=False)
+        adapted.set_parents_value('parents_assigned_groups',
+                                  adapted.calculate_parents_value('parents_assigned_groups', 'assigned_group'))
         self.assertListEqual(self.task5.parents_assigned_groups, [self.g1, 'Reviewers', 'Site Administrators'])
 
     def test_get_taskcontent_children(self):
@@ -95,7 +99,7 @@ class TestAdapters(unittest.TestCase):
         self.assertListEqual(self.task5.parents_assigned_groups, ['Administrators', 'Reviewers', 'Site Administrators'])
         self.task2.assigned_group = self.g1
         adapted = TaskContentAdapter(self.task2)
-        adapted.set_lower_parents_value('parents_assigned_groups', 'calculate_pag')
+        adapted.set_lower_parents_value('parents_assigned_groups', 'assigned_group')
         self.assertEqual(self.task3.parents_assigned_groups, [self.g1])
         self.assertListEqual(self.task4.parents_assigned_groups, [self.g1, 'Reviewers'])
         self.assertListEqual(self.task5.parents_assigned_groups, [self.g1, 'Reviewers', 'Site Administrators'])

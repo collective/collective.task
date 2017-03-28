@@ -3,9 +3,7 @@
 from datetime import date
 from zope.component import adapts
 from zope.interface import implements
-from zope.lifecycleevent import modified
 
-from plone import api
 from plone.indexer import indexer
 from Products.CMFCore.interfaces import IContentish
 from Products.CMFPlone.utils import base_hasattr
@@ -96,21 +94,22 @@ class TaskContentAdapter(object):
     def __init__(self, context):
         self.context = context
 
-    def calculate_pag(self):
-        """ Calculate parents_assigned_groups on direct parent """
+    def calculate_parents_value(self, field, parent_field):
+        """ Calculate parents_... field on direct parent """
         obj = self.context
         parent = obj.aq_parent
         new_value = []
         if ITaskContent.providedBy(parent):
-            if parent.parents_assigned_groups:
+            if getattr(parent, field):
                 # slicing to create a copy, not a reference
-                new_value = parent.parents_assigned_groups[:]
-            if (base_hasattr(parent, 'assigned_group') and parent.assigned_group and
-                    parent.assigned_group not in new_value):
-                new_value.append(parent.assigned_group)
+                new_value = getattr(parent, field)[:]
+            # we add parent field value
+            parent_value = base_hasattr(parent, parent_field) and getattr(parent, parent_field) or None
+            if parent_value and parent_value not in new_value:
+                new_value.append(parent_value)
         return new_value
 
-    def set_parents_value(self, attr, value, modified=True):
+    def set_parents_value(self, attr, value, modified=False):
         if value:
             setattr(self.context, attr, value)
             if modified:
@@ -130,23 +129,21 @@ class TaskContentAdapter(object):
         parents.reverse()
         return parents
 
-    def set_higher_parents_value(self, attr, getter):
+    def set_higher_parents_value(self, attr, parent_field):
         # we refresh all tree upper
         parents = self.get_taskcontent_parents()
         for obj in parents:
             adapted = TaskContentAdapter(obj)
-            method = getattr(adapted, getter)
-            adapted.set_parents_value(attr, method(), modified=False)
+            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, parent_field))
 
     def get_taskcontent_children(self):
         brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
                                              sort_on='path')
         return [b.getObject() for b in brains][1:]
 
-    def set_lower_parents_value(self, attr, getter):
+    def set_lower_parents_value(self, attr, parent_field):
         # we refresh all tree lower
         children = self.get_taskcontent_children()
         for obj in children:
             adapted = TaskContentAdapter(obj)
-            method = getattr(adapted, getter)
-            adapted.set_parents_value(attr, method(), modified=False)
+            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, parent_field))
