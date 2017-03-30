@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-03-14 13:24+0000\n"
+"POT-Creation-Date: 2017-03-30 09:53+0000\n"
 "PO-Revision-Date: 2015-03-18 16:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,28 +21,41 @@ msgstr ""
 msgid "Above tasks"
 msgstr "Niveau supérieur"
 
-#: ../behaviors.py:79
+#: ../behaviors.py:89
 #: ../browser/table.py:88
 msgid "Assigned group"
 msgstr "Groupe assigné"
 
-#: ../behaviors.py:94
+#: ../behaviors.py:105
 #: ../browser/table.py:103
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
 
+#: ../behaviors.zcml:19
+msgid "Content behaves like a task (fields are in a fieldset)."
+msgstr "Le type se comporte comme une tâche (les champs sont dans un onglet séparé)."
+
 #. Default: "Devenir une tâche."
-#: ../configure.zcml
+#: ../behaviors.zcml:13
 msgid "Content behaves like a task."
 msgstr "Devenir une tâche."
 
-#: ../behaviors.py:106
+#: ../behaviors.zcml:25
+msgid "Content that contains tasks."
+msgstr "Type qui contient des tâches."
+
+#: ../profiles/default/registry.xml
+msgid "Dates"
+msgstr "Dates"
+
+#: ../behaviors.py:111
 #: ../browser/table.py:112
+#: ../profiles/default/registry.xml
 msgid "Due date"
 msgstr "Échéance"
 
-#: ../behaviors.py:100
+#: ../behaviors.py:116
 #: ../browser/table.py:79
 msgid "Enquirer"
 msgstr "Initiateur"
@@ -51,18 +64,39 @@ msgstr "Initiateur"
 msgid "Highest task"
 msgstr "Tâche la plus élevée"
 
+#: ../interfaces.py:30
+msgid "Parents assigned groups"
+msgstr "Groupes assignés venant des tâches parentes"
+
+#: ../interfaces.py:39
+msgid "Parents enquirers"
+msgstr "Initiateurs venant des tâches parentes"
+
 #: ../profiles/default/types/task.xml
 msgid "Something to do by someone."
 msgstr "Quelque chose à faire par quelqu'un."
 
-#: ../behaviors.py:117
+#: ../testing.zcml:16
+msgid "Steps to ease tests of collective.task"
+msgstr "Steps to ease tests of collective.task"
+
+#: ../behaviors.py:128
+#: ../behaviors.zcml:13
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr "Tâche"
 
-#: ../behaviors.py:73
+#: ../behaviors.zcml:25
+msgid "Task container"
+msgstr "Conteneur de tâches"
+
+#: ../behaviors.py:83
 msgid "Task description"
 msgstr "Description de la tâche"
+
+#: ../behaviors.zcml:19
+msgid "Task with fieldset"
+msgstr "Tâche avec les champs dans un onglet séparé"
 
 #: ../browser/viewlets.py:16
 msgid "Tasks list"
@@ -76,7 +110,7 @@ msgstr "La personne à qui une tâche est assignée"
 msgid "There is no task for this content."
 msgstr "Il n'y a pas de tâches pour ce contenu."
 
-#: ../behaviors.py:75
+#: ../behaviors.py:85
 msgid "What is to do and/or what is done"
 msgstr "Ce qui est à faire et/ou ce qui a été fait"
 
@@ -84,3 +118,6 @@ msgstr "Ce qui est à faire et/ou ce qui a été fait"
 msgid "You must select an assigned user before continuing !"
 msgstr "Vous devez sélectionner un utilisateur assigné avant de pouvoir poursuivre !"
 
+#: ../testing.zcml:16
+msgid "collective.task tests"
+msgstr "collective.task tests"

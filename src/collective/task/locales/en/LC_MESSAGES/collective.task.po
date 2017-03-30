@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-03-14 13:24+0000\n"
+"POT-Creation-Date: 2017-03-30 09:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,40 @@ msgstr ""
 msgid "Above tasks"
 msgstr ""
 
-#: ../behaviors.py:79
+#: ../behaviors.py:89
 #: ../browser/table.py:88
 msgid "Assigned group"
 msgstr ""
 
-#: ../behaviors.py:94
+#: ../behaviors.py:105
 #: ../browser/table.py:103
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr ""
 
-#: ../configure.zcml
+#: ../behaviors.zcml:19
+msgid "Content behaves like a task (fields are in a fieldset)."
+msgstr ""
+
+#: ../behaviors.zcml:13
 msgid "Content behaves like a task."
 msgstr ""
 
-#: ../behaviors.py:106
+#: ../behaviors.zcml:25
+msgid "Content that contains tasks."
+msgstr ""
+
+#: ../profiles/default/registry.xml
+msgid "Dates"
+msgstr ""
+
+#: ../behaviors.py:111
 #: ../browser/table.py:112
+#: ../profiles/default/registry.xml
 msgid "Due date"
 msgstr ""
 
-#: ../behaviors.py:100
+#: ../behaviors.py:116
 #: ../browser/table.py:79
 msgid "Enquirer"
 msgstr ""
@@ -47,17 +60,38 @@ msgstr ""
 msgid "Highest task"
 msgstr ""
 
+#: ../interfaces.py:30
+msgid "Parents assigned groups"
+msgstr ""
+
+#: ../interfaces.py:39
+msgid "Parents enquirers"
+msgstr ""
+
 #: ../profiles/default/types/task.xml
 msgid "Something to do by someone."
 msgstr ""
 
-#: ../behaviors.py:117
+#: ../testing.zcml:16
+msgid "Steps to ease tests of collective.task"
+msgstr ""
+
+#: ../behaviors.py:128
+#: ../behaviors.zcml:13
 #: ../profiles/default/types/task.xml
 msgid "Task"
 msgstr ""
 
-#: ../behaviors.py:73
+#: ../behaviors.zcml:25
+msgid "Task container"
+msgstr ""
+
+#: ../behaviors.py:83
 msgid "Task description"
+msgstr ""
+
+#: ../behaviors.zcml:19
+msgid "Task with fieldset"
 msgstr ""
 
 #: ../browser/viewlets.py:16
@@ -72,7 +106,7 @@ msgstr ""
 msgid "There is no task for this content."
 msgstr ""
 
-#: ../behaviors.py:75
+#: ../behaviors.py:85
 msgid "What is to do and/or what is done"
 msgstr ""
 
@@ -80,3 +114,6 @@ msgstr ""
 msgid "You must select an assigned user before continuing !"
 msgstr ""
 
+#: ../testing.zcml:16
+msgid "collective.task tests"
+msgstr ""
