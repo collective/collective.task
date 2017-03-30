@@ -21,6 +21,8 @@ class Migrate_To_100(Migrator):
         for brain in self.catalog(portal_type='task'):
             obj = brain.getObject()
             obj.__ac_local_roles_block__ = True
+            obj.parents_assigned_groups = None
+            obj.parents_enquirers = None
             obj.reindexObjectSecurity()
 
         self.finish()
