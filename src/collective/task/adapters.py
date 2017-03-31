@@ -106,8 +106,7 @@ class TaskContentAdapter(object):
         for dic in p_fields:
             if dic['p_if'].providedBy(parent):
                 if base_hasattr(parent, field) and getattr(parent, field):
-                    # slicing to create a copy, not a reference
-                    new_value = getattr(parent, field)[:]
+                    new_value += [val for val in getattr(parent, field) if val not in new_value]
                 # we add parent field value
                 parent_value = base_hasattr(parent, dic['at']) and getattr(parent, dic['at']) or None
                 if parent_value and parent_value not in new_value:
