@@ -114,7 +114,10 @@ class TaskContainerAdapter(ParentsBaseAdapter):
     def get_taskcontent_children(self):
         brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
                                              sort_on='path')
-        return [b.getObject() for b in brains][1:]
+        objs = [b.getObject() for b in brains]
+        if objs[0] == self.context:
+            return objs[1:]
+        return objs
 
     def set_lower_parents_value(self, attr, dic):
         # we refresh all tree lower
