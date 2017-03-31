@@ -95,22 +95,23 @@ class TaskContentAdapter(object):
         self.context = context
 
     def get_parents_fields(self):
-        return {'parents_assigned_groups': {'at': 'assigned_group', 'if': ITask},
-                'parents_enquirers': {'at': 'enquirer', 'if': ITask}}
+        return {'parents_assigned_groups': [{'at': 'assigned_group', 'prefix': ITask, 'p_if': ITaskContent}],
+                'parents_enquirers': [{'at': 'enquirer', 'prefix': ITask, 'p_if': ITaskContent}]}
 
-    def calculate_parents_value(self, field, parent_field):
+    def calculate_parents_value(self, field, p_fields):
         """ Calculate parents_... field on direct parent """
         obj = self.context
         parent = obj.aq_parent
         new_value = []
-        if ITaskContent.providedBy(parent):
-            if getattr(parent, field):
-                # slicing to create a copy, not a reference
-                new_value = getattr(parent, field)[:]
-            # we add parent field value
-            parent_value = base_hasattr(parent, parent_field) and getattr(parent, parent_field) or None
-            if parent_value and parent_value not in new_value:
-                new_value.append(parent_value)
+        for dic in p_fields:
+            if dic['p_if'].providedBy(parent):
+                if base_hasattr(parent, field) and getattr(parent, field):
+                    # slicing to create a copy, not a reference
+                    new_value = getattr(parent, field)[:]
+                # we add parent field value
+                parent_value = base_hasattr(parent, dic['at']) and getattr(parent, dic['at']) or None
+                if parent_value and parent_value not in new_value:
+                    new_value.append(parent_value)
         return new_value
 
     def set_parents_value(self, attr, value, modified=False):
@@ -121,33 +122,34 @@ class TaskContentAdapter(object):
             return value
         return None
 
-    def get_taskcontent_parents(self):
+    def get_taskcontent_parents(self, ifs=[ITaskContent]):
         parents = []
         parent = self.context.aq_parent
-        while parent is not None:
-            if ITaskContent.providedBy(parent):
-                parents.append(parent)
-                parent = parent.aq_parent
-            else:
-                parent = None
+        for intf in ifs:
+            while parent is not None:
+                if intf.providedBy(parent):
+                    parents.append(parent)
+                    parent = parent.aq_parent
+                else:
+                    parent = None
         parents.reverse()
         return parents
 
-    def set_higher_parents_value(self, attr, parent_field):
+    def set_higher_parents_value(self, attr, p_fields):
         # we refresh all tree upper
         parents = self.get_taskcontent_parents()
         for obj in parents:
             adapted = TaskContentAdapter(obj)
-            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, parent_field))
+            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, p_fields))
 
     def get_taskcontent_children(self):
         brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
                                              sort_on='path')
         return [b.getObject() for b in brains][1:]
 
-    def set_lower_parents_value(self, attr, parent_field):
+    def set_lower_parents_value(self, attr, dic):
         # we refresh all tree lower
         children = self.get_taskcontent_children()
         for obj in children:
             adapted = TaskContentAdapter(obj)
-            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, parent_field))
+            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, dic))

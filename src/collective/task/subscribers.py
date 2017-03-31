@@ -39,10 +39,10 @@ def taskContent_created(task, event):
     fields = adapted.get_parents_fields()
     for field in fields:
         # update all higher tree: needed when moving or copying
-        adapted.set_higher_parents_value(field, fields[field]['at'])
+        adapted.set_higher_parents_value(field, fields[field])
         # update current
         adapted.set_parents_value(field,
-                                  adapted.calculate_parents_value(field, fields[field]['at']))
+                                  adapted.calculate_parents_value(field, fields[field]))
 
 
 def taskContent_modified(task, event):
@@ -53,15 +53,16 @@ def taskContent_modified(task, event):
     # at object creation
     if not event.descriptions:
         return
+    updates = []
     adapted = TaskContentAdapter(task)
     fields = adapted.get_parents_fields()
     for at in event.descriptions:
         for field in fields:
-            fieldname = (fields[field]['if'] and '%s.%s' % (fields[field]['if'].getName(), fields[field]['at'])
-                         or fields[field]['at'])
-            if fieldname in at.attributes:
-                fields[field]['up'] = True
-                break
-    for field in fields:
-        if 'up' in fields[field]:
-            adapted.set_lower_parents_value(field, fields[field]['at'])
+            for dic in fields[field]:
+                fieldname = (dic['prefix'] and '%s.%s' % (dic['prefix'].getName(), dic['at'])
+                             or dic['at'])
+                if fieldname in at.attributes:
+                    updates.append(field)
+                    break
+    for field in updates:
+        adapted.set_lower_parents_value(field, fields[field])
