@@ -11,7 +11,7 @@ from Products.PluginIndexes.common.UnIndex import _marker as common_marker
 from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 
 from .behaviors import ITask
-from .interfaces import ITaskMethods, ITaskContent, ITaskContentMethods
+from .interfaces import ITaskMethods, ITaskContent
 
 EMPTY_STRING = '__empty_string__'
 EMPTY_DATE = date(1950, 1, 1)
@@ -87,9 +87,37 @@ class TaskAdapter(object):
         return full_tree_title
 
 
+class TaskContainerAdapter(object):
+    """
+        implements(ITaskContainerMethods)
+        adapts(ITaskContainer)
+    """
+
+    def __init__(self, context):
+        self.context = context
+
+    def get_parents_fields(self):
+        return {'parents_assigned_groups': [{'at': 'assigned_group', 'prefix': ITask, 'p_if': ITaskContent}],
+                'parents_enquirers': [{'at': 'enquirer', 'prefix': ITask, 'p_if': ITaskContent}]}
+
+    def get_taskcontent_children(self):
+        brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
+                                             sort_on='path')
+        return [b.getObject() for b in brains][1:]
+
+    def set_lower_parents_value(self, attr, dic):
+        # we refresh all tree lower
+        children = self.get_taskcontent_children()
+        for obj in children:
+            adapted = TaskContentAdapter(obj)
+            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, dic))
+
+
 class TaskContentAdapter(object):
-    implements(ITaskContentMethods)
-    adapts(ITaskContent)
+    """
+        implements(ITaskContentMethods)
+        adapts(ITaskContent)
+    """
 
     def __init__(self, context):
         self.context = context
@@ -140,15 +168,3 @@ class TaskContentAdapter(object):
         for obj in parents:
             adapted = TaskContentAdapter(obj)
             adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, p_fields))
-
-    def get_taskcontent_children(self):
-        brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
-                                             sort_on='path')
-        return [b.getObject() for b in brains][1:]
-
-    def set_lower_parents_value(self, attr, dic):
-        # we refresh all tree lower
-        children = self.get_taskcontent_children()
-        for obj in children:
-            adapted = TaskContentAdapter(obj)
-            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, dic))

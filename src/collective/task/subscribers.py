@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from collective.task.adapters import TaskContentAdapter
+from zope.component import getAdapter
+from collective.task.interfaces import ITaskContainerMethods, ITaskContentMethods
 
 
 def afterTransitionITaskSubscriber(obj, event):
@@ -35,7 +36,7 @@ def taskContent_created(task, event):
         status = 'rename'
         return
     #print "MOVED %s on %s" % (status, task.absolute_url_path())
-    adapted = TaskContentAdapter(task)
+    adapted = getAdapter(task, ITaskContentMethods)
     fields = adapted.get_parents_fields()
     for field in fields:
         # update all higher tree: needed when moving or copying
@@ -54,7 +55,7 @@ def taskContent_modified(task, event):
     if not event.descriptions:
         return
     updates = []
-    adapted = TaskContentAdapter(task)
+    adapted = getAdapter(task, ITaskContainerMethods)
     fields = adapted.get_parents_fields()
     for at in event.descriptions:
         for field in fields:

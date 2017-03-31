@@ -54,5 +54,9 @@ class ITaskMethods(Interface):
         """
 
 
+class ITaskContainerMethods(Interface):
+    """ Adapter description """
+
+
 class ITaskContentMethods(Interface):
     """ Adapter description """

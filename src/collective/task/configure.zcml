@@ -45,6 +45,13 @@
     <adapter name="due_date" factory=".adapters.due_date_index" />
 
     <adapter factory=".adapters.TaskAdapter" />
-    <adapter factory=".adapters.TaskContentAdapter" />
+    <adapter
+      for="collective.task.behaviors.ITaskContainer"
+      provides="collective.task.interfaces.ITaskContainerMethods"
+      factory=".adapters.TaskContainerAdapter" />
+    <adapter
+      for="collective.task.interfaces.ITaskContent"
+      provides="collective.task.interfaces.ITaskContentMethods"
+      factory=".adapters.TaskContentAdapter" />
 
 </configure>
