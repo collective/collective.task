@@ -35,4 +35,7 @@
        <value key="group" i18n:translate="">Dates</value>
     </records>
 
+    <records interface="collective.task.interfaces.ICollectiveTaskConfig" prefix="collective.task">
+    </records>
+
 </registry>

@@ -2,10 +2,20 @@
 """Initial setup."""
 import logging
 
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 from dexterity.localroles.utils import add_fti_configuration
 
 
 logger = logging.getLogger('collective.task: setuphandlers')
+
+
+PARENTS_FIELDS_CONFIG = [
+    {'fieldname': u'parents_assigned_groups', 'attribute': u'assigned_group', 'attribute_prefix': u'ITask',
+     'provided_interface': u'collective.task.interfaces.ITaskContent'},
+    {'fieldname': u'parents_enquirers', 'attribute': u'enquirer', 'attribute_prefix': u'ITask',
+     'provided_interface': u'collective.task.interfaces.ITaskContent'},
+]
 
 
 def isNotCurrentProfile(context):
@@ -74,8 +84,13 @@ def post_install(context):
     if isNotCurrentProfile(context):
         return
 
-    # Do something during the installation of this package
+    logger.info('Configure role fields')
     configure_rolefields(context)
+
+    registry = getUtility(IRegistry)
+    logger.info("Configure registry")
+    if not registry.get('collective.task.parents_fields'):
+        registry['collective.task.parents_fields'] = PARENTS_FIELDS_CONFIG
 
 
 def uninstall_1(context):

@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from datetime import date
-from zope.component import adapts
+from zope.component import adapts, getUtility
+from zope.dottedname.resolve import resolve
 from zope.interface import implements
 
 from plone.indexer import indexer
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IContentish
 from Products.CMFPlone.utils import base_hasattr
 from Products.PluginIndexes.common.UnIndex import _marker as common_marker
@@ -87,18 +89,27 @@ class TaskAdapter(object):
         return full_tree_title
 
 
-class TaskContainerAdapter(object):
-    """
-        implements(ITaskContainerMethods)
-        adapts(ITaskContainer)
-    """
+class ParentsBaseAdapter(object):
 
     def __init__(self, context):
         self.context = context
 
     def get_parents_fields(self):
-        return {'parents_assigned_groups': [{'at': 'assigned_group', 'prefix': ITask, 'p_if': ITaskContent}],
-                'parents_enquirers': [{'at': 'enquirer', 'prefix': ITask, 'p_if': ITaskContent}]}
+        registry = getUtility(IRegistry)
+        ret = {}
+        for dic in registry.get('collective.task.parents_fields', []):
+            if dic['fieldname'] not in ret:
+                ret[dic['fieldname']] = []
+            ret[dic['fieldname']].append({'at': dic['attribute'], 'prefix': dic['attribute_prefix'] or '',
+                                          'p_if': resolve(dic['provided_interface'])})
+        return ret
+
+
+class TaskContainerAdapter(ParentsBaseAdapter):
+    """
+        implements(ITaskContainerMethods)
+        adapts(ITaskContainer)
+    """
 
     def get_taskcontent_children(self):
         brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
@@ -113,18 +124,11 @@ class TaskContainerAdapter(object):
             adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, dic))
 
 
-class TaskContentAdapter(object):
+class TaskContentAdapter(ParentsBaseAdapter):
     """
         implements(ITaskContentMethods)
         adapts(ITaskContent)
     """
-
-    def __init__(self, context):
-        self.context = context
-
-    def get_parents_fields(self):
-        return {'parents_assigned_groups': [{'at': 'assigned_group', 'prefix': ITask, 'p_if': ITaskContent}],
-                'parents_enquirers': [{'at': 'enquirer', 'prefix': ITask, 'p_if': ITaskContent}]}
 
     def calculate_parents_value(self, field, p_fields):
         """ Calculate parents_... field on direct parent """

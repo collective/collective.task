@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from zope.component import getUtility
 from plone import api
+from plone.registry.interfaces import IRegistry
 from imio.migrator.migrator import Migrator
+from ..setuphandlers import PARENTS_FIELDS_CONFIG
 
 import logging
 logger = logging.getLogger('collective.task')
@@ -16,7 +19,7 @@ class Migrate_To_100(Migrator):
     def run(self):
         logger.info('Migrating to collective.task 100')
         self.cleanRegistries()
-        self.runProfileSteps('collective.task', steps=['typeinfo'])
+        self.runProfileSteps('collective.task', steps=['typeinfo', 'plone.app.registry'])
         # Update existing objects
         for brain in self.catalog(portal_type='task'):
             obj = brain.getObject()
@@ -24,6 +27,12 @@ class Migrate_To_100(Migrator):
             obj.parents_assigned_groups = None
             obj.parents_enquirers = None
             obj.reindexObjectSecurity()
+
+        # settings config
+        registry = getUtility(IRegistry)
+        #if not registry.get('collective.task.parents_fields'):
+        if True:
+            registry['collective.task.parents_fields'] = PARENTS_FIELDS_CONFIG
 
         self.finish()
 

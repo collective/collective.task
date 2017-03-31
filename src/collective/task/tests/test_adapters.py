@@ -3,7 +3,7 @@ import unittest
 from plone import api
 from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
 
-from ..adapters import TaskContentAdapter
+from ..adapters import TaskContentAdapter, TaskContainerAdapter
 from ..behaviors import ITask
 from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from ..interfaces import ITaskMethods, ITaskContent
@@ -89,9 +89,9 @@ class TestAdapters(unittest.TestCase):
         self.assertListEqual(self.task5.parents_assigned_groups, [self.g1, 'Reviewers', 'Site Administrators'])
 
     def test_get_taskcontent_children(self):
-        adapted = TaskContentAdapter(self.task2)
+        adapted = TaskContainerAdapter(self.task2)
         self.assertListEqual(adapted.get_taskcontent_children(), [self.task3, self.task4, self.task5])
-        adapted = TaskContentAdapter(self.task1)
+        adapted = TaskContainerAdapter(self.task1)
         self.assertListEqual(adapted.get_taskcontent_children(), [])
 
     def test_set_lower_parents_value(self):
@@ -102,7 +102,7 @@ class TestAdapters(unittest.TestCase):
         self.assertListEqual(self.task5.parents_assigned_groups, ['Administrators', 'Reviewers', 'Site Administrators'])
         self.task2.assigned_group = self.g1
         attributes = [{'at': 'assigned_group', 'prefix': ITask, 'p_if': ITaskContent}]
-        adapted = TaskContentAdapter(self.task2)
+        adapted = TaskContainerAdapter(self.task2)
         adapted.set_lower_parents_value('parents_assigned_groups', attributes)
         self.assertEqual(self.task3.parents_assigned_groups, [self.g1])
         self.assertListEqual(self.task4.parents_assigned_groups, [self.g1, 'Reviewers'])

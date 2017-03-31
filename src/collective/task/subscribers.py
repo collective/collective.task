@@ -60,7 +60,7 @@ def taskContent_modified(task, event):
     for at in event.descriptions:
         for field in fields:
             for dic in fields[field]:
-                fieldname = (dic['prefix'] and '%s.%s' % (dic['prefix'].getName(), dic['at'])
+                fieldname = (dic['prefix'] and '%s.%s' % (dic['prefix'], dic['at'])
                              or dic['at'])
                 if fieldname in at.attributes:
                     updates.append(field)

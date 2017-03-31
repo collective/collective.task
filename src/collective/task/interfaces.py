@@ -9,6 +9,7 @@ from plone.app.dexterity import PloneMessageFactory as _PMF
 from plone.autoform import directives
 from plone.supermodel import model
 
+from collective.z3cform.datagridfield.registry import DictRow
 from dexterity.localrolesfield.field import LocalRolesField
 
 from collective.task import _
@@ -60,3 +61,18 @@ class ITaskContainerMethods(Interface):
 
 class ITaskContentMethods(Interface):
     """ Adapter description """
+
+
+class IParentsFieldSchema(Interface):
+    fieldname = schema.TextLine(title=_("Parents field name"), required=True)
+    attribute = schema.TextLine(title=_("Parent attribute"), required=True)
+    attribute_prefix = schema.TextLine(title=_("Attribute prefix (without dot)"), required=False)
+    provided_interface = schema.TextLine(title=_("Parent interface"), required=True)
+
+
+class ICollectiveTaskConfig(model.Schema):
+
+    parents_fields = schema.List(
+        title=_(u'Parents fields'),
+        value_type=DictRow(title=_("Parents field"),
+                           schema=IParentsFieldSchema))
