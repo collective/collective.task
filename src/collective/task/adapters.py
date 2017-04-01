@@ -115,7 +115,7 @@ class TaskContainerAdapter(ParentsBaseAdapter):
         brains = self.context.portal_catalog(portal_type='task', path='/'.join(self.context.getPhysicalPath()),
                                              sort_on='path')
         objs = [b.getObject() for b in brains]
-        if objs[0] == self.context:
+        if objs and objs[0] == self.context:
             return objs[1:]
         return objs
 
