@@ -25,6 +25,8 @@
         title="collective.task post_install import step"
         description="Post install import step from collective.task"
         handler=".setuphandlers.post_install">
+        <depends name="typeinfo"/>
+        <depends name="registry"/>
     </genericsetup:importStep>
 
     <genericsetup:upgradeStep
