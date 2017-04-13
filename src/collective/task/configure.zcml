@@ -13,10 +13,12 @@
     <include package="dexterity.localrolesfield"/>
     <include package="plone.principalsource" />
     <include package="plone.directives.form" />
+    <include package="plone.supermodel.exportimport" />
     <include package="plone.formwidget.masterselect" />
     <include package="z3c.table" />
 
     <include package=".browser" />
+    <include package=".content" />
 
     <include file="profiles.zcml" />
     <include file="behaviors.zcml" />
@@ -39,6 +41,16 @@
         provides="dexterity.localroles.interfaces.ILocalRolesRelatedSearchUtility"
         factory=".utility.TaskContainerRelatedSearch"
     />
+
+    <utility
+        component="collective.task.field.LocalRoleSelectHandler"
+        name="collective.task.field.LocalRoleMasterSelectField"
+        />
+
+    <utility
+        component="collective.task.field.LocalRoleHandler"
+        name="dexterity.localrolesfield.field.LocalRoleField"
+        />
 
     <adapter name="assigned_group" factory=".adapters.assigned_group_index" />
     <adapter name="assigned_user" factory=".adapters.assigned_user_index" />
