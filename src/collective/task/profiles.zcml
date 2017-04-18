@@ -26,7 +26,7 @@
         description="Post install import step from collective.task"
         handler=".setuphandlers.post_install">
         <depends name="typeinfo"/>
-        <depends name="registry"/>
+        <depends name="plone.app.registry"/>
     </genericsetup:importStep>
 
     <genericsetup:upgradeStep
