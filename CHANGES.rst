@@ -12,6 +12,8 @@ Changelog
   [sgeulette]
 - Added special index value for empty field.
   [sgeulette]
+- Use Owner role in workflow
+  [sgeulette]
 
 2.5 (2016-12-07)
 ----------------

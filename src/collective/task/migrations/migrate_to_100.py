@@ -19,7 +19,8 @@ class Migrate_To_100(Migrator):
     def run(self):
         logger.info('Migrating to collective.task 100')
         self.cleanRegistries()
-        self.runProfileSteps('collective.task', steps=['typeinfo', 'plone.app.registry'])
+        self.runProfileSteps('collective.task', steps=['typeinfo', 'plone.app.registry', 'workflow'])
+        self.portal.portal_workflow.updateRoleMappings()
         # Update existing objects
         for brain in self.catalog(portal_type='task'):
             obj = brain.getObject()
