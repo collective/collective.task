@@ -11,6 +11,7 @@ from z3c.table.column import Column, LinkColumn
 from z3c.table.table import Table
 
 from collective.task import _, PMF
+from collective.task.adapters import EMPTY_STRING
 
 
 class TasksTable(Table):
@@ -50,7 +51,7 @@ class UserColumn(Column):
 
     def renderCell(self, value):
         username = getattr(value, self.field, '')
-        if username:
+        if username and username != EMPTY_STRING:
             member = api.user.get(username)
             return member.getUser().getProperty('fullname').decode('utf-8')
 
