@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0 (unreleased)
+3.0 (2017-05-30)
 ----------------
 
 - Modified enquirer field to be LocalRoleField. Use overridable vocabulary.
