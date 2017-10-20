@@ -4,7 +4,7 @@
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
 
-from Products.CMFPlone.utils import safe_unicode
+from Products.CMFPlone.utils import safe_unicode, normalizeString
 from plone import api
 
 from z3c.table.column import Column, LinkColumn
@@ -66,8 +66,8 @@ class TitleColumn(LinkColumn):
     weight = 10
 
     def getLinkCSS(self, item):
-        return ' class=state-%s contenttype-%s' % (api.content.get_state(obj=item),
-                                                  item.portal_type)
+        return ' class="state-%s icons-on contenttype-%s"' % (api.content.get_state(obj=item),
+                                                              normalizeString(item.portal_type))
 
     def getLinkContent(self, item):
         return safe_unicode(item.title)

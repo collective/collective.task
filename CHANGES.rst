@@ -4,8 +4,8 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Corrected table column style. Added contenttype css icon
+  [sgeulette]
 
 3.0 (2017-05-30)
 ----------------

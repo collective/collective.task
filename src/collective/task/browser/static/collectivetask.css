@@ -11,6 +11,14 @@
     font-weight: bold;
 }
 
+/* icon */
+.icons-on .contenttype-task {
+    background: url("++resource++collective.task/task_icon.png") no-repeat scroll transparent;
+    display: inline;
+    line-height: 1.1em;
+    padding-left: 20px !important;
+}
+
 /* colorization for workflow */
 
 .state-created {
