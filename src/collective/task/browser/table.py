@@ -20,7 +20,7 @@ class TasksTable(Table):
 
     cssClassEven = u'even'
     cssClassOdd = u'odd'
-    cssClasses = {'table': 'listing taskContainerListing'}
+    cssClasses = {'table': 'listing taskContainerListing icons-on'}
 
     batchSize = 20
     startBatchingAt = 30
@@ -66,8 +66,8 @@ class TitleColumn(LinkColumn):
     weight = 10
 
     def getLinkCSS(self, item):
-        return ' class="state-%s icons-on contenttype-%s"' % (api.content.get_state(obj=item),
-                                                              normalizeString(item.portal_type))
+        return ' class="state-%s contenttype-%s"' % (api.content.get_state(obj=item),
+                                                     normalizeString(item.portal_type))
 
     def getLinkContent(self, item):
         return safe_unicode(item.title)
