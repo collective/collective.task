@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from zope.component import getUtility
+from collective.task.setuphandlers import PARENTS_FIELDS_CONFIG
+from imio.migrator.migrator import Migrator
 from plone import api
 from plone.registry.interfaces import IRegistry
-from imio.migrator.migrator import Migrator
-from ..setuphandlers import PARENTS_FIELDS_CONFIG
+from zope.component import getUtility
 
 import logging
+
+
 logger = logging.getLogger('collective.task')
 
 
@@ -31,7 +33,7 @@ class Migrate_To_100(Migrator):
 
         # settings config
         registry = getUtility(IRegistry)
-        #if not registry.get('collective.task.parents_fields'):
+        # if not registry.get('collective.task.parents_fields'):
         if True:
             registry['collective.task.parents_fields'] = PARENTS_FIELDS_CONFIG
 

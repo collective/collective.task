@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """Custom viewlets."""
+from collective.task import _
+from collective.task.behaviors import ITask
+from collective.task.interfaces import ITaskMethods
 from plone import api
 from plone.app.layout.viewlets import common as base
-
-from ..interfaces import ITaskMethods
-from ..behaviors import ITask
-from .. import _
 from table import TasksTable
 
 

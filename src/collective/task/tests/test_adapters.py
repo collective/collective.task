@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
-import unittest
+from collective.task.adapters import TaskContainerAdapter
+from collective.task.adapters import TaskContentAdapter
+from collective.task.behaviors import ITask
+from collective.task.interfaces import ITaskContent
+from collective.task.interfaces import ITaskMethods
+from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from plone import api
-from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
+from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
 
-from ..adapters import TaskContentAdapter, TaskContainerAdapter
-from ..behaviors import ITask
-from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
-from ..interfaces import ITaskMethods, ITaskContent
+import unittest
 
 
 class TestAdapters(unittest.TestCase):

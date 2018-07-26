@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """Example."""
-from Acquisition import aq_inner, aq_parent
-from zope.interface import implements
-
-from plone import api
-from dexterity.localroles.interfaces import ILocalRolesRelatedSearchUtility
-
 from .behaviors import ITaskContainer
+from Acquisition import aq_inner
+from Acquisition import aq_parent
+from dexterity.localroles.interfaces import ILocalRolesRelatedSearchUtility
+from plone import api
+from zope.interface import implements
 
 
 class TaskContainerRelatedSearch(object):

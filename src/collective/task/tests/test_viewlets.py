@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-import unittest
+from collective.task.browser.viewlets import TaskParentViewlet
+from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from plone import api
-from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
+from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
 
-from ..browser.viewlets import TaskParentViewlet
-from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
+import unittest
 
 
 class TestTaskParentViewlet(unittest.TestCase):

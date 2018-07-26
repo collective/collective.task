@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
+from collective.task.browser.table import AssignedGroupColumn
+from collective.task.browser.table import AssignedUserColumn
+from collective.task.browser.table import DueDateColumn
+from collective.task.browser.table import EnquirerColumn
+from collective.task.browser.table import ReviewStateColumn
+from collective.task.browser.table import TasksTable
+from collective.task.browser.table import TitleColumn
+from collective.task.browser.table import UserColumn
+from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from datetime import datetime
-import unittest2 as unittest
 from plone import api
-from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
+from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
 
-from ..browser.table import (TasksTable, UserColumn, TitleColumn, EnquirerColumn, AssignedGroupColumn,
-                             AssignedUserColumn, DueDateColumn, ReviewStateColumn)
-from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
+import unittest2 as unittest
 
 
 class TestTable(unittest.TestCase):
@@ -41,7 +50,7 @@ class TestTable(unittest.TestCase):
     def test_TitleColumn(self):
         col = TitleColumn(self.portal, self.portal.REQUEST, None)
         self.assertEqual(col.renderCell(self.task1),
-                         u'<a href="http://nohost/plone/task1" class=state-created contenttype-task>Task1</a>')
+                         u'<a href="http://nohost/plone/task1" class="state-created contenttype-task">Task1</a>')
 
     def test_EnquirerColumn(self):
         col = EnquirerColumn(self.portal, self.portal.REQUEST, None)

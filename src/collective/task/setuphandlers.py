@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Initial setup."""
-import logging
-
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
 from dexterity.localroles.utils import add_fti_configuration
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
+
+import logging
 
 
 logger = logging.getLogger('collective.task: setuphandlers')

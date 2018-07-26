@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
+from collective.task.behaviors import get_current_user_id
+from collective.task.behaviors import get_parent_assigned_group
+from collective.task.behaviors import get_users_vocabulary
+from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
+from plone import api
+from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
+
 import datetime
 import unittest2 as unittest
-from plone import api
-from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
-
-from ..behaviors import get_users_vocabulary, get_parent_assigned_group, get_current_user_id
-from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 
 
 class TestBehaviors(unittest.TestCase):

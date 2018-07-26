@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from collective.task.interfaces import ITaskContainerMethods
+from collective.task.interfaces import ITaskContentMethods
 from zope.component import getAdapter
-from collective.task.interfaces import ITaskContainerMethods, ITaskContentMethods
 
 
 def afterTransitionITaskSubscriber(obj, event):
@@ -24,7 +25,7 @@ def taskContent_created(task, event):
         Update parents localrole fields.
         Moving or copying a tree will trigger events from children to parents !
     """
-    #print "op:%s, on:%s, np:%s, nn:%s" % (event.oldParent, event.oldName, event.newParent, event.newName)
+    # print "op:%s, on:%s, np:%s, nn:%s" % (event.oldParent, event.oldName, event.newParent, event.newName)
     if event.oldParent is None or event.oldName is None:
         status = 'create'
     elif event.newParent is None or event.newName is None:
@@ -35,7 +36,8 @@ def taskContent_created(task, event):
     elif event.oldName != event.newName:
         status = 'rename'
         return
-    #print "MOVED %s on %s" % (status, task.absolute_url_path())
+    status
+    # print "MOVED %s on %s" % (status, task.absolute_url_path())
     adapted = getAdapter(task, ITaskContentMethods)
     fields = adapted.get_parents_fields()
     for field in fields:
@@ -50,7 +52,7 @@ def taskContent_modified(task, event):
     """
         Update parents localrole fields.
     """
-    #print "MODIF %s with %s" % (task.absolute_url_path(), ';'.join([str(e.interface) for e in event.descriptions]))
+    # print "MODIF %s with %s" % (task.absolute_url_path(), ';'.join([str(e.interface) for e in event.descriptions]))
     # at object creation
     if not event.descriptions:
         return

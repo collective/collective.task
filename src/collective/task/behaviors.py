@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
-from zope.component import getUtility
-from zope.interface import alsoProvides, Interface, provider
-from zope import schema
-from zope.schema.interfaces import IContextAwareDefaultFactory
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
-
-from Products.CMFPlone.utils import base_hasattr
+from collective.task import _
+from collective.task.field import LocalRoleMasterSelectField
+from dexterity.localrolesfield.field import LocalRoleField
 from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.directives.form import default_value
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
-
-from dexterity.localrolesfield.field import LocalRoleField
-
-from collective.task.field import LocalRoleMasterSelectField
-from collective.task import _
+from Products.CMFPlone.utils import base_hasattr
+from zope import schema
+from zope.component import getUtility
+from zope.interface import alsoProvides
+from zope.interface import Interface
+from zope.interface import provider
+from zope.schema.interfaces import IContextAwareDefaultFactory
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 class AssignedGroupsVocabulary(object):

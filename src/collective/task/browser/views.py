@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import copy
+from collective.task import _
 from plone import api
 from plone.app import dexterity
 from plone.dexterity.browser.view import DefaultView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from .. import _
+
+import copy
 
 
 class TaskItemView(DefaultView):

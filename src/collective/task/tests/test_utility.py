@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-import unittest2 as unittest
+from collective.task.behaviors import ITaskContainer
+from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
+from collective.task.utility import TaskContainerRelatedSearch
+from dexterity.localroles.interfaces import ILocalRolesRelatedSearchUtility
+from plone import api
+from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
 from zope.component import getUtility
 from zope.interface import alsoProvides
-from plone import api
-from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
 
-from dexterity.localroles.interfaces import ILocalRolesRelatedSearchUtility
-
-from ..behaviors import ITaskContainer
-from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
-from ..utility import TaskContainerRelatedSearch
+import unittest2 as unittest
 
 
 class TestRelatedSearchUtility(unittest.TestCase):

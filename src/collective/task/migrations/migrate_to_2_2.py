@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from imio.helpers.catalog import addOrUpdateIndexes, addOrUpdateColumns
+from imio.helpers.catalog import addOrUpdateColumns
+from imio.helpers.catalog import addOrUpdateIndexes
 from imio.migrator.migrator import Migrator
 
 import logging
+
+
 logger = logging.getLogger('collective.task')
 
 

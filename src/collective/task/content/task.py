@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from zope.interface import implements
-from plone.dexterity.content import Container
 from collective.task.interfaces import ITaskContent
+from plone.dexterity.content import Container
+from zope.interface import implements
 
 
 class Task(Container):

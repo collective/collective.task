@@ -3,6 +3,8 @@
 from imio.migrator.migrator import Migrator
 
 import logging
+
+
 logger = logging.getLogger('collective.task')
 
 

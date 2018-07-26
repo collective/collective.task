@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """Define tables and columns."""
 
+from collective.task import _
+from collective.task import PMF
+from collective.task.adapters import EMPTY_STRING
+from plone import api
+from Products.CMFPlone.utils import normalizeString
+from Products.CMFPlone.utils import safe_unicode
+from z3c.table.column import Column
+from z3c.table.column import LinkColumn
+from z3c.table.table import Table
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
-
-from Products.CMFPlone.utils import safe_unicode, normalizeString
-from plone import api
-
-from z3c.table.column import Column, LinkColumn
-from z3c.table.table import Table
-
-from collective.task import _, PMF
-from collective.task.adapters import EMPTY_STRING
 
 
 class TasksTable(Table):

@@ -2,8 +2,8 @@
 """Define custom fields."""
 
 from dexterity.localrolesfield.field import LocalRoleField
-
 from plone.formwidget.masterselect import MasterSelectField
+
 import plone.supermodel.exportimport
 
 

@@ -6,6 +6,7 @@ Changelog
 
 - Corrected table column style. Added contenttype css icon
   [sgeulette]
+- pep8 on imports
 
 3.0 (2017-05-30)
 ----------------

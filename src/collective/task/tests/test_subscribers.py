@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-import unittest2 as unittest
-from zope.interface import Interface
-from zope.lifecycleevent import modified, Attributes
+from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from plone import api
-from plone.app.testing import login, TEST_USER_NAME, setRoles, TEST_USER_ID
-
+from plone.app.testing import login
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
 from Products.CMFPlone.utils import base_hasattr
-from ..testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
+from zope.interface import Interface
+from zope.lifecycleevent import Attributes
+from zope.lifecycleevent import modified
+
+import unittest2 as unittest
 
 
 class TestSubscribers(unittest.TestCase):
