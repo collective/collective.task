@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-03-30 09:53+0000\n"
+"POT-Creation-Date: 2018-07-26 13:18+0000\n"
 "PO-Revision-Date: 2015-03-18 16:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,16 +21,20 @@ msgstr ""
 msgid "Above tasks"
 msgstr "Niveau supérieur"
 
-#: ../behaviors.py:89
-#: ../browser/table.py:88
+#: ../behaviors.py:92
+#: ../browser/table.py:89
 msgid "Assigned group"
 msgstr "Groupe assigné"
 
-#: ../behaviors.py:105
-#: ../browser/table.py:103
+#: ../behaviors.py:108
+#: ../browser/table.py:104
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
+
+#: ../interfaces.py:67
+msgid "Attribute prefix (without dot)"
+msgstr "Préfixe du champ (sans le point)"
 
 #: ../behaviors.zcml:19
 msgid "Content behaves like a task (fields are in a fieldset)."
@@ -49,14 +53,14 @@ msgstr "Type qui contient des tâches."
 msgid "Dates"
 msgstr "Dates"
 
-#: ../behaviors.py:111
-#: ../browser/table.py:112
+#: ../behaviors.py:114
+#: ../browser/table.py:113
 #: ../profiles/default/registry.xml
 msgid "Due date"
 msgstr "Échéance"
 
-#: ../behaviors.py:116
-#: ../browser/table.py:79
+#: ../behaviors.py:119
+#: ../browser/table.py:80
 msgid "Enquirer"
 msgstr "Initiateur"
 
@@ -64,13 +68,33 @@ msgstr "Initiateur"
 msgid "Highest task"
 msgstr "Tâche la plus élevée"
 
-#: ../interfaces.py:30
+#: ../interfaces.py:66
+msgid "Parent attribute"
+msgstr "Champ du parent"
+
+#: ../interfaces.py:68
+msgid "Parent interface"
+msgstr "Interface du parent"
+
+#: ../interfaces.py:29
 msgid "Parents assigned groups"
 msgstr "Groupes assignés venant des tâches parentes"
 
-#: ../interfaces.py:39
+#: ../interfaces.py:38
 msgid "Parents enquirers"
 msgstr "Initiateurs venant des tâches parentes"
+
+#: ../interfaces.py:75
+msgid "Parents field"
+msgstr "Champ d'un parent"
+
+#: ../interfaces.py:65
+msgid "Parents field name"
+msgstr "Nom du champ stockant les parents"
+
+#: ../interfaces.py:74
+msgid "Parents fields"
+msgstr "Les champs des parents"
 
 #: ../profiles/default/types/task.xml
 msgid "Something to do by someone."
@@ -80,7 +104,7 @@ msgstr "Quelque chose à faire par quelqu'un."
 msgid "Steps to ease tests of collective.task"
 msgstr "Steps to ease tests of collective.task"
 
-#: ../behaviors.py:128
+#: ../behaviors.py:131
 #: ../behaviors.zcml:13
 #: ../profiles/default/types/task.xml
 msgid "Task"
@@ -90,7 +114,7 @@ msgstr "Tâche"
 msgid "Task container"
 msgstr "Conteneur de tâches"
 
-#: ../behaviors.py:83
+#: ../behaviors.py:86
 msgid "Task description"
 msgstr "Description de la tâche"
 
@@ -98,23 +122,27 @@ msgstr "Description de la tâche"
 msgid "Task with fieldset"
 msgstr "Tâche avec les champs dans un onglet séparé"
 
-#: ../browser/viewlets.py:16
+#: ../browser/viewlets.py:15
 msgid "Tasks list"
 msgstr "Liste des tâches"
+
+#: ../behaviors.py:178
+msgid "The assigned user is not in the selected assigned group !"
+msgstr "L'utilisateur assigné n'est pas dans le groupe assigné !"
 
 #: ../profiles/default/registry.xml
 msgid "The person to whom a task is assigned"
 msgstr "La personne à qui une tâche est assignée"
 
-#: ../browser/viewlets.py:17
+#: ../browser/viewlets.py:16
 msgid "There is no task for this content."
 msgstr "Il n'y a pas de tâches pour ce contenu."
 
-#: ../behaviors.py:85
+#: ../behaviors.py:88
 msgid "What is to do and/or what is done"
 msgstr "Ce qui est à faire et/ou ce qui a été fait"
 
-#: ../browser/views.py:22
+#: ../browser/views.py:23
 msgid "You must select an assigned user before continuing !"
 msgstr "Vous devez sélectionner un utilisateur assigné avant de pouvoir poursuivre !"
 

@@ -6,14 +6,17 @@ from dexterity.localrolesfield.field import LocalRoleField
 from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.dexterity.browser.edit import DefaultEditForm
 from plone.directives.form import default_value
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
 from Products.CMFPlone.utils import base_hasattr
+from z3c.form import validator
 from zope import schema
 from zope.component import getUtility
 from zope.interface import alsoProvides
 from zope.interface import Interface
+from zope.interface import Invalid
 from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from zope.schema.interfaces import IVocabularyFactory
@@ -156,3 +159,25 @@ def get_current_user_id(data):
 
 alsoProvides(ITask, IFormFieldProvider)
 alsoProvides(ITaskWithFieldset, IFormFieldProvider)
+
+
+class AssignedUserValidator(validator.SimpleFieldValidator):
+
+    def validate(self, value):
+        # we go out if assigned user is empty
+        if value is None:
+            return
+        # check if we are editing a task
+        if isinstance(self.view, DefaultEditForm) and self.context.portal_type == 'task':
+            # check if assigned_group is changed and assigned_user is no more in
+            if (self.context.assigned_group is not None and self.context.assigned_user is not None and
+                self.request.form['form.widgets.ITask.assigned_group'] and
+                    self.request.form['form.widgets.ITask.assigned_group'][0] != self.context.assigned_group):
+                try:
+                    users = api.user.get_users(groupname=self.request.form['form.widgets.ITask.assigned_group'][0])
+                except api.exc.GroupNotFoundError:
+                    return
+                if value not in [mb.getUserName() for mb in users]:
+                    raise Invalid(_(u"The assigned user is not in the selected assigned group !"))
+
+validator.WidgetValidatorDiscriminators(AssignedUserValidator, field=ITask['assigned_user'])

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-03-30 09:53+0000\n"
+"POT-Creation-Date: 2018-07-26 13:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,19 @@ msgstr ""
 msgid "Above tasks"
 msgstr ""
 
-#: ../behaviors.py:89
-#: ../browser/table.py:88
+#: ../behaviors.py:92
+#: ../browser/table.py:89
 msgid "Assigned group"
 msgstr ""
 
-#: ../behaviors.py:105
-#: ../browser/table.py:103
+#: ../behaviors.py:108
+#: ../browser/table.py:104
 #: ../profiles/default/registry.xml
 msgid "Assigned user"
+msgstr ""
+
+#: ../interfaces.py:67
+msgid "Attribute prefix (without dot)"
 msgstr ""
 
 #: ../behaviors.zcml:19
@@ -45,14 +49,14 @@ msgstr ""
 msgid "Dates"
 msgstr ""
 
-#: ../behaviors.py:111
-#: ../browser/table.py:112
+#: ../behaviors.py:114
+#: ../browser/table.py:113
 #: ../profiles/default/registry.xml
 msgid "Due date"
 msgstr ""
 
-#: ../behaviors.py:116
-#: ../browser/table.py:79
+#: ../behaviors.py:119
+#: ../browser/table.py:80
 msgid "Enquirer"
 msgstr ""
 
@@ -60,12 +64,32 @@ msgstr ""
 msgid "Highest task"
 msgstr ""
 
-#: ../interfaces.py:30
+#: ../interfaces.py:66
+msgid "Parent attribute"
+msgstr ""
+
+#: ../interfaces.py:68
+msgid "Parent interface"
+msgstr ""
+
+#: ../interfaces.py:29
 msgid "Parents assigned groups"
 msgstr ""
 
-#: ../interfaces.py:39
+#: ../interfaces.py:38
 msgid "Parents enquirers"
+msgstr ""
+
+#: ../interfaces.py:75
+msgid "Parents field"
+msgstr ""
+
+#: ../interfaces.py:65
+msgid "Parents field name"
+msgstr ""
+
+#: ../interfaces.py:74
+msgid "Parents fields"
 msgstr ""
 
 #: ../profiles/default/types/task.xml
@@ -76,7 +100,7 @@ msgstr ""
 msgid "Steps to ease tests of collective.task"
 msgstr ""
 
-#: ../behaviors.py:128
+#: ../behaviors.py:131
 #: ../behaviors.zcml:13
 #: ../profiles/default/types/task.xml
 msgid "Task"
@@ -86,7 +110,7 @@ msgstr ""
 msgid "Task container"
 msgstr ""
 
-#: ../behaviors.py:83
+#: ../behaviors.py:86
 msgid "Task description"
 msgstr ""
 
@@ -94,23 +118,27 @@ msgstr ""
 msgid "Task with fieldset"
 msgstr ""
 
-#: ../browser/viewlets.py:16
+#: ../browser/viewlets.py:15
 msgid "Tasks list"
+msgstr ""
+
+#: ../behaviors.py:178
+msgid "The assigned user is not in the selected assigned group !"
 msgstr ""
 
 #: ../profiles/default/registry.xml
 msgid "The person to whom a task is assigned"
 msgstr ""
 
-#: ../browser/viewlets.py:17
+#: ../browser/viewlets.py:16
 msgid "There is no task for this content."
 msgstr ""
 
-#: ../behaviors.py:85
+#: ../behaviors.py:88
 msgid "What is to do and/or what is done"
 msgstr ""
 
-#: ../browser/views.py:22
+#: ../browser/views.py:23
 msgid "You must select an assigned user before continuing !"
 msgstr ""
 

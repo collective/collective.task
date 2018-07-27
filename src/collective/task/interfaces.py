@@ -7,7 +7,6 @@ from dexterity.localrolesfield.field import LocalRolesField
 from plone.app.dexterity import PloneMessageFactory as _PMF
 from plone.autoform import directives
 from plone.supermodel import model
-# from z3c.form import validator
 from z3c.form.browser.select import SelectFieldWidget
 from zope import schema
 from zope.interface import Interface

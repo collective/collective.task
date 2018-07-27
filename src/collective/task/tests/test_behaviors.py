@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from collective.task.behaviors import AssignedUserValidator
 from collective.task.behaviors import get_current_user_id
 from collective.task.behaviors import get_parent_assigned_group
 from collective.task.behaviors import get_users_vocabulary
@@ -8,6 +9,8 @@ from plone.app.testing import login
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
+from zope.component import getMultiAdapter
+from zope.interface import Invalid
 
 import datetime
 import unittest2 as unittest
@@ -40,3 +43,19 @@ class TestBehaviors(unittest.TestCase):
 
     def test_get_current_user_id(self):
         self.assertEqual(get_current_user_id(None), 'test_user_1_')
+
+    def test_AssignedUserValidator(self):
+        self.task1.assigned_group = 'Administrators'
+        self.task1.assigned_user = TEST_USER_NAME
+        request = self.task1.REQUEST
+        edit = getMultiAdapter((self.task1, request), name='edit')  # form wrapper
+        validator = AssignedUserValidator(self.task1, request, edit.form_instance, None, None)
+        request.form['form.widgets.ITask.assigned_group'] = ['Reviewers']
+        # no validation if no value
+        validator.validate(None)
+        # validation ok because TEST_USER_NAME is in Reviewers
+        validator.validate(TEST_USER_NAME)
+        # validation nok because TEST_USER_NAME is not in Administrators
+        self.task1.assigned_group = 'Reviewers'
+        request.form['form.widgets.ITask.assigned_group'] = ['Administrators']
+        self.assertRaises(Invalid, validator.validate, TEST_USER_NAME)

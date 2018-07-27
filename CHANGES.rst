@@ -4,9 +4,12 @@ Changelog
 3.1 (unreleased)
 ----------------
 
+- Added validator on assigned_user
+  [sgeulette]
 - Corrected table column style. Added contenttype css icon
   [sgeulette]
 - pep8 on imports
+  [sgeulette]
 
 3.0 (2017-05-30)
 ----------------
