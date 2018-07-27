@@ -66,4 +66,7 @@
       provides="collective.task.interfaces.ITaskContentMethods"
       factory=".adapters.TaskContentAdapter" />
 
+    <adapter
+        factory=".behaviors.AssignedUserValidator" />
+
 </configure>
