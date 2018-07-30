@@ -11,21 +11,6 @@
     font-weight: bold;
 }
 
-/* icon */
-.icons-on .contenttype-task {
-    background: url("++resource++collective.task/task_icon.png") no-repeat scroll transparent;
-    display: inline;
-    line-height: 1.1em;
-    padding-left: 20px !important;
-}
-
-.template-folder_contents.icons-on #listing-table td > img[src*="++resource++collective.task"],
-.template-folder_listing.icons-on #content-core dt span.summary > img[src*="++resource++collective.task"],
-.template-folder_tabular_view.icons-on table.listing td > img[src*="++resource++collective.task"]
-{
-    display: none
-}
-
 /* colorization for workflow */
 
 .state-created {

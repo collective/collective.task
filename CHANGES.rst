@@ -6,7 +6,7 @@ Changelog
 
 - Added validator on assigned_user
   [sgeulette]
-- Corrected table column style. Added contenttype css icon
+- Corrected table column style.
   [sgeulette]
 - pep8 on imports
   [sgeulette]
