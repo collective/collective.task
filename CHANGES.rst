@@ -4,8 +4,8 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Use imio.prettylink column for title if imio.prettylink product is present.
+  [sgeulette]
 
 3.0.1 (2018-07-30)
 ------------------

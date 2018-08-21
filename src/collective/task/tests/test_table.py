@@ -3,6 +3,7 @@ from collective.task.browser.table import AssignedGroupColumn
 from collective.task.browser.table import AssignedUserColumn
 from collective.task.browser.table import DueDateColumn
 from collective.task.browser.table import EnquirerColumn
+from collective.task.browser.table import PrettyLinkTitleColumn
 from collective.task.browser.table import ReviewStateColumn
 from collective.task.browser.table import TasksTable
 from collective.task.browser.table import TitleColumn
@@ -51,6 +52,12 @@ class TestTable(unittest.TestCase):
         col = TitleColumn(self.portal, self.portal.REQUEST, None)
         self.assertEqual(col.renderCell(self.task1),
                          u'<a href="http://nohost/plone/task1" class="state-created contenttype-task">Task1</a>')
+
+    def test_PrettyLinkTitleColumn(self):
+        col = PrettyLinkTitleColumn(self.portal, self.portal.REQUEST, None)
+        self.assertEqual(col.renderCell(self.task1),
+                         u"<a class='pretty_link state-created' title='Task1' href='http://nohost/plone/task1' "
+                         u"target='_self'><span class='pretty_link_content'>Task1</span></a>")
 
     def test_EnquirerColumn(self):
         col = EnquirerColumn(self.portal, self.portal.REQUEST, None)

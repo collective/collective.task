@@ -54,6 +54,7 @@ setup(
     ],
     extras_require={
         'test': [
+            'imio.prettylink',
             'plone.app.testing',
             'plone.app.contenttypes',
             'plone.app.robotframework[debug]',

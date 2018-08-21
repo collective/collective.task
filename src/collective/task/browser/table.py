@@ -13,6 +13,11 @@ from z3c.table.table import Table
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
 
+try:
+    from imio.prettylink.interfaces import IPrettyLink
+except ImportError:
+    pass
+
 
 class TasksTable(Table):
 
@@ -71,6 +76,26 @@ class TitleColumn(LinkColumn):
 
     def getLinkContent(self, item):
         return safe_unicode(item.title)
+
+
+class PrettyLinkTitleColumn(TitleColumn):
+
+    """Column that displays prettylink title."""
+
+    header = PMF("Title")
+    weight = 10
+
+    params = {}
+
+    def getPrettyLink(self, obj):
+        pl = IPrettyLink(obj)
+        for k, v in self.params.items():
+            setattr(pl, k, v)
+        return pl.getLink()
+
+    def renderCell(self, item):
+        """ """
+        return self.getPrettyLink(item)
 
 
 class EnquirerColumn(UserColumn):
