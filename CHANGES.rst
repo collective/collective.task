@@ -1,8 +1,8 @@
 Changelog
 =========
 
-3.1 (unreleased)
-----------------
+3.0.2 (2018-08-22)
+------------------
 
 - Use imio.prettylink column for title if imio.prettylink product is present.
   [sgeulette]
