@@ -11,7 +11,7 @@ This package provides:
 * a fielset task behavior, with the same fields as a task
 * a task container behavior, just providing a marker interface
 
-A task has the following fields:
+The task behaviour has the following fields:
 
 * a task description: richtext field.
 * an assigned group: vocabulary of plone groups (can be redefined). Master field for assigned user
@@ -20,7 +20,17 @@ A task has the following fields:
 * a due date
 
 Assigned group and assigned user are local role fields (dexterity.localrolesfield).
-This last product permits to configure (on a dexterity type) the local roles to give on each workflow state, to the selected principal of each role field on the object.
+This last product enables to configure (on a dexterity type) the local roles to give (following the workflow state) to the principal selected in object role field.
+It's a dynamic local roles assignment.
+
+The task content has the task behaviour and the following fields:
+
+* a title
+* parents assigned groups: hidden field. Automatically managed by subscribers.
+* parents enquirers: hidden field. Automatically managed by subscribers.
+
+Parents fields contain the values of parents chain corresponding fields (following registry config).
+This mechanism allows to give some local roles following parents task assignments.
 
 The default workflow for a task contains the following states:
 
@@ -42,4 +52,3 @@ This add-on is tested using Travis CI. The current status of the add-on is :
     :target: http://travis-ci.org/collective/collective.task
 .. image:: https://coveralls.io/repos/collective/collective.task/badge.svg?branch=master&service=github
   :target: https://coveralls.io/github/collective/collective.task?branch=master
-
