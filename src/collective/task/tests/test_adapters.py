@@ -59,6 +59,10 @@ class TestAdapters(unittest.TestCase):
         self.task4.assigned_group = 'Site Administrators'
         self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', attributes),
                              ['Site Administrators'])
+        # a parent attribute contains multiple values
+        self.task4.assigned_group = ['Site Administrators', 'Administrators']
+        self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', attributes),
+                             ['Site Administrators', 'Administrators'])
         # an item is the same
         self.task4.parents_assigned_groups = ['Administrators', 'Reviewers']
         self.task4.assigned_group = 'Administrators'
@@ -66,7 +70,7 @@ class TestAdapters(unittest.TestCase):
                              ['Administrators', 'Reviewers'])
         # full infos
         self.task4.parents_assigned_groups = ['Administrators', 'Reviewers']
-        self.task4.assigned_group = 'Site Administrators'
+        self.task4.assigned_group = ['Site Administrators', 'Administrators']
         self.assertListEqual(adapted.calculate_parents_value('parents_assigned_groups', attributes),
                              ['Administrators', 'Reviewers', 'Site Administrators'])
 

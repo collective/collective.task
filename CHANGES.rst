@@ -4,8 +4,8 @@ Changelog
 3.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Corrected bug when a parent field is multivalued.
+  [sgeulette]
 
 3.0.2 (2018-08-22)
 ------------------

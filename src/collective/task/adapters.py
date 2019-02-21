@@ -145,8 +145,10 @@ class TaskContentAdapter(ParentsBaseAdapter):
                     new_value += [val for val in getattr(parent, field) if val not in new_value]
                 # we add parent field value
                 parent_value = base_hasattr(parent, dic['at']) and getattr(parent, dic['at']) or None
-                if parent_value and parent_value not in new_value:
-                    new_value.append(parent_value)
+                if parent_value:
+                    if not isinstance(parent_value, (list, tuple)):
+                        parent_value = [parent_value]
+                    new_value += [val for val in parent_value if val not in new_value]
         return new_value
 
     def set_parents_value(self, attr, value, modified=False):
