@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.3 (unreleased)
+3.0.3 (2019-02-22)
 ------------------
 
 - Corrected bug when a parent field is multivalued.
