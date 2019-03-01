@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-12-01 12:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../browser/batchactions.py:67
+msgid "An assigned user is not in this new assigned group. Task \"${task}\" !"
+msgstr "Un utilisateur assigné n'est pas dans le nouveau groupe assigné. Tâche \"${task}\" !"
+
+#: ../browser/batchactions.py:42
+msgid "Batch assigned group change"
+msgstr "Changement de groupe assigné par lot"
+
+#: ../browser/batchactions.py:82
+msgid "Batch assigned user change"
+msgstr "Changement d'utilisateur assigné par lot"
+
+#: ./browser/batchactions.py:84
+msgid "No common or available assigned group, or no available assigned user. Modify your selection."
+msgstr "Aucun groupe assigné commun ou valide, ou aucun utilisateur assigné. Recommencez en modifiant votre sélection."
+
+#: ./browser/batchactions.py:87
+msgid "Set to no value"
+msgstr "Mettre à aucune valeur"
+
+msgid "assignedgroup-batch-action-but"
+msgstr "Changer le groupe assigné"
+
+msgid "assigneduser-batch-action-but"
+msgstr "Changer l'utilisateur assigné"

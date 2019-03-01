@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-26 13:18+0000\n"
+"POT-Creation-Date: 2019-03-01 13:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,14 @@ msgid "Above tasks"
 msgstr ""
 
 #: ../behaviors.py:92
-#: ../browser/table.py:89
+#: ../browser/batchactions.py:48
+#: ../browser/table.py:114
 msgid "Assigned group"
 msgstr ""
 
 #: ../behaviors.py:108
-#: ../browser/table.py:104
-#: ../profiles/default/registry.xml
+#: ../browser/batchactions.py:111
+#: ../browser/table.py:129
 msgid "Assigned user"
 msgstr ""
 
@@ -50,13 +51,13 @@ msgid "Dates"
 msgstr ""
 
 #: ../behaviors.py:114
-#: ../browser/table.py:113
+#: ../browser/table.py:138
 #: ../profiles/default/registry.xml
 msgid "Due date"
 msgstr ""
 
 #: ../behaviors.py:119
-#: ../browser/table.py:80
+#: ../browser/table.py:105
 msgid "Enquirer"
 msgstr ""
 
@@ -122,7 +123,7 @@ msgstr ""
 msgid "Tasks list"
 msgstr ""
 
-#: ../behaviors.py:178
+#: ../behaviors.py:181
 msgid "The assigned user is not in the selected assigned group !"
 msgstr ""
 

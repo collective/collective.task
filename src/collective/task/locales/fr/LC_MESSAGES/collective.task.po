@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-26 13:18+0000\n"
+"POT-Creation-Date: 2019-03-01 13:16+0000\n"
 "PO-Revision-Date: 2015-03-18 16:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,13 +22,14 @@ msgid "Above tasks"
 msgstr "Niveau supérieur"
 
 #: ../behaviors.py:92
-#: ../browser/table.py:89
+#: ../browser/batchactions.py:48
+#: ../browser/table.py:114
 msgid "Assigned group"
 msgstr "Groupe assigné"
 
 #: ../behaviors.py:108
-#: ../browser/table.py:104
-#: ../profiles/default/registry.xml
+#: ../browser/batchactions.py:111
+#: ../browser/table.py:129
 msgid "Assigned user"
 msgstr "Utilisateur assigné"
 
@@ -54,13 +55,13 @@ msgid "Dates"
 msgstr "Dates"
 
 #: ../behaviors.py:114
-#: ../browser/table.py:113
+#: ../browser/table.py:138
 #: ../profiles/default/registry.xml
 msgid "Due date"
 msgstr "Échéance"
 
 #: ../behaviors.py:119
-#: ../browser/table.py:80
+#: ../browser/table.py:105
 msgid "Enquirer"
 msgstr "Initiateur"
 
@@ -126,7 +127,7 @@ msgstr "Tâche avec les champs dans un onglet séparé"
 msgid "Tasks list"
 msgstr "Liste des tâches"
 
-#: ../behaviors.py:178
+#: ../behaviors.py:181
 msgid "The assigned user is not in the selected assigned group !"
 msgstr "L'utilisateur assigné n'est pas dans le groupe assigné !"
 

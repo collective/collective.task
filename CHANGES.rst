@@ -4,8 +4,8 @@ Changelog
 3.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Added batch actions (collective.eeafaceted.batchactions) to change assigned group or assigned user.
+  [sgeulette]
 
 3.0.3 (2019-02-22)
 ------------------
