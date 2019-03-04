@@ -27,8 +27,8 @@ msgid "Batch assigned user change"
 msgstr "Changement d'utilisateur assigné par lot"
 
 #: ./browser/batchactions.py:84
-msgid "No common or available assigned group, or no available assigned user. Modify your selection."
-msgstr "Aucun groupe assigné commun ou valide, ou aucun utilisateur assigné. Recommencez en modifiant votre sélection."
+msgid "No common or available assigned group, or no available assigned user. Modify your selection unless you want to remove assigned user."
+msgstr "Aucun groupe assigné commun ou valide, ou aucun utilisateur assigné. Recommencez en modifiant votre sélection, sauf si vous voulez mettre l'utilisateur assigné à aucune valeur."
 
 #: ./browser/batchactions.py:87
 msgid "Set to no value"

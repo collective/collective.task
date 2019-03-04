@@ -54,6 +54,7 @@ setup(
     ],
     extras_require={
         'test': [
+            'collective.eeafaceted.batchactions',
             'imio.prettylink',
             'plone.app.testing',
             'plone.app.contenttypes',

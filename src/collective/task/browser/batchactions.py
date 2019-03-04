@@ -18,7 +18,7 @@ try:
     from collective.eeafaceted.batchactions.browser.views import BaseBatchActionForm as bbaf
     baf_base = bbaf
     from collective.eeafaceted.batchactions.utils import cannot_modify_field_msg
-    from collective.eeafaceted.batchactions.utils import is_not_permitted
+    from collective.eeafaceted.batchactions.utils import is_permitted
     from collective.eeafaceted.batchactions.interfaces import IBatchActionsMarker
 
     class ITasksBatchActionsMarker(IBatchActionsMarker):
@@ -41,14 +41,13 @@ class AssignedGroupBatchActionForm(baf_base):
         return api.user.get_users(groupname=assigned_group)
 
     def _update(self):
-        self.pb = is_not_permitted(self.brains)
-        self.do_apply = not self.pb
+        self.do_apply = is_permitted(self.brains)
         self.fields += Fields(schema.Choice(
             __name__='assigned_group',
             title=_(u"Assigned group"),
-            description=(self.pb and cannot_modify_field_msg or u''),
+            description=(not self.do_apply and cannot_modify_field_msg or u''),
             required=(self.do_apply),
-            vocabulary=(self.pb and SimpleVocabulary([]) or u'collective.task.AssignedGroups'),
+            vocabulary=self.do_apply and u'collective.task.AssignedGroups' or SimpleVocabulary([]),
         ))
 
     def _apply(self, **data):
@@ -76,18 +75,17 @@ class AssignedUserBatchActionForm(baf_base):
     label = _ceb(u"Batch assigned user change")
     master = 'assigned_group'  # attribute name containing group
     err_msg = _ceb(u'No common or available assigned group, or no available assigned user. '
-                   u'Modify your selection.')
+                   u'Modify your selection unless you want to remove assigned user.')
     weight = 30
 
     def get_group_users(self, assigned_group):
         return api.user.get_users(groupname=assigned_group)
 
-    def getAvailableAssignedUserVoc(self):
+    def get_available_assigneduser_voc(self):
         """ Returns available assigned users common for all brains. """
         terms = [SimpleTerm(value='__none__', token='no_value', title=_ceb('Set to no value'))]
         users = None
         for brain in self.brains:
-            #obj = brain.getObject()
             if not getattr(brain, self.master):
                 return SimpleVocabulary([])
             if users is None:
@@ -103,15 +101,15 @@ class AssignedUserBatchActionForm(baf_base):
         return SimpleVocabulary(terms)
 
     def _update(self):
-        self.voc = self.getAvailableAssignedUserVoc()
-        self.pb = is_not_permitted(self.brains)
-        self.do_apply = not self.pb
+        self.voc = self.get_available_assigneduser_voc()
+        self.do_apply = is_permitted(self.brains)
         self.fields += Fields(schema.Choice(
             __name__='assigned_user',
             title=_(u'Assigned user'),
-            vocabulary=self.voc,
-            description=((len(self.voc) == 0 and self.err_msg) or (self.pb and cannot_modify_field_msg) or u''),
-            required=(len(self.voc) and self.do_apply)))
+            vocabulary=self.do_apply and self.voc or SimpleVocabulary([]),
+            description=((len(self.voc) <= 1 and self.err_msg) or
+                         (not self.do_apply and cannot_modify_field_msg) or u''),
+            required=self.do_apply))
 
     def _apply(self, **data):
         if data['assigned_user']:

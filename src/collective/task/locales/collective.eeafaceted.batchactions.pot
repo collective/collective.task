@@ -36,7 +36,7 @@ msgid "Batch assigned user change"
 msgstr ""
 
 #: ./browser/batchactions.py:84
-msgid "No common or available assigned group, or no available assigned user. Modify your selection."
+msgid "No common or available assigned group, or no available assigned user. Modify your selection unless you want to remove assigned user."
 msgstr ""
 
 #: ./browser/batchactions.py:87
