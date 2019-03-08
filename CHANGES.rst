@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.4 (unreleased)
+3.0.4 (2019-03-08)
 ------------------
 
 - Added batch actions (collective.eeafaceted.batchactions) to change assigned group or assigned user.
