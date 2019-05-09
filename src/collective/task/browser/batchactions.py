@@ -33,6 +33,10 @@ except ImportError:
 
 
 class AssignedGroupBatchActionForm(baf_base):
+    """
+        Batch action that can be used with collective.eeafaceted.batchactions.
+        Base class for imio.dms.mail and imio.project.pst.
+    """
 
     label = _ceb(u"Batch assigned group change")
     weight = 20
@@ -71,6 +75,10 @@ class AssignedGroupBatchActionForm(baf_base):
 
 
 class AssignedUserBatchActionForm(baf_base):
+    """
+        Batch action that can be used with collective.eeafaceted.batchactions.
+        Base class for imio.dms.mail and imio.project.pst.
+    """
 
     label = _ceb(u"Batch assigned user change")
     master = 'assigned_group'  # attribute name containing group
