@@ -4,8 +4,8 @@ Changelog
 3.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Removed bad step containing empty dependency.
+  [sgeulette]
 
 3.0.4 (2019-03-08)
 ------------------

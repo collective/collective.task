@@ -52,4 +52,13 @@
         destination="100"
         handler="collective.task.migrations.migrate_to_100.migrate"
         profile="collective.task:default" />
+
+    <genericsetup:upgradeStep
+        title="Go to collective.task 101"
+        description="Removed bad step"
+        source="100"
+        destination="101"
+        handler="collective.task.migrations.migrate_to_101.migrate"
+        profile="collective.task:default" />
+
 </configure>
