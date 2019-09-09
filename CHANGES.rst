@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.5 (unreleased)
+3.0.5 (2019-09-09)
 ------------------
 
 - Removed bad step containing empty dependency.
