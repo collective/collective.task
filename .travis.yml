@@ -1,4 +1,5 @@
 language: python
+sudo: true
 
 python:
   - 2.7
@@ -9,10 +10,10 @@ cache:
     - buildout-cache
 
 install:
-  - mkdir -p buildout-cache/{eggs,downloads}
   - virtualenv .
   - bin/pip install --upgrade pip
   - pin/pip install -r requirements.txt
+  - mkdir -p buildout-cache/{eggs,downloads}
   - bin/buildout -Nc travis.cfg
 
 script:
