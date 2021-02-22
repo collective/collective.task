@@ -22,6 +22,7 @@ class Migrate_To_101(Migrator):
         ir = setup.getImportStepRegistry()
         if 'task-uninstall' in ir._registered:
             del ir._registered['task-uninstall']
+            setup._p_changed = True
         self.finish()
 
 
