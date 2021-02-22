@@ -10,6 +10,7 @@ cache:
 
 install:
   - mkdir -p buildout-cache/{eggs,downloads}
+  - virtualenv .
   - pip install --upgrade pip
   - pip install -r requirements.txt
   - bin/buildout -Nc travis.cfg
