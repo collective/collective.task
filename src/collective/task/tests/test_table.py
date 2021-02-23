@@ -56,8 +56,8 @@ class TestTable(unittest.TestCase):
     def test_PrettyLinkTitleColumn(self):
         col = PrettyLinkTitleColumn(self.portal, self.portal.REQUEST, None)
         self.assertEqual(col.renderCell(self.task1),
-                         u"<a class='pretty_link state-created' title='Task1' href='http://nohost/plone/task1' "
-                         u"target='_self'><span class='pretty_link_content'>Task1</span></a>")
+                         u"<a class='pretty_link' title='Task1' href='http://nohost/plone/task1' target='_self'>"
+                         u"<span class='pretty_link_content state-created'>Task1</span></a>")
 
     def test_EnquirerColumn(self):
         col = EnquirerColumn(self.portal, self.portal.REQUEST, None)
