@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.6 (unreleased)
+3.0.6 (2021-04-20)
 ------------------
 
 - Removed bad step containing empty dependency (persisted now).
