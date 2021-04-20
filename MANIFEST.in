@@ -3,5 +3,5 @@ graft docs
 include *.rst
 global-exclude *.pyc *.sh *.pot
 recursive-exclude src .gitkeep
-exclude .coveragerc .editorconfig bootstrap.py *.cfg
+exclude .coveragerc .editorconfig bootstrap.py *.cfg *.txt
 prune buildout.d
