@@ -7,7 +7,7 @@ from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.browser.edit import DefaultEditForm
-from plone.directives.form import default_value
+from plone.directives.form.value import default_value
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
 from Products.CMFPlone.utils import base_hasattr
@@ -31,6 +31,7 @@ class AssignedGroupsVocabulary(object):
         voc = getUtility(IVocabularyFactory, name="plone.principalsource.Groups", context=context)
         return voc(context)
 
+
 AssignedGroupsVocabularyFactory = AssignedGroupsVocabulary()
 
 
@@ -40,6 +41,7 @@ class EnquirerVocabulary(object):
     def __call__(self, context):
         voc = getUtility(IVocabularyFactory, name="plone.principalsource.Users", context=context)
         return voc(context)
+
 
 EnquirerVocabularyFactory = EnquirerVocabulary()
 
@@ -86,6 +88,7 @@ class ITask(model.Schema):
         title=_(u"Task description"),
         required=False,
         description=_(u"What is to do and/or what is done"),
+        allowed_mime_types=(u"text/html",),
     )
 
     assigned_group = LocalRoleMasterSelectField(
@@ -179,5 +182,6 @@ class AssignedUserValidator(validator.SimpleFieldValidator):
                     return
                 if value not in [mb.getUserName() for mb in users]:
                     raise Invalid(_(u"The assigned user is not in the selected assigned group !"))
+
 
 validator.WidgetValidatorDiscriminators(AssignedUserValidator, field=ITask['assigned_user'])

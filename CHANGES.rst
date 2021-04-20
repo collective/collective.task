@@ -6,6 +6,8 @@ Changelog
 
 - Removed bad step containing empty dependency (persisted now).
   [sgeulette]
+- Set allowed_mime_types on task_description
+  [sgeulette]
 
 3.0.5 (2019-09-09)
 ------------------
