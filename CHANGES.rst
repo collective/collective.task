@@ -4,8 +4,8 @@ Changelog
 3.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Removed useless atct config.
+  [sgeulette]
 
 3.0.6 (2021-04-20)
 ------------------

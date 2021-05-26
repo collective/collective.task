@@ -69,4 +69,14 @@
         handler="collective.task.migrations.migrate_to_101.migrate"
         profile="collective.task:default" />
 
+    <genericsetup:upgradeSteps
+        source="102"
+        destination="103"
+        profile="collective.task:default">
+        <genericsetup:upgradeDepends
+            title="Reapply portal_atct.xml"
+            description="This will remove atct metadata"
+            import_steps="atcttool" />
+    </genericsetup:upgradeSteps>
+
 </configure>

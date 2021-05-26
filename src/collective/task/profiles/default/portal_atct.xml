@@ -3,18 +3,12 @@
  <topic_metadata i18n:domain="plone">
   <metadata
     name="assigned_group"
-        description=""
-        enabled="True"
-        friendlyName="Assigned group"
-        i18n:attributes="friendlyName"/>
+    remove="true" />
  </topic_metadata>
 
  <topic_metadata i18n:domain="plone">
   <metadata
     name="assigned_user"
-        description=""
-        enabled="True"
-        friendlyName="Assigned user"
-        i18n:attributes="friendlyName"/>
+    remove="true" />
  </topic_metadata>
 </atcttool>
