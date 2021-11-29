@@ -2,12 +2,12 @@
 
 from collective.task.interfaces import ITaskContent
 from plone.dexterity.content import Container
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(ITaskContent)
 class Task(Container):
     """ Task class """
-    implements(ITaskContent)
 
     # disable local roles inheritance
     __ac_local_roles_block__ = True

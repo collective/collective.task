@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
+from datetime import date
+
+from Products.CMFCore.interfaces import IContentish
+from Products.CMFPlone.utils import base_hasattr
+from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
+from Products.PluginIndexes.common.UnIndex import _marker as common_marker
 from collective.task.behaviors import ITask
 from collective.task.interfaces import ITaskContent
 from collective.task.interfaces import ITaskMethods
-from datetime import date
 from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
-from Products.CMFCore.interfaces import IContentish
-from Products.CMFPlone.utils import base_hasattr
-from Products.PluginIndexes.common.UnIndex import _marker as common_marker
-from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 from zope.component import adapts
 from zope.component import getUtility
 from zope.dottedname.resolve import resolve
-from zope.interface import implements
-
+from zope.interface import implementer
 
 EMPTY_STRING = '__empty_string__'
 EMPTY_DATE = date(1950, 1, 1)
@@ -52,8 +52,8 @@ def due_date_index(obj):
     return date_marker
 
 
+@implementer(ITaskMethods)
 class TaskAdapter(object):
-    implements(ITaskMethods)
     adapts(ITask)
 
     def __init__(self, context):

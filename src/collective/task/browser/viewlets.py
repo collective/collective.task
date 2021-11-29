@@ -5,7 +5,7 @@ from collective.task.behaviors import ITask
 from collective.task.interfaces import ITaskMethods
 from plone import api
 from plone.app.layout.viewlets import common as base
-from table import TasksTable
+from collective.task.browser.table import TasksTable
 
 
 class TasksListViewlet(base.ViewletBase):
