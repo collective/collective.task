@@ -4,6 +4,8 @@ Changelog
 3.0.7 (unreleased)
 ------------------
 
+- Fixed ImportError, use `plone.app.dexterity._` instead of `plone.app.dexterity.PloneMessageFactory`
+  [fngaha]
 - Removed useless atct config.
   [sgeulette]
 
