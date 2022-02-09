@@ -1,10 +1,12 @@
 Changelog
 =========
 
-3.0.7 (unreleased)
+3.0.7 (2022-02-09)
 ------------------
 
 - Removed useless atct config.
+  [sgeulette]
+- Changed `task description` translation
   [sgeulette]
 
 3.0.6 (2021-04-20)
