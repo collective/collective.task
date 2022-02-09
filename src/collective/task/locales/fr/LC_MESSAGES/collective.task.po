@@ -117,7 +117,7 @@ msgstr "Conteneur de tâches"
 
 #: ../behaviors.py:86
 msgid "Task description"
-msgstr "Description de la tâche"
+msgstr "Description du travail"
 
 #: ../behaviors.zcml:19
 msgid "Task with fieldset"
