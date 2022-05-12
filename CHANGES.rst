@@ -4,8 +4,9 @@ Changelog
 3.0.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Added `get_methods_adapter` on Task content class. So it's possible to get the adapter
+  in an expression by example.
+  [sgeulette]
 
 3.0.7 (2022-02-09)
 ------------------
