@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.8 (unreleased)
+3.0.8 (2022-05-13)
 ------------------
 
 - Added `get_methods_adapter` on Task content class. So it's possible to get the adapter
