@@ -5,7 +5,6 @@ from collective.task import _
 from collective.task import PMF
 from collective.task.adapters import EMPTY_STRING
 from html import escape
-from imio.helpers.adapters import NoEscapeLinkColumn
 from plone import api
 from Products.CMFPlone.utils import normalizeString
 from Products.CMFPlone.utils import safe_unicode
