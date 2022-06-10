@@ -4,8 +4,9 @@ Changelog
 3.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Required z3c.table 2.2 to include escaping, to avoid xss.
+  Escaped some columns.
+  [sgeulette]
 
 3.0.8 (2022-05-13)
 ------------------

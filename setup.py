@@ -47,10 +47,11 @@ setup(
         'plone.directives.form',
         'plone.formwidget.masterselect',
         'plone.principalsource',
+        'future',
         'imio.helpers',
         'imio.migrator',
         'setuptools',
-        'z3c.table',
+        'z3c.table>=2.2',
     ],
     extras_require={
         'test': [

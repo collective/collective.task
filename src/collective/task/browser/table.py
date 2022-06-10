@@ -4,6 +4,8 @@
 from collective.task import _
 from collective.task import PMF
 from collective.task.adapters import EMPTY_STRING
+from html import escape
+from imio.helpers.adapters import NoEscapeLinkColumn
 from plone import api
 from Products.CMFPlone.utils import normalizeString
 from Products.CMFPlone.utils import safe_unicode
@@ -20,7 +22,6 @@ except ImportError:
 
 
 class TasksTable(Table):
-
     """Table that displays tasks info."""
 
     cssClassEven = u'even'
@@ -49,7 +50,6 @@ class TasksTable(Table):
 
 
 class UserColumn(Column):
-
     """Base user column."""
 
     field = NotImplemented
@@ -58,13 +58,12 @@ class UserColumn(Column):
         username = getattr(value, self.field, '')
         if username and username != EMPTY_STRING:
             member = api.user.get(username)
-            return member.getUser().getProperty('fullname').decode('utf-8')
+            return escape(member.getUser().getProperty('fullname').decode('utf-8'))
 
         return ""
 
 
 class TitleColumn(LinkColumn):
-
     """Column that displays title."""
 
     header = PMF("Title")
@@ -79,7 +78,6 @@ class TitleColumn(LinkColumn):
 
 
 class PrettyLinkTitleColumn(TitleColumn):
-
     """Column that displays prettylink title."""
 
     header = PMF("Title")
@@ -99,7 +97,6 @@ class PrettyLinkTitleColumn(TitleColumn):
 
 
 class EnquirerColumn(UserColumn):
-
     """Column that displays enquirer."""
 
     header = _("Enquirer")
@@ -108,7 +105,6 @@ class EnquirerColumn(UserColumn):
 
 
 class AssignedGroupColumn(Column):
-
     """Column that displays assigned group."""
 
     header = _("Assigned group")
@@ -117,13 +113,11 @@ class AssignedGroupColumn(Column):
     def renderCell(self, value):
         if value.assigned_group:
             group = api.group.get(value.assigned_group).getGroup()
-            return group.getProperty('title').decode('utf-8')
-
+            return escape(group.getProperty('title').decode('utf-8'))
         return ""
 
 
 class AssignedUserColumn(UserColumn):
-
     """Column that displays assigned user."""
 
     header = _("Assigned user")
@@ -132,7 +126,6 @@ class AssignedUserColumn(UserColumn):
 
 
 class DueDateColumn(Column):
-
     """Column that displays due date."""
 
     header = _("Due date")
@@ -144,12 +137,10 @@ class DueDateColumn(Column):
         if value.due_date:
             return api.portal.get_localized_time(datetime=value.due_date, long_format=self.long_format,
                                                  time_only=self.time_only)
-
         return ""
 
 
 class ReviewStateColumn(Column):
-
     """Column that displays value's review state."""
 
     header = PMF("Review state")
@@ -160,6 +151,5 @@ class ReviewStateColumn(Column):
         if state:
             wtool = api.portal.get_tool('portal_workflow')
             state_title = wtool.getTitleForStateOnType(state, value.portal_type)
-            return translate(PMF(state_title), context=self.request)
-
+            return escape(translate(PMF(state_title), context=self.request))
         return ''
