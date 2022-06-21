@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.9 (unreleased)
+3.0.9 (2022-06-21)
 ------------------
 
 - Required z3c.table 2.2 to include escaping, to avoid xss.
