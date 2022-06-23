@@ -22,7 +22,7 @@ setup(
     version='3.0.10.dev0',
     description="Tasks management for Plone.",
     long_description=long_description,
-    # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+    # Get more from https://pypi.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Plone",
@@ -33,7 +33,7 @@ setup(
     keywords='Plone Python',
     author='Cédric Messiant',
     author_email='cedricmessiant@ecreall.com',
-    url='http://pypi.python.org/pypi/collective.task',
+    url='https://pypi.org/project/collective.task/',
     license='GPL',
     packages=find_packages('src', exclude=['ez_setup']),
     namespace_packages=['collective'],
