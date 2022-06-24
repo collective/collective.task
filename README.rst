@@ -49,6 +49,6 @@ From the created state, you can choose the transition "to do". There are 2 cases
 This add-on is tested using Travis CI. The current status of the add-on is :
 
 .. image:: https://secure.travis-ci.org/collective/collective.task.png
-    :target: http://travis-ci.org/collective/collective.task
+    :target: https://travis-ci.org/collective/collective.task
 .. image:: https://coveralls.io/repos/collective/collective.task/badge.svg?branch=master&service=github
   :target: https://coveralls.io/github/collective/collective.task?branch=master

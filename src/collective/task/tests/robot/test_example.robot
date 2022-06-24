@@ -16,7 +16,7 @@
 #
 # $ bin/robot src/collective/task/tests/robot/test_example.robot
 #
-# See the http://docs.plone.org for further details (search for robot
+# See the https://docs.plone.org for further details (search for robot
 # framework).
 #
 # ============================================================================
