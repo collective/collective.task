@@ -4,8 +4,8 @@ Changelog
 3.0.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Refreshed versions and urls.
+  [sgeulette]
 
 3.0.9 (2022-06-21)
 ------------------
