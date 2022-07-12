@@ -12,6 +12,7 @@ develop-eggs/
 include/
 lib/
 parts/
+pyvenv.cfg
 src/*
 !src/collective
 var/
