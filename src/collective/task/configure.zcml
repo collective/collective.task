@@ -33,6 +33,12 @@
     />
 
     <utility
+        name="collective.task.AssignedUsers"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component="collective.task.behaviors.AssignedUsersVocabularyFactory"
+    />
+
+    <utility
         name="collective.task.Enquirer"
         provides="zope.schema.interfaces.IVocabularyFactory"
         component="collective.task.behaviors.EnquirerVocabularyFactory"

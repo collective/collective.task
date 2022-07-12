@@ -35,6 +35,17 @@ class AssignedGroupsVocabulary(object):
 AssignedGroupsVocabularyFactory = AssignedGroupsVocabulary()
 
 
+class AssignedUsersVocabulary(object):
+    """ Define own factory and named utility that can be easily overrided in componentregistry.xml """
+
+    def __call__(self, context):
+        voc = getUtility(IVocabularyFactory, name="plone.principalsource.Users", context=context)
+        return voc(context)
+
+
+AssignedUsersVocabularyFactory = AssignedUsersVocabulary()
+
+
 class EnquirerVocabulary(object):
     """ Define own factory and named utility that can be easily overrided in componentregistry.xml """
 
@@ -110,7 +121,7 @@ class ITask(model.Schema):
     assigned_user = LocalRoleField(
         title=_(u"Assigned user"),
         required=False,
-        vocabulary="plone.principalsource.Users"
+        vocabulary="collective.task.AssignedUsers"  # terms as username, userid, fullname
     )
 
     due_date = schema.Date(
