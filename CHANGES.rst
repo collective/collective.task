@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.10 (unreleased)
+3.0.10 (2022-08-19)
 -------------------
 
 - Refreshed versions and urls.
