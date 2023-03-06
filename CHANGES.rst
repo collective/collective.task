@@ -4,8 +4,8 @@ Changelog
 3.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Added interface on LocalRoleMasterSelectField, so it is possible to use it in zcml for specific override.
+  [sgeulette]
 
 3.0.10 (2022-08-19)
 -------------------

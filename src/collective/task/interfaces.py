@@ -11,6 +11,7 @@ from z3c.form.browser.select import SelectFieldWidget
 from zope import schema
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from zope.schema.interfaces import IField
 
 
 class ICollectiveTaskLayer(IDefaultBrowserLayer):
@@ -74,3 +75,7 @@ class ICollectiveTaskConfig(model.Schema):
         title=_(u'Parents fields'),
         value_type=DictRow(title=_("Parents field"),
                            schema=IParentsFieldSchema))
+
+
+class ILocalRoleMasterSelectField(IField):
+    """ Marker interface for the field """
