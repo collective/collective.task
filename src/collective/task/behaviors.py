@@ -23,6 +23,10 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+import datetime
+
+now = datetime.datetime.today()
+
 
 class AssignedGroupsVocabulary(object):
     """ Define own factory and named utility that can be easily overrided in componentregistry.xml """
@@ -127,6 +131,8 @@ class ITask(model.Schema):
     due_date = schema.Date(
         title=_(u"Due date"),
         required=False,
+        min=datetime.date(1990, 1, 1),
+        max=datetime.date(now.year + 1, 12, 31),
     )
 
     enquirer = LocalRoleField(
