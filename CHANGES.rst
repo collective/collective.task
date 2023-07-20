@@ -4,8 +4,8 @@ Changelog
 3.0.12 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- fix: [DMS-949] min & max for due_date
+  [sgeulette]
 
 3.0.11 (2023-03-29)
 -------------------
