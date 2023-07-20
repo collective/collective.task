@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.12 (unreleased)
+3.0.12 (2023-07-20)
 -------------------
 
 - fix: [DMS-949] min & max for due_date
