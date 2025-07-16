@@ -6,8 +6,6 @@ from collective.task import PMF
 from collective.task.adapters import EMPTY_STRING
 from html import escape
 from plone import api
-from Products.CMFPlone.utils import normalizeString
-from Products.CMFPlone.utils import safe_unicode
 from z3c.table.column import Column
 from z3c.table.column import LinkColumn
 from z3c.table.table import Table
@@ -19,6 +17,14 @@ try:
     from imio.prettylink.interfaces import IPrettyLink
 except ImportError:
     pass
+
+
+try:
+    from plone.base.utils import normalizeString
+    from plone.base.utils import safe_text
+except ImportError:
+    from Products.CMFPlone.utils import normalizeString
+    from Products.CMFPlone.utils import safe_unicode as safe_text
 
 
 class TasksTable(Table):
@@ -58,7 +64,7 @@ class UserColumn(Column):
         username = getattr(value, self.field, "")
         if username and username != EMPTY_STRING:
             member = api.user.get(username)
-            return escape(safe_unicode(member.getUser().getProperty("fullname")))
+            return escape(safe_text(member.getUser().getProperty("fullname")))
 
         return ""
 
@@ -73,7 +79,7 @@ class TitleColumn(LinkColumn):
         return ' class="state-%s contenttype-%s"' % (api.content.get_state(obj=item), normalizeString(item.portal_type))
 
     def getLinkContent(self, item):
-        return safe_unicode(item.title)
+        return safe_text(item.title)
 
 
 class PrettyLinkTitleColumn(TitleColumn):
@@ -112,7 +118,7 @@ class AssignedGroupColumn(Column):
     def renderCell(self, value):
         if value.assigned_group:
             group = api.group.get(value.assigned_group).getGroup()
-            return escape(safe_unicode(group.getProperty("title")))
+            return escape(safe_text(group.getProperty("title")))
         return ""
 
 

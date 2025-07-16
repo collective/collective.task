@@ -77,7 +77,7 @@ def configure_rolefields(context):
         msg = add_fti_configuration("task", roles_config[keyname], keyname=keyname)
 
         if msg:
-            logger.warn(msg)
+            logger.warning(msg)
 
 
 def post_install(context):

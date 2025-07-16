@@ -16,7 +16,7 @@ class TestInstall(unittest.TestCase):
         """Custom shared utility setup for tests."""
         self.portal = self.layer["portal"]
         if PLONE_VERSION >= "5.1":
-            from Products.CMFPlone.utils import get_installer  # noqa
+            from plone.base.utils import get_installer  # noqa
 
             self.installer = get_installer(self.portal, self.layer["request"])
             self.ipi = self.installer.is_product_installed

@@ -7,13 +7,17 @@ from datetime import date
 from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IContentish
-from Products.CMFPlone.utils import base_hasattr
 from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 from zope.component import adapts
 from zope.component import getUtility
 from zope.dottedname.resolve import resolve
 from zope.interface import implementer
 
+
+try:
+    from plone.base.utils import base_hasattr
+except ImportError:
+    from Products.CMFPlone.utils import base_hasattr
 
 try:
     from Products.PluginIndexes.common.UnIndex import _marker as common_marker  # noqa

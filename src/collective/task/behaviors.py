@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
+
+try:
+    from zope.schema.interfaces import IVocabularyFactory
+except ImportError:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+
 from collective.task import _
 from collective.task.field import LocalRoleMasterSelectField
 from dexterity.localrolesfield.field import LocalRoleField
@@ -9,53 +15,72 @@ from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.browser.edit import DefaultEditForm
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
-from Products.CMFPlone.utils import base_hasattr
 from z3c.form import validator
 from zope import schema
-from zope.component import getUtility
 from zope.interface import alsoProvides
+from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import Invalid
 from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
-from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 import datetime
 
 
+try:
+    from plone.base.utils import base_hasattr
+except ImportError:
+    from Products.CMFPlone.utils import base_hasattr
+
+
 now = datetime.datetime.today()
 
 
+@implementer(IVocabularyFactory)
 class AssignedGroupsVocabulary(object):
     """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
 
     def __call__(self, context):
-        voc = getUtility(IVocabularyFactory, name="plone.principalsource.Groups", context=context)
-        return voc(context)
+        return SimpleVocabulary.fromValues([g.getGroupName() for g in api.group.get_groups()])
 
 
 AssignedGroupsVocabularyFactory = AssignedGroupsVocabulary()
 
 
+@implementer(IVocabularyFactory)
 class AssignedUsersVocabulary(object):
     """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
 
     def __call__(self, context):
-        voc = getUtility(IVocabularyFactory, name="plone.principalsource.Users", context=context)
-        return voc(context)
+        # terms as username, userid, fullname
+        acl_users = api.portal.get().aq_parent.acl_users
+        users = [api.user.get(user["userid"]) for user in acl_users.searchUsers()]
+        users += api.user.get_users()
+        return SimpleVocabulary(
+            [
+                SimpleTerm(
+                    u.getUserName(),
+                    u.getId(),
+                    u.getUser().getProperty("fullname") or u.getUserName(),
+                )
+                for u in users
+            ]
+        )
 
 
 AssignedUsersVocabularyFactory = AssignedUsersVocabulary()
 
 
+@implementer(IVocabularyFactory)
 class EnquirerVocabulary(object):
     """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
 
     def __call__(self, context):
-        voc = getUtility(IVocabularyFactory, name="plone.principalsource.Users", context=context)
-        return voc(context)
+        acl_users = api.portal.get().aq_parent.acl_users
+        users = [user["title"] for user in acl_users.searchUsers()]
+        return SimpleVocabulary.fromValues([u.getUserName() for u in api.user.get_users()] + users)
 
 
 EnquirerVocabularyFactory = EnquirerVocabulary()

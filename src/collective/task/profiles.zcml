@@ -39,6 +39,16 @@
         for="Products.CMFCore.interfaces.ISiteRoot"
         />
 
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="collective.task uninstall"
+        description="Steps to uninstall collective.task"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        directory="profiles/uninstall"
+        zcml:condition="have plone-60"
+        />
+
     <genericsetup:importStep
         name="collective.task-postInstall"
         title="collective.task post_install import step"

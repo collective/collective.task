@@ -1,10 +1,10 @@
 #!/usr/bin/make
-# pyenv is a requirement, with 2.7, 3.7 and 3.10 python versions, and virtualenv installed in each version
+# pyenv is a requirement, with 2.7, 3.7, 3.10 and 3.13 python versions, and virtualenv installed in each version
 # plone parameter must be passed to create environment 'make setup plone=6.0' or after a make cleanall
 # The original Makefile can be found on https://github.com/IMIO/scripts-buildout
 
 SHELL=/bin/bash
-plones=4.3 5.2 6.0
+plones=4.3 5.2 6.0 6.1
 b_o=
 old_plone=$(shell [ -e .plone-version ] && cat .plone-version)
 
@@ -31,6 +31,9 @@ ifeq ($(plone),5.2)
 endif
 ifeq ($(plone),6.0)
   python=3.10
+endif
+ifeq ($(plone),6.1)
+  python=3.13
 endif
 endif
 

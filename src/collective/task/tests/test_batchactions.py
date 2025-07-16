@@ -48,28 +48,28 @@ class TestBatchActions(unittest.TestCase):
         self.assertTrue(agbaf.do_apply)  # can modify
         self.assertIn("assigned_group", agbaf.fields)
         fld = agbaf.fields["assigned_group"].field
-        self.assertEquals(fld.description, u"")
+        self.assertEqual(fld.description, u"")
         self.assertIsNone(fld.vocabulary)
-        self.assertEquals(fld.vocabularyName, u"collective.task.AssignedGroups")
+        self.assertEqual(fld.vocabularyName, u"collective.task.AssignedGroups")
         agbaf._apply(**{"assigned_group": "Reviewers"})
-        self.assertEquals(self.task1.assigned_group, "Reviewers")
-        self.assertEquals(self.task2.assigned_group, "Reviewers")
+        self.assertEqual(self.task1.assigned_group, "Reviewers")
+        self.assertEqual(self.task2.assigned_group, "Reviewers")
 
     def test_AssignedGroupBatchActionForm_not_permitted(self):
         # User cannot modify the tasks
         agbaf = AssignedGroupBatchActionForm(self.portal, self.portal.REQUEST)
         api.group.add_user(groupname="Reviewers", username=TEST_USER_ID)
-        self.assertEquals([mb.getId() for mb in agbaf.get_group_users("Administrators")], [])
-        self.assertEquals([mb.getId() for mb in agbaf.get_group_users("Reviewers")], ["test_user_1_"])
+        self.assertEqual([mb.getId() for mb in agbaf.get_group_users("Administrators")], [])
+        self.assertEqual([mb.getId() for mb in agbaf.get_group_users("Reviewers")], ["test_user_1_"])
         api.content.transition(self.task1, "do_to_assign")
         agbaf.brains = brains_from_uids(self.uids)
         agbaf._update()
         self.assertFalse(agbaf.do_apply)  # cannot modify task1
         self.assertIn("assigned_group", agbaf.fields)
         fld = agbaf.fields["assigned_group"].field
-        self.assertEquals(fld.description, u"You can't change this field on selected items. Modify your selection.")
+        self.assertEqual(fld.description, u"You can't change this field on selected items. Modify your selection.")
         self.assertIsNone(fld.vocabularyName)
-        self.assertEquals(len(fld.vocabulary), 0)
+        self.assertEqual(len(fld.vocabulary), 0)
 
     def test_AssignedGroupBatchActionForm_bad_user(self):
         # User is owner and can modify the tasks but assigned user problem
@@ -81,13 +81,13 @@ class TestBatchActions(unittest.TestCase):
         self.assertTrue(agbaf.do_apply)
         agbaf._apply(**{"assigned_group": "Reviewers"})
         # No modification because user 'test_user_1_' is not in Reviewers group
-        self.assertEquals(self.task1.assigned_group, "Site Administrators")
-        self.assertEquals(self.task2.assigned_group, "Administrators")
+        self.assertEqual(self.task1.assigned_group, "Site Administrators")
+        self.assertEqual(self.task2.assigned_group, "Administrators")
 
     def test_AssignedUserBatchActionForm_ok(self):
         # All is rigth
         agbaf = AssignedUserBatchActionForm(self.portal, self.portal.REQUEST)
-        api.user.create("x@imio.be", "officer", "12345")
+        api.user.create("x@imio.be", "officer", "12345678")
         api.group.add_user(groupname="Site Administrators", username="officer")
         api.group.add_user(groupname="Administrators", username="officer")
         agbaf.brains = brains_from_uids(self.uids)
@@ -97,17 +97,17 @@ class TestBatchActions(unittest.TestCase):
         self.assertTrue(agbaf.do_apply)  # can modify
         self.assertIn("assigned_user", agbaf.fields)
         fld = agbaf.fields["assigned_user"].field
-        self.assertEquals(fld.description, u"")
+        self.assertEqual(fld.description, u"")
         self.assertIsNone(fld.vocabularyName)
-        self.assertEquals(len(fld.vocabulary), 2)
+        self.assertEqual(len(fld.vocabulary), 2)
         agbaf._apply(**{"assigned_user": "officer"})
-        self.assertEquals(self.task1.assigned_user, "officer")
-        self.assertEquals(self.task2.assigned_user, "officer")
+        self.assertEqual(self.task1.assigned_user, "officer")
+        self.assertEqual(self.task2.assigned_user, "officer")
 
     def test_AssignedUserBatchActionForm_no_user(self):
         # No common user
         agbaf = AssignedUserBatchActionForm(self.portal, self.portal.REQUEST)
-        api.user.create("x@imio.be", "officer", "12345")
+        api.user.create("x@imio.be", "officer", "12345678")
         api.group.add_user(groupname="Site Administrators", username="officer")
         self.task1.assigned_user = "test_user_1_"
         self.task1.reindexObject()
@@ -118,21 +118,21 @@ class TestBatchActions(unittest.TestCase):
         self.assertTrue(agbaf.do_apply)  # can modify
         self.assertIn("assigned_user", agbaf.fields)
         fld = agbaf.fields["assigned_user"].field
-        self.assertEquals(
+        self.assertEqual(
             fld.description,
             u"No common or available assigned group, or no available assigned user. "
             u"Modify your selection unless you want to remove assigned user.",
         )
         self.assertIsNone(fld.vocabularyName)
-        self.assertEquals(len(fld.vocabulary), 1)
+        self.assertEqual(len(fld.vocabulary), 1)
         agbaf._apply(**{"assigned_user": "__none__"})
-        self.assertEquals(self.task1.assigned_user, None)
-        self.assertEquals(self.task2.assigned_user, None)
+        self.assertEqual(self.task1.assigned_user, None)
+        self.assertEqual(self.task2.assigned_user, None)
 
     def test_AssignedUserBatchActionForm_not_permitted(self):
         # Cannot modify
         agbaf = AssignedUserBatchActionForm(self.portal, self.portal.REQUEST)
-        api.user.create("x@imio.be", "officer", "12345")
+        api.user.create("x@imio.be", "officer", "12345678")
         api.group.add_user(groupname="Site Administrators", username="officer")
         api.group.add_user(groupname="Administrators", username="officer")
         api.group.add_user(groupname="Reviewers", username=TEST_USER_ID)
@@ -144,6 +144,6 @@ class TestBatchActions(unittest.TestCase):
         self.assertFalse(agbaf.do_apply)  # cannot modify
         self.assertIn("assigned_user", agbaf.fields)
         fld = agbaf.fields["assigned_user"].field
-        self.assertEquals(fld.description, u"You can't change this field on selected items. Modify your selection.")
+        self.assertEqual(fld.description, u"You can't change this field on selected items. Modify your selection.")
         self.assertIsNone(fld.vocabularyName)
-        self.assertEquals(len(fld.vocabulary), 0)
+        self.assertEqual(len(fld.vocabulary), 0)

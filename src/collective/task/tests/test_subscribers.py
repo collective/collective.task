@@ -5,12 +5,17 @@ from plone.app.testing import login
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
-from Products.CMFPlone.utils import base_hasattr
 from zope.interface import Interface
 from zope.lifecycleevent import Attributes
 from zope.lifecycleevent import modified
 
 import unittest
+
+
+try:
+    from plone.base.utils import base_hasattr
+except ImportError:
+    from Products.CMFPlone.utils import base_hasattr
 
 
 class TestSubscribers(unittest.TestCase):
