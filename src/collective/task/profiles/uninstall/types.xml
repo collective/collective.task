@@ -1,4 +1,9 @@
-<?xml version="1.0"?>
-<object name="portal_types" meta_type="Plone Types Tool">
-    <object name="task" meta_type="Dexterity FTI" remote="True" />
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Types Tool"
+        name="portal_types"
+>
+  <object meta_type="Dexterity FTI"
+          name="task"
+          remote="True"
+  />
 </object>

@@ -1,513 +1,616 @@
-<?xml version="1.0"?>
-<dc-workflow workflow_id="task_workflow"
-            title="task_workflow"
-            description="Workflow for basic tasks"
-            state_variable="review_state"
-            initial_state="created"
-            manager_bypass="False"
-            xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-            i18n:domain="plone">
- <permission>Access contents information</permission>
- <permission>Delete objects</permission>
- <permission>Modify portal content</permission>
- <permission>Request review</permission>
- <permission>Review portal content</permission>
- <permission>View</permission>
- <state state_id="closed"
-        title="closed"
-        i18n:attributes="title">
-  <exit-transition transition_id="back_in_realized"/>
-  <permission-map name="Access contents information"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Request review"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
- </state>
- <state state_id="created"
-        title="created"
-        i18n:attributes="title">
-  <exit-transition transition_id="do_to_assign"/>
-  <permission-map name="Access contents information"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Add portal content"
-                  acquired="True">
-  </permission-map>
-  <permission-map name="Delete objects"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Request review"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
- </state>
- <state state_id="in_progress"
-        title="in_progress"
-        i18n:attributes="title">
-  <exit-transition transition_id="back_in_to_do"/>
-  <exit-transition transition_id="do_realized"/>
-  <permission-map name="Access contents information"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Request review"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
- </state>
- <state state_id="realized"
-        title="realized"
-        i18n:attributes="title">
-  <exit-transition transition_id="back_in_progress"/>
-  <exit-transition transition_id="back_in_to_do"/>
-  <exit-transition transition_id="do_closed"/>
-  <permission-map name="Access contents information"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Request review"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
- </state>
- <state state_id="to_do"
-        title="to_do"
-        i18n:attributes="title">
-  <exit-transition transition_id="do_in_progress"/>
-  <exit-transition transition_id="do_realized"/>
-  <!--exit-transition transition_id="back_in_created"/-->
-  <exit-transition transition_id="back_in_to_assign"/>
-  <permission-map name="Access contents information"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Request review"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
- </state>
- <state state_id="to_assign"
-        title="to_assign"
-        i18n:attributes="title">
-  <exit-transition transition_id="auto_do_to_do"/>
-  <exit-transition transition_id="do_to_do"/>
-  <exit-transition transition_id="back_in_created"/>
-  <permission-map name="Access contents information"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Delete objects"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Request review"
-                  acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
-  <permission-map name="View"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-   <permission-role>Site Administrator</permission-role>
-  </permission-map>
- </state>
- <transition transition_id="back_in_created"
-             title="back_in_created"
-             new_state="created"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/back_in_created.png"
-          category="workflow" i18n:translate="">back_in_created</action>
-  <guard>
-   <guard-permission>Review portal content</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="back_in_progress"
-             title="back_in_progress"
-             new_state="in_progress"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/back_in_progress.png"
-          category="workflow" i18n:translate="">back_in_progress</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="back_in_realized"
-             title="back_in_realized"
-             new_state="realized"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/back_in_realized.png"
-          category="workflow" i18n:translate="">back_in_realized</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="back_in_to_assign"
-             title="back_in_to_assign"
-             new_state="to_assign"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/back_in_to_assign.png"
-          category="workflow" i18n:translate="">back_in_to_assign</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="back_in_to_do"
-             title="back_in_to_do"
-             new_state="to_do"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/back_in_to_do.png"
-          category="workflow" i18n:translate="">back_in_to_do</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="do_closed"
-             title="do_closed"
-             new_state="closed"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/do_closed.png"
-          category="workflow" i18n:translate="">do_closed</action>
-  <guard>
-   <guard-permission>Review portal content</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="do_in_progress"
-             title="do_in_progress"
-             new_state="in_progress"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/do_in_progress.png"
-          category="workflow" i18n:translate="">do_in_progress</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="do_realized"
-             title="do_realized"
-             new_state="realized"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/do_realized.png"
-          category="workflow" i18n:translate="">do_realized</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="auto_do_to_do"
-             title="auto_do_to_do"
-             new_state="to_do"
-             trigger="AUTOMATIC"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" category="hidden" i18n:translate="">auto_do_to_do</action>
-  <guard>
-    <guard-expression>here/auto_to_do_flag</guard-expression>
-  </guard>
- </transition>
- <transition transition_id="do_to_assign"
-             title="do_to_assign"
-             new_state="to_assign"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/do_to_assign.png"
-          category="workflow" i18n:translate="">do_to_assign</action>
-  <guard>
-    <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="do_to_do"
-             title="do_to_do"
-             new_state="to_do"
-             trigger="USER"
-             before_script=""
-             after_script=""
-             i18n:attributes="title">
-  <action url="" icon="%(portal_url)s/++resource++collective.task/do_to_do.png"
-          category="workflow" i18n:translate="">do_to_do</action>
-  <guard>
-    <guard-permission>Review portal content</guard-permission>
-    <guard-expression>here/assigned_user</guard-expression>
-  </guard>
- </transition>
- <variable variable_id="action" for_catalog="False"
-           for_status="True" update_always="True">
-  <description>The last transition</description>
-  <default>
-   <expression>transition/getId|nothing</expression>
-  </default>
-  <guard>
-  </guard>
- </variable>
- <variable variable_id="actor" for_catalog="False"
-           for_status="True" update_always="True">
-  <description>The ID of the user who performed the last transition</description>
-  <default>
-   <expression>user/getId</expression>
-  </default>
-  <guard>
-  </guard>
- </variable>
- <variable variable_id="comments" for_catalog="False"
-           for_status="True" update_always="True">
-  <description>Comments about the last transition</description>
-  <default>
-   <expression>python:state_change.kwargs.get('comment', '')</expression>
-  </default>
-  <guard>
-  </guard>
- </variable>
- <variable variable_id="review_history" for_catalog="False"
-           for_status="False" update_always="False">
-  <description>Provides access to workflow history</description>
-  <default>
-   <expression>state_change/getHistory</expression>
-  </default>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-   <guard-permission>Review portal content</guard-permission>
-  </guard>
- </variable>
- <variable variable_id="time" for_catalog="False"
-           for_status="True" update_always="True">
-  <description>Time of the last transition</description>
-  <default>
-   <expression>state_change/getDateTime</expression>
-  </default>
-  <guard>
-  </guard>
- </variable>
+<?xml version="1.0" encoding="utf-8"?>
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             description="Workflow for basic tasks"
+             initial_state="created"
+             manager_bypass="False"
+             state_variable="review_state"
+             title="task_workflow"
+             workflow_id="task_workflow"
+             i18n:domain="plone"
+>
+  <permission>Access contents information</permission>
+  <permission>Delete objects</permission>
+  <permission>Modify portal content</permission>
+  <permission>Request review</permission>
+  <permission>Review portal content</permission>
+  <permission>View</permission>
+  <state state_id="closed"
+         title="closed"
+         i18n:attributes="title"
+  >
+    <exit-transition transition_id="back_in_realized" />
+    <permission-map acquired="False"
+                    name="Access contents information"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Delete objects"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Modify portal content"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Request review"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Review portal content"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="View"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+  </state>
+  <state state_id="created"
+         title="created"
+         i18n:attributes="title"
+  >
+    <exit-transition transition_id="do_to_assign" />
+    <permission-map acquired="False"
+                    name="Access contents information"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="True"
+                    name="Add portal content"
+    >
+</permission-map>
+    <permission-map acquired="False"
+                    name="Delete objects"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Modify portal content"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Request review"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Review portal content"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="View"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+  </state>
+  <state state_id="in_progress"
+         title="in_progress"
+         i18n:attributes="title"
+  >
+    <exit-transition transition_id="back_in_to_do" />
+    <exit-transition transition_id="do_realized" />
+    <permission-map acquired="False"
+                    name="Access contents information"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Delete objects"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Modify portal content"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Request review"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Review portal content"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="View"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+  </state>
+  <state state_id="realized"
+         title="realized"
+         i18n:attributes="title"
+  >
+    <exit-transition transition_id="back_in_progress" />
+    <exit-transition transition_id="back_in_to_do" />
+    <exit-transition transition_id="do_closed" />
+    <permission-map acquired="False"
+                    name="Access contents information"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Delete objects"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Modify portal content"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Request review"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Review portal content"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="View"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+  </state>
+  <state state_id="to_do"
+         title="to_do"
+         i18n:attributes="title"
+  >
+    <exit-transition transition_id="do_in_progress" />
+    <exit-transition transition_id="do_realized" />
+    <!--exit-transition transition_id="back_in_created"/-->
+    <exit-transition transition_id="back_in_to_assign" />
+    <permission-map acquired="False"
+                    name="Access contents information"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Delete objects"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Modify portal content"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Request review"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Review portal content"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="View"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+  </state>
+  <state state_id="to_assign"
+         title="to_assign"
+         i18n:attributes="title"
+  >
+    <exit-transition transition_id="auto_do_to_do" />
+    <exit-transition transition_id="do_to_do" />
+    <exit-transition transition_id="back_in_created" />
+    <permission-map acquired="False"
+                    name="Access contents information"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Delete objects"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Modify portal content"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Request review"
+    >
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="Review portal content"
+    >
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+    <permission-map acquired="False"
+                    name="View"
+    >
+      <permission-role>Contributor</permission-role>
+      <permission-role>Editor</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Reader</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Site Administrator</permission-role>
+    </permission-map>
+  </state>
+  <transition after_script=""
+              before_script=""
+              new_state="created"
+              title="back_in_created"
+              transition_id="back_in_created"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/back_in_created.png"
+            url=""
+            i18n:translate=""
+    >back_in_created</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="in_progress"
+              title="back_in_progress"
+              transition_id="back_in_progress"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/back_in_progress.png"
+            url=""
+            i18n:translate=""
+    >back_in_progress</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="realized"
+              title="back_in_realized"
+              transition_id="back_in_realized"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/back_in_realized.png"
+            url=""
+            i18n:translate=""
+    >back_in_realized</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="to_assign"
+              title="back_in_to_assign"
+              transition_id="back_in_to_assign"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/back_in_to_assign.png"
+            url=""
+            i18n:translate=""
+    >back_in_to_assign</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="to_do"
+              title="back_in_to_do"
+              transition_id="back_in_to_do"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/back_in_to_do.png"
+            url=""
+            i18n:translate=""
+    >back_in_to_do</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="closed"
+              title="do_closed"
+              transition_id="do_closed"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/do_closed.png"
+            url=""
+            i18n:translate=""
+    >do_closed</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="in_progress"
+              title="do_in_progress"
+              transition_id="do_in_progress"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/do_in_progress.png"
+            url=""
+            i18n:translate=""
+    >do_in_progress</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="realized"
+              title="do_realized"
+              transition_id="do_realized"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/do_realized.png"
+            url=""
+            i18n:translate=""
+    >do_realized</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="to_do"
+              title="auto_do_to_do"
+              transition_id="auto_do_to_do"
+              trigger="AUTOMATIC"
+              i18n:attributes="title"
+  >
+    <action category="hidden"
+            url=""
+            i18n:translate=""
+    >auto_do_to_do</action>
+    <guard>
+      <guard-expression>here/auto_to_do_flag</guard-expression>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="to_assign"
+              title="do_to_assign"
+              transition_id="do_to_assign"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/do_to_assign.png"
+            url=""
+            i18n:translate=""
+    >do_to_assign</action>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+    </guard>
+  </transition>
+  <transition after_script=""
+              before_script=""
+              new_state="to_do"
+              title="do_to_do"
+              transition_id="do_to_do"
+              trigger="USER"
+              i18n:attributes="title"
+  >
+    <action category="workflow"
+            icon="%(portal_url)s/++resource++collective.task/do_to_do.png"
+            url=""
+            i18n:translate=""
+    >do_to_do</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+      <guard-expression>here/assigned_user</guard-expression>
+    </guard>
+  </transition>
+  <variable for_catalog="False"
+            for_status="True"
+            update_always="True"
+            variable_id="action"
+  >
+    <description>The last transition</description>
+    <default>
+      <expression>transition/getId|nothing</expression>
+    </default>
+    <guard>
+</guard>
+  </variable>
+  <variable for_catalog="False"
+            for_status="True"
+            update_always="True"
+            variable_id="actor"
+  >
+    <description>The ID of the user who performed the last transition</description>
+    <default>
+      <expression>user/getId</expression>
+    </default>
+    <guard>
+</guard>
+  </variable>
+  <variable for_catalog="False"
+            for_status="True"
+            update_always="True"
+            variable_id="comments"
+  >
+    <description>Comments about the last transition</description>
+    <default>
+      <expression>python:state_change.kwargs.get('comment', '')</expression>
+    </default>
+    <guard>
+</guard>
+  </variable>
+  <variable for_catalog="False"
+            for_status="False"
+            update_always="False"
+            variable_id="review_history"
+  >
+    <description>Provides access to workflow history</description>
+    <default>
+      <expression>state_change/getHistory</expression>
+    </default>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </variable>
+  <variable for_catalog="False"
+            for_status="True"
+            update_always="True"
+            variable_id="time"
+  >
+    <description>Time of the last transition</description>
+    <default>
+      <expression>state_change/getDateTime</expression>
+    </default>
+    <guard>
+</guard>
+  </variable>
 </dc-workflow>

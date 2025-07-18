@@ -1,12 +1,13 @@
-<?xml version="1.0"?>
-<registry
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="collective.task">
+<?xml version="1.0" encoding="utf-8"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.task"
+>
 
   <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
-           prefix="plone.bundles/collectivetask">
+           prefix="plone.bundles/collectivetask"
+  >
     <value key="enabled">True</value>
-    <value key="jscompilation"></value>
+    <value key="jscompilation" />
     <value key="csscompilation">++resource++collective.task/collectivetask.css</value>
     <value key="expression" />
     <value key="depends" />

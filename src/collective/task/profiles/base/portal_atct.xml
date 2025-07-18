@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <atcttool xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <topic_metadata i18n:domain="plone">
-  <metadata
-    name="assigned_group"
-    remove="true" />
- </topic_metadata>
+  <topic_metadata i18n:domain="plone">
+    <metadata name="assigned_group"
+              remove="true"
+    />
+  </topic_metadata>
 
- <topic_metadata i18n:domain="plone">
-  <metadata
-    name="assigned_user"
-    remove="true" />
- </topic_metadata>
+  <topic_metadata i18n:domain="plone">
+    <metadata name="assigned_user"
+              remove="true"
+    />
+  </topic_metadata>
 </atcttool>

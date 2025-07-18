@@ -1,17 +1,38 @@
-<?xml version="1.0"?>
-<object name="portal_catalog" meta_type="Plone Catalog Tool">
- <index name="enquirer" meta_type="UsersAndGroupsIndex" remove="True">
-  <indexed_attr value="enquirer"/>
- </index>
- <index name="responsible" meta_type="UsersAndGroupsIndex" remove="True">
-  <indexed_attr value="responsible"/>
- </index>
- <index name="deadline" meta_type="DateIndex" remove="True">
-  <indexed_attr value="deadline"/>
- </index>
- <column value="deadline" remove="True"/>
- <column value="enquirer" remove="True"/>
- <column value="responsible" remove="True"/>
- <column value="document_path" remove="True"/>
- <column value="document_title" remove="True"/>
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Catalog Tool"
+        name="portal_catalog"
+>
+  <index meta_type="UsersAndGroupsIndex"
+         name="enquirer"
+         remove="True"
+  >
+    <indexed_attr value="enquirer" />
+  </index>
+  <index meta_type="UsersAndGroupsIndex"
+         name="responsible"
+         remove="True"
+  >
+    <indexed_attr value="responsible" />
+  </index>
+  <index meta_type="DateIndex"
+         name="deadline"
+         remove="True"
+  >
+    <indexed_attr value="deadline" />
+  </index>
+  <column remove="True"
+          value="deadline"
+  />
+  <column remove="True"
+          value="enquirer"
+  />
+  <column remove="True"
+          value="responsible"
+  />
+  <column remove="True"
+          value="document_path"
+  />
+  <column remove="True"
+          value="document_title"
+  />
 </object>

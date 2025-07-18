@@ -1,25 +1,30 @@
-<!-- Operation Definitions -->
-<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="plone">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Operation Definitions --><registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="plone"
+>
 
-    <records interface="plone.app.querystring.interfaces.IQueryField"
-        prefix="plone.app.querystring.field.assigned_user"
-        remove="True">
-    </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.assigned_user"
+           remove="True"
+  >
+</records>
 
-    <records interface="plone.app.querystring.interfaces.IQueryField"
-        prefix="plone.app.querystring.field.due_date"
-        remove="True">
-    </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.due_date"
+           remove="True"
+  >
+</records>
 
-    <records interface="collective.task.interfaces.ICollectiveTaskConfig"
-        prefix="collective.task"
-        remove="True">
-    </records>
+  <records interface="collective.task.interfaces.ICollectiveTaskConfig"
+           prefix="collective.task"
+           remove="True"
+  >
+</records>
 
-    <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
-        prefix="plone.bundles/collectivetask"
-        remove="True">
-    </records>
+  <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           prefix="plone.bundles/collectivetask"
+           remove="True"
+  >
+</records>
 
 </registry>

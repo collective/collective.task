@@ -1,11 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <import-steps>
 
- <import-step
-    id="task-uninstall"
-    handler="collective.task.setuphandlers.uninstall_1"
-    title="manual coded uninstall for task 1.0 version"
-    version="2019-09-05">
+  <import-step id="task-uninstall"
+               handler="collective.task.setuphandlers.uninstall_1"
+               title="manual coded uninstall for task 1.0 version"
+               version="2019-09-05"
+  >
    manual coded uninstall for task 1.0 version
  </import-step>
 
