@@ -48,8 +48,8 @@ class TestBehaviors(unittest.TestCase):
         self.assertEqual(get_parent_assigned_group(self.portal), None)
 
     def test_get_current_user_id(self):
-        # self.assertEqual(get_current_user_id(), "test_user_1_")
-        self.assertEqual(get_current_user_id(), "test-user")
+        self.assertEqual(get_current_user_id(), "test_user_1_")
+        # self.assertEqual(get_current_user_id(), "test-user")
 
     def test_AssignedUserValidator(self):
         self.task1.assigned_group = "Administrators"

@@ -17,6 +17,7 @@ from plone.supermodel import model
 from plone.supermodel.directives import fieldset
 from z3c.form import validator
 from zope import schema
+from zope.component import getUtility
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
@@ -54,20 +55,8 @@ class AssignedUsersVocabulary(object):
     """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
 
     def __call__(self, context):
-        # terms as username, userid, fullname
-        acl_users = api.portal.get().aq_parent.acl_users
-        users = [api.user.get(user["userid"]) for user in acl_users.searchUsers()]
-        users += api.user.get_users()
-        return SimpleVocabulary(
-            [
-                SimpleTerm(
-                    u.getUserName(),
-                    u.getId(),
-                    u.getUser().getProperty("fullname") or u.getUserName(),
-                )
-                for u in users
-            ]
-        )
+        voc = getUtility(IVocabularyFactory, name="imio.helpers.SimplySortedUsers", context=context)
+        return voc(context)
 
 
 AssignedUsersVocabularyFactory = AssignedUsersVocabulary()
@@ -78,9 +67,8 @@ class EnquirerVocabulary(object):
     """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
 
     def __call__(self, context):
-        acl_users = api.portal.get().aq_parent.acl_users
-        users = [user["title"] for user in acl_users.searchUsers()]
-        return SimpleVocabulary.fromValues([u.getUserName() for u in api.user.get_users()] + users)
+        voc = getUtility(IVocabularyFactory, name="imio.helpers.SimplySortedUsers", context=context)
+        return voc(context)
 
 
 EnquirerVocabularyFactory = EnquirerVocabulary()
@@ -116,7 +104,7 @@ def get_current_user_id():
     """Current user by default."""
     current_user = api.user.get_current()
     if current_user:
-        return current_user.getUserName()
+        return current_user.getId()
     return None
 
 
