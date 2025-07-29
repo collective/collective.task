@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Workflow Tool"
+        name="portal_workflow"
+>
+  <object name="task_workflow"
+          remove="True"
+  />
+</object>

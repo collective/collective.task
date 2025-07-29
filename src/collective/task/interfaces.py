@@ -2,9 +2,9 @@
 """Module where all interfaces, events and exceptions live."""
 
 from collective.task import _
+from collective.task import PMF
 from collective.z3cform.datagridfield.registry import DictRow
 from dexterity.localrolesfield.field import LocalRolesField
-from plone.app.dexterity import PloneMessageFactory as _PMF
 from plone.autoform import directives
 from plone.supermodel import model
 from z3c.form.browser.select import SelectFieldWidget
@@ -19,47 +19,41 @@ class ICollectiveTaskLayer(IDefaultBrowserLayer):
 
 
 class ITaskContent(model.Schema):
-    """ Interface for task content type """
+    """Interface for task content type"""
 
-    title = schema.TextLine(
-        title=_PMF(u'label_title', default=u'Title'),
-        required=True
-    )
+    title = schema.TextLine(title=PMF(u"label_title", default=u"Title"), required=True)
 
     parents_assigned_groups = LocalRolesField(
         title=_(u"Parents assigned groups"),
         required=False,
-        value_type=schema.Choice(vocabulary=u'collective.task.AssignedGroups')
+        value_type=schema.Choice(vocabulary=u"collective.task.AssignedGroups"),
     )
     # must change widget to hide it, because default widget (orderedselect) doesn't have hidden widget template
-    directives.widget('parents_assigned_groups', SelectFieldWidget, multiple='multiple', size=10)
-    directives.mode(parents_assigned_groups='hidden')
+    directives.widget("parents_assigned_groups", SelectFieldWidget, multiple="multiple", size=10)
+    directives.mode(parents_assigned_groups="hidden")
 
     parents_enquirers = LocalRolesField(
-        title=_(u"Parents enquirers"),
-        required=False,
-        value_type=schema.Choice(vocabulary=u'collective.task.Enquirer')
+        title=_(u"Parents enquirers"), required=False, value_type=schema.Choice(vocabulary=u"collective.task.Enquirer")
     )
     # must change widget to hide it, because default widget (orderedselect) doesn't have hidden widget template
-    directives.widget('parents_enquirers', SelectFieldWidget, multiple='multiple', size=10)
-    directives.mode(parents_enquirers='hidden')
+    directives.widget("parents_enquirers", SelectFieldWidget, multiple="multiple", size=10)
+    directives.mode(parents_enquirers="hidden")
 
 
 class ITaskMethods(Interface):
-
     def get_highest_task_parent(task=False):
         """
-            Get the object containing the highest ITask object
-            or the highest ITask object if task is True
+        Get the object containing the highest ITask object
+        or the highest ITask object if task is True
         """
 
 
 class ITaskContainerMethods(Interface):
-    """ Adapter description """
+    """Adapter description"""
 
 
 class ITaskContentMethods(Interface):
-    """ Adapter description """
+    """Adapter description"""
 
 
 class IParentsFieldSchema(Interface):
@@ -72,10 +66,9 @@ class IParentsFieldSchema(Interface):
 class ICollectiveTaskConfig(model.Schema):
 
     parents_fields = schema.List(
-        title=_(u'Parents fields'),
-        value_type=DictRow(title=_("Parents field"),
-                           schema=IParentsFieldSchema))
+        title=_(u"Parents fields"), value_type=DictRow(title=_("Parents field"), schema=IParentsFieldSchema)
+    )
 
 
 class ILocalRoleMasterSelectField(IField):
-    """ Marker interface for the field """
+    """Marker interface for the field"""

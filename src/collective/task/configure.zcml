@@ -5,76 +5,92 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:zcml="http://namespaces.zope.org/zcml"
-    i18n_domain="collective.task">
+    i18n_domain="collective.task"
+    >
 
-    <i18n:registerTranslations directory="locales" />
+  <i18n:registerTranslations directory="locales" />
 
-    <!--includeDependencies package="." /-->
+  <!--includeDependencies package="." /-->
 
-    <include package="dexterity.localrolesfield"/>
-    <include package="plone.principalsource" />
-    <include package="plone.directives.form" />
-    <include package="plone.supermodel.exportimport" />
-    <include package="plone.formwidget.masterselect" />
-    <include package="z3c.table" />
-    <include zcml:condition="installed imio.prettylink" package="imio.prettylink" />
+  <include package="dexterity.localrolesfield" />
+  <include
+      package="plone.principalsource"
+      zcml:condition="not-have plone-5"
+      />
+  <include package="plone.supermodel.exportimport" />
+  <include package="plone.formwidget.masterselect" />
+  <include package="z3c.table" />
+  <include
+      package="imio.prettylink"
+      zcml:condition="installed imio.prettylink"
+      />
 
-    <include package=".browser" />
-    <include package=".content" />
+  <include package=".browser" />
+  <include package=".content" />
 
-    <include file="profiles.zcml" />
-    <include file="behaviors.zcml" />
-    <include file="subscribers.zcml" />
+  <include file="profiles.zcml" />
+  <include file="behaviors.zcml" />
+  <include file="subscribers.zcml" />
 
-    <utility
-        name="collective.task.AssignedGroups"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-        component="collective.task.behaviors.AssignedGroupsVocabularyFactory"
-    />
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      name="collective.task.AssignedGroups"
+      component="collective.task.behaviors.AssignedGroupsVocabularyFactory"
+      />
 
-    <utility
-        name="collective.task.AssignedUsers"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-        component="collective.task.behaviors.AssignedUsersVocabularyFactory"
-    />
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      name="collective.task.AssignedUsers"
+      component="collective.task.behaviors.AssignedUsersVocabularyFactory"
+      />
 
-    <utility
-        name="collective.task.Enquirer"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-        component="collective.task.behaviors.EnquirerVocabularyFactory"
-    />
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      name="collective.task.Enquirer"
+      component="collective.task.behaviors.EnquirerVocabularyFactory"
+      />
 
-    <utility
-        name="collective.task.related_taskcontainer"
-        provides="dexterity.localroles.interfaces.ILocalRolesRelatedSearchUtility"
-        factory=".utility.TaskContainerRelatedSearch"
-    />
+  <utility
+      factory=".utility.TaskContainerRelatedSearch"
+      provides="dexterity.localroles.interfaces.ILocalRolesRelatedSearchUtility"
+      name="collective.task.related_taskcontainer"
+      />
 
-    <utility
-        component="collective.task.field.LocalRoleSelectHandler"
-        name="collective.task.field.LocalRoleMasterSelectField"
-        />
+  <utility
+      name="collective.task.field.LocalRoleMasterSelectField"
+      component="collective.task.field.LocalRoleSelectHandler"
+      />
 
-    <utility
-        component="collective.task.field.LocalRoleHandler"
-        name="dexterity.localrolesfield.field.LocalRoleField"
-        />
+  <utility
+      name="dexterity.localrolesfield.field.LocalRoleField"
+      component="collective.task.field.LocalRoleHandler"
+      />
 
-    <adapter name="assigned_group" factory=".adapters.assigned_group_index" />
-    <adapter name="assigned_user" factory=".adapters.assigned_user_index" />
-    <adapter name="due_date" factory=".adapters.due_date_index" />
+  <adapter
+      factory=".adapters.assigned_group_index"
+      name="assigned_group"
+      />
+  <adapter
+      factory=".adapters.assigned_user_index"
+      name="assigned_user"
+      />
+  <adapter
+      factory=".adapters.due_date_index"
+      name="due_date"
+      />
 
-    <adapter factory=".adapters.TaskAdapter" />
-    <adapter
-      for="collective.task.behaviors.ITaskContainer"
+  <adapter factory=".adapters.TaskAdapter" />
+  <adapter
+      factory=".adapters.TaskContainerAdapter"
       provides="collective.task.interfaces.ITaskContainerMethods"
-      factory=".adapters.TaskContainerAdapter" />
-    <adapter
-      for="collective.task.interfaces.ITaskContent"
+      for="collective.task.behaviors.ITaskContainer"
+      />
+  <adapter
+      factory=".adapters.TaskContentAdapter"
       provides="collective.task.interfaces.ITaskContentMethods"
-      factory=".adapters.TaskContentAdapter" />
+      for="collective.task.interfaces.ITaskContent"
+      />
 
-    <adapter
-        factory=".behaviors.AssignedUserValidator" />
+  <adapter factory=".behaviors.AssignedUserValidator" />
 
 </configure>

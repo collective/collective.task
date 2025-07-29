@@ -6,13 +6,12 @@ from collective.task import PMF
 from collective.task.adapters import EMPTY_STRING
 from html import escape
 from plone import api
-from Products.CMFPlone.utils import normalizeString
-from Products.CMFPlone.utils import safe_unicode
 from z3c.table.column import Column
 from z3c.table.column import LinkColumn
 from z3c.table.table import Table
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
+
 
 try:
     from imio.prettylink.interfaces import IPrettyLink
@@ -20,12 +19,20 @@ except ImportError:
     pass
 
 
+try:
+    from plone.base.utils import normalizeString
+    from plone.base.utils import safe_text
+except ImportError:
+    from Products.CMFPlone.utils import normalizeString
+    from Products.CMFPlone.utils import safe_unicode as safe_text
+
+
 class TasksTable(Table):
     """Table that displays tasks info."""
 
-    cssClassEven = u'even'
-    cssClassOdd = u'odd'
-    cssClasses = {'table': 'listing taskContainerListing icons-on'}
+    cssClassEven = u"even"
+    cssClassOdd = u"odd"
+    cssClasses = {"table": "listing taskContainerListing icons-on"}
 
     batchSize = 20
     startBatchingAt = 30
@@ -33,11 +40,11 @@ class TasksTable(Table):
 
     @CachedProperty
     def translation_service(self):
-        return api.portal.get_tool('translation_service')
+        return api.portal.get_tool("translation_service")
 
     @CachedProperty
     def wtool(self):
-        return api.portal.get_tool('portal_workflow')
+        return api.portal.get_tool("portal_workflow")
 
     @CachedProperty
     def portal_url(self):
@@ -54,10 +61,10 @@ class UserColumn(Column):
     field = NotImplemented
 
     def renderCell(self, value):
-        username = getattr(value, self.field, '')
+        username = getattr(value, self.field, "")
         if username and username != EMPTY_STRING:
             member = api.user.get(username)
-            return escape(member.getUser().getProperty('fullname').decode('utf-8'))
+            return escape(safe_text(member.getUser().getProperty("fullname")))
 
         return ""
 
@@ -69,11 +76,10 @@ class TitleColumn(LinkColumn):
     weight = 10
 
     def getLinkCSS(self, item):
-        return ' class="state-%s contenttype-%s"' % (api.content.get_state(obj=item),
-                                                     normalizeString(item.portal_type))
+        return ' class="state-%s contenttype-%s"' % (api.content.get_state(obj=item), normalizeString(item.portal_type))
 
     def getLinkContent(self, item):
-        return safe_unicode(item.title)
+        return safe_text(item.title)
 
 
 class PrettyLinkTitleColumn(TitleColumn):
@@ -100,7 +106,7 @@ class EnquirerColumn(UserColumn):
 
     header = _("Enquirer")
     weight = 20
-    field = 'enquirer'
+    field = "enquirer"
 
 
 class AssignedGroupColumn(Column):
@@ -112,7 +118,7 @@ class AssignedGroupColumn(Column):
     def renderCell(self, value):
         if value.assigned_group:
             group = api.group.get(value.assigned_group).getGroup()
-            return escape(group.getProperty('title').decode('utf-8'))
+            return escape(safe_text(group.getProperty("title")))
         return ""
 
 
@@ -121,7 +127,7 @@ class AssignedUserColumn(UserColumn):
 
     header = _("Assigned user")
     weight = 40
-    field = 'assigned_user'
+    field = "assigned_user"
 
 
 class DueDateColumn(Column):
@@ -134,8 +140,9 @@ class DueDateColumn(Column):
 
     def renderCell(self, value):
         if value.due_date:
-            return api.portal.get_localized_time(datetime=value.due_date, long_format=self.long_format,
-                                                 time_only=self.time_only)
+            return api.portal.get_localized_time(
+                datetime=value.due_date, long_format=self.long_format, time_only=self.time_only
+            )
         return ""
 
 
@@ -148,7 +155,7 @@ class ReviewStateColumn(Column):
     def renderCell(self, value):
         state = api.content.get_state(value)
         if state:
-            wtool = api.portal.get_tool('portal_workflow')
+            wtool = api.portal.get_tool("portal_workflow")
             state_title = wtool.getTitleForStateOnType(state, value.portal_type)
             return escape(translate(PMF(state_title), context=self.request))
-        return ''
+        return ""

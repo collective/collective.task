@@ -1,6 +1,6 @@
-<fieldset class="visualClear"
-    tal:define="results view/table/values"
-    tal:condition="results">
-  <legend i18n:translate="" tal:content="view/label">label</legend>
-    <tal:listing replace="structure view/table/render" />
+<fieldset class="clearfix"
+  tal:define="results view/table/values;"
+  tal:condition="results">
+  <legend tal:content="view/label" i18n:translate="">label</legend>
+  <tal:listing replace="structure view/table/render" />
 </fieldset>

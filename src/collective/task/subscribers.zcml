@@ -1,15 +1,15 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <subscriber
-     for="collective.task.behaviors.ITask
-          Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-     handler=".subscribers.afterTransitionITaskSubscriber"
+      for="collective.task.behaviors.ITask
+           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+      handler=".subscribers.afterTransitionITaskSubscriber"
       />
 
   <subscriber
-     for="collective.task.interfaces.ITaskContent
-          zope.lifecycleevent.interfaces.IObjectMovedEvent"
-     handler=".subscribers.taskContent_created"
+      for="collective.task.interfaces.ITaskContent
+           zope.lifecycleevent.interfaces.IObjectMovedEvent"
+      handler=".subscribers.taskContent_created"
       />
 
   <subscriber

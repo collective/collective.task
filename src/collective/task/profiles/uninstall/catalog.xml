@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Catalog Tool"
+        name="portal_catalog"
+>
+  <index meta_type="FieldIndex"
+         name="assigned_user"
+         remove="True"
+  >
+    <indexed_attr value="assigned_user" />
+  </index>
+  <column value="assigned_user" />
+
+  <index meta_type="FieldIndex"
+         name="assigned_group"
+         remove="True"
+  >
+    <indexed_attr value="assigned_group" />
+  </index>
+  <column value="assigned_group" />
+
+  <index meta_type="DateIndex"
+         name="due_date"
+         remove="True"
+  >
+    <property name="index_naive_time_as_local">True</property>
+  </index>
+  <column value="due_date" />
+</object>

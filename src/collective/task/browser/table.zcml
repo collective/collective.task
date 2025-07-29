@@ -3,69 +3,72 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:zcml="http://namespaces.zope.org/zcml"
-    i18n_domain="collective.task">
-
-  <adapter zcml:condition="not-installed imio.prettylink"
-    name="TitleColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.TitleColumn"
-    />
-
-  <adapter zcml:condition="installed imio.prettylink"
-    name="TitleColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.PrettyLinkTitleColumn"
-    />
+    i18n_domain="collective.task"
+    >
 
   <adapter
-    name="DueDateColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.DueDateColumn"
-    />
+      factory=".table.TitleColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="TitleColumn"
+      zcml:condition="not-installed imio.prettylink"
+      />
 
   <adapter
-    name="EnquirerColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.EnquirerColumn"
-    />
+      factory=".table.PrettyLinkTitleColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="TitleColumn"
+      zcml:condition="installed imio.prettylink"
+      />
 
   <adapter
-    name="AssignedGroupColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.AssignedGroupColumn"
-    />
+      factory=".table.DueDateColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="DueDateColumn"
+      />
 
   <adapter
-    name="AssignedUserColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.AssignedUserColumn"
-    />
+      factory=".table.EnquirerColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="EnquirerColumn"
+      />
 
   <adapter
-    name="ReviewStateColumn"
-    for="zope.interface.Interface
-         zope.interface.Interface
-         .table.TasksTable"
-    provides="z3c.table.interfaces.IColumn"
-    factory=".table.ReviewStateColumn"
-    />
+      factory=".table.AssignedGroupColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="AssignedGroupColumn"
+      />
+
+  <adapter
+      factory=".table.AssignedUserColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="AssignedUserColumn"
+      />
+
+  <adapter
+      factory=".table.ReviewStateColumn"
+      provides="z3c.table.interfaces.IColumn"
+      for="zope.interface.Interface
+           zope.interface.Interface
+           .table.TasksTable"
+      name="ReviewStateColumn"
+      />
 
 </configure>
