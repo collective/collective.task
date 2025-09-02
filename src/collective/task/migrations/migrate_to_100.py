@@ -26,14 +26,6 @@ class Migrate_To_100(Migrator):
         Migrator.__init__(self, context)
         self.catalog = api.portal.get_tool("portal_catalog")
 
-    @property
-    def get_already_update_task(self):
-        return api.portal.get_registry_record(TASK_ALREADY_COMMIT_REGISTRY, default=[])
-
-    @property
-    def get_already_update_obj(self):
-        return api.portal.get_registry_record(OBJ_ALREADY_COMMIT_REGISTRY, default=[])
-
     def create_registry(self, registry_name):
         registry = getUtility(IRegistry)
         if registry_name in registry:
@@ -144,8 +136,8 @@ class Migrate_To_100(Migrator):
     def run(self):
         logger.info("Migrating to collective.task 100")
         self.cleanRegistries()
-        self.already_update_task = set(self.get_already_update_task)  # cached in memory
-        self.already_update_obj = set(self.get_already_update_obj)  # cached in memory
+        self.already_update_task = set(api.portal.get_registry_record(TASK_ALREADY_COMMIT_REGISTRY, default=[]))  # cached in memory
+        self.already_update_obj = set(api.portal.get_registry_record(OBJ_ALREADY_COMMIT_REGISTRY, default=[]))  # cached in memory
         logger.info("Import profiles")
         self.runProfileSteps(
             "collective.task", steps=["typeinfo", "plone.app.registry", "workflow"]
