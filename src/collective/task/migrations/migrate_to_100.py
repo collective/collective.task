@@ -136,8 +136,12 @@ class Migrate_To_100(Migrator):
     def run(self):
         logger.info("Migrating to collective.task 100")
         self.cleanRegistries()
-        self.already_update_task = set(api.portal.get_registry_record(TASK_ALREADY_COMMIT_REGISTRY, default=[]))  # cached in memory
-        self.already_update_obj = set(api.portal.get_registry_record(OBJ_ALREADY_COMMIT_REGISTRY, default=[]))  # cached in memory
+        self.already_update_task = set(
+            api.portal.get_registry_record(TASK_ALREADY_COMMIT_REGISTRY, default=[])
+        )  # cached in memory
+        self.already_update_obj = set(
+            api.portal.get_registry_record(OBJ_ALREADY_COMMIT_REGISTRY, default=[])
+        )  # cached in memory
         logger.info("Import profiles")
         self.runProfileSteps(
             "collective.task", steps=["typeinfo", "plone.app.registry", "workflow"]
