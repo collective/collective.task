@@ -10,7 +10,7 @@ from zope.component import getUtility
 import logging
 import transaction
 
-logger = logging.getLogger('collective.task')
+logger = logging.getLogger("collective.task")
 
 SAVEPOINT_INTERVAL = 2000
 COMMIT_INTERVAL = 20000
@@ -24,7 +24,7 @@ class Migrate_To_100(Migrator):
 
     def __init__(self, context):
         Migrator.__init__(self, context)
-        self.catalog = api.portal.get_tool('portal_catalog')
+        self.catalog = api.portal.get_tool("portal_catalog")
 
     @property
     def get_already_update_task(self):
@@ -39,11 +39,11 @@ class Migrate_To_100(Migrator):
         if registry_name in registry:
             return
 
-        registry.records[registry_name] = Record(field.List(
-            title=u"Id already commit",
-            value_type=field.TextLine(),
-            default=[]
-        ))
+        registry.records[registry_name] = Record(
+            field.List(
+                title=u"Id already commit", value_type=field.TextLine(), default=[]
+            )
+        )
 
     def add_record_in_registry(self, registry_name):
         registry = getUtility(IRegistry)
@@ -60,9 +60,8 @@ class Migrate_To_100(Migrator):
         self.id_to_registry = []
 
     def _recursiveUpdateRoleMappings(self, ob, wfs):
-
-        """ Update roles-permission mappings recursively, and
-            reindex special index.
+        """Update roles-permission mappings recursively, and
+        reindex special index.
         """
         # Returns a count of updated objects.
         count = 0
@@ -79,10 +78,10 @@ class Migrate_To_100(Migrator):
                             changed = 1
                 if changed:
                     count = count + 1
-                    if hasattr(aq_base(ob), 'reindexObject'):
+                    if hasattr(aq_base(ob), "reindexObject"):
                         # Reindex security-related indexes
                         try:
-                            ob.reindexObject(idxs=['allowedRolesAndUsers'])
+                            ob.reindexObject(idxs=["allowedRolesAndUsers"])
                         except TypeError:
                             # Catch attempts to reindex portal_catalog.
                             pass
@@ -92,24 +91,26 @@ class Migrate_To_100(Migrator):
             logger.info("Object already updated : %s", ob.absolute_url_path())
 
         if self.count > 0 and self.count % SAVEPOINT_INTERVAL == 0:
-            logger.info("Start save point objects %s to %s",
+            logger.info(
+                "Start save point objects %s to %s",
                 self.count - SAVEPOINT_INTERVAL,
-                self.count
+                self.count,
             )
             transaction.savepoint(optimistic=True)
 
         if self.count > 0 and self.count % COMMIT_INTERVAL == 0:
-            logger.info("Start commit objects %s to %s",
+            logger.info(
+                "Start commit objects %s to %s",
                 self.count - COMMIT_INTERVAL,
-                self.count
+                self.count,
             )
             self.commit(OBJ_ALREADY_COMMIT_REGISTRY)
 
-        if hasattr(aq_base(ob), 'objectItems'):
+        if hasattr(aq_base(ob), "objectItems"):
             obs = ob.objectItems()
             if obs:
                 for k, v in obs:
-                    changed = getattr(v, '_p_changed', 0)
+                    changed = getattr(v, "_p_changed", 0)
                     count = count + self._recursiveUpdateRoleMappings(v, wfs)
                     if changed is None:
                         # Re-ghostify.
@@ -117,19 +118,19 @@ class Migrate_To_100(Migrator):
         return count
 
     def updateRoleMappings(self, REQUEST=None):
-        """ Allow workflows to update the role-permission mappings.
-        """
+        """Allow workflows to update the role-permission mappings."""
         portal_workflow = self.portal.portal_workflow
         wfs = {}
         for id in portal_workflow.objectIds():
             wf = portal_workflow.getWorkflowById(id)
-            if hasattr(aq_base(wf), 'updateRoleMappingsFor'):
+            if hasattr(aq_base(wf), "updateRoleMappingsFor"):
                 wfs[id] = wf
         portal = aq_parent(aq_inner(portal_workflow))
         count = self._recursiveUpdateRoleMappings(portal, wfs)
         if REQUEST is not None:
-            return portal_workflow.manage_selectWorkflows(REQUEST, manage_tabs_message=
-                                               '%d object(s) updated.' % count)
+            return portal_workflow.manage_selectWorkflows(
+                REQUEST, manage_tabs_message="%d object(s) updated." % count
+            )
         else:
             return count
 
@@ -141,13 +142,13 @@ class Migrate_To_100(Migrator):
                 logger.info("Deleted registry record: %s", name)
 
     def run(self):
-        logger.info('Migrating to collective.task 100')
+        logger.info("Migrating to collective.task 100")
         self.cleanRegistries()
         self.already_update_task = set(self.get_already_update_task)  # cached in memory
-        self.already_update_obj = set(self.get_already_update_obj)    # cached in memory
+        self.already_update_obj = set(self.get_already_update_obj)  # cached in memory
         logger.info("Import profiles")
         self.runProfileSteps(
-            'collective.task', steps=['typeinfo', 'plone.app.registry', 'workflow']
+            "collective.task", steps=["typeinfo", "plone.app.registry", "workflow"]
         )
         logger.info("Update Role Mappings")
         self.updateRoleMappings()
@@ -155,12 +156,9 @@ class Migrate_To_100(Migrator):
 
         # Update existing objects
         logger.info("Reindex tasks")
-        tasks = self.catalog(portal_type='task')
+        tasks = self.catalog(portal_type="task")
         for count, brain in enumerate(tasks):
-            logger.info("%s/%s",
-                count,
-                len(tasks) + 1
-            )
+            logger.info("%s/%s", count, len(tasks) + 1)
             if brain.UID.decode("utf-8") in self.already_update_task:
                 logger.info("Task already updated")
                 continue
@@ -171,23 +169,21 @@ class Migrate_To_100(Migrator):
             obj.reindexObjectSecurity()
             self.id_to_registry.append(obj.UID().decode("utf-8"))
             if count > 0 and count % SAVEPOINT_INTERVAL == 0:
-                logger.info("Start save point objects %s to %s",
+                logger.info(
+                    "Start save point objects %s to %s",
                     count - SAVEPOINT_INTERVAL,
-                    count
+                    count,
                 )
             transaction.savepoint(optimistic=True)
             if count > 0 and count % COMMIT_INTERVAL == 0:
-                logger.info("Start commit tasks %s/%s",
-                    count,
-                    len(tasks) + 1
-                )
+                logger.info("Start commit tasks %s/%s", count, len(tasks) + 1)
                 self.commit(TASK_ALREADY_COMMIT_REGISTRY)
         self.id_to_registry = []
         # settings config
         registry = getUtility(IRegistry)
         # if not registry.get('collective.task.parents_fields'):
         if True:
-            registry['collective.task.parents_fields'] = PARENTS_FIELDS_CONFIG
+            registry["collective.task.parents_fields"] = PARENTS_FIELDS_CONFIG
 
         self.clean_registry()
 
@@ -195,6 +191,5 @@ class Migrate_To_100(Migrator):
 
 
 def migrate(context):
-    '''
-    '''
+    """ """
     Migrate_To_100(context).run()
