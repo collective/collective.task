@@ -4,7 +4,7 @@ Changelog
 3.0.13 (unreleased)
 -------------------
 
-- Change migration 100 to handle large datasets safely [URB-3347]
+- Change migration 100 to handle large datasets safely
   [jchandelle]
 
 
