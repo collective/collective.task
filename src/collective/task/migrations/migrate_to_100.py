@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_base, aq_inner, aq_parent
+from BTrees.OOBTree import OOBTree
 from collective.task.setuphandlers import PARENTS_FIELDS_CONFIG
 from imio.migrator.migrator import Migrator
 from plone import api
 from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
 from zope.annotation.interfaces import IAnnotations
-from BTrees.OOBTree import OOBTree
+from zope.component import getUtility
 
 import logging
 import transaction
@@ -108,7 +108,9 @@ class Migrate_To_100(Migrator):
         """Savepoint every SAVEPOINT_INTERVAL objects."""
         if count > 0 and count % SAVEPOINT_INTERVAL == 0:
             if logger_msg is None:
-                logger_msg = "Start save point objects {} to {} ({})".format(count - SAVEPOINT_INTERVAL, count, name)
+                logger_msg = "Start save point objects {} to {} ({})".format(
+                    count - SAVEPOINT_INTERVAL, count, name
+                )
             logger.info(logger_msg)
             transaction.savepoint(optimistic=True)
             logger.info("End save point")
@@ -119,7 +121,9 @@ class Migrate_To_100(Migrator):
             return
         if force_commit or (count > 0 and count % COMMIT_INTERVAL == 0):
             if logger_msg is None:
-                logger_msg = "Start commit objects {} to {} ({})".format(count - COMMIT_INTERVAL, count, annontation)
+                logger_msg = "Start commit objects {} to {} ({})".format(
+                    count - COMMIT_INTERVAL, count, annontation
+                )
             logger.info(logger_msg)
             self.commit(annontation)
             logger.info("End commit")
