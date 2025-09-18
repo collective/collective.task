@@ -3,9 +3,10 @@ from Acquisition import aq_base, aq_inner, aq_parent
 from collective.task.setuphandlers import PARENTS_FIELDS_CONFIG
 from imio.migrator.migrator import Migrator
 from plone import api
-from plone.registry import Record, field
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
+from zope.annotation.interfaces import IAnnotations
+from BTrees.OOBTree import OOBTree
 
 import logging
 import transaction
@@ -14,42 +15,44 @@ logger = logging.getLogger("collective.task")
 
 SAVEPOINT_INTERVAL = 2000
 COMMIT_INTERVAL = 20000
-OBJ_ALREADY_COMMIT_REGISTRY = "collective.task.update_commit_obj"
-TASK_ALREADY_COMMIT_REGISTRY = "collective.task.update_commit_task"
+OBJ_ALREADY_COMMIT_ANNOTATION = "collective.task.update_commit_obj"
+TASK_ALREADY_COMMIT_ANNOTATION = "collective.task.update_commit_task"
 
 
 class Migrate_To_100(Migrator):
-    id_to_registry = []
+    id_to_annotation = []
     count = 0
 
     def __init__(self, context):
         Migrator.__init__(self, context)
         self.catalog = api.portal.get_tool("portal_catalog")
+        self.portal = api.portal.get()
+        self.annotations = IAnnotations(self.portal)
 
-    def create_registry(self, registry_name):
-        registry = getUtility(IRegistry)
-        if registry_name in registry:
-            return
+    def init_annotation(self):
+        # self.clear_annotations()
+        if not OBJ_ALREADY_COMMIT_ANNOTATION in self.annotations:
+            self.annotations[OBJ_ALREADY_COMMIT_ANNOTATION] = OOBTree()
+        if not TASK_ALREADY_COMMIT_ANNOTATION in self.annotations:
+            self.annotations[TASK_ALREADY_COMMIT_ANNOTATION] = OOBTree()
 
-        registry.records[registry_name] = Record(
-            field.List(
-                title=u"Id already commit", value_type=field.TextLine(), default=[]
-            )
-        )
+    def get_annotation(self, annotation_name):
+        return self.annotations[annotation_name]
 
-    def add_record_in_registry(self, registry_name):
-        registry = getUtility(IRegistry)
-        values = registry[registry_name]
-        values += self.id_to_registry
-        registry[registry_name] = values
+    def clear_annotation(self, annotation_name):
+        if annotation_name in self.annotations:
+            del self.annotations[annotation_name]
 
-    def commit(self, registry_name):
+    def add_data_in_annotation(self, annotation_name):
+        annotation = self.annotations[annotation_name]
+        for obj_id in self.id_to_annotation:
+            annotation[obj_id] = True
+        self.id_to_annotation = []
+
+    def commit(self, annotation_name):
         transaction.commit()
-        logger.info("Transaction commit ...")
-        self.create_registry(registry_name)
-        self.add_record_in_registry(registry_name)
-        logger.info("Id updated put in registry")
-        self.id_to_registry = []
+        self.add_data_in_annotation(annotation_name)
+        self.id_to_annotation = []
 
     def _recursiveUpdateRoleMappings(self, ob, wfs):
         """Update roles-permission mappings recursively, and
@@ -57,37 +60,7 @@ class Migrate_To_100(Migrator):
         """
         # Returns a count of updated objects.
         count = 0
-        if ob.absolute_url_path().decode("utf-8") not in self.already_update_obj:
-            logger.info("Upgrade : {}".format(ob.absolute_url_path()))
-            wf_ids = self.portal.portal_workflow.getChainFor(ob)
-            if wf_ids:
-                changed = 0
-                for wf_id in wf_ids:
-                    wf = wfs.get(wf_id, None)
-                    if wf is not None:
-                        did = wf.updateRoleMappingsFor(ob)
-                        if did:
-                            changed = 1
-                if changed:
-                    count = count + 1
-                    if hasattr(aq_base(ob), "reindexObject"):
-                        # Reindex security-related indexes
-                        try:
-                            ob.reindexObject(idxs=["allowedRolesAndUsers"])
-                        except TypeError:
-                            # Catch attempts to reindex portal_catalog.
-                            pass
-            self.id_to_registry.append(ob.absolute_url_path().decode("utf-8"))
-            self.count += 1
-        else:
-            logger.info("Object already updated : %s", ob.absolute_url_path())
-
-        if self.count > 0 and self.count % SAVEPOINT_INTERVAL == 0:
-            logger.info(
-                "Start save point objects %s to %s",
-                self.count - SAVEPOINT_INTERVAL,
-                self.count,
-            )
+        self.id_to_annotation.append(path)
             transaction.savepoint(optimistic=True)
 
         if self.count > 0 and self.count % COMMIT_INTERVAL == 0:
@@ -126,21 +99,20 @@ class Migrate_To_100(Migrator):
         else:
             return count
 
-    def clean_registry(self):
-        registry = getUtility(IRegistry)
-        for name in [TASK_ALREADY_COMMIT_REGISTRY, OBJ_ALREADY_COMMIT_REGISTRY]:
-            if name in registry.records:
-                del registry.records[name]
-                logger.info("Deleted registry record: %s", name)
+    def clear_annotations(self):
+        for name in [TASK_ALREADY_COMMIT_ANNOTATION, OBJ_ALREADY_COMMIT_ANNOTATION]:
+            self.clear_annotation(name)
+
 
     def run(self):
         logger.info("Migrating to collective.task 100")
         self.cleanRegistries()
+        self.init_annotation()
         self.already_update_task = set(
-            api.portal.get_registry_record(TASK_ALREADY_COMMIT_REGISTRY, default=[])
+            self.get_annotation(TASK_ALREADY_COMMIT_ANNOTATION).keys()
         )  # cached in memory
         self.already_update_obj = set(
-            api.portal.get_registry_record(OBJ_ALREADY_COMMIT_REGISTRY, default=[])
+            self.get_annotation(OBJ_ALREADY_COMMIT_ANNOTATION).keys()
         )  # cached in memory
         logger.info("Import profiles")
         self.runProfileSteps(
@@ -148,7 +120,7 @@ class Migrate_To_100(Migrator):
         )
         logger.info("Update Role Mappings")
         self.updateRoleMappings()
-        self.id_to_registry = []
+        self.id_to_annotation = []
 
         # Update existing objects
         logger.info("Reindex tasks")
@@ -158,30 +130,14 @@ class Migrate_To_100(Migrator):
             if brain.UID.decode("utf-8") in self.already_update_task:
                 logger.info("Task already updated")
                 continue
-            obj = brain.getObject()
-            obj.__ac_local_roles_block__ = True
-            obj.parents_assigned_groups = None
-            obj.parents_enquirers = None
-            obj.reindexObjectSecurity()
-            self.id_to_registry.append(obj.UID().decode("utf-8"))
-            if count > 0 and count % SAVEPOINT_INTERVAL == 0:
-                logger.info(
-                    "Start save point objects %s to %s",
-                    count - SAVEPOINT_INTERVAL,
-                    count,
-                )
-            transaction.savepoint(optimistic=True)
-            if count > 0 and count % COMMIT_INTERVAL == 0:
-                logger.info("Start commit tasks %s/%s", count, len(tasks) + 1)
-                self.commit(TASK_ALREADY_COMMIT_REGISTRY)
-        self.id_to_registry = []
+        self.id_to_annotation = []
         # settings config
         registry = getUtility(IRegistry)
         # if not registry.get('collective.task.parents_fields'):
         if True:
             registry["collective.task.parents_fields"] = PARENTS_FIELDS_CONFIG
 
-        self.clean_registry()
+        self.clear_annotations()
 
         self.finish()
 
