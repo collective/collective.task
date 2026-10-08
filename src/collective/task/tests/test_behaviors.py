@@ -8,6 +8,7 @@ from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from plone import api
 from plone.app.testing import login
 from plone.app.testing import setRoles
+from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from zope.component import getMultiAdapter
@@ -57,7 +58,9 @@ class TestBehaviors(unittest.TestCase):
 
     def test_get_current_user_id(self):
         self.assertEqual(get_current_user_id(), "test_user_1_")
-        # self.assertEqual(get_current_user_id(), "test-user")
+        # a Zope admin isn't in the enquirer vocabulary: a default out of it breaks the add form
+        login(self.layer["app"], SITE_OWNER_NAME)
+        self.assertIsNone(get_current_user_id())
 
     def test_AssignedUserValidator(self):
         self.task1.assigned_group = "Administrators"

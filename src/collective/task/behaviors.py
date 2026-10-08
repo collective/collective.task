@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
 
-try:
-    from zope.schema.interfaces import IVocabularyFactory
-except ImportError:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-
 from collective.task import _
 from collective.task.field import LocalRoleMasterSelectField
 from dexterity.localrolesfield.field import LocalRoleField
@@ -25,6 +20,7 @@ from zope.interface import Interface
 from zope.interface import Invalid
 from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
@@ -96,11 +92,13 @@ def get_parent_assigned_group(context):
 
 
 def get_current_user_id():
-    """Current user by default."""
+    """Current user by default, if he is in the enquirer vocabulary (not a Zope admin)."""
     current_user = api.user.get_current()
-    if current_user:
-        return current_user.getId()
-    return None
+    if current_user is None:
+        return None
+    voc = getUtility(IVocabularyFactory, "collective.task.Enquirer")(api.portal.get())
+    userid = current_user.getId()
+    return userid if userid in voc else None
 
 
 class ITaskContainer(Interface):
