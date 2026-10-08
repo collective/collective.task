@@ -12,6 +12,7 @@ from dexterity.localrolesfield.field import LocalRoleField
 from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.base.utils import base_hasattr
 from plone.dexterity.browser.edit import DefaultEditForm
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
@@ -28,12 +29,6 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 import datetime
-
-
-try:
-    from plone.base.utils import base_hasattr
-except ImportError:
-    from Products.CMFPlone.utils import base_hasattr
 
 
 now = datetime.datetime.today()
@@ -180,7 +175,7 @@ class ITaskWithFieldset(ITask):
     assigned_group = LocalRoleMasterSelectField(
         title=_(u"Assigned group"),
         required=False,
-        vocabulary="plone.principalsource.Groups",
+        vocabulary="collective.task.AssignedGroups",
         slave_fields=(
             {
                 "name": "ITaskWithFieldset.assigned_user",

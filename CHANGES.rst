@@ -6,6 +6,8 @@ Changelog
 
 - Plone 6.2 compatibility: buildout, pkgutil namespace, GitHub Actions.
   [chris-adam]
+- Dropped Plone 4 support. Fixed `ITaskWithFieldset` assigned group vocabulary on Plone 6.
+  [chris-adam]
 
 
 3.0.12 (2023-07-20)

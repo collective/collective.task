@@ -6,6 +6,8 @@ from collective.task import PMF
 from collective.task.adapters import EMPTY_STRING
 from html import escape
 from plone import api
+from plone.base.utils import safe_text
+from Products.CMFPlone.utils import normalizeString
 from z3c.table.column import Column
 from z3c.table.column import LinkColumn
 from z3c.table.table import Table
@@ -17,14 +19,6 @@ try:
     from imio.prettylink.interfaces import IPrettyLink
 except ImportError:
     pass
-
-
-try:
-    from plone.base.utils import normalizeString
-    from plone.base.utils import safe_text
-except ImportError:
-    from Products.CMFPlone.utils import normalizeString
-    from Products.CMFPlone.utils import safe_unicode as safe_text
 
 
 class TasksTable(Table):

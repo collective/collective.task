@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
-from collective.task import PLONE_VERSION
 from collective.task.testing import COLLECTIVE_TASK_INTEGRATION_TESTING  # noqa
-from plone import api
+from plone.base.utils import get_installer
 
 import unittest
 
@@ -15,25 +14,16 @@ class TestInstall(unittest.TestCase):
     def setUp(self):
         """Custom shared utility setup for tests."""
         self.portal = self.layer["portal"]
-        if PLONE_VERSION >= "5.1":
-            from plone.base.utils import get_installer  # noqa
-
-            self.installer = get_installer(self.portal, self.layer["request"])
-            self.ipi = self.installer.is_product_installed
-        else:
-            self.installer = api.portal.get_tool("portal_quickinstaller")  # noqa
-            self.ipi = self.installer.isProductInstalled
+        self.installer = get_installer(self.portal, self.layer["request"])
+        self.ipi = self.installer.is_product_installed
 
     def test_product_installed(self):
-        """Test if collective.task is installed with portal_quickinstaller."""
+        """Test if collective.task is installed."""
         self.assertTrue(self.ipi("collective.task"))
 
     def test_uninstall(self):
         """Test if collective.task is cleanly uninstalled."""
-        if PLONE_VERSION >= "5.1":
-            self.installer.uninstall_product("collective.task")
-        else:
-            self.installer.uninstallProducts(["collective.task"])
+        self.installer.uninstall_product("collective.task")
         self.assertFalse(self.ipi("collective.task"))
 
     def test_uninstall_1(self):

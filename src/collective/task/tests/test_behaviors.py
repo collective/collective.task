@@ -3,6 +3,7 @@ from collective.task.behaviors import AssignedUserValidator
 from collective.task.behaviors import get_current_user_id
 from collective.task.behaviors import get_parent_assigned_group
 from collective.task.behaviors import get_users_vocabulary
+from collective.task.behaviors import ITaskWithFieldset
 from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from plone import api
 from plone.app.testing import login
@@ -10,7 +11,9 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.interface import Invalid
+from zope.schema.interfaces import IVocabularyFactory
 
 import datetime
 import unittest
@@ -38,6 +41,11 @@ class TestBehaviors(unittest.TestCase):
     def test_get_users_vocabulary(self):
         self.assertEqual([v.value for v in get_users_vocabulary("NotAGroup")], [])
         self.assertEqual([v.value for v in get_users_vocabulary("Reviewers")], ["test-user"])
+
+    def test_ITaskWithFieldset(self):
+        field = ITaskWithFieldset["assigned_group"]
+        voc = getUtility(IVocabularyFactory, field.vocabularyName)(self.task1)
+        self.assertIn("Reviewers", [t.value for t in voc])
 
     def test_get_parent_assigned_group(self):
         # Not in an add form

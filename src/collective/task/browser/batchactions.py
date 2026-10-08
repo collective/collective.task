@@ -6,6 +6,7 @@ from collective.task.adapters import EMPTY_STRING
 from collective.task.behaviors import ITask
 from operator import methodcaller
 from plone import api
+from plone.base.utils import safe_text
 from z3c.form.field import Fields
 from z3c.form.form import Form
 from zope import schema
@@ -13,12 +14,6 @@ from zope.lifecycleevent import Attributes
 from zope.lifecycleevent import modified
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-
-
-try:
-    from plone.base.utils import safe_text
-except ImportError:
-    from Products.CMFPlone.utils import safe_unicode as safe_text
 
 
 try:
