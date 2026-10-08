@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
+from plone import api
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
-from plone.testing import z2
+from plone.testing.zope import WSGI_SERVER_FIXTURE
 from zope.configuration import xmlconfig
 
 import collective.task
@@ -37,7 +38,22 @@ COLLECTIVE_TASK_FUNCTIONAL_TESTING = FunctionalTesting(
 )
 
 
+class CollectiveTaskAcceptanceLayer(PloneSandboxLayer):
+    """A group member to assign tasks to"""
+
+    defaultBases = (COLLECTIVE_TASK_FIXTURE,)
+
+    def setUpPloneSite(self, portal):
+        api.user.create(
+            email="agent@example.com", username="agent", password="agent-password", properties={"fullname": "Agent"}
+        )
+        api.group.add_user(groupname="Reviewers", username="agent")
+
+
+COLLECTIVE_TASK_ACCEPTANCE_FIXTURE = CollectiveTaskAcceptanceLayer()
+
+
 COLLECTIVE_TASK_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(COLLECTIVE_TASK_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, z2.ZSERVER_FIXTURE),
+    bases=(COLLECTIVE_TASK_ACCEPTANCE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, WSGI_SERVER_FIXTURE),
     name="CollectiveTaskLayer:AcceptanceTesting",
 )
