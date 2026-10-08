@@ -1,8 +1,2 @@
-# -*- coding: UTF-8 -*-
-# See http://peak.telecommunity.com/DevCenter/setuptools#namespace-packages
-try:
-    __import__("pkg_resources").declare_namespace(__name__)
-except ImportError:
-    from pkgutil import extend_path
-
-    __path__ = extend_path(__path__, __name__)
+# pkgutil, not pkg_resources: Plone 6.2 (zc.buildout 5) installs the other collective.* as native namespace portions
+__path__ = __import__("pkgutil").extend_path(__path__, __name__)
