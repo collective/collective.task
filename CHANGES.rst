@@ -1,8 +1,8 @@
 Changelog
 =========
 
-3.0.13 (unreleased)
--------------------
+4.0.0 (unreleased)
+------------------
 
 - Plone 6.2 compatibility: buildout, pkgutil namespace, GitHub Actions.
   [chris-adam]
