@@ -1,3 +1,8 @@
+.. image:: https://github.com/collective/collective.task/actions/workflows/main.yml/badge.svg
+    :target: https://github.com/collective/collective.task/actions/workflows/main.yml
+.. image:: https://coveralls.io/repos/github/collective/collective.task/badge.svg
+    :target: https://coveralls.io/github/collective/collective.task
+
 ===============
 collective.task
 ===============
@@ -46,9 +51,5 @@ From the created state, you can choose the transition "to do". There are 2 cases
 * if an assigned user is already selected, an auto transition passes to "to do" state
 * if no assigned user is selected, a reviewer must choose one and manually pass to "to do" state
 
-This add-on is tested using Travis CI. The current status of the add-on is :
+This add-on is tested using GitHub Actions (status badges at the top of this file).
 
-.. image:: https://secure.travis-ci.org/collective/collective.task.png
-    :target: https://travis-ci.org/collective/collective.task
-.. image:: https://coveralls.io/repos/collective/collective.task/badge.svg?branch=master&service=github
-  :target: https://coveralls.io/github/collective/collective.task?branch=master
