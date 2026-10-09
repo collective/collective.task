@@ -3,14 +3,18 @@ from collective.task.behaviors import AssignedUserValidator
 from collective.task.behaviors import get_current_user_id
 from collective.task.behaviors import get_parent_assigned_group
 from collective.task.behaviors import get_users_vocabulary
+from collective.task.behaviors import ITaskWithFieldset
 from collective.task.testing import COLLECTIVE_TASK_FUNCTIONAL_TESTING
 from plone import api
 from plone.app.testing import login
 from plone.app.testing import setRoles
+from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.interface import Invalid
+from zope.schema.interfaces import IVocabularyFactory
 
 import datetime
 import unittest
@@ -39,6 +43,11 @@ class TestBehaviors(unittest.TestCase):
         self.assertEqual([v.value for v in get_users_vocabulary("NotAGroup")], [])
         self.assertEqual([v.value for v in get_users_vocabulary("Reviewers")], ["test-user"])
 
+    def test_ITaskWithFieldset(self):
+        field = ITaskWithFieldset["assigned_group"]
+        voc = getUtility(IVocabularyFactory, field.vocabularyName)(self.task1)
+        self.assertIn("Reviewers", [t.value for t in voc])
+
     def test_get_parent_assigned_group(self):
         # Not in an add form
         self.assertEqual(get_parent_assigned_group(self.task1), None)
@@ -49,7 +58,9 @@ class TestBehaviors(unittest.TestCase):
 
     def test_get_current_user_id(self):
         self.assertEqual(get_current_user_id(), "test_user_1_")
-        # self.assertEqual(get_current_user_id(), "test-user")
+        # a Zope admin isn't in the enquirer vocabulary: a default out of it breaks the add form
+        login(self.layer["app"], SITE_OWNER_NAME)
+        self.assertIsNone(get_current_user_id())
 
     def test_AssignedUserValidator(self):
         self.task1.assigned_group = "Administrators"

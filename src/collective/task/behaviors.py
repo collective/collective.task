@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 """Behaviors."""
 
-try:
-    from zope.schema.interfaces import IVocabularyFactory
-except ImportError:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-
 from collective.task import _
 from collective.task.field import LocalRoleMasterSelectField
 from dexterity.localrolesfield.field import LocalRoleField
 from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.base.utils import base_hasattr
 from plone.dexterity.browser.edit import DefaultEditForm
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
@@ -24,16 +20,11 @@ from zope.interface import Interface
 from zope.interface import Invalid
 from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 import datetime
-
-
-try:
-    from plone.base.utils import base_hasattr
-except ImportError:
-    from Products.CMFPlone.utils import base_hasattr
 
 
 now = datetime.datetime.today()
@@ -101,11 +92,13 @@ def get_parent_assigned_group(context):
 
 
 def get_current_user_id():
-    """Current user by default."""
+    """Current user by default, if he is in the enquirer vocabulary (not a Zope admin)."""
     current_user = api.user.get_current()
-    if current_user:
-        return current_user.getId()
-    return None
+    if current_user is None:
+        return None
+    voc = getUtility(IVocabularyFactory, "collective.task.Enquirer")(api.portal.get())
+    userid = current_user.getId()
+    return userid if userid in voc else None
 
 
 class ITaskContainer(Interface):
@@ -180,7 +173,7 @@ class ITaskWithFieldset(ITask):
     assigned_group = LocalRoleMasterSelectField(
         title=_(u"Assigned group"),
         required=False,
-        vocabulary="plone.principalsource.Groups",
+        vocabulary="collective.task.AssignedGroups",
         slave_fields=(
             {
                 "name": "ITaskWithFieldset.assigned_user",

@@ -1,10 +1,15 @@
 Changelog
 =========
 
-3.0.13 (unreleased)
--------------------
+4.0.0 (unreleased)
+------------------
 
-- Nothing changed yet.
+- Plone 6.2 compatibility: buildout, pkgutil namespace, GitHub Actions.
+  [chris-adam]
+- Fixed the task add form crash on Plone 6 when the current user isn't in the enquirer vocabulary (Zope admin).
+  [chris-adam]
+- Dropped Plone 4 support. Fixed `ITaskWithFieldset` assigned group vocabulary on Plone 6.
+  [chris-adam]
 
 
 3.0.12 (2023-07-20)
