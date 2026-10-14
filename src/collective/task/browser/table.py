@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Define tables and columns."""
 
 from collective.task import _
@@ -14,7 +13,6 @@ from z3c.table.table import Table
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
 
-
 try:
     from imio.prettylink.interfaces import IPrettyLink
 except ImportError:
@@ -24,8 +22,8 @@ except ImportError:
 class TasksTable(Table):
     """Table that displays tasks info."""
 
-    cssClassEven = u"even"
-    cssClassOdd = u"odd"
+    cssClassEven = "even"
+    cssClassOdd = "odd"
     cssClasses = {"table": "listing taskContainerListing icons-on"}
 
     batchSize = 20
@@ -70,7 +68,9 @@ class TitleColumn(LinkColumn):
     weight = 10
 
     def getLinkCSS(self, item):
-        return ' class="state-%s contenttype-%s"' % (api.content.get_state(obj=item), normalizeString(item.portal_type))
+        return ' class="state-{} contenttype-{}"'.format(
+            api.content.get_state(obj=item), normalizeString(item.portal_type)
+        )
 
     def getLinkContent(self, item):
         return safe_text(item.title)
@@ -135,7 +135,9 @@ class DueDateColumn(Column):
     def renderCell(self, value):
         if value.due_date:
             return api.portal.get_localized_time(
-                datetime=value.due_date, long_format=self.long_format, time_only=self.time_only
+                datetime=value.due_date,
+                long_format=self.long_format,
+                time_only=self.time_only,
             )
         return ""
 

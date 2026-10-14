@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Behaviors."""
 
 from collective.task import _
@@ -26,27 +25,30 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 import datetime
 
-
 now = datetime.datetime.today()
 
 
 @implementer(IVocabularyFactory)
-class AssignedGroupsVocabulary(object):
-    """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
+class AssignedGroupsVocabulary:
+    """Define own factory and named utility that can be easily overridden in componentregistry.xml"""
 
     def __call__(self, context):
-        return SimpleVocabulary.fromValues([g.getGroupName() for g in api.group.get_groups()])
+        return SimpleVocabulary.fromValues(
+            [g.getGroupName() for g in api.group.get_groups()]
+        )
 
 
 AssignedGroupsVocabularyFactory = AssignedGroupsVocabulary()
 
 
 @implementer(IVocabularyFactory)
-class AssignedUsersVocabulary(object):
-    """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
+class AssignedUsersVocabulary:
+    """Define own factory and named utility that can be easily overridden in componentregistry.xml"""
 
     def __call__(self, context):
-        voc = getUtility(IVocabularyFactory, name="imio.helpers.SimplySortedUsers", context=context)
+        voc = getUtility(
+            IVocabularyFactory, name="imio.helpers.SimplySortedUsers", context=context
+        )
         return voc(context)
 
 
@@ -54,11 +56,13 @@ AssignedUsersVocabularyFactory = AssignedUsersVocabulary()
 
 
 @implementer(IVocabularyFactory)
-class EnquirerVocabulary(object):
-    """Define own factory and named utility that can be easily overrided in componentregistry.xml"""
+class EnquirerVocabulary:
+    """Define own factory and named utility that can be easily overridden in componentregistry.xml"""
 
     def __call__(self, context):
-        voc = getUtility(IVocabularyFactory, name="imio.helpers.SimplySortedUsers", context=context)
+        voc = getUtility(
+            IVocabularyFactory, name="imio.helpers.SimplySortedUsers", context=context
+        )
         return voc(context)
 
 
@@ -73,7 +77,9 @@ def get_users_vocabulary(group):
         for member in members:
             member_id = member.getId()
             title = member.getUser().getProperty("fullname") or member_id
-            terms.append(SimpleTerm(value=member.getUserName(), token=member_id, title=title))  # login  # id  # title
+            terms.append(
+                SimpleTerm(value=member.getUserName(), token=member_id, title=title)
+            )  # login  # id  # title
     except api.exc.GroupNotFoundError:
         pass
 
@@ -102,23 +108,21 @@ def get_current_user_id():
 
 
 class ITaskContainer(Interface):
-
     """Marker interface for task containers."""
 
 
 class ITask(model.Schema):
-
     """ITask behavior."""
 
     task_description = RichText(
-        title=_(u"Task description"),
+        title=_("Task description"),
         required=False,
-        description=_(u"What is to do and/or what is done"),
-        allowed_mime_types=(u"text/html",),
+        description=_("What is to do and/or what is done"),
+        allowed_mime_types=("text/html",),
     )
 
     assigned_group = LocalRoleMasterSelectField(
-        title=_(u"Assigned group"),
+        title=_("Assigned group"),
         required=False,
         vocabulary="collective.task.AssignedGroups",
         slave_fields=(
@@ -135,20 +139,20 @@ class ITask(model.Schema):
     )
 
     assigned_user = LocalRoleField(
-        title=_(u"Assigned user"),
+        title=_("Assigned user"),
         required=False,
         vocabulary="collective.task.AssignedUsers",  # terms as username, userid, fullname
     )
 
     due_date = schema.Date(
-        title=_(u"Due date"),
+        title=_("Due date"),
         required=False,
         min=datetime.date(1990, 1, 1),
         max=datetime.date(now.year + 1, 12, 31),
     )
 
     enquirer = LocalRoleField(
-        title=_(u"Enquirer"),
+        title=_("Enquirer"),
         required=False,
         vocabulary="collective.task.Enquirer",
         defaultFactory=get_current_user_id,
@@ -156,12 +160,11 @@ class ITask(model.Schema):
 
 
 class ITaskWithFieldset(ITask):
-
     """ITask behavior with fieldset."""
 
     fieldset(
         "task",
-        label=_(u"Task"),
+        label=_("Task"),
         fields=(
             "assigned_group",
             "assigned_user",
@@ -171,7 +174,7 @@ class ITaskWithFieldset(ITask):
     )
 
     assigned_group = LocalRoleMasterSelectField(
-        title=_(u"Assigned group"),
+        title=_("Assigned group"),
         required=False,
         vocabulary="collective.task.AssignedGroups",
         slave_fields=(
@@ -197,20 +200,32 @@ class AssignedUserValidator(validator.SimpleFieldValidator):
         if value is None:
             return
         # check if we are editing a task
-        if isinstance(self.view, DefaultEditForm) and self.context.portal_type == "task":
+        if (
+            isinstance(self.view, DefaultEditForm)
+            and self.context.portal_type == "task"
+        ):
             # check if assigned_group is changed and assigned_user is no more in
             if (
                 self.context.assigned_group is not None
                 and self.context.assigned_user is not None
                 and self.request.form["form.widgets.ITask.assigned_group"]
-                and self.request.form["form.widgets.ITask.assigned_group"][0] != self.context.assigned_group
+                and self.request.form["form.widgets.ITask.assigned_group"][0]
+                != self.context.assigned_group
             ):
                 try:
-                    users = api.user.get_users(groupname=self.request.form["form.widgets.ITask.assigned_group"][0])
+                    users = api.user.get_users(
+                        groupname=self.request.form[
+                            "form.widgets.ITask.assigned_group"
+                        ][0]
+                    )
                 except api.exc.GroupNotFoundError:
                     return
                 if value not in [mb.getUserName() for mb in users]:
-                    raise Invalid(_(u"The assigned user is not in the selected assigned group !"))
+                    raise Invalid(
+                        _("The assigned user is not in the selected assigned group !")
+                    )
 
 
-validator.WidgetValidatorDiscriminators(AssignedUserValidator, field=ITask["assigned_user"])
+validator.WidgetValidatorDiscriminators(
+    AssignedUserValidator, field=ITask["assigned_user"]
+)

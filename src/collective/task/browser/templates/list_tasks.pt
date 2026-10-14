@@ -1,6 +1,11 @@
 <fieldset class="clearfix"
-  tal:define="results view/table/values;"
-  tal:condition="results">
-  <legend tal:content="view/label" i18n:translate="">label</legend>
+          tal:define="
+            results view/table/values;
+          "
+          tal:condition="results"
+>
+  <legend tal:content="view/label"
+          i18n:translate=""
+  >label</legend>
   <tal:listing replace="structure view/table/render" />
 </fieldset>

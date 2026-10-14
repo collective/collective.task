@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Batch actions views."""
 
 from collective.task import _
@@ -15,9 +14,10 @@ from zope.lifecycleevent import modified
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
-
 try:
-    from collective.eeafaceted.batchactions.browser.views import BaseBatchActionForm as bbaf
+    from collective.eeafaceted.batchactions.browser.views import (
+        BaseBatchActionForm as bbaf,
+    )
 
     baf_base = bbaf
     from collective.eeafaceted.batchactions.interfaces import IBatchActionsMarker
@@ -42,7 +42,7 @@ class AssignedGroupBatchActionForm(baf_base):
     Base class for imio.dms.mail and imio.project.pst.
     """
 
-    label = _ceb(u"Batch assigned group change")
+    label = _ceb("Batch assigned group change")
     weight = 20
 
     def get_group_users(self, assigned_group):
@@ -53,10 +53,12 @@ class AssignedGroupBatchActionForm(baf_base):
         self.fields += Fields(
             schema.Choice(
                 __name__="assigned_group",
-                title=_(u"Assigned group"),
-                description=(not self.do_apply and cannot_modify_field_msg or u""),
+                title=_("Assigned group"),
+                description=(not self.do_apply and cannot_modify_field_msg or ""),
                 required=(self.do_apply),
-                vocabulary=self.do_apply and u"collective.task.AssignedGroups" or SimpleVocabulary([]),
+                vocabulary=self.do_apply
+                and "collective.task.AssignedGroups"
+                or SimpleVocabulary([]),
             )
         )
 
@@ -69,11 +71,15 @@ class AssignedGroupBatchActionForm(baf_base):
                     and brain.assigned_user != EMPTY_STRING
                     and data["assigned_group"] != brain.assigned_group
                     and brain.assigned_user
-                    not in [mb.getUserName() for mb in self.get_group_users(data["assigned_group"])]
+                    not in [
+                        mb.getUserName()
+                        for mb in self.get_group_users(data["assigned_group"])
+                    ]
                 ):
                     api.portal.show_message(
                         _ceb(
-                            u"An assigned user is not in this new assigned group. " u'Task "${task}" !',
+                            "An assigned user is not in this new assigned group. "
+                            'Task "${task}" !',
                             mapping={"task": safe_text(brain.getURL())},
                         ),
                         self.request,
@@ -93,11 +99,11 @@ class AssignedUserBatchActionForm(baf_base):
     Base class for imio.dms.mail and imio.project.pst.
     """
 
-    label = _ceb(u"Batch assigned user change")
+    label = _ceb("Batch assigned user change")
     master = "assigned_group"  # attribute name containing group
     err_msg = _ceb(
-        u"No common or available assigned group, or no available assigned user. "
-        u"Modify your selection unless you want to remove assigned user."
+        "No common or available assigned group, or no available assigned user. "
+        "Modify your selection unless you want to remove assigned user."
     )
     weight = 30
 
@@ -106,15 +112,23 @@ class AssignedUserBatchActionForm(baf_base):
 
     def get_available_assigneduser_voc(self):
         """Returns available assigned users common for all brains."""
-        terms = [SimpleTerm(value="__none__", token="no_value", title=_ceb("Set to no value"))]
+        terms = [
+            SimpleTerm(
+                value="__none__", token="no_value", title=_ceb("Set to no value")
+            )
+        ]
         user_ids = None
         for brain in self.brains:
             if not getattr(brain, self.master):
                 return SimpleVocabulary([])
             if user_ids is None:
-                user_ids = {u.getId() for u in self.get_group_users(getattr(brain, self.master))}
+                user_ids = {
+                    u.getId() for u in self.get_group_users(getattr(brain, self.master))
+                }
             else:
-                user_ids &= {u.getId() for u in self.get_group_users(getattr(brain, self.master))}
+                user_ids &= {
+                    u.getId() for u in self.get_group_users(getattr(brain, self.master))
+                }
         if user_ids:
             members = [api.user.get(userid) for userid in user_ids]
             for member in sorted(members, key=methodcaller("getUserName")):
@@ -122,7 +136,8 @@ class AssignedUserBatchActionForm(baf_base):
                     SimpleTerm(
                         value=member.getUserName(),  # login
                         token=member.getId(),  # id
-                        title=member.getUser().getProperty("fullname") or member.getUserName(),
+                        title=member.getUser().getProperty("fullname")
+                        or member.getUserName(),
                     )
                 )  # title
         return SimpleVocabulary(terms)
@@ -133,10 +148,12 @@ class AssignedUserBatchActionForm(baf_base):
         self.fields += Fields(
             schema.Choice(
                 __name__="assigned_user",
-                title=_(u"Assigned user"),
+                title=_("Assigned user"),
                 vocabulary=self.do_apply and self.voc or SimpleVocabulary([]),
                 description=(
-                    (len(self.voc) <= 1 and self.err_msg) or (not self.do_apply and cannot_modify_field_msg) or u""
+                    (len(self.voc) <= 1 and self.err_msg)
+                    or (not self.do_apply and cannot_modify_field_msg)
+                    or ""
                 ),
                 required=self.do_apply,
             )

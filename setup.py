@@ -1,13 +1,16 @@
-# -*- coding: utf-8 -*-
 """Installer for the collective.task package."""
 
 from setuptools import find_packages
 from setuptools import setup
 
-
 long_description = (
     open("README.rst").read() + "\n" + "Contributors\n"
-    "============\n" + "\n" + open("CONTRIBUTORS.rst").read() + "\n" + open("CHANGES.rst").read() + "\n"
+    "============\n"
+    + "\n"
+    + open("CONTRIBUTORS.rst").read()
+    + "\n"
+    + open("CHANGES.rst").read()
+    + "\n"
 )
 
 
@@ -28,7 +31,10 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
     ],
     keywords="Plone Python",
     author="Cedric Messiant",
@@ -42,23 +48,41 @@ setup(
     zip_safe=False,
     python_requires=">=3.10",
     install_requires=[
+        "collective.z3cform.datagridfield",
         "dexterity.localroles>=2.0.0a0",
         "dexterity.localrolesfield>=2.0.0a0",
-        "plone.api",
-        "plone.app.lockingbehavior",
-        "plone.formwidget.masterselect",
         "imio.helpers>=1.0.0rc2",
         "imio.migrator",
-        "setuptools",
+        "plone.api",
+        "plone.app.dexterity",
+        "plone.app.layout",
+        "plone.app.lockingbehavior",
+        "plone.app.textfield",
+        "plone.autoform",
+        "plone.base",
+        "plone.behavior",
+        "plone.dexterity",
+        "plone.formwidget.masterselect",
+        "plone.indexer",
+        "plone.registry",
+        "plone.supermodel",
+        "Products.CMFCore",
+        "Products.CMFPlone",
+        "Products.DCWorkflow",
+        "Products.GenericSetup",
+        "z3c.form",
         "z3c.table>=2.2",
+        "Zope",
     ],
     extras_require={
         "test": [
             "collective.eeafaceted.batchactions",
             "imio.prettylink",
-            "plone.app.testing",
-            "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
+            "plone.app.testing",
+            "plone.browserlayer",
+            "plone.testing",
+            "robotsuite",
         ],
     },
     entry_points="""

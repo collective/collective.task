@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
 from plone import api
@@ -45,7 +44,10 @@ class CollectiveTaskAcceptanceLayer(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         api.user.create(
-            email="agent@example.com", username="agent", password="agent-password", properties={"fullname": "Agent"}
+            email="agent@example.com",
+            username="agent",
+            password="agent-password",
+            properties={"fullname": "Agent"},
         )
         api.group.add_user(groupname="Reviewers", username="agent")
 
@@ -54,6 +56,10 @@ COLLECTIVE_TASK_ACCEPTANCE_FIXTURE = CollectiveTaskAcceptanceLayer()
 
 
 COLLECTIVE_TASK_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(COLLECTIVE_TASK_ACCEPTANCE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, WSGI_SERVER_FIXTURE),
+    bases=(
+        COLLECTIVE_TASK_ACCEPTANCE_FIXTURE,
+        REMOTE_LIBRARY_BUNDLE_FIXTURE,
+        WSGI_SERVER_FIXTURE,
+    ),
     name="CollectiveTaskLayer:AcceptanceTesting",
 )

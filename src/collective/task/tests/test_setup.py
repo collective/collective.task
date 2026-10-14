@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
+
 from collective.task.testing import COLLECTIVE_TASK_INTEGRATION_TESTING  # noqa
 from plone.base.utils import get_installer
 
@@ -28,7 +28,9 @@ class TestInstall(unittest.TestCase):
 
     def test_uninstall_1(self):
         """Test if collective.task is cleanly uninstalled."""
-        self.portal.portal_setup.runAllImportStepsFromProfile("profile-collective.task:uninstall_1.0")
+        self.portal.portal_setup.runAllImportStepsFromProfile(
+            "profile-collective.task:uninstall_1.0"
+        )
 
     # browserlayer.xml
     def test_browserlayer(self):

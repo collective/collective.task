@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from collective.task.behaviors import ITask
 from collective.task.interfaces import ITaskContent
 from collective.task.interfaces import ITaskMethods
@@ -14,7 +12,6 @@ from zope.component import adapts
 from zope.component import getUtility
 from zope.dottedname.resolve import resolve
 from zope.interface import implementer
-
 
 EMPTY_STRING = "__empty_string__"
 EMPTY_DATE = date(1950, 1, 1)
@@ -53,7 +50,7 @@ def due_date_index(obj):
 
 
 @implementer(ITaskMethods)
-class TaskAdapter(object):
+class TaskAdapter:
     adapts(ITask)
 
     def __init__(self, context):
@@ -90,7 +87,7 @@ class TaskAdapter(object):
         return full_tree_title
 
 
-class ParentsBaseAdapter(object):
+class ParentsBaseAdapter:
     def __init__(self, context):
         self.context = context
 
@@ -118,7 +115,9 @@ class TaskContainerAdapter(ParentsBaseAdapter):
 
     def get_taskcontent_children(self):
         brains = self.context.portal_catalog(
-            portal_type="task", path="/".join(self.context.getPhysicalPath()), sort_on="path"
+            portal_type="task",
+            path="/".join(self.context.getPhysicalPath()),
+            sort_on="path",
         )
         objs = [b.getObject() for b in brains]
         if objs and objs[0] == self.context:
@@ -147,9 +146,15 @@ class TaskContentAdapter(ParentsBaseAdapter):
         for dic in p_fields:
             if dic["p_if"].providedBy(parent):
                 if base_hasattr(parent, field) and getattr(parent, field):
-                    new_value += [val for val in getattr(parent, field) if val not in new_value]
+                    new_value += [
+                        val for val in getattr(parent, field) if val not in new_value
+                    ]
                 # we add parent field value
-                parent_value = base_hasattr(parent, dic["at"]) and getattr(parent, dic["at"]) or None
+                parent_value = (
+                    base_hasattr(parent, dic["at"])
+                    and getattr(parent, dic["at"])
+                    or None
+                )
                 if parent_value:
                     if not isinstance(parent_value, (list, tuple)):
                         parent_value = [parent_value]
@@ -182,4 +187,6 @@ class TaskContentAdapter(ParentsBaseAdapter):
         parents = self.get_taskcontent_parents()
         for obj in parents:
             adapted = TaskContentAdapter(obj)
-            adapted.set_parents_value(attr, adapted.calculate_parents_value(attr, p_fields))
+            adapted.set_parents_value(
+                attr, adapted.calculate_parents_value(attr, p_fields)
+            )

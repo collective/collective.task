@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from collective.task.behaviors import AssignedUserValidator
 from collective.task.behaviors import get_current_user_id
 from collective.task.behaviors import get_parent_assigned_group
@@ -25,7 +24,7 @@ class TestBehaviors(unittest.TestCase):
     layer = COLLECTIVE_TASK_FUNCTIONAL_TESTING
 
     def setUp(self):
-        super(TestBehaviors, self).setUp()
+        super().setUp()
         self.portal = self.layer["portal"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
         login(self.portal, TEST_USER_NAME)
@@ -41,7 +40,9 @@ class TestBehaviors(unittest.TestCase):
 
     def test_get_users_vocabulary(self):
         self.assertEqual([v.value for v in get_users_vocabulary("NotAGroup")], [])
-        self.assertEqual([v.value for v in get_users_vocabulary("Reviewers")], ["test-user"])
+        self.assertEqual(
+            [v.value for v in get_users_vocabulary("Reviewers")], ["test-user"]
+        )
 
     def test_ITaskWithFieldset(self):
         field = ITaskWithFieldset["assigned_group"]
@@ -67,7 +68,9 @@ class TestBehaviors(unittest.TestCase):
         self.task1.assigned_user = TEST_USER_NAME
         request = self.task1.REQUEST
         edit = getMultiAdapter((self.task1, request), name="edit")  # form wrapper
-        validator = AssignedUserValidator(self.task1, request, edit.form_instance, None, None)
+        validator = AssignedUserValidator(
+            self.task1, request, edit.form_instance, None, None
+        )
         request.form["form.widgets.ITask.assigned_group"] = ["Reviewers"]
         # no validation if no value
         validator.validate(None)
