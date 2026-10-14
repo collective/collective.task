@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from collective.task import _
 from plone import api
 from plone.app import dexterity
@@ -15,9 +13,14 @@ class TaskItemView(DefaultView):
     index = ViewPageTemplateFile("%s/browser/item.pt" % dexterity.__path__[0])
 
     def updateWidgets(self):
-        super(TaskItemView, self).updateWidgets()
-        if not self.context.assigned_user and api.content.get_state(obj=self.context) == "to_assign":
-            self.widgets["ITask.assigned_user"].field = copy.copy(self.widgets["ITask.assigned_user"].field)
+        super().updateWidgets()
+        if (
+            not self.context.assigned_user
+            and api.content.get_state(obj=self.context) == "to_assign"
+        ):
+            self.widgets["ITask.assigned_user"].field = copy.copy(
+                self.widgets["ITask.assigned_user"].field
+            )
             self.widgets["ITask.assigned_user"].field.description = _(
-                u"You must select an assigned user before continuing !"
+                "You must select an assigned user before continuing !"
             )

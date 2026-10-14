@@ -1,10 +1,10 @@
 #!/usr/bin/make
-# pyenv is a requirement, with 2.7, 3.7, 3.10 and 3.13 python versions, and virtualenv installed in each version
+# pyenv is a requirement, with 3.10 and 3.13 python versions, and virtualenv installed in each version
 # plone parameter must be passed to create environment 'make setup plone=6.0' or after a make cleanall
 # The original Makefile can be found on https://github.com/IMIO/scripts-buildout
 
 SHELL=/bin/bash
-plones=4.3 5.2 6.0 6.1
+plones=6.0 6.1 6.2
 b_o=
 old_plone=$(shell [ -e .plone-version ] && cat .plone-version)
 
@@ -23,16 +23,13 @@ ifneq ($(wildcard bin/instance),)
 endif
 
 ifndef python
-ifeq ($(plone),4.3)
-  python=2.7
-endif
-ifeq ($(plone),5.2)
-  python=3.7
-endif
 ifeq ($(plone),6.0)
   python=3.10
 endif
 ifeq ($(plone),6.1)
+  python=3.13
+endif
+ifeq ($(plone),6.2)
   python=3.13
 endif
 endif
@@ -66,6 +63,17 @@ buildout: oneof-plone bin/buildout  ## Runs setup and buildout
 test: oneof-plone bin/buildout  ## run bin/test without robot
 	# can be run by example with: make test opt='-t "settings"'
 	bin/test -t \!robot ${opt}
+
+.PHONY: robot
+robot: oneof-plone bin/buildout  ## run robot tests in headless firefox
+	# can be run by example with: make robot opt='-t "*subtask*"'
+	MOZ_HEADLESS=1 bin/test --all -t robot ${opt}
+
+.PHONY: robot-server
+robot-server:  ## Starts robot server (layer=<layer name in testing.py>, default COLLECTIVE_TASK_ACCEPTANCE_TESTING)
+	# run a robot file against it with: ZSERVER_PORT=$${ZSERVER_PORT:-55001} bin/robot src/collective/task/tests/robot/test_task.robot
+	# --no-reload: the reload watchdog restarts the server when a template is read
+	env ZSERVER_HOST=localhost ZSERVER_PORT=$${ZSERVER_PORT:-55001} bin/robot-server --no-reload collective.task.testing.$(or $(layer),COLLECTIVE_TASK_ACCEPTANCE_TESTING)
 
 .PHONY: cleanall
 cleanall:  ## Cleans all installed buildout files
