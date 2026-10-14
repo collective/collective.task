@@ -78,6 +78,7 @@ I open the add form of a task in
 I save the task
     [Arguments]  ${title}
     Input text  css=#form-widgets-title  ${title}
+    Scroll element into view  css=#form-buttons-save
     Click button  css=#form-buttons-save
     Wait until element contains  css=.portalMessage  Item created
 
