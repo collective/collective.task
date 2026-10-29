@@ -1,10 +1,19 @@
 Changelog
 =========
 
-3.0.13 (unreleased)
--------------------
+4.0.0 (unreleased)
+------------------
 
-- Nothing changed yet.
+- Plone 6.2 compatibility: buildout, pkgutil namespace, GitHub Actions.
+  [chris-adam]
+- Fixed the task add form crash on Plone 6 when the current user isn't in the enquirer vocabulary (Zope admin).
+  [chris-adam]
+- Dropped Plone 4 support. Fixed `ITaskWithFieldset` assigned group vocabulary on Plone 6.
+  [chris-adam]
+- Added plone.meta configuration (tox, pre-commit, GitHub Actions).
+  [chris-adam]
+- Switched to PEP 420 native namespace packages.
+  [chris-adam]
 
 
 3.0.12 (2023-07-20)
@@ -24,7 +33,7 @@ Changelog
 
 - Refreshed versions and urls.
   [sgeulette]
-- Added AssignedUsersVocabulary for assigned_user field so this vocabulary can be overrided.
+- Added AssignedUsersVocabulary for assigned_user field so this vocabulary can be overridden.
   [sgeulette]
 
 3.0.9 (2022-06-21)
@@ -148,7 +157,7 @@ Changelog
 - Added assigned_group and due_date indexes. Added indexer methods avoiding acquisition for children. Do not store None in catalog
   [sgeulette]
 - Added assigned_group default value. default_value decorator didn't worked.
-  Schema defaultFactory is used but is called also in view mode when field is None and can't be less easily overrided !
+  Schema defaultFactory is used but is called also in view mode when field is None and can't be less easily overridden !
   [sgeulette]
 - Changed workflow to use 'Request review' guard permission to differentiate Reviewer and editor transitions (like in plone workflows)
   [sgeulette]

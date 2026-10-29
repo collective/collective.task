@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from collective.task.browser.table import AssignedGroupColumn
 from collective.task.browser.table import AssignedUserColumn
 from collective.task.browser.table import DueDateColumn
@@ -24,13 +23,19 @@ class TestTable(unittest.TestCase):
     layer = COLLECTIVE_TASK_FUNCTIONAL_TESTING
 
     def setUp(self):
-        super(TestTable, self).setUp()
+        super().setUp()
         self.portal = self.layer["portal"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
         login(self.portal, TEST_USER_NAME)
-        self.task1 = api.content.create(container=self.portal, type="task", id="task1", title="Task1")
-        self.task2 = api.content.create(container=self.task1, type="task", id="task2", title="Task2")
-        self.task3 = api.content.create(container=self.task1, type="task", id="task3", title="Task3")
+        self.task1 = api.content.create(
+            container=self.portal, type="task", id="task1", title="Task1"
+        )
+        self.task2 = api.content.create(
+            container=self.task1, type="task", id="task2", title="Task2"
+        )
+        self.task3 = api.content.create(
+            container=self.task1, type="task", id="task3", title="Task3"
+        )
 
     def test_taskstable(self):
         table = TasksTable(self.task1, self.task1.REQUEST)
@@ -52,15 +57,15 @@ class TestTable(unittest.TestCase):
         col = TitleColumn(self.portal, self.portal.REQUEST, None)
         self.assertEqual(
             col.renderCell(self.task1),
-            u'<a href="http://nohost/plone/task1" class="state-created contenttype-task">Task1</a>',
+            '<a href="http://nohost/plone/task1" class="state-created contenttype-task">Task1</a>',
         )
 
     def test_PrettyLinkTitleColumn(self):
         col = PrettyLinkTitleColumn(self.portal, self.portal.REQUEST, None)
         self.assertEqual(
             col.renderCell(self.task1),
-            u"<a class='pretty_link' title='Task1' href='http://nohost/plone/task1' target='_self'>"
-            u"<span class='pretty_link_content state-created'>Task1</span></a>",
+            "<a class='pretty_link' title='Task1' href='http://nohost/plone/task1' target='_self'>"
+            "<span class='pretty_link_content state-created'>Task1</span></a>",
         )
 
     def test_EnquirerColumn(self):
@@ -87,8 +92,10 @@ class TestTable(unittest.TestCase):
         self.task1.due_date = datetime(2015, 11, 25, 13, 36, 59)
         self.assertIn(col.renderCell(self.task1), ["Nov 25, 2015", "2015-11-25"])
         col.long_format = True
-        self.assertIn(col.renderCell(self.task1), ["Nov 25, 2015 01:36 PM", "2015-11-25 13:36"])
+        self.assertIn(
+            col.renderCell(self.task1), ["Nov 25, 2015 01:36 PM", "2015-11-25 13:36"]
+        )
 
     def test_ReviewStateColumn(self):
         col = ReviewStateColumn(self.portal, self.portal.REQUEST, None)
-        self.assertIn(col.renderCell(self.task1), [u"Created", u"created"])
+        self.assertIn(col.renderCell(self.task1), ["Created", "created"])

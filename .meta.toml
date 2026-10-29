@@ -1,0 +1,43 @@
+# Generated from:
+# https://github.com/plone/meta/tree/2.x/src/plone/meta/default
+# See the inline comments on how to expand/tweak this configuration file
+[meta]
+template = "default"
+commit-id = "2.11.1"
+
+[gitignore]
+extra_lines = """
+# buildout local dev (Makefile)
+.plone-version
+.plone.versioncheck.tracked.json
+.python-version
+CACHEDIR.TAG
+src/*
+!src/collective
+htmlcov/
+*.log
+output.xml
+report.html
+"""
+
+[tox]
+use_mxdev = true
+test_environment_variables = """
+    # Playwright (rfbrowser init) does not know ubuntu-latest 26.04 yet
+    PLAYWRIGHT_HOST_PLATFORM_OVERRIDE=ubuntu24.04-x64
+"""
+test_matrix = {"6.2" = ["*"]}
+test_deps_additional = """
+horse-with-no-namespace
+    collective.eeafaceted.batchactions @ file://{toxinidir}/sources/collective.eeafaceted.batchactions
+    collective.eeafaceted.z3ctable @ file://{toxinidir}/sources/collective.eeafaceted.z3ctable
+    collective.js.tooltipster @ file://{toxinidir}/sources/collective.js.tooltipster
+    eea.facetednavigation @ file://{toxinidir}/sources/eea.facetednavigation
+    imio.actionspanel @ file://{toxinidir}/sources/imio.actionspanel
+    imio.history @ file://{toxinidir}/sources/imio.history
+    imio.migrator @ file://{toxinidir}/sources/imio.migrator
+    plone.formwidget.masterselect @ file://{toxinidir}/sources/plone.formwidget.masterselect
+"""
+
+[pyproject]
+dependencies_ignores = "['collective.eeafaceted.batchactions', 'imio.prettylink', 'plone.app.lockingbehavior', 'Products.PluginIndexes']"
