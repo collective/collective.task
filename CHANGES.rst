@@ -14,6 +14,8 @@ Changelog
   [chris-adam]
 - Switched to PEP 420 native namespace packages.
   [chris-adam]
+- Dropped support for Plone versions below 6.2.
+  [chris-adam]
 
 
 3.0.12 (2023-07-20)
