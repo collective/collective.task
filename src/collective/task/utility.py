@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 """Example."""
+
 from .behaviors import ITaskContainer
 from Acquisition import aq_inner
 from Acquisition import aq_parent
@@ -9,7 +9,7 @@ from zope.interface import implementer
 
 
 @implementer(ILocalRolesRelatedSearchUtility)
-class TaskContainerRelatedSearch(object):
+class TaskContainerRelatedSearch:
     """TaskContainer related search."""
 
     def get_objects(self, obj):

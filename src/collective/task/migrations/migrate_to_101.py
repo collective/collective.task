@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-
 from imio.migrator.migrator import Migrator
 from plone import api
 
 import logging
-
 
 logger = logging.getLogger("collective.task")
 

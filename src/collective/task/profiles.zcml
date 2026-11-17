@@ -18,17 +18,7 @@
       title="collective.task"
       description="Installs the collective.task add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      directory="profiles/plone4"
-      zcml:condition="not-have plone-5"
-      />
-
-  <genericsetup:registerProfile
-      name="default"
-      title="collective.task"
-      description="Installs the collective.task add-on."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/plone6"
-      zcml:condition="have plone-60"
       />
 
   <genericsetup:registerProfile
@@ -47,7 +37,6 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFCore.interfaces.ISiteRoot"
       directory="profiles/uninstall"
-      zcml:condition="have plone-60"
       />
 
   <genericsetup:importStep
@@ -104,17 +93,5 @@
       destination="102"
       handler="collective.task.migrations.migrate_to_101.migrate"
       />
-
-  <genericsetup:upgradeSteps
-      profile="collective.task:default"
-      source="102"
-      destination="103"
-      >
-    <genericsetup:upgradeDepends
-        title="Reapply portal_atct.xml"
-        description="This will remove atct metadata"
-        import_steps="atcttool"
-        />
-  </genericsetup:upgradeSteps>
 
 </configure>

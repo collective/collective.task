@@ -1,27 +1,26 @@
-# -*- coding: utf-8 -*-
 """Initial setup."""
+
 from dexterity.localroles.utils import add_fti_configuration
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 
 import logging
 
-
 logger = logging.getLogger("collective.task: setuphandlers")
 
 
 PARENTS_FIELDS_CONFIG = [
     {
-        "fieldname": u"parents_assigned_groups",
-        "attribute": u"assigned_group",
-        "attribute_prefix": u"ITask",
-        "provided_interface": u"collective.task.interfaces.ITaskContent",
+        "fieldname": "parents_assigned_groups",
+        "attribute": "assigned_group",
+        "attribute_prefix": "ITask",
+        "provided_interface": "collective.task.interfaces.ITaskContent",
     },
     {
-        "fieldname": u"parents_enquirers",
-        "attribute": u"enquirer",
-        "attribute_prefix": u"ITask",
-        "provided_interface": u"collective.task.interfaces.ITaskContent",
+        "fieldname": "parents_enquirers",
+        "attribute": "enquirer",
+        "attribute_prefix": "ITask",
+        "provided_interface": "collective.task.interfaces.ITaskContent",
     },
 ]
 

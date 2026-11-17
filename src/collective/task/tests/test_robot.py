@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from collective.task.testing import COLLECTIVE_TASK_ACCEPTANCE_TESTING  # noqa
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from collective.task.interfaces import ITaskContainerMethods
 from collective.task.interfaces import ITaskContentMethods
 from zope.component import getAdapter
@@ -44,7 +42,9 @@ def taskContent_created(task, event):
         # update all higher tree: needed when moving or copying
         adapted.set_higher_parents_value(field, fields[field])
         # update current
-        adapted.set_parents_value(field, adapted.calculate_parents_value(field, fields[field]))
+        adapted.set_parents_value(
+            field, adapted.calculate_parents_value(field, fields[field])
+        )
 
 
 def taskContent_modified(task, event):
@@ -61,7 +61,11 @@ def taskContent_modified(task, event):
     for at in event.descriptions:
         for field in fields:
             for dic in fields[field]:
-                fieldname = dic["prefix"] and "%s.%s" % (dic["prefix"], dic["at"]) or dic["at"]
+                fieldname = (
+                    dic["prefix"]
+                    and "{}.{}".format(dic["prefix"], dic["at"])
+                    or dic["at"]
+                )
                 if fieldname in at.attributes:
                     updates.append(field)
                     break

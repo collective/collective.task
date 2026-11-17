@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
 
 from collective.task import _
@@ -21,22 +20,28 @@ class ICollectiveTaskLayer(IDefaultBrowserLayer):
 class ITaskContent(model.Schema):
     """Interface for task content type"""
 
-    title = schema.TextLine(title=PMF(u"label_title", default=u"Title"), required=True)
+    title = schema.TextLine(title=PMF("label_title", default="Title"), required=True)
 
     parents_assigned_groups = LocalRolesField(
-        title=_(u"Parents assigned groups"),
+        title=_("Parents assigned groups"),
         required=False,
-        value_type=schema.Choice(vocabulary=u"collective.task.AssignedGroups"),
+        value_type=schema.Choice(vocabulary="collective.task.AssignedGroups"),
     )
     # must change widget to hide it, because default widget (orderedselect) doesn't have hidden widget template
-    directives.widget("parents_assigned_groups", SelectFieldWidget, multiple="multiple", size=10)
+    directives.widget(
+        "parents_assigned_groups", SelectFieldWidget, multiple="multiple", size=10
+    )
     directives.mode(parents_assigned_groups="hidden")
 
     parents_enquirers = LocalRolesField(
-        title=_(u"Parents enquirers"), required=False, value_type=schema.Choice(vocabulary=u"collective.task.Enquirer")
+        title=_("Parents enquirers"),
+        required=False,
+        value_type=schema.Choice(vocabulary="collective.task.Enquirer"),
     )
     # must change widget to hide it, because default widget (orderedselect) doesn't have hidden widget template
-    directives.widget("parents_enquirers", SelectFieldWidget, multiple="multiple", size=10)
+    directives.widget(
+        "parents_enquirers", SelectFieldWidget, multiple="multiple", size=10
+    )
     directives.mode(parents_enquirers="hidden")
 
 
@@ -59,14 +64,17 @@ class ITaskContentMethods(Interface):
 class IParentsFieldSchema(Interface):
     fieldname = schema.TextLine(title=_("Parents field name"), required=True)
     attribute = schema.TextLine(title=_("Parent attribute"), required=True)
-    attribute_prefix = schema.TextLine(title=_("Attribute prefix (without dot)"), required=False)
+    attribute_prefix = schema.TextLine(
+        title=_("Attribute prefix (without dot)"), required=False
+    )
     provided_interface = schema.TextLine(title=_("Parent interface"), required=True)
 
 
 class ICollectiveTaskConfig(model.Schema):
 
     parents_fields = schema.List(
-        title=_(u"Parents fields"), value_type=DictRow(title=_("Parents field"), schema=IParentsFieldSchema)
+        title=_("Parents fields"),
+        value_type=DictRow(title=_("Parents field"), schema=IParentsFieldSchema),
     )
 
 

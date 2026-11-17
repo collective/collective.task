@@ -1,7 +1,5 @@
 graft src/collective
 graft docs
-include *.rst
-global-exclude *.pyc *.sh *.pot
-recursive-exclude src .gitkeep
-exclude .coveragerc .editorconfig bootstrap.py *.cfg *.txt
-prune buildout.d
+include *.cfg *.rst *.in *.ini .coveragerc Makefile requirements*.txt
+exclude *-mxdev.txt
+global-exclude *.pyc

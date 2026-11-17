@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
-
 from imio.helpers.catalog import addOrUpdateColumns
 from imio.helpers.catalog import addOrUpdateIndexes
 from imio.migrator.migrator import Migrator
 
 import logging
-
 
 logger = logging.getLogger("collective.task")
 
@@ -19,11 +16,17 @@ class Migrate_To_2_2(Migrator):
         self.cleanRegistries()
 
         addOrUpdateIndexes(
-            self.portal, indexInfos={"assigned_group": ("FieldIndex", {}), "due_date": ("DateIndex", {})}
+            self.portal,
+            indexInfos={
+                "assigned_group": ("FieldIndex", {}),
+                "due_date": ("DateIndex", {}),
+            },
         )
         addOrUpdateColumns(self.portal, columns=("assigned_group", "due_date"))
 
-        self.runProfileSteps("collective.task", steps=["typeinfo", "workflow", "cssregistry"])
+        self.runProfileSteps(
+            "collective.task", steps=["typeinfo", "workflow", "cssregistry"]
+        )
         self.finish()
 
 

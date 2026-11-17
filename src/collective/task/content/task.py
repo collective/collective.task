@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from collective.task.interfaces import ITaskContent
 from collective.task.interfaces import ITaskContentMethods
 from plone.dexterity.content import Container
