@@ -34,6 +34,7 @@ horse-with-no-namespace
     collective.js.tooltipster @ file://{toxinidir}/sources/collective.js.tooltipster
     eea.facetednavigation @ file://{toxinidir}/sources/eea.facetednavigation
     imio.actionspanel @ file://{toxinidir}/sources/imio.actionspanel
+    imio.helpers @ file://{toxinidir}/sources/imio.helpers
     imio.history @ file://{toxinidir}/sources/imio.history
     imio.migrator @ file://{toxinidir}/sources/imio.migrator
     plone.formwidget.masterselect @ file://{toxinidir}/sources/plone.formwidget.masterselect
