@@ -27,12 +27,16 @@ test_environment_variables = """
     PLAYWRIGHT_HOST_PLATFORM_OVERRIDE=ubuntu24.04-x64
 """
 test_matrix = {"6.2" = ["*"]}
+# horse-with-no-namespace: collective.excelexport 2.0 (pulled by collective.eeafaceted.z3ctable) ships a
+# setuptools -nspkg.pth that loads the pkgutil collective/__init__.py of the installed sources without running it,
+# which hides src/collective (No module named 'collective.task'). Not needed by the buildout.
 test_deps_additional = """
 horse-with-no-namespace
     collective.eeafaceted.batchactions @ file://{toxinidir}/sources/collective.eeafaceted.batchactions
     collective.eeafaceted.z3ctable @ file://{toxinidir}/sources/collective.eeafaceted.z3ctable
     collective.fingerpointing @ file://{toxinidir}/sources/collective.fingerpointing
     collective.js.tooltipster @ file://{toxinidir}/sources/collective.js.tooltipster
+    dexterity.localroles @ file://{toxinidir}/sources/dexterity.localroles
     eea.facetednavigation @ file://{toxinidir}/sources/eea.facetednavigation
     imio.actionspanel @ file://{toxinidir}/sources/imio.actionspanel
     imio.helpers @ file://{toxinidir}/sources/imio.helpers
